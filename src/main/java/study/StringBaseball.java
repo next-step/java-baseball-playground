@@ -10,6 +10,7 @@ public class StringBaseball {
     public void play() {
         List<Integer> numbers = getNumbers();
         int[] results;
+
         do {
             List<Integer> inputs = toIntegerList(getUserInput());
             results = getResult(numbers, inputs);

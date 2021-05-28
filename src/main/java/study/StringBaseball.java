@@ -1,9 +1,13 @@
 package study;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class StringBaseball {
-    public static void main(String[] args) {
+
+    public void play() {
         List<Integer> numbers = getNumbers();
         int[] results;
         do {
@@ -11,20 +15,31 @@ public class StringBaseball {
             results = getResult(numbers, inputs);
             printResults(results);
         } while (!isCorrect(results));
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료.");
+
+        gameOver();
     }
 
-    private static void printResults(int[] results) {
+    private void gameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료.");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요: ");
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        if (input==1) {
+            play();
+        }
+    }
+
+    private void printResults(int[] results) {
         System.out.printf("%d 아웃, ", results[0]);
         System.out.printf("%d 볼, ", results[1]);
         System.out.printf("%d 스트라이크\n", results[2]);
     }
 
-    private static boolean isCorrect(int[] results) {
+    private boolean isCorrect(int[] results) {
         return results[2] == 3;
     }
 
-    private static int[] getResult(List<Integer> numbers, List<Integer> inputs) {
+    private int[] getResult(List<Integer> numbers, List<Integer> inputs) {
         int[] results = new int[3];
         for (int i = 0; i < inputs.size(); i++) {
             results[getCompareResult(numbers, inputs, i)]++;
@@ -32,7 +47,7 @@ public class StringBaseball {
         return results;
     }
 
-    private static int getCompareResult(List<Integer> numbers, List<Integer> inputs, int i) {
+    private int getCompareResult(List<Integer> numbers, List<Integer> inputs, int i) {
         int result = 0;
         if (numbers.contains(inputs.get(i))) {
             result = 1;
@@ -43,7 +58,7 @@ public class StringBaseball {
         return result;
     }
 
-    private static List<Integer> toIntegerList(String[] inputs) {
+    private List<Integer> toIntegerList(String[] inputs) {
         List<Integer> numbers = new ArrayList<>();
         for (String input : inputs) {
             numbers.add(Integer.parseInt(input));
@@ -51,13 +66,13 @@ public class StringBaseball {
         return numbers;
     }
 
-    private static String[] getUserInput() {
+    private String[] getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine().split("");
     }
 
-    private static List<Integer> getNumbers() {
+    private List<Integer> getNumbers() {
         List<Integer> numbers = new ArrayList<>();
         Random random = new Random();
         while (numbers.size()<3) {

@@ -16,6 +16,7 @@ public class StringCalculatorTest {
 
         int result = getResult(num1, num2, calculator);
 
+        assertThat(inputs.length).isEqualTo(3);
         assertThat(result).isEqualTo(7);
     }
 

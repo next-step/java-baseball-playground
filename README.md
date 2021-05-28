@@ -24,3 +24,12 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+### StringBaseball 구현 기능 목록
+1. 컴퓨터 난수 발생. (0~9사이의 숫자를 세번 생성)
+2. 사용자 입력 (세 자리의 정수 000 ~ 999 사이)
+3. 값 비교
+   - 숫자가 존재하며, 위치가 일치하면 Strike
+   - 숫자가 존재하지만 위치가 일치하지 않으면 Ball
+   - 숫자가 존재하지 않으면 Out
+4. 정답을 맞출시 애플리케이션 재시작 / 종료    

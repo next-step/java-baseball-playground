@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import baseball.Ball;
+import baseball.BallStatus;
 import baseball.BaseBall;
 
 
@@ -33,15 +34,38 @@ public class BallTest {
 	
 	@Test
 	void isStrike() {
-		String userBall ="1";
-		int position = 0;
+//		String userBall ="1";
+//		int position = 0;
+//		
+//		//스트라이크
+//		assertThat(baseBall.isStrike(position, userBall)).isTrue();
+//		
+//		userBall = "2";
+//		position = 1;
+//		//노스트라이크
+//		assertThat(baseBall.isStrike(position, userBall)).isFalse();
 		
-		//스트라이크
-		assertThat(baseBall.isStrike(position, userBall)).isTrue();
+		String userBall = "123";
+		List<Ball> playerBallList = new ArrayList<>();
+		int strike = 0;
+		for ( int i = 0; i < userBall.length(); i++ ) {
+			Ball playBall = new Ball(i, String.valueOf(userBall.charAt(i)));
+			if ( baseBall.isStrike(playBall) ) strike++;
+		}
 		
-		userBall = "2";
-		position = 1;
-		//노스트라이크
-		assertThat(baseBall.isStrike(position, userBall)).isFalse();
+		assertThat(strike).isEqualTo(2);
+	}
+	
+	@Test 
+	void isBall() {
+		String userBall = "437";
+		List<Ball> playerBallList = new ArrayList<>();
+		int ball = 0;
+		for ( int i = 0; i < userBall.length(); i++ ) {
+			Ball playBall = new Ball(i, String.valueOf(userBall.charAt(i)));
+			if ( baseBall.isBall(playBall) ) ball++;
+		}
+		
+		assertThat(ball).isEqualTo(2);
 	}
 }

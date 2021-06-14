@@ -1,4 +1,4 @@
-package baseball;
+package playbaseball;
 
 public class Ball {
 	private int position;

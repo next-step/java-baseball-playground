@@ -24,4 +24,9 @@ public class BaseBall {
 				.filter(one -> one.getValue().equals(playerBall.getValue()) )
 				.anyMatch(one -> one.getPosition() != playerBall.getPosition());
 	}
+
+	public boolean isNothing(Ball playerBall) {
+		return !computerBallList.stream()
+				.anyMatch(one -> one.getValue().equals(playerBall.getValue()));
+	}
 }

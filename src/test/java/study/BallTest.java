@@ -68,4 +68,17 @@ public class BallTest {
 		
 		assertThat(ball).isEqualTo(2);
 	}
+	
+	@Test
+	void isNothing() {
+		String userBall = "789";
+		
+		List<Ball> playerBallList = new ArrayList<>();
+		int nothing = 0;
+		for ( int i = 0; i < userBall.length(); i++ ) {
+			Ball playBall = new Ball(i, String.valueOf(userBall.charAt(i)));
+			if ( baseBall.isNothing(playBall) ) nothing++;
+		}
+		assertThat(nothing).isEqualTo(3);
+	}
 }

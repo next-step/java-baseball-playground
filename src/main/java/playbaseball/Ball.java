@@ -5,6 +5,11 @@ public class Ball {
 	private String value;
 	private BallStatus ballStatus;
 	
+	public Ball(String value) {
+		this.position++;
+		this.value = value;
+	}
+	
 	public Ball(int position, String value) {
 		this.position = position;
 		this.value = value;

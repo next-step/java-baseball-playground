@@ -4,6 +4,12 @@ import java.util.List;
 
 public class BaseBall {
 	private List<Ball> computerBallList;
+	private Computer computer;
+	
+	public BaseBall() {
+		computer = new Computer();
+		setBall(computer.getBallList());
+	}
 	
 	public void setBall(List<Ball> computerBallList) {
 		this.computerBallList = computerBallList;

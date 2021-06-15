@@ -11,10 +11,25 @@ public class Computer {
 	
 	public Computer() {
 		ballList = new ArrayList<>();
+		initBall();
+	}
+	
+	public List<Ball> getBallList() {
+		return ballList;
 	}
 	
 	public void addBall(Ball ball) {
 		ballList.add(ball);
+	}
+	
+	public void initBall() {
+		while( ballList.size() < 3 ) {
+			int num = generateNums();
+			if ( !checkDuplicate(num) ) {
+				Ball ball = new Ball(String.valueOf(num));
+				addBall(ball);
+			}
+		}
 	}
 	
 	public int generateNums() {

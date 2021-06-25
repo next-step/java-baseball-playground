@@ -4,10 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PlayerUtils {
+public class PlayerTest {
 
     PlayerService playerService;
     Player player;
@@ -20,7 +21,17 @@ public class PlayerUtils {
     }
 
     @Test
-    void 스트라이크_인지_판단한다() {
+    void 공_전체_결과판단() {
+        //given
+        List<Integer> userBallList = Arrays.asList(1, 2, 3);
+        //when
+        List<Status> play = player.play(userBallList);
+
+        //then
+    }
+
+    @Test
+    void 공하나_스트라이크_인지_판단한다() {
         //given
         int fistBall = 1;
         int secondBall = 2;
@@ -35,7 +46,7 @@ public class PlayerUtils {
     }
 
     @Test
-    void 볼_인지_판단한다() {
+    void 공하나_볼_인지_판단한다() {
         //given
         int fistBall = 1;
         int secondBall = 2;
@@ -50,7 +61,7 @@ public class PlayerUtils {
     }
 
     @Test
-    void 낫싱_인지_판단한다() {
+    void 공하나_낫싱_인지_판단한다() {
         //given
         int fistBall = 1;
         int secondBall = 5;
@@ -61,28 +72,6 @@ public class PlayerUtils {
         assertThat(player.play(0, thirdBall)).isEqualTo(Status.NOTHING);
         assertThat(player.play(0, fistBall)).isNotEqualTo(Status.NOTHING);
         assertThat(player.play(2, fistBall)).isNotEqualTo(Status.NOTHING);
-    }
-
-    @Test
-    void 입력받은_숫자는_3자리수_여야한다() {
-        assertThat(playerService.validate(Arrays.asList(1, 2, 3))).isTrue();
-        assertThat(playerService.validate(Arrays.asList(1, 2, 3, 4))).isFalse();
-        assertThat(playerService.validate(Arrays.asList(1, 2))).isFalse();
-    }
-
-    @Test
-    void 입력받은_숫자는_3자리수_중복되면_안된다() {
-        assertThat(playerService.validate(Arrays.asList(1, 2, 3))).isTrue();
-        assertThat(playerService.validate(Arrays.asList(1, 1, 9))).isFalse();
-        assertThat(playerService.validate(Arrays.asList(9, 9, 9))).isFalse();
-    }
-
-    @Test
-    void 입력받은_숫자는_1_9_범위여야_된다() {
-        //then
-        assertThat(playerService.validate(Arrays.asList(1, 2, 3))).isTrue();
-        assertThat(playerService.validate(Arrays.asList(1, 2, 10))).isFalse();
-        assertThat(playerService.validate(Arrays.asList(0, 1, 2))).isFalse();
     }
 
 }

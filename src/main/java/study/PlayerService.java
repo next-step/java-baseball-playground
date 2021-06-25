@@ -4,7 +4,9 @@ import java.util.List;
 
 public class PlayerService {
 
-    private static int BALLS_SIZE = 3;
+    public static final int MAX = 9;
+    public static final int MIN = 1;
+    private static final int BALLS_SIZE = 3;
 
     public Player makeNewPlayer() {
         return new Player();
@@ -23,7 +25,10 @@ public class PlayerService {
     }
 
     private boolean validateDuplicate(List<Integer> ballList) {
-        return (int) ballList.stream().distinct().count() == 3;
+        int notDuplicatedSize = (int) ballList.stream()
+                .distinct()
+                .count();
+        return notDuplicatedSize == BALLS_SIZE;
     }
 
     private boolean validateBallsSize(List<Integer> ballList) {
@@ -31,7 +36,10 @@ public class PlayerService {
     }
 
     private boolean validateBallsRange(List<Integer> ballList) {
-        return (int) ballList.stream().filter(n -> (n <= 9) && (n >= 1)).count() == 3;
+        int rightRangeSize = (int) ballList.stream()
+                .filter(n -> (n <= MAX) && (n >= MIN))
+                .count();
+        return rightRangeSize == BALLS_SIZE;
     }
 
 }

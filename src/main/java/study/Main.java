@@ -20,11 +20,11 @@ public class Main {
 
             resultView.result(playStatus);
 
-            boolean isThreeStrike = player.isThreeStrike(playStatus);
+            boolean isThreeStrike = player.isThreeStrike(input);
 
             if (isThreeStrike) {
-                isRepeat = inputView.isRepeat();
                 player.makeComputersRandomBalls();
+                isRepeat = inputView.isRepeat();
             }
         }
 

@@ -9,6 +9,7 @@ public class Player {
     List<Integer> ballList = new ArrayList<>();
 
     public void makeComputersRandomBalls() {
+        ballList = new ArrayList<>();
         while (ballList.size() != 3) {
             int value = (int) (Math.random() * 9) + 1;
             addValueInList(value);
@@ -25,7 +26,18 @@ public class Player {
         return this.ballList;
     }
 
-    public boolean isThreeStrike(List<Status> statusList) {
+    public boolean isThreeStrike(List<Integer> userBallsList) {
+        List<Status> statusList = play(userBallsList);
+        int strikeCount = (int) statusList.stream()
+                .filter(status -> status == Status.STRIKE)
+                .count();
+        if (strikeCount == 3)
+            return true;
+        return false;
+    }
+
+    public boolean isThreeStrike(String userBallsList) {
+        List<Status> statusList = play(userBallsList);
         int strikeCount = (int) statusList.stream()
                 .filter(status -> status == Status.STRIKE)
                 .count();

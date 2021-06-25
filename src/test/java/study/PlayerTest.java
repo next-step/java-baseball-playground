@@ -23,11 +23,11 @@ public class PlayerTest {
     @Test
     void 공_전체_결과판단() {
         //given
-        List<Integer> userBallList = Arrays.asList(1, 2, 3);
         //when
-        List<Status> play = player.play(userBallList);
-
         //then
+        assertThat(player.isThreeStrike(Arrays.asList(1, 2, 3))).isTrue();
+        assertThat(player.isThreeStrike(Arrays.asList(2, 3, 5))).isFalse();
+        assertThat(player.isThreeStrike(Arrays.asList(9, 8, 5))).isFalse();
     }
 
     @Test

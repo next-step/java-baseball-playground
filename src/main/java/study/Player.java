@@ -5,11 +5,28 @@ import java.util.List;
 
 public class Player {
 
-    List<Integer> integerList = new ArrayList<>();
+    List<Integer> ballList = new ArrayList<>();
 
     public List<Integer> makeNewBalls(List<Integer> newIntegerList) {
-        integerList.addAll(newIntegerList);
-        return this.integerList;
+        ballList.addAll(newIntegerList);
+        return this.ballList;
     }
 
+    public Status play(int userBallIndex, int userBallNum) {
+        if (isStrike(userBallIndex, userBallNum))
+            return Status.STRIKE;
+
+        if (isBall(userBallNum))
+            return Status.BALL;
+
+        return Status.NOTHING;
+    }
+
+    private boolean isBall(int userBallNum) {
+        return ballList.contains(userBallNum);
+    }
+
+    private boolean isStrike(int userBallIndex, int userBallNum) {
+        return ballList.get(userBallIndex) == userBallNum;
+    }
 }

@@ -11,7 +11,6 @@ public class PlayerService {
     }
 
     public boolean validate(List<Integer> ballList) {
-
         if (!validateBallsSize(ballList))
             return false;
 
@@ -20,19 +19,18 @@ public class PlayerService {
 
         if (!validateDuplicate(ballList))
             return false;
-
         return true;
     }
 
-    public boolean validateDuplicate(List<Integer> ballList) {
+    private boolean validateDuplicate(List<Integer> ballList) {
         return (int) ballList.stream().distinct().count() == 3;
     }
 
-    public boolean validateBallsSize(List<Integer> ballList) {
+    private boolean validateBallsSize(List<Integer> ballList) {
         return ballList.size() == BALLS_SIZE;
     }
 
-    public boolean validateBallsRange(List<Integer> ballList) {
+    private boolean validateBallsRange(List<Integer> ballList) {
         return (int) ballList.stream().filter(n -> (n <= 9) && (n >= 1)).count() == 3;
     }
 

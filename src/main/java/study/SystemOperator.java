@@ -1,6 +1,5 @@
 package study;
 
-
 public class SystemOperator {
 
     public static boolean isCorrect(ResultDTO result) {

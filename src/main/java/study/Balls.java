@@ -1,8 +1,8 @@
 package study;
 
 import lombok.Data;
-
 import java.util.List;
+
 @Data
 public class Balls {
     private List<Ball> list;

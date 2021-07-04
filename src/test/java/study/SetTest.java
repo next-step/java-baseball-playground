@@ -48,4 +48,5 @@ public class SetTest {
         assertThat(numbers.contains(number)).isEqualTo(bool);
     }
     //isEqualTo() / Equals() check
+    /* https://www.baeldung.com/introduction-to-assertj */
 }

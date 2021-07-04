@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,5 +40,12 @@ public class SetTest {
         assertThat(numbers.contains(number)).isTrue();
     }
 
-
+    //@CsvSource : array of delimiter(single '') separated values/parameters
+    @ParameterizedTest
+    @CsvSource(value = {"1:True","2:True","3:True","4:False","5:False"},
+                delimiter = ':')
+    void contain_TrueOrFalse(int number, boolean bool) {
+        assertThat(numbers.contains(number)).isEqualTo(bool);
+    }
+    //isEqualTo() / Equals() check
 }

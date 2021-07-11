@@ -1,9 +1,9 @@
 package stringCalculator;
 
-public class Addition implements Operation {
+public class Division implements YesOperation {
 
     @Override
-    public int operate(int first, int second) {
-        return first + second;
+    public boolean yesOperate(String operator) {
+        return operator.equals("/");
     }
 }

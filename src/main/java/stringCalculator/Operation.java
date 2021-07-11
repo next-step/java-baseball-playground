@@ -1,5 +1,5 @@
 package stringCalculator;
 
-public interface Operations {
+public interface Operation {
    int operate(int first, int second);
 }

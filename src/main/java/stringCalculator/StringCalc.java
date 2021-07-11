@@ -16,11 +16,10 @@ public class StringCalc {
 
     }
 //trim(), null check first then "||" : to throw IllegalArg instead of NullPointerException
-    public static int calculate(String value) {
-//            throws IllegalArgumentException {
-//        if (value == null || value.trim().isEmpty()) {
-//             throw new IllegalArgumentException();
-//        }
+    public static int calculate(String value) throws IllegalArgumentException {
+        if (value == null || value.trim().isEmpty()) {
+             throw new IllegalArgumentException("No Input");
+        }
         // java .length
 
         String[] values = value.split(" ");

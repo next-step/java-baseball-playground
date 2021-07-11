@@ -32,11 +32,12 @@ public enum OperEnum {
                 //An OperEnum => it's Symbol Equals Param operator
                             .filter(o -> o.symbol.equals(value))
                             .findFirst();
-        return maybeOperEnum.orElseThrow(IllegalArgumentException::new);
+        return maybeOperEnum.orElseThrow(
+                () -> new IllegalArgumentException("Wrong Symbol"));
     }
 
     //여기서 Operations함수가 아닌, int 반환
-    //각 Operations가 어떻게 operate 처리할 것인지는 각 클래스에서 정의
+    //각 Operations가 어떻게 operate 처리할 것인지는 각 OperEnum에서 정의
     public int operate(int first, int second) {
         return operation.operate(first, second);
     }

@@ -8,7 +8,11 @@ public enum OperEnum {
     PLUS("+", (x,y) -> x + y),
     MINUS("-", (x,y) -> x - y),
     MULTIPLE("*", (x,y) -> x * y),
-    DIVIDE("/", (x,y) -> x / y);
+    DIVIDE("/", (x,y) -> {
+        if ( y == 0) {
+            throw new IllegalArgumentException("Divide by Zero");
+        }
+        return x/y;});
 
     String symbol;
     //lambda 자체가 함수임.

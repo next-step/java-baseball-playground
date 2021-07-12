@@ -1,26 +1,36 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 public class BaseballGame {
+
+
+    private final List<Integer> you;
+
+    BaseballGame() {
+        this.you = BaseballGameFactory.createNumbers();
+    }
+
+
     //String.charAt(int index)
-    public static int isStrike(String me, String you) {
+    public int isStrike(List<Integer> me) {
         int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
-            if (me.charAt(i) == you.charAt(i)) {
+            if (me.get(i) == this.you.get(i)) {
                 strikeCount += 1;
             }
         }
         return strikeCount;
     }
 
-    public static int isBall(String me, String you) {
-        int ballCount = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (me.charAt(i) == you.charAt(j) && i != j) {
-                    ballCount += 1;
-                }
-            }
-        } return ballCount;
+    public int isBall(List<Integer> me) {
+        int inCount = me.stream()
+                .filter(o -> this.you.contains(o))
+                .mapToInt(o -> 1)
+                .sum();
+        return inCount - isStrike(me);
     }
-
 }

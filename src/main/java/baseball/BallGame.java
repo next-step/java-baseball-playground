@@ -1,27 +1,41 @@
 package baseball;
 
+import java.util.List;
+import java.util.Objects;
+
 public class BallGame {
 
-    private final Ball comBall;
+    private final List<Ball> systemBallsList;
 
-    BallGame(Ball comBall) {
-        this.comBall = comBall;
+    BallGame(BallsGenerator ballsGenerator) {
+        this.systemBallsList = ballsGenerator.getSystemBallsList();
     }
     //하나의 Game에서 사용자는 반복해 맞추나, 컴퓨터는 유지
 
     //정리 필요!! this not in Static content
     public BallStatus match(Ball usrBall) {
-        if (this.comBall.equals(usrBall)) {
-            return BallStatus.STRIKE;
-        }
-        if (this.isStatusOfBall(usrBall)) {
-            return BallStatus.BALL;
-        }
+        for (Ball ball : systemBallsList) {
+            if (ball.equals(usrBall)) {
+                return BallStatus.STRIKE;
+            }
+            if (ball.isSameNumOf(usrBall) && !ball.isSameSlotOf(usrBall)) {
+                return BallStatus.BALL;
+            }
+            return BallStatus.NOTHING;
+        } //return different depth
         return BallStatus.NOTHING;
     }
 
-    private boolean isStatusOfBall(Ball usrBall) {
-        return (this.comBall.isSameNumOf(usrBall))
-            && (!this.comBall.isSameSlotOf(usrBall));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BallGame ballGame = (BallGame) o;
+        return Objects.equals(systemBallsList, ballGame.systemBallsList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(systemBallsList);
     }
 }

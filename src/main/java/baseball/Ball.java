@@ -5,36 +5,18 @@ import java.util.Objects;
 
 public class Ball {
 
-    private final String ballNum;
+    private final BallNum ballNum;
     private final int slotNumber;
 
-    public Ball(String inNumber) {
-        //this constructor 상속 (임시)
-        this (inNumber, 1);
-    }
     
-    public Ball(String inNumber, int slotNumber) {
-        this.ballNum = makeBallnum(inNumber);
+    public Ball(BallNum ballNum, int slotNumber) {
+        this.ballNum = ballNum;
         this.slotNumber = slotNumber;
-    }
-
-    public static String makeBallnum(String inNumber) throws IllegalArgumentException {
-//        if (isInt(inNumber)) {
-//            throw new IllegalArgumentException("isNotaNumber");
-//        }
-        if (!isInRange(Integer.parseInt(inNumber))) {
-            throw new IllegalArgumentException("isNotInRange");
-        }
-        return inNumber;
-    }
-
-    private static boolean isInRange(int parsedNumber) {
-        return parsedNumber >= 1 && parsedNumber <= 9;
     }
 
 
     public String getBallNum() {
-        return ballNum;
+        return ballNum.getInNumber();
     }
 
     public int getSlotNumber() {
@@ -45,6 +27,16 @@ public class Ball {
 //        return Pattern.matches("^[0-9]*$",inNumber);
 //    }
 
+    //BallGame 아닌, Ball의 메서드
+    public boolean isSameSlotOf(Ball usrBall) {
+        return this.slotNumber == usrBall.getSlotNumber();
+    }
+
+    //String num so .equals()
+    public boolean isSameNumOf(Ball usrBall) {
+        return this.ballNum.getInNumber().equals(usrBall.getBallNum());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,19 +46,8 @@ public class Ball {
                 Objects.equals(ballNum, ball.ballNum);
     }
 
-    //BallGame 아닌, Ball의 메서드
-    public boolean isSameSlotOf(Ball usrBall) {
-        return this.slotNumber == usrBall.getSlotNumber();
-    }
-
-    //String num so .equals()
-    public boolean isSameNumOf(Ball usrBall) {
-        return this.ballNum.equals(usrBall.getBallNum());
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(ballNum, slotNumber);
     }
-
 }

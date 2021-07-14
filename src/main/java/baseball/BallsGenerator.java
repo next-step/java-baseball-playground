@@ -11,8 +11,8 @@ public class BallsGenerator {
 
     private final List<Ball> systemBallsList;
 
-    public BallsGenerator(List<Ball> ballList) {
-        this.systemBallsList = ballList;
+    public BallsGenerator(List<Ball> systemBallsList) {
+        this.systemBallsList = systemBallsList;
     }
 
 //    public BallsGenerator() {

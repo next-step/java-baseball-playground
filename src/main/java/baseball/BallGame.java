@@ -13,18 +13,23 @@ public class BallGame {
     //하나의 Game에서 사용자는 반복해 맞추나, 컴퓨터는 유지
 
     //정리 필요!! this not in Static content
-    public BallStatus match(Ball usrBall) {
-        for (Ball ball : systemBallsList) {
-            if (ball.equals(usrBall)) {
-                return BallStatus.STRIKE;
-            }
-            if (ball.isSameNumOf(usrBall) && !ball.isSameSlotOf(usrBall)) {
-                return BallStatus.BALL;
-            }
-            return BallStatus.NOTHING;
-        } //return different depth
-        return BallStatus.NOTHING;
+    public BallStatus matchToStrike(Ball usrBall) {
+        return systemBallsList.stream()
+                .filter(ball -> ball.equals(usrBall))
+                .findFirst()
+                .map(o -> BallStatus.STRIKE)
+                .orElse(BallStatus.NOTHING);
     }
+
+    public BallStatus matchToBall(Ball usrBall) {
+        return systemBallsList.stream()
+                .filter(ball -> !ball.isSameSlotOf(usrBall) && ball.isSameNumOf(usrBall))
+                .findFirst()
+                .map(o -> BallStatus.BALL)
+                .orElse(BallStatus.NOTHING);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

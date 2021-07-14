@@ -25,5 +25,6 @@ public class BallsGeneratorTest {
 
         assertThat(new BallsGenerator()).isInstanceOf(BallsGenerator.class);
         assertThat(new BallsGenerator().getSystemBallsList().size()).isEqualTo(3);
+        assertThat(new BallsGenerator().getSystemBallsList().get(0)).isInstanceOf(Ball.class);
     }
 }

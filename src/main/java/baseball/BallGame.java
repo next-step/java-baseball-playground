@@ -1,8 +1,9 @@
 package baseball;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
+import static baseball.BallStatus.BALL;
+import static baseball.BallStatus.STRIKE;
 
 public class BallGame {
 
@@ -15,7 +16,7 @@ public class BallGame {
     public int countMatchToStrike(UserBalls userBalls) {
         int sum = 0;
         for (Ball userBall : userBalls.getUserBallList()) {
-            if (matchToStrike(userBall).equals(BallStatus.STRIKE)) {
+            if (matchToStrike(userBall).equals(STRIKE)) {
                 sum += 1;
             }
         }
@@ -31,7 +32,7 @@ public class BallGame {
     public int countMatchToBall(UserBalls userBalls) {
         int sum = 0;
         for (Ball userBall : userBalls.getUserBallList()) {
-            if (matchToBall(userBall).equals(BallStatus.BALL)) {
+            if (matchToBall(userBall).equals(BALL)) {
                 sum += 1;
             }
         }
@@ -49,7 +50,7 @@ public class BallGame {
         return systemBallsList.stream()
                 .filter(ball -> ball.equals(userBall))
                 .findFirst()
-                .map(o -> BallStatus.STRIKE)
+                .map(o -> STRIKE)
                 .orElse(BallStatus.NOTHING);
     }
 
@@ -57,7 +58,7 @@ public class BallGame {
         return systemBallsList.stream()
                 .filter(ball -> !ball.isSameSlotOf(userBall) && ball.isSameNumOf(userBall))
                 .findFirst()
-                .map(o -> BallStatus.BALL)
+                .map(o -> BALL)
                 .orElse(BallStatus.NOTHING);
     }
 

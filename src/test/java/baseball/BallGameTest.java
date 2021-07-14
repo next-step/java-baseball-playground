@@ -12,31 +12,60 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallGameTest {
 
-    private List<Ball> systemBallList;
-
+    private BallGame ballGame;
     //as a private field and add
     //why not work?
-//    @BeforeEach
-//    void setUp() {
-//        systemBallList = new ArrayList<>();
-//        //list.add(index, value) VS set.add(value)
-//        systemBallList.add(0, new Ball(new BallNum("3"), 1));
-//        systemBallList.add(1, new Ball(new BallNum("5"), 2));
-//        systemBallList.add(2, new Ball(new BallNum("7"), 3));
-//
-//    }
+
+    @BeforeEach
+    void setUp(){
+        BallsGenerator ballsGenerator = new BallsGenerator(Arrays.asList(
+            new Ball(new BallNum("3"), 1),
+            new Ball(new BallNum("5"), 2),
+            new Ball(new BallNum("7"), 3)
+        ));
+        ballGame = new BallGame(ballsGenerator);
+    }
+
+    @DisplayName("3 Strikes for UserBall")
+    @Test
+    void is_3_Strikes() {
+        UserBalls userBalls = new UserBalls("357");
+
+        assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(3);
+        assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(0);
+    }
+
+    @DisplayName("1 Strike 2 Balls for UserBall")
+    @Test
+    void is_1_Strike_2_Balls() {
+        UserBalls userBalls = new UserBalls("375");
+
+        assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(1);
+        assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(2);
+    }
+
+    @DisplayName("1 Strike 1 Ball for UserBall")
+    @Test
+    void is_1_Strike_1_Ball() {
+        UserBalls userBalls = new UserBalls("587");
+
+        assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(1);
+        assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(1);
+    }
+
+    @DisplayName("3 Balls for UserBall")
+    @Test
+    void is_3_Balls() {
+        UserBalls userBalls = new UserBalls("573");
+
+        assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(0);
+        assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(3);
+    }
 
 
     @DisplayName("Strike for One Ball")
     @Test
     void isStrike() {
-        BallsGenerator ballsGenerator = new BallsGenerator(Arrays.asList(
-                new Ball(new BallNum("3"), 1),
-                new Ball(new BallNum("5"), 2),
-                new Ball(new BallNum("7"), 3)
-        ));
-        BallGame ballGame = new BallGame(ballsGenerator);
-
         Ball usrBall1 = new Ball(new BallNum("3"), 1);
         Ball usrBall2 = new Ball(new BallNum("5"), 2);
 
@@ -49,12 +78,6 @@ public class BallGameTest {
     @DisplayName("Ball for One Ball")
     @Test
     void isBall() {
-        BallsGenerator ballsGenerator = new BallsGenerator(Arrays.asList(
-                new Ball(new BallNum("3"), 1),
-                new Ball(new BallNum("5"), 2),
-                new Ball(new BallNum("7"), 3)
-        ));
-        BallGame ballGame = new BallGame(ballsGenerator);
         Ball usrBall1 = new Ball(new BallNum("3"), 2);
         Ball usrBall2 = new Ball(new BallNum("7"), 2);
 
@@ -67,13 +90,6 @@ public class BallGameTest {
     @DisplayName("Nothing for One Ball")
     @Test
     void isNothing() {
-        BallsGenerator ballsGenerator = new BallsGenerator(Arrays.asList(
-                new Ball(new BallNum("3"), 1),
-                new Ball(new BallNum("5"), 2),
-                new Ball(new BallNum("7"), 3)
-        ));
-        BallGame ballGame = new BallGame(ballsGenerator);
-
         Ball usrBall1 = new Ball(new BallNum("4"), 2);
         Ball usrBall2 = new Ball(new BallNum("6"), 2);
 

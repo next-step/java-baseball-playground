@@ -8,24 +8,16 @@ import static baseball.BallStatus.STRIKE;
 public class BallGame {
 
     private final List<Ball> systemBallsList;
-    private final BallRecord ballRecord;
 
     BallGame(BallsGenerator ballsGenerator) {
         this.systemBallsList = ballsGenerator.getSystemBallsList();
-        this.ballRecord = new BallRecord();
     }
 
     public List<Ball> getSystemBallsList() {
         return systemBallsList;
     }
 
-    public BallRecord getBallRecord() {
-        return ballRecord;
-    }
 
-//    public int findBallRecordOf(BallStatus ballStatus) {
-//        return this.ballRecord.findBallStatusCount(ballStatus);
-//    }
 
     //Stream filter  mapToInt(o -> 1).sum() returns Long 다시 고민
     public int countMatchToStrike(UserBalls userBalls) {
@@ -80,12 +72,11 @@ public class BallGame {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BallGame ballGame = (BallGame) o;
-        return Objects.equals(systemBallsList, ballGame.systemBallsList) &&
-                Objects.equals(ballRecord, ballGame.ballRecord);
+        return Objects.equals(systemBallsList, ballGame.systemBallsList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemBallsList, ballRecord);
+        return Objects.hash(systemBallsList);
     }
 }

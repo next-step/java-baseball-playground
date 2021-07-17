@@ -18,12 +18,17 @@ public class BallGameRunner {
         return ballGame;
     }
 
-    public List<Ball> getUserballs() {
-        return userballs.getUserBallList();
+    public UserBalls getUserballs() {
+        return userballs;
     }
 
     public BallRecord getBallRecord() {
         return ballRecord;
+    }
+
+    //인자 없이, return도 없음. 실제 역할은 ballRecord에 위임
+    public void run() {
+        this.ballRecord.updateBallRecord(this.userballs);
     }
 
     public boolean isEnd() {

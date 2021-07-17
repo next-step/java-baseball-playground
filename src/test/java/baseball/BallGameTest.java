@@ -34,9 +34,6 @@ public class BallGameTest {
         assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(3);
         assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(0);
         assertThat(ballGame.countMatchToNothing(userBalls)).isEqualTo(0);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.STRIKE)).isEqualTo(3);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.BALL)).isEqualTo(0);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.NOTHING)).isEqualTo(0);
     }
 
     @DisplayName("1 Strike 2 Balls for UserBall")
@@ -47,9 +44,6 @@ public class BallGameTest {
         assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(1);
         assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(2);
         assertThat(ballGame.countMatchToNothing(userBalls)).isEqualTo(0);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.STRIKE)).isEqualTo(1);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.BALL)).isEqualTo(2);
-//        assertThat(ballGame.findBallRecordOf(BallStatus.NOTHING)).isEqualTo(0);
     }
 
     @DisplayName("1 Strike 1 Ball for UserBall")
@@ -60,6 +54,7 @@ public class BallGameTest {
         assertThat(ballGame.countMatchToStrike(userBalls)).isEqualTo(1);
         assertThat(ballGame.countMatchToBall(userBalls)).isEqualTo(1);
         assertThat(ballGame.countMatchToNothing(userBalls)).isEqualTo(0);
+        
     }
 
     @DisplayName("3 Balls for UserBall")

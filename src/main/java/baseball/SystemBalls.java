@@ -4,11 +4,11 @@ import java.util.*;
 
 import static baseball.BallStatus.*;
 
-public class BallGame {
+public class SystemBalls {
 
     private final List<Ball> systemBallsList;
 
-    BallGame(BallsGenerator ballsGenerator) {
+    SystemBalls(BallsGenerator ballsGenerator) {
         this.systemBallsList = ballsGenerator.getSystemBallsList();
     }
 
@@ -79,8 +79,8 @@ public class BallGame {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BallGame ballGame = (BallGame) o;
-        return Objects.equals(systemBallsList, ballGame.systemBallsList);
+        SystemBalls systemBalls = (SystemBalls) o;
+        return Objects.equals(systemBallsList, systemBalls.systemBallsList);
     }
 
     @Override

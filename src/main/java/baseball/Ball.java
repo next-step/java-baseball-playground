@@ -27,7 +27,7 @@ public class Ball {
 //        return Pattern.matches("^[0-9]*$",inNumber);
 //    }
 
-    //BallGame 아닌, Ball의 메서드
+    //SystemBalls 아닌, Ball의 메서드
     public boolean isSameSlotOf(Ball usrBall) {
         return this.slotNumber == usrBall.getSlotNumber();
     }

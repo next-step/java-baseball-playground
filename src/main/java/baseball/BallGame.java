@@ -2,8 +2,7 @@ package baseball;
 
 import java.util.*;
 
-import static baseball.BallStatus.BALL;
-import static baseball.BallStatus.STRIKE;
+import static baseball.BallStatus.*;
 
 public class BallGame {
 
@@ -18,9 +17,18 @@ public class BallGame {
     }
 
 
+    public int countMatchToStatus(UserBalls userBalls, BallStatus ballStatus) {
+        if (ballStatus.equals(STRIKE)) {
+            return countMatchToStrike(userBalls);
+        }
+        if (ballStatus.equals(BALL)) {
+            return countMatchToBall(userBalls);
+        }
+        return countMatchToNothing(userBalls);
+    }
 
     //Stream filter  mapToInt(o -> 1).sum() returns Long 다시 고민
-    public int countMatchToStrike(UserBalls userBalls) {
+    private int countMatchToStrike(UserBalls userBalls) {
         int sum = 0;
         for (Ball userBall : userBalls.getUserBallList()) {
             if (matchToStrike(userBall).equals(STRIKE)) {
@@ -30,7 +38,7 @@ public class BallGame {
         return sum;
     }
 
-    public int countMatchToBall(UserBalls userBalls) {
+    private int countMatchToBall(UserBalls userBalls) {
         int sum = 0;
         for (Ball userBall : userBalls.getUserBallList()) {
             if (matchToBall(userBall).equals(BALL)) {
@@ -41,7 +49,7 @@ public class BallGame {
     }
 
     //boolean isNothing or int(count) countToNothing
-    public int countMatchToNothing(UserBalls userBalls){
+    private int countMatchToNothing(UserBalls userBalls){
        if (countMatchToStrike(userBalls)== 0 && countMatchToBall(userBalls) == 0) {
            return 1;
        }
@@ -51,7 +59,7 @@ public class BallGame {
 
     //하나의 Game에서 사용자는 반복해 맞추나, 컴퓨터는 유지
     //정리 필요!! this not in Static content
-    public BallStatus matchToStrike(Ball userBall) {
+    private BallStatus matchToStrike(Ball userBall) {
         return systemBallsList.stream()
                 .filter(ball -> ball.equals(userBall))
                 .findFirst()
@@ -59,7 +67,7 @@ public class BallGame {
                 .orElse(BallStatus.NOTHING);
     }
 
-    public BallStatus matchToBall(Ball userBall) {
+    private BallStatus matchToBall(Ball userBall) {
         return systemBallsList.stream()
                 .filter(ball -> !ball.isSameSlotOf(userBall) && ball.isSameNumOf(userBall))
                 .findFirst()

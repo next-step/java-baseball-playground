@@ -1,11 +1,10 @@
-package baseball;
+package baseball.domain;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-import static baseball.BallNum.BALLS_POOL;
+import static baseball.domain.BallNum.BALLS_POOL;
 
 public class BallsGenerator {
 

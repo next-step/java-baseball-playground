@@ -1,12 +1,13 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.BallGameResult;
+import baseball.domain.BallStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static baseball.BallStatus.BALL;
-import static baseball.BallStatus.STRIKE;
+import static baseball.domain.BallStatus.BALL;
+import static baseball.domain.BallStatus.STRIKE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BallGameResultTest {
 

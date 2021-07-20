@@ -1,9 +1,9 @@
-package baseball;
+package baseball.domain;
 
 import java.util.*;
 
-import static baseball.BallStatus.BALL;
-import static baseball.BallStatus.STRIKE;
+import static baseball.domain.BallStatus.BALL;
+import static baseball.domain.BallStatus.STRIKE;
 
 public class BallGameResult {
 

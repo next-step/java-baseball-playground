@@ -1,8 +1,8 @@
-package baseball;
+package baseball.domain;
 
 import java.util.*;
 
-import static baseball.BallStatus.*;
+import static baseball.domain.BallStatus.*;
 
 public class SystemBalls {
 

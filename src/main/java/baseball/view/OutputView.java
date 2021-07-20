@@ -1,8 +1,8 @@
 package baseball.view;
 
-import baseball.BallGameResult;
-import baseball.BallGameRunner;
-import baseball.BallStatus;
+import baseball.domain.BallGameResult;
+import baseball.domain.BallGameRunner;
+import baseball.domain.BallStatus;
 
 public class OutputView {
 

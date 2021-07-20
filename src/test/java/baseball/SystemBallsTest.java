@@ -29,9 +29,8 @@ public class SystemBallsTest {
     void is_3_Strikes() {
         UserBalls userBalls = new UserBalls("357");
 
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.STRIKE)).isEqualTo(3);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.BALL)).isEqualTo(0);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.NOTHING)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.STRIKE)).isEqualTo(3);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.BALL)).isEqualTo(0);
     }
 
     @DisplayName("1 Strike 2 Balls for UserBall")
@@ -39,9 +38,8 @@ public class SystemBallsTest {
     void is_1_Strike_2_Balls() {
         UserBalls userBalls = new UserBalls("375");
 
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.STRIKE)).isEqualTo(1);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.BALL)).isEqualTo(2);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.NOTHING)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.STRIKE)).isEqualTo(1);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.BALL)).isEqualTo(2);
     }
 
     @DisplayName("1 Strike 1 Ball for UserBall")
@@ -49,9 +47,8 @@ public class SystemBallsTest {
     void is_1_Strike_1_Ball() {
         UserBalls userBalls = new UserBalls("587");
 
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.STRIKE)).isEqualTo(1);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.BALL)).isEqualTo(1);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.NOTHING)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.STRIKE)).isEqualTo(1);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.BALL)).isEqualTo(1);
         
     }
 
@@ -60,9 +57,8 @@ public class SystemBallsTest {
     void is_3_Balls() {
         UserBalls userBalls = new UserBalls("573");
 
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.STRIKE)).isEqualTo(0);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.BALL)).isEqualTo(3);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.NOTHING)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.STRIKE)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.BALL)).isEqualTo(3);
     }
 
     @DisplayName("Nothing")
@@ -70,9 +66,8 @@ public class SystemBallsTest {
     void is_Nothing() {
         UserBalls userBalls = new UserBalls("248");
 
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.STRIKE)).isEqualTo(0);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.BALL)).isEqualTo(0);
-        assertThat(systemBalls.countMatchToStatus(userBalls, BallStatus.NOTHING)).isEqualTo(1);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.STRIKE)).isEqualTo(0);
+        assertThat(systemBalls.match(userBalls).getCount(BallStatus.BALL)).isEqualTo(0);
     }
 
    //matchToStrike(UserBall), matchToBall(UserBall)  turned to Private Function

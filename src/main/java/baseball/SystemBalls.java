@@ -16,46 +16,16 @@ public class SystemBalls {
         return systemBallsList;
     }
 
-
-    public int countMatchToStatus(UserBalls userBalls, BallStatus ballStatus) {
-        if (ballStatus.equals(STRIKE)) {
-            return countMatchToStrike(userBalls);
-        }
-        if (ballStatus.equals(BALL)) {
-            return countMatchToBall(userBalls);
-        }
-        return countMatchToNothing(userBalls);
-    }
-
-    //Stream filter  mapToInt(o -> 1).sum() returns Long 다시 고민
-    private int countMatchToStrike(UserBalls userBalls) {
-        int sum = 0;
+    public BallGameResult match(UserBalls userBalls) {
+        BallGameResult ballGameResult = new BallGameResult();
         for (Ball userBall : userBalls.getUserBallList()) {
             if (matchToStrike(userBall).equals(STRIKE)) {
-                sum += 1;
-            }
-        }
-        return sum;
-    }
-
-    private int countMatchToBall(UserBalls userBalls) {
-        int sum = 0;
-        for (Ball userBall : userBalls.getUserBallList()) {
+                ballGameResult.addCount(STRIKE);}
             if (matchToBall(userBall).equals(BALL)) {
-                sum += 1;
+                ballGameResult.addCount(BALL);}
             }
-        }
-        return sum;
+        return ballGameResult;
     }
-
-    //boolean isNothing or int(count) countToNothing
-    private int countMatchToNothing(UserBalls userBalls){
-       if (countMatchToStrike(userBalls)== 0 && countMatchToBall(userBalls) == 0) {
-           return 1;
-       }
-       return 0;
-    }
-
 
     //하나의 Game에서 사용자는 반복해 맞추나, 컴퓨터는 유지
     //정리 필요!! this not in Static content
@@ -88,3 +58,25 @@ public class SystemBalls {
         return Objects.hash(systemBallsList);
     }
 }
+
+//Stream filter  mapToInt(o -> 1).sum() returns Long 다시 고민
+//countMathToStrike, countMatchToBall no needed sum +1 for if
+//    private int countMatchToStrike(UserBalls userBalls) {
+//        int sum = 0;
+//        for (Ball userBall : userBalls.getUserBallList()) {
+//            if (matchToStrike(userBall).equals(STRIKE)) {
+//                sum += 1;
+//            }
+//        }
+//        return sum;
+//    }
+//
+//    private int countMatchToBall(UserBalls userBalls) {
+//        int sum = 0;
+//        for (Ball userBall : userBalls.getUserBallList()) {
+//            if (matchToBall(userBall).equals(BALL)) {
+//                sum += 1;
+//            }
+//        }
+//        return sum;
+//    }

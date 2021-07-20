@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.*;
 
+import static baseball.BallStatus.BALL;
 import static baseball.BallStatus.STRIKE;
 
 public class BallGameResult {
@@ -19,7 +20,7 @@ public class BallGameResult {
         Map<BallStatus, Integer> initStrike = new HashMap<>();
         initStrike.put(STRIKE, 0);
         Map<BallStatus, Integer> initBall = new HashMap<>();
-        initBall.put(BallStatus.BALL, 0);
+        initBall.put(BALL, 0);
         return Arrays.asList(initStrike, initBall);
     }
 
@@ -31,6 +32,10 @@ public class BallGameResult {
         ballGameResult.stream()
                 .filter(o -> o.containsKey(ballStatus))
                 .forEach(o -> o.put(ballStatus, o.get(ballStatus) + 1));
+    }
+
+    public boolean isZero(BallStatus ballStatus) {
+        return getCount(ballStatus) == 0;
     }
 
     public int getCount(BallStatus ballStatus) {

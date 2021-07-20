@@ -7,6 +7,8 @@ import static baseball.BallStatus.STRIKE;
 
 public class BallGameResult {
 
+    public static final int EMPTY_STATUS_COUNT = 0;
+    public static final int END_WHEN_STRIKES_COUNT_3 = 3;
     private final List<Map<BallStatus, Integer>> ballGameResult;
 
     BallGameResult(List<Map<BallStatus, Integer>> ballGameResult){
@@ -18,9 +20,9 @@ public class BallGameResult {
 
     private static List<Map<BallStatus, Integer>> makeEmptyBallGameResult() {
         Map<BallStatus, Integer> initStrike = new HashMap<>();
-        initStrike.put(STRIKE, 0);
+        initStrike.put(STRIKE, EMPTY_STATUS_COUNT);
         Map<BallStatus, Integer> initBall = new HashMap<>();
-        initBall.put(BALL, 0);
+        initBall.put(BALL, EMPTY_STATUS_COUNT);
         return Arrays.asList(initStrike, initBall);
     }
 
@@ -43,11 +45,11 @@ public class BallGameResult {
                 .filter(o -> o.containsKey(ballStatus))
                 .findFirst()
                 .map(o -> o.get(ballStatus))
-                .orElse(0);
+                .orElse(EMPTY_STATUS_COUNT);
     }
 
     public boolean isEndResult() {
-        return getCount(STRIKE) == 3;
+        return getCount(STRIKE) == END_WHEN_STRIKES_COUNT_3;
     }
 
     @Override

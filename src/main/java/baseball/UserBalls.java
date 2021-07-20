@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class UserBalls {
 
+    public static final String INPUT_REGEX = "";
+    public static final int USER_BALLS_COUNT = 3;
     private final List<Ball> userBallList;
 
     public UserBalls(String input) {
@@ -15,8 +17,8 @@ public class UserBalls {
     }
 
     public static List<Ball> makeUserBalls(String input) throws IllegalArgumentException {
-        String[] inputs = input.split("");
-        if (input.length() != 3) {
+        String[] inputs = input.split(INPUT_REGEX);
+        if (input.length() != USER_BALLS_COUNT) {
             throw new IllegalArgumentException("Not 3 numbers");
         }
         //check BallNum
@@ -24,11 +26,11 @@ public class UserBalls {
                                         .map(BallNum::new)
                                         .collect(Collectors.toList());
 
-        if (ballNumList.stream().distinct().count() != 3) {
+        if (ballNumList.stream().distinct().count() != USER_BALLS_COUNT) {
             throw new IllegalArgumentException("Not Distinct 3 numbers");
         }
         List<Ball> ballList = new ArrayList<>();
-        for (int i = 0 ; i < 3 ; i++) {
+        for (int i = 0 ; i < USER_BALLS_COUNT ; i++) {
             ballList.add(i, new Ball(ballNumList.get(i), i+1));
         }
         return ballList;

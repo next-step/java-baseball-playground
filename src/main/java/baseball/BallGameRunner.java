@@ -19,14 +19,16 @@ public class BallGameRunner {
         return userballs;
     }
 
-    //인자 없이, return도 없음. 실제 역할은 ballRecord에 위임
-    public void run() {
-
+    //() no parameter, return Record, balls.match(inputBalls)...java-lotto
+    public BallGameResult run() {
+        return systemBalls.match(userballs);
     }
 
-    // public boolean isEnd() {
-     //   return ballGameRecord.findBallStatusCount(BallStatus.STRIKE) == 3;
-    //}
+    //message to ballGameResult
+    public boolean isEnd() {
+        BallGameResult ballGameResult = run();
+        return ballGameResult.isEndResult();
+    }
 
 
     @Override
@@ -42,4 +44,12 @@ public class BallGameRunner {
     public int hashCode() {
         return Objects.hash(getSystemBalls(), getUserballs());
     }
+
 }
+
+// livecoding-step3 java-lotto
+//public class LottoGame {
+//    public LottoResult play(WinningLotto winningLotto) {
+//        return null;
+//    }
+//}

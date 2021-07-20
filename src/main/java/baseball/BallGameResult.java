@@ -41,6 +41,10 @@ public class BallGameResult {
                 .orElse(0);
     }
 
+    public boolean isEndResult() {
+        return getCount(STRIKE) == 3;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,4 +57,5 @@ public class BallGameResult {
     public int hashCode() {
         return Objects.hash(getBallGameResult());
     }
+
 }

@@ -2,25 +2,25 @@ package baseball;
 
 public class Ball {
     private final int position;
-    private final int ballNo;
+    private final BallNumber ballNo;
 
     public Ball(int position, int ballNo) {
         this.position = position;
-        this.ballNo = ballNo;
+        this.ballNo = new BallNumber(ballNo);
     }
 
     public BallStatus play(Ball ball) {
         if(this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if(ball.matchBallNo(ballNo)) {
+        if(ball.matchBallNo(ballNo.getNo())) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
     }
 
     private boolean matchBallNo(int ballNo) {
-        return this.ballNo == ballNo;
+        return this.ballNo.getNo() == ballNo;
     }
 
     @Override

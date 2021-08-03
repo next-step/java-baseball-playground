@@ -6,19 +6,20 @@ public class Referee {
 
     static int SIZE=3;
 
-    public int Strike(ArrayList<Integer> a, ArrayList<Integer> b){
+    public int Strike(int[] a, int[] b){
         int strike=0;
         for (int i = 0; i <SIZE ; i++) {
-            if(a.get(i)==b.get(i)) strike++;
+            if(a[i]==b[i]) strike++;
         }
         return strike;
     }
 
-    public int Ball(ArrayList<Integer> a,ArrayList<Integer> b){
+    public int Ball(int[] a,int[] b){
         int ball=0;
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if(a.get(i)==b.get(j)&&i!=j) ball++;
+                if(a[i]==b[j]&&i!=j) ball++;
+
             }
         }
             return ball;

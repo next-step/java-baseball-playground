@@ -1,22 +1,31 @@
 package BaseBall;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game {
     public static void main(String[] args) {
         Com com=new Com();
-        User user=new User();
+
         Referee referee=new Referee();
+        int[] a= com.Com();
+
+        User user=new User();
 
         while (true){
-           ArrayList<Integer> a= com.ComGenerate();
-           ArrayList<Integer> b= user.User();
-           int strike= referee.Strike(a,b);
+            int[] b= user.User();
+            int strike= referee.Strike(a,b);
            int ball=referee.Ball(a,b);
-           StringBuilder sb=new StringBuilder();
+           StringBuilder sb;
            sb=referee.check(strike,ball);
-            System.out.println(sb);
-            break;
+           if(strike==3){
+               System.out.println(sb);
+               System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+               break;
+           }else{
+               System.out.println(sb);
+           }
+
         }
 
 

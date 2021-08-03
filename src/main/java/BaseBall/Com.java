@@ -5,17 +5,17 @@ import java.util.Random;
 
 public class Com {
 
-    public ArrayList<Integer> ComGenerate(){
-        ArrayList<Integer> Com=new ArrayList<>();
+    public int[] Com(){
+        int[] Com=new int[3];
         Random r = new Random();
-        while (Com.indexOf(0)==0){
-            Com.add(0,r.nextInt(10));
+        while (Com[0]==0){
+            Com[0]=r.nextInt(10);
         }
-        while (Com.get(0)==Com.get(1)||Com.get(1)==0){
-            Com.add(1,r.nextInt(10));
+        while (Com[0]==Com[1]||Com[1]==0){
+            Com[1]=r.nextInt(10);
         }
-        while (Com.get(1)==Com.get(2)||Com.get(2)==0){
-            Com.add(2,r.nextInt(10));
+        while (Com[1]==Com[2]||Com[2]==0){
+            Com[2]=r.nextInt(10);
         }
         return Com;
     }

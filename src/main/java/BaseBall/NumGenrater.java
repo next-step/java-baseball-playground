@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class NumGenrater {
 
-
     public List<Integer> numGenerater(){
         Random r = new Random();
         List<Integer> ComNumber = new ArrayList<>();

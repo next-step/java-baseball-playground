@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
+
     public List<Integer> input() throws IOException {
         System.out.println("숫자를 입력해 주세요 : ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,4 +19,5 @@ public class Input {
         }
         return UserNumber;
     }
+
 }

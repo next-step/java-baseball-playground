@@ -40,7 +40,6 @@ public class SetCollectionTest {
 		assertThat(numbers).contains(1);
 		assertThat(numbers).contains(2);
 		assertThat(numbers).contains(3);
-
 	}
 
 	@ParameterizedTest
@@ -55,5 +54,4 @@ public class SetCollectionTest {
 		String isContain = numbers.contains(Integer.parseInt(number)) ? "true" : "false";
 		assertEquals(expected, isContain);
 	}
-
 }

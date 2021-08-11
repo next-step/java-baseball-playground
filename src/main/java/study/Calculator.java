@@ -1,31 +1,58 @@
 package study;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
 	int answer;
+	String operator;
 	Scanner scanner = new Scanner(System.in);
 
-	/*
-	 * 필요한 기능
-	 * 1. 제대로 split를 진행하는지
-	 * 2. split 된 문자열을 제대로 parseInt로 변환하는지
-	 * 3. 계산을 정상적으로 수행하는지
-	 */
+	public Calculator() {
+		Start();
+	}
 
 	public void Start() {
+		System.out.println("연산식 입력 : ");
+
 		String formula = scanner.nextLine();
+		String[] values = split(formula);
 
-		String[] numberAndOperator = split(formula);
+		answer = Integer.parseInt(values[0]);
+
+		for (int i = 1; i < values.length; i++) {
+			if (isOperator(values[i])) {
+				operator = values[i];
+			} else {
+				operating(values[i]);
+			}
+
+		}
+
+		System.out.println(answer);
 	}
 
-	public String[] split(String nums) {
-		return nums.split(" ");
+	private void operating(String value) {
+		int number = Integer.parseInt(value);
+
+		if (operator.equals("+")) {
+			answer += number;
+		} else if (operator.equals("-")) {
+			answer -= number;
+		} else if (operator.equals("/")) {
+			answer /= number;
+		} else if (operator.equals("*")) {
+			answer *= number;
+		}
 	}
 
-	public void operate(int nums, String operator) {
+	private boolean isOperator(String value) {
+		return Pattern.matches("[+-/*]", value);
+	}
 
+	public String[] split(String formula) {
+		return formula.split(" ");
 	}
 
 	public static void main(String[] args) {

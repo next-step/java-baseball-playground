@@ -1,5 +1,7 @@
 package study;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
@@ -73,3 +75,4 @@ public class StringTest {
 				abc.charAt(3);
 			}).withMessageMatching("String index out of range: 3");
 	}
+}

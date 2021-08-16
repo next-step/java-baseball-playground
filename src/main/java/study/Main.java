@@ -4,29 +4,47 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        Calculator calculator = new Calculator();
+
+        calculator.setInputFormula();
+        calculator.getOutputFormula();
+    }
+}
+
+class Calculator{
+    private String[] inputFormula;  // 입력 받는 수식을 저장하는 변수
+    private int temp;               // 수식의 결과값을 저장하는 변수
+
+    void setInputFormula(){ // 수식을 입력받는 메소드
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
-        String[] values = value.split(" ");
+        inputFormula = value.split(" ");
+    }
 
-        int firstValue = Integer.parseInt(values[0]);  // 배열의 처음 값.
+    void getOutputFormula (){ // 입력받은 수식을 연산하여 출력하는 메소드
+        temp = Integer.parseInt(inputFormula[0]);
 
-        Calculator calculator = new Calculator(firstValue);
-
-        for(int i = 0; i < values.length; i++){
-            if(values[i].equals("+")){
-                calculator.temp = calculator.add(calculator.temp, Integer.parseInt(values[i+1]));
+        for(int i = 0; i < inputFormula.length; i++){
+            if(inputFormula[i].equals("+")){
+                this.temp = this.add(this.temp, Integer.parseInt(inputFormula[i+1]));
             }
-            if(values[i].equals("-")){
-                calculator.temp = calculator.sub(calculator.temp, Integer.parseInt(values[i+1]));
+            if(inputFormula[i].equals("-")){
+                this.temp = this.sub(this.temp, Integer.parseInt(inputFormula[i+1]));
             }
-            if(values[i].equals("*")){
-                calculator.temp = calculator.mul(calculator.temp, Integer.parseInt(values[i+1]));
+            if(inputFormula[i].equals("*")){
+                this.temp = this.mul(this.temp, Integer.parseInt(inputFormula[i+1]));
             }
-            if(values[i].equals("/")){
-                calculator.temp = calculator.div(calculator.temp, Integer.parseInt(values[i+1]));
+            if(inputFormula[i].equals("/")){
+                this.temp = this.div(this.temp, Integer.parseInt(inputFormula[i+1]));
             }
         }
 
-        System.out.println("Total : " + calculator.temp);
+        System.out.println("연산결과 : " + temp);
     }
+
+    // 사칙연산 메소드
+    int add(int a, int b){  return a + b; }
+    int sub(int a, int b){  return a - b; }
+    int mul(int a, int b){  return a * b; }
+    int div(int a, int b){  return a / b; }
 }

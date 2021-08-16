@@ -46,4 +46,22 @@ public class Balls {
                 .distinct()
                 .collect(Collectors.toList());
     }
+
+    public int countSameNumberWithSamePosition(Balls others) {
+        return (int) others.values
+                .stream()
+                .flatMap(other -> values.stream()
+                        .filter(value -> value.hasSameNumber(other))
+                        .filter(value -> value.hasSamePosition(other)))
+                .count();
+    }
+
+    public int countSameNumberWithDifferentPosition(final Balls others) {
+        return (int) others.values
+                .stream()
+                .flatMap(other -> values.stream()
+                        .filter(value -> value.hasSameNumber(other))
+                        .filter(value -> !value.hasSamePosition(other)))
+                .count();
+    }
 }

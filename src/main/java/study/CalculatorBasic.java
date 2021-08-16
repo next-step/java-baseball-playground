@@ -3,19 +3,13 @@ package study;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Calculator {
+public class CalculatorBasic {
 
 	int answer;
 	String operator;
 	Scanner scanner = new Scanner(System.in);
 
-	public Calculator() {
-		Start();
-	}
-
 	public void Start() {
-		System.out.println("연산식 입력 : ");
-
 		String formula = scanner.nextLine();
 		String[] values = split(formula);
 
@@ -29,11 +23,9 @@ public class Calculator {
 			}
 
 		}
-
-		System.out.println(answer);
 	}
 
-	private void operating(String value) {
+	public void operating(String value) {
 		int number = Integer.parseInt(value);
 
 		if (operator.equals("+")) {
@@ -47,7 +39,7 @@ public class Calculator {
 		}
 	}
 
-	private boolean isOperator(String value) {
+	public boolean isOperator(String value) {
 		return Pattern.matches("[+-/*]", value);
 	}
 
@@ -56,6 +48,7 @@ public class Calculator {
 	}
 
 	public static void main(String[] args) {
-		Calculator cal = new Calculator();
+		CalculatorBasic cal = new CalculatorBasic();
+		cal.Start();
 	}
 }

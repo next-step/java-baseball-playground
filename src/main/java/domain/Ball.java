@@ -10,13 +10,17 @@ public class Ball {
     private final int number;
     private final int position;
 
-    public Ball(final int number, final int position) {
+    public static Ball of(final int number, final int position) {
         validate(number, position);
+        return new Ball(number, position);
+    }
+
+    private Ball(final int number, final int position) {
         this.number = number;
         this.position = position;
     }
 
-    private void validate(final int number, final int position) {
+    private static void validate(final int number, final int position) {
         if (number <= MIN_NUMBER || number > MAX_NUMBER)  {
             throw new IllegalArgumentException("1~9 사이의 숫자를 입력해야 합니다");
         }

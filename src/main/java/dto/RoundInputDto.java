@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RoundInputDto {
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
 
     private RoundInputDto(List<Integer> numbers) {

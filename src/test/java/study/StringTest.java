@@ -1,10 +1,11 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -27,5 +28,24 @@ public class StringTest {
         String oneTwo = "(1,2)".substring(1, 4);
         System.out.println("oneTwo = " + oneTwo);
         assertThat(oneTwo).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("charAtTest")
+    void charAt() {
+        String actual = "abc";
+        assertThat(actual.charAt(0)).isEqualTo('a');
+        assertThat(actual.charAt(1)).isEqualTo('b');
+        assertThat(actual.charAt(2)).isEqualTo('c');
+
+        assertThatThrownBy(() -> {
+            actual.charAt(actual.length()+1);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("range: " + (actual.length()+1));
+
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+                    actual.charAt(actual.length() + 1);
+                }).withMessageMatching("String index out of range: " + (actual.length()+1));
     }
 }

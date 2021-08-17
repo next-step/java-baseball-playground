@@ -20,6 +20,10 @@ public class RoundOutputView {
         out.println(result);
     }
 
+    public static void roundOverOutput() {
+        out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private static String trimFrom(final String ball, final String strike, final String threeOut) {
         return (ball + strike + threeOut).trim();
     }

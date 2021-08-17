@@ -13,6 +13,7 @@ import java.util.Set;
 import static utils.RandomUtils.generateRandomNumber;
 import static view.RoundOutputView.roundOutput;
 import static view.RoundInputView.roundUserInput;
+import static view.RoundOutputView.roundOverOutput;
 
 public class RoundController {
 
@@ -48,5 +49,6 @@ public class RoundController {
             RoundOutputDto roundOutputDto = round.countResult(userBalls);
             roundOutput(roundOutputDto);
         }
+        roundOverOutput();
     }
 }

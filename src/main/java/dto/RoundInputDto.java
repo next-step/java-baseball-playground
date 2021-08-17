@@ -4,18 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserInputDto {
+public class RoundInputDto {
     private List<Integer> numbers;
 
 
-    private UserInputDto(List<Integer> numbers) {
+    private RoundInputDto(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    public static UserInputDto from(final String[] userInputTokens) {
+    public static RoundInputDto from(final String[] userInputTokens) {
         validate(userInputTokens);
         List<Integer> numbers = extractNumbersFrom(userInputTokens);
-        return new UserInputDto(numbers);
+        return new RoundInputDto(numbers);
     }
 
     private static List<Integer> extractNumbersFrom(final String[] userInputTokens) {

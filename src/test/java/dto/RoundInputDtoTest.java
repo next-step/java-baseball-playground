@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class UserInputDtoTest {
+class RoundInputDtoTest {
 
     @Test
     @DisplayName("사용자의 입력을 받아 값을 반환한다")
     void numbers() {
         String[] userInputToken = new String[]{"1", "2", "3"};
 
-        UserInputDto userInputDto = UserInputDto.from(userInputToken);
+        RoundInputDto userInputDto = RoundInputDto.from(userInputToken);
 
         assertThat(userInputDto.numbers()).containsExactly(1, 2, 3);
     }
@@ -22,7 +22,7 @@ class UserInputDtoTest {
     void create_throws_exception_include_not_digit_token() {
         String[] userInputToken = new String[]{"한", "/", " "};
 
-        assertThatIllegalArgumentException().isThrownBy(() -> UserInputDto.from(userInputToken))
+        assertThatIllegalArgumentException().isThrownBy(() -> RoundInputDto.from(userInputToken))
                 .withMessage("숫자 이외의 문자가 포함되어 있습니다");
     }
 }

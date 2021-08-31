@@ -1,6 +1,9 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -42,9 +45,8 @@ public class Balls {
     }
 
     private static List<Integer> extractDistinctNumber(final List<Integer> numbers) {
-        return numbers.stream()
-                .distinct()
-                .collect(Collectors.toList());
+        Set<Integer> set = new LinkedHashSet<>(numbers);
+        return new ArrayList<>(set);
     }
 
     public BallStatuses compare(final Balls other) {

@@ -16,9 +16,10 @@ public class Round {
         return new Round(balls, false);
     }
     
-    public RoundOutputDto countResult(Balls userInput) {
-        int strike = balls.countSameNumberWithSamePosition(userInput);
-        int ball = balls.countSameNumberWithDifferentPosition(userInput);
+    public RoundOutputDto countResult(Balls userBalls) {
+        BallStatuses ballStatuses = balls.compare(userBalls);
+        int strike = ballStatuses.countStrike();
+        int ball = ballStatuses.countBall();
         areEnoughStrikes(strike);
         return RoundOutputDto.of(strike, ball);
     }

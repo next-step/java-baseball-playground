@@ -4,36 +4,53 @@ import domain.Balls;
 import domain.Round;
 import dto.RoundInputDto;
 import dto.RoundOutputDto;
+import view.RoundInputView;
+import view.RoundOutputView;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import static utils.RandomUtils.generateRandomNumber;
-import static view.RoundOutputView.roundOutput;
-import static view.RoundInputView.roundUserInput;
-import static view.RoundOutputView.roundOverOutput;
 
 public class RoundController {
 
     public static final int BASEBALL_LENGTH = 3;
 
-    private Round round;
+    private final RoundInputView roundInputView;
+    private final RoundOutputView roundOutputView;
 
-    private RoundController(Round round) {
-        this.round = round;
+
+    private RoundController(final RoundInputView roundInputView, final RoundOutputView roundOutputView) {
+        this.roundInputView = roundInputView;
+        this.roundOutputView = roundOutputView;
     }
 
-    public static RoundController getInstance() {
+    public static RoundController of(final RoundInputView roundInputView, final RoundOutputView roundOutputView) {
+        return new RoundController(roundInputView, roundOutputView);
+    }
+
+    public void run() {
+        Round round = nextRound();
+        while (!round.isOver()) {
+            RoundInputDto roundInputDto = roundInputView.roundUserInput();
+            List<Integer> userNumbers = roundInputDto.numbers();
+            Balls userBalls = Balls.from(userNumbers);
+            RoundOutputDto roundOutputDto = round.countResult(userBalls);
+            roundOutputView.roundOutput(roundOutputDto);
+        }
+        roundOutputView.roundOverOutput();
+    }
+
+    private Round nextRound() {
         List<Integer> numbers = initializeRandomBalls();
         Balls balls = Balls.from(numbers);
-        Round round = Round.from(balls);
-        return new RoundController(round);
+        return Round.from(balls);
     }
 
-    private static List<Integer> initializeRandomBalls() {
-        Set<Integer> set = new HashSet<>();
+    private List<Integer> initializeRandomBalls() {
+        Set<Integer> set = new LinkedHashSet<>();
         while (set.size() < BASEBALL_LENGTH) {
             int systemNumber = generateRandomNumber(1, 9);
             set.add(systemNumber);
@@ -41,14 +58,4 @@ public class RoundController {
         return new ArrayList<>(set);
     }
 
-    public void run() {
-        while (!round.isOver()) {
-            RoundInputDto roundInputDto = roundUserInput();
-            List<Integer> userNumbers = roundInputDto.numbers();
-            Balls userBalls = Balls.from(userNumbers);
-            RoundOutputDto roundOutputDto = round.countResult(userBalls);
-            roundOutput(roundOutputDto);
-        }
-        roundOverOutput();
-    }
 }

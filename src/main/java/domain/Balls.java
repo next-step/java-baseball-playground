@@ -47,21 +47,18 @@ public class Balls {
                 .collect(Collectors.toList());
     }
 
-    public int countSameNumberWithSamePosition(Balls others) {
-        return (int) others.values
-                .stream()
-                .flatMap(other -> values.stream()
-                        .filter(value -> value.hasSameNumber(other))
-                        .filter(value -> value.hasSamePosition(other)))
-                .count();
+    public BallStatuses compare(final Balls other) {
+        List<BallStatus> statuses = values.stream()
+                .map(other::compareBallStatus)
+                .collect(Collectors.toList());
+        return BallStatuses.from(statuses);
     }
 
-    public int countSameNumberWithDifferentPosition(final Balls others) {
-        return (int) others.values
-                .stream()
-                .flatMap(other -> values.stream()
-                        .filter(value -> value.hasSameNumber(other))
-                        .filter(value -> !value.hasSamePosition(other)))
-                .count();
+    public BallStatus compareBallStatus(final Ball other) {
+        return values.stream()
+                .map(ball -> ball.compare(other))
+                .filter(ballStatus -> ballStatus.isStrike() || ballStatus.isBall())
+                .findAny()
+                .orElse(BallStatus.NOTHING);
     }
 }

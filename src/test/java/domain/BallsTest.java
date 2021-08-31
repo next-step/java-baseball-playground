@@ -2,6 +2,8 @@ package domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,25 +31,26 @@ class BallsTest {
                 .withMessage("중복된 수가 존재합니다");
     }
 
-    @Test
-    @DisplayName("다른 숫자 야구와 비교하여 같은 숫자와 같은 위치에 있는 숫자 야구의 개수를 반환한다")
-    void countSameNumberWithSamePosition() {
+    @ParameterizedTest
+    @CsvSource(value = {"1,1,STRIKE", "1,2,BALL", "4,1,NOTHING"})
+    @DisplayName("숫자 야구 공들을 입력받아 볼의 상태를 반환한다")
+    void compareBallStatus(int number, int position, BallStatus expected) {
         Balls balls = Balls.from(Arrays.asList(1, 2, 3));
-        Balls others = Balls.from(Arrays.asList(3, 2, 1));
+        Ball other = Ball.of(number, position);
 
-        int count = balls.countSameNumberWithSamePosition(others);
+        BallStatus actual = balls.compareBallStatus(other);
 
-        assertThat(count).isEqualTo(1);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("다른 숫자 야구와 비교하여 같은 숫자와 다른 위치에 있는 숫자 야구의 개수를 반환한다")
-    void countSameNumberWithDifferentPosition() {
-        Balls balls = Balls.from(Arrays.asList(1, 2, 3));
-        Balls others = Balls.from(Arrays.asList(3, 2, 1));
+    @DisplayName("숫자 야구 공들을 입력받아 볼의 상태들을 반환한다")
+    void compare() {
+        Balls balls = Balls.from(List.of(1, 2, 3));
+        Balls others = Balls.from(List.of(1, 3, 7));
 
-        int count = balls.countSameNumberWithDifferentPosition(others);
+        BallStatuses actual = balls.compare(others);
 
-        assertThat(count).isEqualTo(2);
+        assertThat(actual).isNotNull();
     }
 }

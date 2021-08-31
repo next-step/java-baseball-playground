@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Balls;
+import domain.Generation;
 import domain.Round;
 import dto.RoundInputDto;
 import dto.RoundOutputDto;
@@ -12,23 +13,25 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import static utils.RandomUtils.generateRandomNumber;
-
 public class RoundController {
 
     public static final int BASEBALL_LENGTH = 3;
 
     private final RoundInputView roundInputView;
     private final RoundOutputView roundOutputView;
+    private final Generation generation;
 
 
-    private RoundController(final RoundInputView roundInputView, final RoundOutputView roundOutputView) {
+    private RoundController(final RoundInputView roundInputView, final RoundOutputView roundOutputView,
+                            final Generation generation) {
         this.roundInputView = roundInputView;
         this.roundOutputView = roundOutputView;
+        this.generation = generation;
     }
 
-    public static RoundController of(final RoundInputView roundInputView, final RoundOutputView roundOutputView) {
-        return new RoundController(roundInputView, roundOutputView);
+    public static RoundController of(final RoundInputView roundInputView, final RoundOutputView roundOutputView,
+                                     final Generation generation) {
+        return new RoundController(roundInputView, roundOutputView, generation);
     }
 
     public void run() {
@@ -52,7 +55,7 @@ public class RoundController {
     private List<Integer> initializeRandomBalls() {
         Set<Integer> set = new LinkedHashSet<>();
         while (set.size() < BASEBALL_LENGTH) {
-            int systemNumber = generateRandomNumber(1, 9);
+            int systemNumber = generation.generate();
             set.add(systemNumber);
         }
         return new ArrayList<>(set);

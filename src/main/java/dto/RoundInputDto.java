@@ -32,8 +32,13 @@ public class RoundInputDto {
 
     private static boolean hasNonDigitNumber(final String[] userInputTokens) {
         return Arrays.stream(userInputTokens)
-                .anyMatch(userInputToken -> userInputToken.chars()
-                        .anyMatch(token -> !Character.isDigit(token)));
+                .anyMatch(RoundInputDto::containsNonDigitNumber);
+    }
+
+    private static boolean containsNonDigitNumber(final String userInputToken) {
+        return userInputToken.equals("") ||
+                userInputToken.chars()
+                        .anyMatch(token -> !Character.isDigit(token));
     }
 
     public List<Integer> numbers() {

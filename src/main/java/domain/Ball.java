@@ -1,40 +1,52 @@
 package domain;
 
+import domain.vo.BallNumber;
+import domain.vo.Position;
+
+import java.util.Objects;
+
 public class Ball {
 
-    public static final int MIN_NUMBER = 0;
-    public static final int MAX_NUMBER = 9;
-    public static final int MIN_POSITION = 0;
-    public static final int MAX_POSITION = 3;
+    private final BallNumber number;
+    private final Position position;
 
-    private final int number;
-    private final int position;
-
-    public static Ball of(final int number, final int position) {
-        validate(number, position);
-        return new Ball(number, position);
-    }
-
-    private Ball(final int number, final int position) {
+    public Ball(final BallNumber number, final Position position) {
         this.number = number;
         this.position = position;
     }
 
-    private static void validate(final int number, final int position) {
-        if (number <= MIN_NUMBER || number > MAX_NUMBER)  {
-            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해야 합니다");
-        }
-
-        if (position <= MIN_POSITION || position > MAX_POSITION) {
-            throw new IllegalArgumentException("1~3 사이의 위치를 입력해야 합니다");
-        }
+    public static Ball of(final int number, final int position) {
+        BallNumber ballNumber = BallNumber.from(number);
+        Position ballPosition = Position.from(position);
+        return new Ball(ballNumber, ballPosition);
     }
 
-    public boolean hasSameNumber(final Ball other) {
-        return number == other.number;
+    public BallStatus compare(final Ball other) {
+        if (this.equals(other)) {
+            return BallStatus.STRIKE;
+        }
+
+        if (other.hasSameNumber(number)) {
+            return BallStatus.BALL;
+        }
+
+        return BallStatus.NOTHING;
     }
 
-    public boolean hasSamePosition(final Ball other) {
-        return position == other.position;
+    public boolean hasSameNumber(final BallNumber number) {
+        return this.number.equals(number);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ball)) return false;
+        final Ball ball = (Ball) o;
+        return number.equals(ball.number) && position.equals(ball.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, position);
     }
 }

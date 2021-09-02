@@ -1,11 +1,10 @@
 package study;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StringTest {
     @Test
@@ -25,7 +24,7 @@ public class StringTest {
     //요구사항 2
     @Test
     void substring() {
-        String actual = "(1,2)".substring(1, 3);
+        String actual = "(1,2)".substring(1, 4);
         assertThat(actual).isEqualTo("1,2");
     }
 
@@ -51,7 +50,7 @@ public class StringTest {
             char ch = str.charAt(3);
         })
                 .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("out of range ; range : 3 ");
+                .hasMessageContaining("String index out of range: 3");
         }
     }
 

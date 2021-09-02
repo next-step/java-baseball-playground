@@ -24,3 +24,10 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+BaseBall 기능 구현
+---
+- [ ] Baseball 랜덤 숫자 생성
+- [ ] 사용자 정답 숫자 입력
+- [ ] 사용자 정답과 랜덤 숫자 비교 판별
+

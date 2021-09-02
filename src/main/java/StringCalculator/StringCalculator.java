@@ -1,17 +1,30 @@
 package StringCalculator;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
 public class StringCalculator {
+    static String[] values;
+    static int res = 0;
+
     public static void main(String[] args) {
+        run();
+        System.out.println(res);
+    }
+
+    public static void run(){
+        input();
+        res = operator();
+    }
+
+    public static void input(){
         Scanner scan = new Scanner(System.in);
         String value = scan.nextLine();
-        String[] values = value.split(" ");
+        values = value.split(" ");
+    }
 
+    public static int operator(){
         int len = values.length;
-        int res = 0;
         String operand = "";
         for(int i = 0; i < len; i++){
             if(i == 0){
@@ -32,6 +45,6 @@ public class StringCalculator {
                 }
             }
         }
-        System.out.println(res);
+        return res;
     }
 }

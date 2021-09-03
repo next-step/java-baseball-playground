@@ -28,11 +28,11 @@ public class StringCalculator {
         String operand = "";
         for(int i = 0; i < len; i++){
             if(i == 0){
-                res += parseInt(values[i]);
+                res += intparse(values[i]);
             }else if(i % 2 == 1){
                 operand = values[i];
             }else if(i % 2 == 0){
-                int num = Integer.parseInt(values[i]);
+                int num = intparse(values[i]);
                 switch(operand){
                     case "+": res += num;
                         break;
@@ -46,5 +46,9 @@ public class StringCalculator {
             }
         }
         return res;
+    }
+
+    public static int intparse(String str){
+        return Integer.parseInt(str);
     }
 }

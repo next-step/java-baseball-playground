@@ -28,6 +28,6 @@ ex) git checkout -b apply-feedback
 BaseBall 기능 구현
 ---
 - [ ] Baseball 랜덤 숫자 생성
-- [ ] 사용자 정답 숫자 입력
+- [ ] 게임 시작함수
 - [ ] 사용자 정답과 랜덤 숫자 비교 판별
 

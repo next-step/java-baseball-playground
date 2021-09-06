@@ -16,7 +16,7 @@ public class Ball {
         if(this.value == value){
             return BallStatus.BALL;
         }
-        return BallStatus.NOTING;
+        return BallStatus.NOTHING;
     }
 
 

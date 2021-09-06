@@ -18,6 +18,12 @@ public class Position {
         return new Position(value);
     }
 
+    private static void validate(final int value) {
+        if (value < MIN_POSITION || value > MAX_POSITION) {
+            throw new IllegalArgumentException("1~3 사이의 위치를 입력해야 합니다");
+        }
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -29,11 +35,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    private static void validate(final int value) {
-        if (value < MIN_POSITION || value > MAX_POSITION) {
-            throw new IllegalArgumentException("1~3 사이의 위치를 입력해야 합니다");
-        }
     }
 }

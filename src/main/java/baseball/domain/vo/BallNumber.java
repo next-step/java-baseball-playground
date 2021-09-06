@@ -18,6 +18,12 @@ public class BallNumber {
         return new BallNumber(number);
     }
 
+    private static void validate(final int number) {
+        if (number < MIN_BALL_NUMBER || number > MAX_BALL_NUMBER) {
+            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해야 합니다");
+        }
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -29,11 +35,5 @@ public class BallNumber {
     @Override
     public int hashCode() {
         return Objects.hash(number);
-    }
-
-    private static void validate(final int number) {
-        if (number < MIN_BALL_NUMBER || number > MAX_BALL_NUMBER) {
-            throw new IllegalArgumentException("1~9 사이의 숫자를 입력해야 합니다");
-        }
     }
 }

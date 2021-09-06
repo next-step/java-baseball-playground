@@ -33,7 +33,7 @@ public class Ball {
         return BallStatus.NOTHING;
     }
 
-    public boolean hasSameNumber(final BallNumber number) {
+    private boolean hasSameNumber(final BallNumber number) {
         return this.number.equals(number);
     }
 

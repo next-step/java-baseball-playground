@@ -15,6 +15,7 @@ public class RoundOutputConsoleView implements RoundOutputView{
         return new RoundOutputConsoleView();
     }
 
+    @Override
     public void roundOutput(RoundOutputDto roundOutputDto) {
         String ball = parseBallOutput(roundOutputDto.ball());
         String strike = parseStrikeOutput(roundOutputDto.strike());
@@ -23,6 +24,7 @@ public class RoundOutputConsoleView implements RoundOutputView{
         System.out.println(result);
     }
 
+    @Override
     public void roundOverOutput() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }

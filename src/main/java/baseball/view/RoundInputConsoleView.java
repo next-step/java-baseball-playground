@@ -18,6 +18,7 @@ public class RoundInputConsoleView implements RoundInputView {
         return new RoundInputConsoleView(scanner);
     }
 
+    @Override
     public RoundInputDto roundUserInput() {
         System.out.print("숫자를 입력해 주세요 : ");
         String userInput = scanner.nextLine();

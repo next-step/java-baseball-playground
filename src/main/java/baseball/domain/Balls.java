@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
-    public static final int START_POSITION = 1;
-    public static final int MAX_POSITION = 3;
+    private static final int START_POSITION = 1;
+    private static final int MAX_POSITION = 3;
 
     private final List<Ball> values;
 

@@ -5,7 +5,9 @@ import baseball.dto.RoundInputDto;
 import java.util.Scanner;
 
 public class RoundInputConsoleView implements RoundInputView {
-    public static final String DELIMITER = "";
+
+    private static final String DELIMITER = "";
+
     private final Scanner scanner;
 
     private RoundInputConsoleView(final Scanner scanner) {

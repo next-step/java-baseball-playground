@@ -3,7 +3,7 @@ package baseball.domain;
 import baseball.dto.RoundOutputDto;
 
 public class Round {
-    public static final int ENOUGH_STRIKE_INCLUSIVE = 3;
+    private static final int ENOUGH_STRIKE_INCLUSIVE = 3;
 
     private final Balls balls;
     private boolean isOver;

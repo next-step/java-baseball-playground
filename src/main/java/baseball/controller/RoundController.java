@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class RoundController {
 
-    public static final int BASEBALL_LENGTH = 3;
+    private static final int BASEBALL_LENGTH = 3;
 
     private final RoundInputView roundInputView;
     private final RoundOutputView roundOutputView;

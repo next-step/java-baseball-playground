@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BallStatuses {
 
-    public static final int BALL_STATUSES_SIZE = 3;
+    private static final int BALL_STATUSES_SIZE = 3;
 
     private final List<BallStatus> statuses;
 

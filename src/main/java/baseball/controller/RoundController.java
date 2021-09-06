@@ -16,11 +16,11 @@ import java.util.Set;
 public class RoundController {
 
     private static final int BASEBALL_LENGTH = 3;
+    private static final int INITIAL_STRIKE_VALUE = 0;
 
     private final RoundInputView roundInputView;
     private final RoundOutputView roundOutputView;
     private final Generation generation;
-
 
     private RoundController(final RoundInputView roundInputView, final RoundOutputView roundOutputView,
                             final Generation generation) {
@@ -36,13 +36,17 @@ public class RoundController {
 
     public void run() {
         Round round = nextRound();
-        while (!round.isOver()) {
+        int strike = INITIAL_STRIKE_VALUE;
+
+        while (!round.hasEnough(strike)) {
             RoundInputDto roundInputDto = roundInputView.roundUserInput();
             List<Integer> userNumbers = roundInputDto.numbers();
             Balls userBalls = Balls.from(userNumbers);
             RoundOutputDto roundOutputDto = round.countResult(userBalls);
+            strike = roundOutputDto.strike();
             roundOutputView.roundOutput(roundOutputDto);
         }
+
         roundOutputView.roundOverOutput();
     }
 

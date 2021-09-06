@@ -2,11 +2,10 @@ package baseball;
 
 import baseball.controller.GameController;
 import baseball.controller.RoundController;
-import baseball.domain.GameStatus;
 import baseball.domain.Generation;
 import baseball.domain.RandomNumberGeneration;
-import baseball.view.GameView;
 import baseball.view.GameConsoleView;
+import baseball.view.GameView;
 import baseball.view.RoundInputConsoleView;
 import baseball.view.RoundInputView;
 import baseball.view.RoundOutputConsoleView;
@@ -24,7 +23,7 @@ public class Main {
         Random random = new Random();
         Generation generation = new RandomNumberGeneration(random);
         RoundController roundController = RoundController.of(roundInputView, roundOutputView, generation);
-        GameController gameController = GameController.of(roundController, gameView, GameStatus.PLAY);
+        GameController gameController = GameController.of(roundController, gameView);
         gameController.run();
         scanner.close();
     }

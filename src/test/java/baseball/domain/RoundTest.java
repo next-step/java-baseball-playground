@@ -42,9 +42,9 @@ class RoundTest {
         Round round = Round.from(balls);
         List<Integer> userNumbers = Arrays.asList(1, 2, 3);
         Balls userBalls = Balls.from(userNumbers);
-        round.countResult(userBalls);
+        RoundOutputDto roundOutputDto = round.countResult(userBalls);
 
-        boolean actual = round.isOver();
+        boolean actual = round.hasEnough(roundOutputDto.strike());
 
         assertThat(actual).isEqualTo(expect);
     }

@@ -6,7 +6,7 @@ public class BallStatuses {
 
     public static final int BALL_STATUSES_SIZE = 3;
 
-    private List<BallStatus> statuses;
+    private final List<BallStatus> statuses;
 
     private BallStatuses(final List<BallStatus> statuses) {
         this.statuses = statuses;

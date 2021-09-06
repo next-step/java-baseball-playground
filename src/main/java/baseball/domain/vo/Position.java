@@ -7,7 +7,7 @@ public class Position {
     private static final int MIN_POSITION = 1;
     private static final int MAX_POSITION = 3;
 
-    private int value;
+    private final int value;
 
     private Position(final int value) {
         this.value = value;

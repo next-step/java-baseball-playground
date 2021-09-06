@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RoundInputDto {
-    private final List<Integer> numbers;
 
+    private final List<Integer> numbers;
 
     private RoundInputDto(List<Integer> numbers) {
         this.numbers = numbers;

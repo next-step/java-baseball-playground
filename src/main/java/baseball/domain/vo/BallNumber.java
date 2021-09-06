@@ -7,7 +7,7 @@ public class BallNumber {
     private static final int MIN_BALL_NUMBER = 1;
     private static final int MAX_BALL_NUMBER = 9;
 
-    private int number;
+    private final int number;
 
     private BallNumber(final int number) {
         this.number = number;

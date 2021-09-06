@@ -4,7 +4,8 @@ import baseball.dto.RoundOutputDto;
 
 public class Round {
     public static final int ENOUGH_STRIKE_INCLUSIVE = 3;
-    private Balls balls;
+
+    private final Balls balls;
     private boolean isOver;
 
     public Round(final Balls balls, final boolean isOver) {

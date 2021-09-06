@@ -10,7 +10,7 @@ public class Ball {
     private final BallNumber number;
     private final Position position;
 
-    public Ball(final BallNumber number, final Position position) {
+    private Ball(final BallNumber number, final Position position) {
         this.number = number;
         this.position = position;
     }

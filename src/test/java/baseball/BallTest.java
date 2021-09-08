@@ -17,24 +17,24 @@ public class BallTest {
 
     @Test
     void play(){
-        assertThat(comBall.play(1, 1)).isEqualTo(BallStatus.STRIKE);
-        assertThat(comBall.play(2, 1)).isEqualTo(BallStatus.BALL);
-        assertThat(comBall.play(4, 2)).isEqualTo(BallStatus.NOTHING);
+        assertThat(comBall.play(new Ball(1, 1))).isEqualTo(BallStatus.STRIKE);
+        assertThat(comBall.play(new Ball(2, 1))).isEqualTo(BallStatus.BALL);
+        assertThat(comBall.play(new Ball(4, 2))).isEqualTo(BallStatus.NOTHING);
     }
 
     @Test
     void strike(){
-        assertThat(comBall.play(1, 1)).isEqualTo(BallStatus.STRIKE);
+        assertThat(comBall.play(new Ball(1, 1))).isEqualTo(BallStatus.STRIKE);
     }
 
     @Test
     void ball(){
-        assertThat(comBall.play(2, 1)).isEqualTo(BallStatus.BALL);
+        assertThat(comBall.play(new Ball(1, 1))).isEqualTo(BallStatus.BALL);
     }
 
     @Test
     void nothing(){
-        assertThat(comBall.play(4, 2)).isEqualTo(BallStatus.NOTHING);
+        assertThat(comBall.play(new Ball(1, 1)  )).isEqualTo(BallStatus.NOTHING);
     }
 
 }

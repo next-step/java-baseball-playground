@@ -1,23 +1,42 @@
 package baseball;
 
-public class Ball {
-    int position;
-    int value;
+import java.util.Objects;
 
-    public Ball(int i, int i1) {
-        this.position = i;
-        this.value = i1;
+public class Ball {
+
+
+    private final int position;
+    private final int value;
+
+    public Ball(int position, int value) {
+        this.position = position;
+        this.value = value;
     }
 
-    public BallStatus play(int position, int value) {
-        if(this.position == position && this.value == value){
+    public BallStatus play(Ball ball) {
+        if(this.equals(ball)){
             return BallStatus.STRIKE;
         }
-        if(this.value == value){
+        if(matchValue(ball)){
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
     }
 
+    public boolean matchValue(Ball ball){
+        return this.value == ball.value;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return position == ball.position && value == ball.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, value);
+    }
 }

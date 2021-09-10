@@ -32,4 +32,12 @@ public class PlayResult {
             this.ball += 1;
         }
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }

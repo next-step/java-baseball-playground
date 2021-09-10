@@ -29,12 +29,12 @@ public class BallTest {
 
     @Test
     void ball(){
-        assertThat(comBall.play(new Ball(1, 1))).isEqualTo(BallStatus.BALL);
+        assertThat(comBall.play(new Ball(2, 1))).isEqualTo(BallStatus.BALL);
     }
 
     @Test
     void nothing(){
-        assertThat(comBall.play(new Ball(1, 1)  )).isEqualTo(BallStatus.NOTHING);
+        assertThat(comBall.play(new Ball(2, 3)  )).isEqualTo(BallStatus.NOTHING);
     }
 
 }

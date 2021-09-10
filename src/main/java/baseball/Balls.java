@@ -1,12 +1,13 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
     List<Ball> balls;
 
-    public Balls(List<Ball> balls) {
-        this.balls = balls;
+    public Balls(List<Integer> answer) {
+        this.balls = mapToBall(answer);
     }
 
     public PlayResult play(List<Ball> balls){
@@ -24,6 +25,14 @@ public class Balls {
                 .filter(status -> status!=BallStatus.NOTHING)
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
+    }
+
+    private List<Ball> mapToBall(List<Integer> answer){
+        List<Ball> balls = new ArrayList<>();
+        for (int i = 0; i < answer.size(); i++) {
+            balls.add(new Ball(i+1, answer.get(i)));
+        }
+        return balls;
     }
 
 }

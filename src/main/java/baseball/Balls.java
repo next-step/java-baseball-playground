@@ -9,6 +9,15 @@ public class Balls {
         this.balls = balls;
     }
 
+    public PlayResult play(List<Ball> balls){
+        PlayResult playResult = new PlayResult();
+        for(Ball ball : balls){
+            BallStatus ballStatus = this.play(ball);
+            playResult.play(ballStatus);
+        }
+        return playResult;
+    }
+
     public BallStatus play(Ball ball) {
         return balls.stream()
                 .map(ball1 -> ball1.play(ball))

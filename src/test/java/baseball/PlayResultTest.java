@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PlayGroundTest {
+public class PlayResultTest {
 
     Balls balls;
 
@@ -17,10 +17,8 @@ public class PlayGroundTest {
     }
 
     @Test
-    void play_game(){
-        PlayGround playGround = new PlayGround(balls);
-        playGround.play(Arrays.asList(new Ball(1, 1), new Ball(2, 2), new Ball(3, 3)));
-
-        assertThat(playGround.getStrike()).isEqualTo(3);
+    void play(){
+        PlayResult playResult = balls.play(Arrays.asList(new Ball(1, 1), new Ball(2, 2), new Ball(3, 3)));
+        playResult.printResult();
     }
 }

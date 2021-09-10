@@ -6,11 +6,11 @@ public class Ball {
 
 
     private final int position;
-    private final int value;
+    private final BallNumber value;
 
     public Ball(int position, int value) {
         this.position = position;
-        this.value = value;
+        this.value = new BallNumber(value);
     }
 
     public BallStatus play(Ball ball) {

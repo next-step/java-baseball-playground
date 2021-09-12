@@ -34,10 +34,10 @@ public class PlayResult {
     }
 
     public int getStrike() {
-        return strike;
+        return this.strike;
     }
 
     public int getBall() {
-        return ball;
+        return this.ball;
     }
 }

@@ -24,7 +24,7 @@ public class Ball {
     }
 
     public boolean matchValue(Ball ball){
-        return this.value == ball.value;
+        return this.value.getNumber() == ball.value.getNumber();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return position == ball.position && value == ball.value;
+        return position == ball.position && value.getNumber() == ball.value.getNumber();
     }
 
     @Override

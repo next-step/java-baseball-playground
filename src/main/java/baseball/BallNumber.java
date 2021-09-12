@@ -12,4 +12,8 @@ public class BallNumber {
         }
         this.number = number;
     }
+
+    public int getNumber() {
+        return number;
+    }
 }

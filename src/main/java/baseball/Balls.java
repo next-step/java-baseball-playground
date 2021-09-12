@@ -20,8 +20,8 @@ public class Balls {
     }
 
     public BallStatus play(Ball ball) {
-        return balls.stream()
-                .map(ball1 -> ball1.play(ball))
+        return this.balls.stream()
+                .map(it -> it.play(ball))
                 .filter(status -> status!=BallStatus.NOTHING)
                 .findFirst()
                 .orElse(BallStatus.NOTHING);

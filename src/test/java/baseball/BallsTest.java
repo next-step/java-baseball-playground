@@ -28,7 +28,7 @@ public class BallsTest {
 
     @Test
     void balls_nothing(){
-        assertThat(balls.play(new Ball(1, 10))).isEqualTo(BallStatus.NOTHING);
+        assertThat(balls.play(new Ball(1, 8))).isEqualTo(BallStatus.NOTHING);
     }
 
     @Test

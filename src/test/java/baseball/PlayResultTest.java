@@ -18,13 +18,13 @@ public class PlayResultTest {
 
     @Test
     void play(){
-        PlayResult playResult = balls.play(Arrays.asList(new Ball(1, 1), new Ball(2, 2), new Ball(3, 3)));
+        PlayResult playResult = balls.play(new Balls(Arrays.asList(1, 2, 3)));
         playResult.printResult();
     }
 
     @Test
     void play_2strike_1ball(){
-        PlayResult playResult = balls.play(Arrays.asList(new Ball(1, 1), new Ball(2, 2), new Ball(2, 3)));
+        PlayResult playResult = balls.play(new Balls(Arrays.asList(1, 2, 2)));
         assertThat(playResult.getStrike()).isEqualTo(2);
         assertThat(playResult.getBall()).isEqualTo(1);
     }

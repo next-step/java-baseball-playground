@@ -10,9 +10,9 @@ public class Balls {
         this.balls = mapToBall(answer);
     }
 
-    public PlayResult play(List<Ball> balls){
+    public PlayResult play(Balls balls){
         PlayResult playResult = new PlayResult();
-        for(Ball ball : balls){
+        for(Ball ball : balls.getBalls()){
             BallStatus ballStatus = this.play(ball);
             playResult.play(ballStatus);
         }
@@ -35,4 +35,7 @@ public class Balls {
         return balls;
     }
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
 }

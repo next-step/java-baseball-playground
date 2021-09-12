@@ -33,7 +33,7 @@ public class BallsTest {
 
     @Test
     void play_game(){
-        PlayResult playResult = balls.play(Arrays.asList(new Ball(1, 2), new Ball(2, 2), new Ball(3, 3)));
+        PlayResult playResult = balls.play(new Balls(Arrays.asList(1, 2, 3)));
         playResult.printResult();
     }
 }

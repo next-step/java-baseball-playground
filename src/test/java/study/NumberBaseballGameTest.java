@@ -9,9 +9,9 @@ public class NumberBaseballGameTest {
     @Test
     @DisplayName("랜덤한 숫자 3개 생성")
     void randomNumberCount() {
-       NumberBaseballGame nbg =  new NumberBaseballGame();
+       RandomNumbers randomNumbers =  new RandomNumbers();
         
-        Assertions.assertThat(nbg.answerNumbers().size()).isEqualTo(3);
+        Assertions.assertThat(randomNumbers.answerNumbers().size()).isEqualTo(3);
     }
     
 }

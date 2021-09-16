@@ -16,48 +16,41 @@ public class NumberBaseballGame {
         System.out.println("+------------------+");
     }
 
-    public HashSet<Integer> answerNumbers() {
-
-        HashSet<Integer> randomNumbers = new HashSet<>();
-
-        Random random = new Random();
-
-        while (randomNumbers.size() < 3) {
-            randomNumbers.add(random.nextInt(9));
-        }
-
-        return randomNumbers;
-    }
-
     public void selectGame() {
 
         Scanner scanner = new Scanner(System.in);
         boolean isLoop = true;
-        System.out.println(answerNumbers());
-        startGame(scanner);
+
+        List<Boolean> result = startGame(scanner);
+        
         scanner.close();
     }
 
 
 
-    private boolean startGame(Scanner scanner) {
+    private List<Boolean> startGame(Scanner scanner) {
         List<Boolean> result = new ArrayList<Boolean>();
-        
+        RandomNumbers randomNumbers = new RandomNumbers();
+        System.out.println(randomNumbers.answerNumbers());
         System.out.println("숫자를 입력해주세요");
         String userInput = scanner.nextLine();
         System.out.printf("숫자를 입력해주세요 : %s \n", userInput);
-        Iterator<Integer> iter = answerNumbers().iterator();
-        while(iter.hasNext()) {
-            System.out.println(iter.next());
-        }
+        Iterator<Integer> iter = randomNumbers.answerNumbers().iterator();
         String[] numbers = userInput.split("");
-        for (String number : numbers) {
-            System.out.println(number);
-            
+        while(iter.hasNext()) {
+//            System.out.println(iter.next());
+            for (String number : numbers) {
+//                System.out.println(number);
+                if(iter.next() == Integer.parseInt(number)) {
+                    result.add(true);
+                } else {                    
+                    result.add(false);
+                }
+            }
         }
         System.out.println(result);
         
-        return true;
+        return result;
     }
 
     private boolean endGame() {

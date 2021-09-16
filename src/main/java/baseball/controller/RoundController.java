@@ -8,15 +8,9 @@ import baseball.dto.RoundOutputDto;
 import baseball.view.RoundInputView;
 import baseball.view.RoundOutputView;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 public class RoundController {
-
-    private static final int BASEBALL_LENGTH = 3;
-    private static final int INITIAL_STRIKE_VALUE = 0;
 
     private final RoundInputView roundInputView;
     private final RoundOutputView roundOutputView;
@@ -35,34 +29,19 @@ public class RoundController {
     }
 
     public void run() {
-        Round round = nextRound();
-        int strike = INITIAL_STRIKE_VALUE;
+        Round round = Round.nextRound(generation);
+        int strike;
 
-        while (!round.hasEnough(strike)) {
+        do {
             RoundInputDto roundInputDto = roundInputView.roundUserInput();
             List<Integer> userNumbers = roundInputDto.numbers();
             Balls userBalls = Balls.from(userNumbers);
             RoundOutputDto roundOutputDto = round.countResult(userBalls);
             strike = roundOutputDto.strike();
             roundOutputView.roundOutput(roundOutputDto);
-        }
+        } while (!round.hasEnough(strike));
 
         roundOutputView.roundOverOutput();
-    }
-
-    private Round nextRound() {
-        List<Integer> numbers = initializeRandomBalls();
-        Balls balls = Balls.from(numbers);
-        return Round.from(balls);
-    }
-
-    private List<Integer> initializeRandomBalls() {
-        Set<Integer> set = new LinkedHashSet<>();
-        while (set.size() < BASEBALL_LENGTH) {
-            int systemNumber = generation.generate();
-            set.add(systemNumber);
-        }
-        return new ArrayList<>(set);
     }
 
 }

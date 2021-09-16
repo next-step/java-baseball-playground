@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,13 +19,13 @@ public class Balls {
         this.values = values;
     }
 
-    public static Balls from(final List<Integer> numbers) {
+    public static Balls from(final Collection<Integer> numbers) {
         validate(numbers);
         List<Ball> balls = changeBallsFrom(numbers);
         return new Balls(balls);
     }
 
-    private static List<Ball> changeBallsFrom(final List<Integer> numbers) {
+    private static List<Ball> changeBallsFrom(final Collection<Integer> numbers) {
         AtomicInteger position = new AtomicInteger(START_POSITION);
 
         return numbers.stream()
@@ -32,7 +33,7 @@ public class Balls {
                 .collect(Collectors.toList());
     }
 
-    private static void validate(List<Integer> numbers) {
+    private static void validate(Collection<Integer> numbers) {
         List<Integer> distinctNumber = extractDistinctNumber(numbers);
 
         if (distinctNumber.size() != numbers.size()) {
@@ -44,7 +45,7 @@ public class Balls {
         }
     }
 
-    private static List<Integer> extractDistinctNumber(final List<Integer> numbers) {
+    private static List<Integer> extractDistinctNumber(final Collection<Integer> numbers) {
         Set<Integer> set = new LinkedHashSet<>(numbers);
         return new ArrayList<>(set);
     }

@@ -10,11 +10,11 @@ public class Judgement {
     public List<Boolean> currectCount(HashSet<Integer> computer, List<Integer> player) {
         List<Boolean> currectMatch = new ArrayList<>();
         Iterator<Integer> iter = computer.iterator();
-        while(iter.hasNext()) {
-            for(Integer number : player) {
-                if(iter.next() == number) {
+        while (iter.hasNext()) {
+            for (Integer number : player) {
+                if (iter.next() == number) {
                     currectMatch.add(true);
-                } 
+                }
             }
         }
         return currectMatch;
@@ -22,14 +22,11 @@ public class Judgement {
 
     public List<Boolean> hasPlace(HashSet<Integer> computer, List<Integer> player) {
         List<Boolean> containNumbers = new ArrayList<>();
-        Iterator<Integer> iter = computer.iterator();
-        while(iter.hasNext()) {
-            for(Integer number : player) {
-                if(computer.contains(number)) {
-                    containNumbers.add(true);
-                }
+
+        for (Integer number : player) {
+            if (computer.contains(number)) {
+                containNumbers.add(true);
             }
-            
         }
         return containNumbers;
     }

@@ -15,17 +15,8 @@ public class Application {
         HashSet<Integer> computerNumbers = numberGenerator.createRandomNumbers();
         System.out.println(numberGenerator.createRandomNumbers());
         Scanner scanner = new Scanner(System.in);
-        System.out.println("숫자를 입력해주세요 : ");
-        String playerInput = scanner.nextLine();
-        System.out.printf("숫자를 입력해주세요 : %s\n", playerInput);
         
-        String[] Numbers = playerInput.split("");
-        
-        List<Integer> playerNumbers = new ArrayList<>();
-        int i = 0;
-        while(playerNumbers.size() < 3){
-            playerNumbers.add(Integer.parseInt(Numbers[i++]));
-        }
+        List<Integer> playerNumbers = createPlayerNumbers(scanner);
 
         String answer = Referee.compare(computerNumbers, playerNumbers);
         System.out.println(answer);
@@ -39,6 +30,22 @@ public class Application {
             System.out.println("1 스트라이크 입니다.");
         }
         scanner.close();
+    }
+    
+    public static List<Integer> createPlayerNumbers(Scanner scanner) {
+        System.out.println("숫자를 입력해주세요 : ");
+        String playerInput = scanner.nextLine();
+        System.out.printf("숫자를 입력해주세요 : %s\n", playerInput);
+        
+        String[] Numbers = playerInput.split("");
+        
+        List<Integer> playerNumbers = new ArrayList<>();
+        int i = 0;
+        while(playerNumbers.size() < 3){
+            playerNumbers.add(Integer.parseInt(Numbers[i++]));
+        }
+        
+        return playerNumbers;
     }
 
 }

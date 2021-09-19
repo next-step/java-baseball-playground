@@ -19,7 +19,7 @@ public class StringTest {
 
         // assertThat(strings).containsExactly("2", "1"); 이 경우 에러, containsExactly 는 순서까지 검증한다.
 
-        assertThat(strings).contains(strings[0], strings[1]); // 이 경우는 containsExactly 로 순서까지 검증 하는게 낫다
+        assertThat(strings).containsExactly(strings[0], strings[1]); // 이 경우는 containsExactly 로 순서까지 검증 하는게 낫다
         assertThat(strings1).contains("1"); // 이 경우 하나이기 때문에 그냥 contains 로 검증하는 것이 낫다.
     }
 

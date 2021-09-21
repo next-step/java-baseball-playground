@@ -1,6 +1,8 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.String.*;
+
 public class BaseballGame {
 
     public int[] generateNumbers() {
@@ -11,7 +13,6 @@ public class BaseballGame {
         while (count != digit) {
             count = createRandomNums(numbers, count);
         }
-
         return numbers;
     }
 
@@ -27,21 +28,57 @@ public class BaseballGame {
         for (int i = 0; i < digit; i++) {
             numbers[i] = Integer.parseInt(inputNumbers[i]);
         }
-
         return numbers;
     }
 
-    private boolean duplicateCheck(int[] numbers, int num) {
+    public String compareUserToComputer(int[] userNumber, int[] computerNumber) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int i = 0; i < userNumber.length; i++) {
+            strikeCount += compareStrike(userNumber[i], computerNumber[i]);
+        }
+
+        for (int i = 0; i < userNumber.length; i++) {
+            ballCount += compareBall(userNumber[i], computerNumber, i);
+        }
+        return write(strikeCount, ballCount);
+    }
+
+    public int compareStrike(int user, int computer) {
+        if (user == computer) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int compareBall(int user, int[] computer, int index) {
+        int count = 0;
+        for (int i = 0; i < computer.length; i++) {
+            if (i != index && user == computer[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String write(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            return "nothing";
+        }
+        return format("%d strike / %d ball", strike, ball);
+    }
+
+    public boolean duplicateCheck(int[] numbers, int num) {
         for (int number : numbers) {
             if (number == num) {
                 return false;
             }
         }
-
         return true;
     }
 
-    private int createRandomNums(int[] numbers, int count) {
+    public int createRandomNums(int[] numbers, int count) {
         Random random = new Random();
 
         int num = random.nextInt(9) + 1;
@@ -49,7 +86,6 @@ public class BaseballGame {
             numbers[count] = num;
             count++;
         }
-
         return count;
     }
 }

@@ -3,16 +3,22 @@ public class BaseballGameMain {
         BaseballGame baseballGame = new BaseballGame();
 
         int[] computer = baseballGame.generateNumbers();
-        int[] user = baseballGame.inputNumber();
 
-        for (int num : computer) {
-            System.out.print(num);
-        }
+        while (true) {
+            int[] user = baseballGame.inputNumber();
 
-        System.out.println();
+            for (int num : computer) {
+                System.out.print(num);
+            }
 
-        for (int num : user) {
-            System.out.print(num);
+            System.out.println();
+
+            for (int num : user) {
+                System.out.print(num);
+            }
+
+            System.out.println();
+            System.out.println(baseballGame.compareUserToComputer(user, computer));
         }
     }
 }

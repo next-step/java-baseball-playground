@@ -47,7 +47,7 @@ public class BaseballGame {
 
     public String finishQuestion() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("게임 종료\n다시 시작 1번 / 종료 2번");
+        System.out.println("게임 종료\n다시 하기 1번, 종료 2번");
         return sc.nextLine();
     }
 
@@ -80,7 +80,6 @@ public class BaseballGame {
         if (ball == 0) {
             return format("%d strike", strike);
         }
-
         return format("%d strike / %d ball", strike, ball);
     }
 

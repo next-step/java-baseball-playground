@@ -7,28 +7,28 @@ public class BaseballGame {
 
     public int[] generateNumbers() {
         int digit = 3; // 3개 뽑을 것이고, 3번 반복할 횟수를 지정
-        int[] numbers = new int[digit];
+        int[] computerNumbers = new int[digit];
 
         int count = 0; // 배열의 인덱스 체크, 값이 들어갔을 때만 + 1 하게 된다.
         while (count != digit) {
-            count = createRandomNums(numbers, count);
+            count = createRandomNums(computerNumbers, count);
         }
-        return numbers;
+        return computerNumbers;
     }
 
     public int[] inputNumber() {
         Scanner sc = new Scanner(System.in);
 
         int digit = 3;
-        int[] numbers = new int[3];
+        int[] userNumbers = new int[3];
 
         System.out.println("숫자를 입력해 주세요!");
         String[] inputNumbers = sc.nextLine().split("");
 
         for (int i = 0; i < digit; i++) {
-            numbers[i] = Integer.parseInt(inputNumbers[i]);
+            userNumbers[i] = Integer.parseInt(inputNumbers[i]);
         }
-        return numbers;
+        return userNumbers;
     }
 
     public String compareUserToComputer(int[] userNumber, int[] computerNumber) {
@@ -43,6 +43,12 @@ public class BaseballGame {
             ballCount += compareBall(userNumber[i], computerNumber, i);
         }
         return write(strikeCount, ballCount);
+    }
+
+    public String finishQuestion() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임 종료\n다시 시작 1번 / 종료 2번");
+        return sc.nextLine();
     }
 
     public int compareStrike(int user, int computer) {
@@ -66,6 +72,15 @@ public class BaseballGame {
         if (strike == 0 && ball == 0) {
             return "nothing";
         }
+
+        if (strike == 0) {
+            return format("%d ball", ball);
+        }
+
+        if (ball == 0) {
+            return format("%d strike", strike);
+        }
+
         return format("%d strike / %d ball", strike, ball);
     }
 

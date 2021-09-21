@@ -1,24 +1,17 @@
 public class BaseballGameMain {
+
     public static void main(String[] args) {
         BaseballGame baseballGame = new BaseballGame();
+        String finish = "";
 
-        int[] computer = baseballGame.generateNumbers();
+        do {
+            int[] computer = baseballGame.generateNumbers();
 
-        while (true) {
-            int[] user = baseballGame.inputNumber();
-
-            for (int num : computer) {
-                System.out.print(num);
+            while (!finish.equals("3 strike")) {
+                finish = baseballGame.compareUserToComputer(baseballGame.inputNumber(), computer);
+                System.out.println(finish);
             }
-
-            System.out.println();
-
-            for (int num : user) {
-                System.out.print(num);
-            }
-
-            System.out.println();
-            System.out.println(baseballGame.compareUserToComputer(user, computer));
-        }
+            finish = baseballGame.finishQuestion(); // 1번 다시시작, 2번 종료
+        } while (finish.equals("1"));
     }
 }

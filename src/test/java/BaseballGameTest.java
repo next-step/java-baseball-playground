@@ -74,6 +74,7 @@ class BaseballGameTest {
 
         assertThat(strikeCount).isEqualTo(0);
         assertThat(ballCount).isEqualTo(0);
+
     }
 
     @Test

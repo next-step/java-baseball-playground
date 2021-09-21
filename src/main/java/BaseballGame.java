@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class BaseballGame {
 
@@ -10,6 +11,23 @@ public class BaseballGame {
         while (count != digit) {
             count = createRandomNums(numbers, count);
         }
+
+        return numbers;
+    }
+
+    public int[] inputNumber() {
+        Scanner sc = new Scanner(System.in);
+
+        int digit = 3;
+        int[] numbers = new int[3];
+
+        System.out.println("숫자를 입력해 주세요!");
+        String[] inputNumbers = sc.nextLine().split("");
+
+        for (int i = 0; i < digit; i++) {
+            numbers[i] = Integer.parseInt(inputNumbers[i]);
+        }
+
         return numbers;
     }
 
@@ -19,6 +37,7 @@ public class BaseballGame {
                 return false;
             }
         }
+
         return true;
     }
 

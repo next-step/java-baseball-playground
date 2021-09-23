@@ -21,9 +21,9 @@ public class Referee {
             return "2볼";
         } else if (containsNumbers == 1) {
             return "1볼";
-        } else if (containsNumbers == 2 && currectCount == 1) {
+        } else if (containsNumbers == 3 && currectCount == 1) {
             return "2볼 1스트라이크";
-        } else if (containsNumbers == 1 && currectCount == 1) {
+        } else if (containsNumbers == 2 && currectCount == 1) {
             return "1볼 1스트라이크";
         } else {
             return "1스트라이크";

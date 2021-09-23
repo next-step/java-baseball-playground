@@ -13,21 +13,30 @@ public class Application {
     public static void main(String[] args) {
         NumberGenerator numberGenerator = new NumberGenerator();
         HashSet<Integer> computerNumbers = numberGenerator.createRandomNumbers();
-        System.out.println(numberGenerator.createRandomNumbers());
+//        System.out.println(numberGenerator.createRandomNumbers());
         Scanner scanner = new Scanner(System.in);
         
         List<Integer> playerNumbers = createPlayerNumbers(scanner);
 
-        String answer = Referee.compare(computerNumbers, playerNumbers);
-        System.out.println(answer);
-        
-        if(answer.equals("3 스트라이크")) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        } else if(answer.equals("2 스트라이크")) {
-            System.out.println("2 스트라이크 입니다.");
-        } else {
-            System.out.println("1 스트라이크 입니다.");
+        boolean isLoop = true;
+        while(isLoop) {            
+            String answer = Referee.compare(computerNumbers, playerNumbers);
+            System.out.println(answer);
+            if(!answer.equals("3 스트라이크")) {
+                playerNumbers = createPlayerNumbers(scanner);
+                answer = Referee.compare(computerNumbers, playerNumbers);
+            } else {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                String playerInput = scanner.next();
+                if(playerInput.equals("1")) {
+                    System.out.println("새로운 게임이 시작되었습니다.");
+                    computerNumbers = numberGenerator.createRandomNumbers();
+                } else {                    
+                    System.out.println("게임이 종료되었습니다.");
+                    isLoop = false;
+                }
+            }
         }
         scanner.close();
     }

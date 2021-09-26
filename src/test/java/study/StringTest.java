@@ -41,5 +41,6 @@ public class StringTest {
 
         // 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는지 확인
         assertThatThrownBy(() -> input.charAt(4)).isInstanceOf(StringIndexOutOfBoundsException.class);
+
     }
 }

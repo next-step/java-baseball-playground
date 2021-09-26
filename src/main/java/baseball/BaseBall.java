@@ -142,7 +142,7 @@ class OutputView {
     public void OutPut(BaseBall baseBall) {
         BallView(baseBall);
         StrikeView(baseBall);
-
+        NothingView(baseBall);
         System.out.println(stringBuilder);
     }
 
@@ -161,6 +161,12 @@ class OutputView {
         if (baseBall.Strike() == 3) {
             stringBuilder.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료").append("\n");
             baseBall.setFinish(true);
+        }
+    }
+
+    private void NothingView(BaseBall baseBall) {
+        if (baseBall.Ball() == 0 && baseBall.Strike() == 0) {
+            stringBuilder.append("Nothing").append("\n");
         }
     }
 }

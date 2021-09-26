@@ -13,8 +13,7 @@ public class BaseBall {
     static int Computer[];
 
     static int Player[];
-
-    static boolean Finish = false;
+    private static boolean Finish = false;
     Stack<Integer> preNum = new Stack<>();
 
     public static int[] getPlayer() {
@@ -23,6 +22,15 @@ public class BaseBall {
 
     public static int[] getComputer() {
         return Computer;
+    }
+
+
+    public static boolean isFinish() {
+        return Finish;
+    }
+
+    public static void setFinish(boolean finish) {
+        Finish = finish;
     }
 
     public void Init() {
@@ -132,15 +140,27 @@ class OutputView {
     StringBuilder stringBuilder = new StringBuilder();
 
     public void OutPut(BaseBall baseBall) {
+        BallView(baseBall);
+        StrikeView(baseBall);
+
+        System.out.println(stringBuilder);
+    }
+
+    private void BallView(BaseBall baseBall) {
         if (baseBall.Ball() > 0) {
             stringBuilder.append(baseBall.Ball() + "볼").append(" ");
         }
-        if (baseBall.Strike() > 0) {
-            stringBuilder.append(baseBall.Strike() + "스트라이크").append("\n");
+    }
+    private void StrikeView(BaseBall baseBall) {
+        if (baseBall.Strike() == 0) {
+            stringBuilder.append("\n");
+            return;
         }
+        stringBuilder.append(baseBall.Strike() + "스트라이크").append("\n");
 
         if (baseBall.Strike() == 3) {
             stringBuilder.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료").append("\n");
+            baseBall.setFinish(true);
         }
     }
 }

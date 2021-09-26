@@ -1,19 +1,22 @@
 package baseball;
 
+import com.sun.tools.jdeprscan.scan.Scan;
 import jdk.javadoc.internal.doclets.toolkit.util.DocFinder;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class BaseBall {
 
-    private static final InputView inputView = new InputView();
-    private static final OutputView outputView = new OutputView();
 
     static int Computer[];
 
     static int Player[];
     private static boolean Finish = false;
+    private static int FinishValue = 0;
     Stack<Integer> preNum = new Stack<>();
 
     public static int[] getPlayer() {
@@ -37,23 +40,33 @@ public class BaseBall {
         preNum.clear();
         Computer = new int[3];
         Player = new int[3];
+        setFinish(false);
+        FinishValue = 0;
     }
 
-    public void run() {
+    public void run() throws IOException {
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+
         Init();
+        SetComputer();
         while (!Finish) {
             String Input[] = inputView.Input();
             SetPlayer(Input);
             outputView.OutPut(this);
         }
-        SetComputer();
+        outputView.FinishView();
+        FinishValue = inputView.FinishInput();
+        while (inputView.FinishInput() > 2) {
+            System.out.println("2 이하의 값을 넣어주세요");
+            FinishValue = inputView.FinishInput();
+        }
+        if (FinishValue == 1) {
+            run();
+        }
+        return;
+
     }
-
-    public void CheckNumber(int[] player) {
-
-
-    }
-
     public void SetPlayer(String[] input) {
         for (int i = 0; i < 3; i++) {
             Player[i] = Integer.parseInt(input[i]);
@@ -117,13 +130,15 @@ public class BaseBall {
     }
 
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        BaseBall baseBall = new BaseBall();
+        baseBall.run();
     }
 
 }
 
 class InputView {
+
     public String[] Input() {
         Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해 주세요 : ");
@@ -131,42 +146,48 @@ class InputView {
         return sc.nextLine().split("");
     }
 
-    public void FinishView() {
-
+    public int FinishInput() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
     }
 }
 
 class OutputView {
-    StringBuilder stringBuilder = new StringBuilder();
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public void OutPut(BaseBall baseBall) {
+    public void OutPut(BaseBall baseBall) throws IOException {
         BallView(baseBall);
         StrikeView(baseBall);
-        NothingView(baseBall);
-        System.out.println(stringBuilder);
+        NotthingView(baseBall);
+        bw.flush();
     }
 
-    private void BallView(BaseBall baseBall) {
+    private void BallView(BaseBall baseBall) throws IOException {
         if (baseBall.Ball() > 0) {
-            stringBuilder.append(baseBall.Ball() + "볼").append(" ");
+           bw.write(baseBall.Ball() + "볼 ");
         }
     }
-    private void StrikeView(BaseBall baseBall) {
+    private void StrikeView(BaseBall baseBall) throws IOException {
         if (baseBall.Strike() == 0) {
-            stringBuilder.append("\n");
+            bw.write("\n");
             return;
         }
-        stringBuilder.append(baseBall.Strike() + "스트라이크").append("\n");
+        bw.write(baseBall.Strike() + "스트라이크\n");
 
         if (baseBall.Strike() == 3) {
-            stringBuilder.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료").append("\n");
             baseBall.setFinish(true);
+            FinishView();
         }
     }
 
-    private void NothingView(BaseBall baseBall) {
+    private void NotthingView(BaseBall baseBall) throws IOException {
         if (baseBall.Ball() == 0 && baseBall.Strike() == 0) {
-            stringBuilder.append("Nothing").append("\n");
+            bw.write("Nothing\n");
         }
+    }
+
+    public void FinishView() throws IOException {
+        bw.write("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+        bw.write("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n");
     }
 }

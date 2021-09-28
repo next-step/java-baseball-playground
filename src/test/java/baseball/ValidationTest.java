@@ -1,5 +1,6 @@
 package baseball;
 
+import org.assertj.core.error.ShouldBeFalse;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -22,5 +23,12 @@ public class ValidationTest {
         assertThat(Validation.confirmDuplication(Arrays.asList(2, 3, 2))).isEqualTo(true);
         assertThat(Validation.confirmDuplication(Arrays.asList(3, 3, 2))).isEqualTo(true);
         assertThat(Validation.confirmDuplication(Arrays.asList(1, 2, 3))).isEqualTo(false);
+    }
+
+    @Test
+    void 야구_숫자_3자리_확인() {
+        assertThat(Validation.confirmSize(Arrays.asList(1, 2))).isEqualTo(false);
+        assertThat(Validation.confirmSize(Arrays.asList(1, 2, 3))).isEqualTo(true);
+
     }
 }

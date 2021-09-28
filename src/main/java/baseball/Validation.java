@@ -14,4 +14,8 @@ public class Validation {
         //false : 중복 o , true : 중복 x
         return request.stream().distinct().count() != request.size();
     }
+
+    public static boolean confirmSize(List<Integer> request) {
+        return request.size() == 3;
+    }
 }

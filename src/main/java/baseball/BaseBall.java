@@ -5,10 +5,16 @@ public class BaseBall {
     private boolean end = false;
 
     public void run() {
+        setEnd(false);
         Computer computer = new Computer();
         while (!isEnd()) {
             OutPutView.showResult(this,playGame(computer));
         }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        if(!InputView.input().equals("1")) {
+            return;
+        }
+        run();
     }
 
     private PlayResult playGame(Computer computer) {

@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Player {
 
-    private static List<Integer> list = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
 
     public Player(String input) {
         for (char ch : input.trim().toCharArray()) {
             setPlayerNumber(ch);
         }
         if (!Validation.confirmDuplication(getList())) {
+            getList().stream().forEach(System.out::println);
             System.out.println("배열안에 중복값이 있습니다. 다시 입력해 주세요");
             new Player(InputView.input());
             return;

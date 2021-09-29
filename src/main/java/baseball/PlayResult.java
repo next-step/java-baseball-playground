@@ -25,6 +25,9 @@ public class PlayResult {
         }
     }
 
+    public boolean isNotThing() {
+        return getBallCount() == 0 && getStrikeCount() == 0;
+    }
     private boolean isBall(BallStatus ballStatus) {
         return ballStatus == BallStatus.BALL;
     }

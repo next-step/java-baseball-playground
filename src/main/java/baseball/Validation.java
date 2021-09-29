@@ -11,8 +11,8 @@ public class Validation {
     }
 
     public static boolean confirmDuplication(List<Integer> request) {
-        //false : 중복 o , true : 중복 x
-        return request.stream().distinct().count() != request.size();
+        // true 중복 x / false 중복ㄴ
+        return request.stream().distinct().count() == request.size();
     }
 
     public static boolean confirmSize(List<Integer> request) {

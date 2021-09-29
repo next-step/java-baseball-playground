@@ -24,3 +24,28 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+[  ] 1~9 숫자 중 랜덤으로 3개의 숫자 구하기
+[v] 예외처리(1~9숫자 , 중복 값 , 3자리 )
+[  ] INPUT
+[  ] OUTPUT
+[  ] STRIKE
+[  ] BALL
+[  ] NOTHING
+[  ] FINISH
+[  ] Start
+[  ] Init
+[  ] 자리수체크(digit)
+[  ] 서로다른수
+
+
+---------- 
+com 1 2 3
+
+player  4 5
+        2 1 2볼
+        1 2 2스트라이크
+        1 3 1 스트라이크 1볼
+        1 5 1 스트라이크
+        2 4 1 볼
+
+        

@@ -36,3 +36,5 @@ out/
 
 ### VS Code ###
 .vscode/
+/.metadata/
+java-baseball-playground/

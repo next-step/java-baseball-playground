@@ -15,6 +15,11 @@ public class Balls {
             numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
         }
     }
+    public Balls(List<Integer> numberList){
+        if(validateNumberList(numberList)){
+            numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
+        }
+    }
 
     private List<Integer> changeToIntegerList(String input){
         String[] numbers = input.split("");

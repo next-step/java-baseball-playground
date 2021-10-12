@@ -9,6 +9,10 @@ public class Ball {
         this.num = num;
     }
 
+    public int getBall(){
+        return this.num;
+    }
+
     @Override
     public boolean equals(Object o){
         Ball inputBall = (Ball)o;

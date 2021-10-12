@@ -46,24 +46,28 @@ ex) git checkout -b apply-feedback
 - 커밋 메세지를 컨벤션에 따라 작성할 것.
 
 
-## 클래스 설계
-- RandomNumberCreator
-  - makeRandomNumber : 랜덤 숫자 만들기
-  - validateOverlap : 중복 체크
-  - validateRange : 범위 체크
-- BallStatus(enum)
-  - Strike, Ball, Nothing 을 가진다.
-  - 상태와 행위가 한곳에서 이루어지도록 연산식을 enum에서 처리하자.
-  - 상태에 따른 행동을 여기서 정의.
-- Ball
-  - 하나의 숫자를 상태로 갖는다.
-  - equal : 상태 비교
-- Balls
-  - Ball 객체를 가진 List를 상태로 갖는다.
-  - 매개값으로 받은 숫자로 Ball객체를 담은 List 상태에 저장하는 생성자
-  - 각 Ball을 비교하며 검사하는 로직
-- User
-  - input을 받는 메소드
-  - input을 사용하여 Balls를 만드는 로직
-- Application
-  - main 메소드
+## 피드백
+
+--- 
+- 만약 야구공이 아닌 축구공, 농구공이 된다면..? -> 최소한의 코드 수정을 고려해볼것.
+- 랜덤 메소드 테스트는 어떻게?
+- 사용자의 인풋값에 따른 예외처리
+- 접근제어자를 적절하게 사용할것.
+- 뷰를 관장하는 애를 따로 둘것.
+
+
+### 설계
+
+---
+1. 랜덤 숫자를 만드는 행위 -> RandomNumberCreator
+2. 랜덤 숫자의 범위를 검증하는 행위 -> RandomNumberCreator
+3. 랜덤 숫자의 중복을 검증하는 행위 -> RandomNumberCreator
+4. 1개의 야구공을 만드는 행위 -> Ball
+5. 3개의 야구공 세트로 만드는 행위 -> Balls 
+6. 스트라이크, 볼, 낫싱을 검증하는 행위 -> Referee
+7. 결과를 출력하는 행위 -> Referee
+8. 사용자의 입력값을 받는 행위 -> User
+9. 게임의 실행 종료를 관리하는 행위 -> Application
+
+
+- 랜덤한 메소드는 최상단에서 인자값을 넘겨주어서 해당 인자값 내의 값인지만 테스트해서 랜덤값 테스트하자.

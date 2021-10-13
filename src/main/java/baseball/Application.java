@@ -1,15 +1,24 @@
 package baseball;
 
 public class Application {
-
+    private Balls makeUserBall(){
+        User user = new User();
+        Balls userBalls;
+        try {
+            String input = user.getInput();
+            userBalls = new Balls(input);
+        }catch(RuntimeException e){
+            System.out.println(e.getMessage());
+            userBalls = makeUserBall();
+        }
+        return userBalls;
+    }
 
     public void run(){
         Balls answerBalls = new Balls(RandomNumberCreator.makeNumbers());
-        User user = new User();
         boolean runStatus = true;
         while(runStatus){
-            String input = user.getInput();
-            Balls userBalls = new Balls(input);
+            Balls userBalls = makeUserBall();
             runStatus = !Referee.judgement(answerBalls, userBalls);
         }
         if(restart()){

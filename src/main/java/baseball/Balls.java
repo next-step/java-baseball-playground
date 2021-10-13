@@ -11,7 +11,7 @@ public class Balls {
     private static final int MIN_RANGE = 1;
     private List<Ball> balls = new ArrayList<>();
 
-    public Balls(String input){
+    public Balls(String input) throws RuntimeException{
         List<Integer> numberList = changeToIntegers(input);
         if(validateNumbers(numberList)){
             numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
@@ -39,6 +39,7 @@ public class Balls {
         if(overRangeStatus){
             throw new RuntimeException("1~9 사이의 숫자가 아닙니다.");
         }
+
         return true;
     }
 

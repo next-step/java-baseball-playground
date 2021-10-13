@@ -50,7 +50,6 @@ public class User {
         } catch (InputMismatchException e) {
             handleInputException(e);
         }
-        System.out.println(input);
         return input;
     }
 

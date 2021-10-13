@@ -11,7 +11,7 @@ public class RandomNumberCreator {
         return new Random().nextInt(range);
     }
 
-    public static List<Integer> makeNumberList() {
+    public static List<Integer> makeNumbers() {
         List<Integer> list = new ArrayList<>();
 
         while(list.size()!=3){

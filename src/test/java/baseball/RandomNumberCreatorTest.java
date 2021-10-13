@@ -17,7 +17,7 @@ public class RandomNumberCreatorTest {
     @Test
     @DisplayName("중복값이 없는 숫자 리스트를 반환하는 메소드 테스트")
     void makeNumberList(){
-        List<Integer> list = RandomNumberCreator.makeNumberList();
+        List<Integer> list = RandomNumberCreator.makeNumbers();
         for(int num : list){
             assertThat(list.lastIndexOf(num) == list.indexOf(num)).isTrue();
         }

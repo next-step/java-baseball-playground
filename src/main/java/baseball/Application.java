@@ -4,7 +4,7 @@ public class Application {
 
 
     public void run(){
-        Balls answerBalls = new Balls(RandomNumberCreator.makeNumberList());
+        Balls answerBalls = new Balls(RandomNumberCreator.makeNumbers());
         User user = new User();
         boolean runStatus = true;
         while(runStatus){

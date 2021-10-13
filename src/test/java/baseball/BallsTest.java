@@ -24,7 +24,7 @@ public class BallsTest {
     @Test
     @DisplayName("숫자 list에 중복값과 숫자의 크기 여부를 테스트")
     void checkOverlap() {
-        boolean s = Balls.validateNumberList(Arrays.asList(1, 2, 3));
+        boolean s = Balls.validateNumbers(Arrays.asList(1, 2, 3));
         assertThat(s).isTrue();
     }
 
@@ -32,7 +32,7 @@ public class BallsTest {
     @DisplayName("중복값이 있을 경우 예외")
     void overlapExeption() {
         assertThatThrownBy(() -> {
-            Balls.validateNumberList(Arrays.asList(1, 2, 1));
+            Balls.validateNumbers(Arrays.asList(1, 2, 1));
         }).isInstanceOf(RuntimeException.class).hasMessageContaining("중복값이 발생했습니다.");
     }
 
@@ -40,7 +40,7 @@ public class BallsTest {
     @DisplayName("숫자가 범위를 넘어갈 경우 예외")
     void rangeExeption() {
         assertThatThrownBy(() -> {
-            Balls.validateNumberList(Arrays.asList(1, 2, 10));
+            Balls.validateNumbers(Arrays.asList(1, 2, 10));
         }).isInstanceOf(RuntimeException.class).hasMessageContaining("1~9 사이의 숫자가 아닙니다.");
     }
 }

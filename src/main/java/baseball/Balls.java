@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Balls {
@@ -10,27 +12,24 @@ public class Balls {
     private List<Ball> balls = new ArrayList<>();
 
     public Balls(String input){
-        List<Integer> numberList = changeToIntegerList(input);
-        if(validateNumberList(numberList)){
+        List<Integer> numberList = changeToIntegers(input);
+        if(validateNumbers(numberList)){
             numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
         }
     }
     public Balls(List<Integer> numberList){
-        if(validateNumberList(numberList)){
+        if(validateNumbers(numberList)){
             numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
         }
     }
 
-    private List<Integer> changeToIntegerList(String input){
+    private List<Integer> changeToIntegers(String input){
         String[] numbers = input.split("");
-        List<Integer> list = new ArrayList<>();
-        for(String num : numbers){
-            list.add(Integer.parseInt(num));
-        }
+        List<Integer> list =  Arrays.stream(numbers).map(s->Integer.parseInt(s)).collect(Collectors.toList());
         return list;
     }
 
-    public static boolean validateNumberList(List<Integer> numberList) {
+    public static boolean validateNumbers(List<Integer> numberList) {
         boolean overlapStatus = isOverlaped(numberList);
         boolean overRangeStatus = isOverrange(numberList);
 
@@ -49,8 +48,7 @@ public class Balls {
     }
 
     private static boolean isOverrange(List<Integer> numberList) {
-        int length = (int) numberList.stream().filter(s -> s <= MAX_RANGE && s >= MIN_RANGE).count();
-        return !(length == 3);
+        return numberList.stream().anyMatch(s -> (s>MAX_RANGE || s<MIN_RANGE));
     }
 
     public List<Ball> getBalls() {

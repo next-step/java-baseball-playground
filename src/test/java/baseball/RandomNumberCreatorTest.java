@@ -1,6 +1,8 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import baseball.model.RandomNumberCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

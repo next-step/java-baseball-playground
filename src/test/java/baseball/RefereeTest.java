@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.model.Balls;
+import baseball.model.Referee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +16,8 @@ public class RefereeTest {
     void checkStrike() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("145");
-        assertThat(Referee.judgement(answerBall, userBall)).isFalse();
+        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 
     @Test
@@ -20,7 +25,8 @@ public class RefereeTest {
     void checkBall() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("245");
-        assertThat(Referee.judgement(answerBall, userBall)).isFalse();
+        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 
     @Test
@@ -28,6 +34,7 @@ public class RefereeTest {
     void checkNothing() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("456");
-        assertThat(Referee.judgement(answerBall, userBall)).isFalse();
+        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 }

@@ -9,13 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserTest {
-    @Test
-    @DisplayName("유저의 인풋이 유효한 인풋인지 테스트")
-    void validateUserInput(){
-        User user1 = new User();
-        assertThat(user1.validateInput("123")).isTrue();
-
-    }
+//    @Test
+//    @DisplayName("유저의 인풋이 유효한 인풋인지 테스트")
+//    void validateUserInput(){
+//        User user1 = new User();
+//        assertThat(user1.validateBallInput("123")).isTrue();
+//
+//    }
 //    @Test
 //    @DisplayName("유저의 인풋이 유효하지 않을 경우 예외 발생 테스트")
 //    void inputMisMatchException(){

@@ -71,3 +71,20 @@ ex) git checkout -b apply-feedback
 
 
 - 랜덤한 메소드는 최상단에서 인자값을 넘겨주어서 해당 인자값 내의 값인지만 테스트해서 랜덤값 테스트하자.
+
+## MVC 패턴
+
+---
+- Controller
+  - Application
+  - BaseballgameController
+  
+- Model - 검증하는 로직 같은 비즈니스 로직은 모델에서!!
+  - Balls
+  - Ball
+  - Referee
+  - User?
+
+- View
+  - InputView
+  - OutputView

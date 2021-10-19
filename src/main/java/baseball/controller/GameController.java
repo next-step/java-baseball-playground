@@ -11,11 +11,9 @@ import java.util.List;
 
 public class GameController {
     private Balls makeUserBall(){
-        User user = new User();
         Balls userBalls;
         String input = InputView.getInput();
         try {
-            user.validateBallInput(input);
             userBalls = new Balls(input);
         }catch(RuntimeException e){
             OutputView.printExceptionMessage(e.getMessage());

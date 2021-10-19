@@ -2,6 +2,7 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ public class Balls {
     private List<Ball> balls = new ArrayList<>();
 
     public Balls(String input) throws RuntimeException{
+        validateInputLength(input);
         List<Integer> numberList = changeToIntegers(input);
         if(validateNumbers(numberList)){
             numberList.forEach((s)->balls.add(new Ball(numberList.indexOf(s),s)));
@@ -27,6 +29,13 @@ public class Balls {
         String[] numbers = input.split("");
         List<Integer> list =  Arrays.stream(numbers).map(s->Integer.parseInt(s)).collect(Collectors.toList());
         return list;
+    }
+
+
+    public void validateInputLength(String input) throws RuntimeException {
+        if (input.length() != 3) {
+            throw new RuntimeException("입력값이 올바르지 않습니다.");
+        }
     }
 
     public static boolean validateNumbers(List<Integer> numberList) {

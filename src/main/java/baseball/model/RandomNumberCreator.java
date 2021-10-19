@@ -6,9 +6,10 @@ import java.util.Random;
 
 public class RandomNumberCreator {
     private static final int MAX_RANGE = 9;
+    private static final int MIN_RANGE = 1;
 
     public static int makeRandomNumber(int range) {
-        return new Random().nextInt(range);
+        return new Random().nextInt(range)+MIN_RANGE;
     }
 
     public static List<Integer> makeNumbers() {
@@ -26,6 +27,7 @@ public class RandomNumberCreator {
         while(list.contains(randomNumber)){
             randomNumber = makeRandomNumber(MAX_RANGE);
         }
+        System.out.println(randomNumber);
         return randomNumber;
     }
 

@@ -1,49 +1,48 @@
 package baseball.controller;
 
-import baseball.model.Balls;
-import baseball.model.RandomNumberCreator;
-import baseball.model.Referee;
-import baseball.model.User;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.model.*;
+import baseball.model.service.BaseballService;
+import baseball.model.view_interface.InputView;
+import baseball.model.view_interface.OutputView;
 
 import java.util.List;
 
 public class GameController {
-    private Balls makeUserBall(){
-        Balls userBalls;
-        String input = InputView.getInput();
-        try {
-            userBalls = new Balls(input);
+
+    private String handleInput(OutputView outputView, InputView inputView){
+        String input = inputView.getInput();
+        try{
+            Balls.validateNumbers(input);
         }catch(RuntimeException e){
-            OutputView.printExceptionMessage(e.getMessage());
-            userBalls = makeUserBall();
+            outputView.printExceptionMessage(e.getMessage());
+            input = handleInput(outputView, inputView);
         }
-        return userBalls;
+        return input;
     }
 
-    public void run(){
+
+    public void run(OutputView outputView, InputView inputView){
+        BaseballService service = new BaseballService();
         Balls answerBalls = new Balls(RandomNumberCreator.makeNumbers());
         boolean runStatus = true;
         while(runStatus){
-            Balls userBalls = makeUserBall();
-            List<Integer> judgeResult = Referee.judgement(answerBalls, userBalls);
-            OutputView.printJudgement(judgeResult);
-            runStatus = !Referee.isOut(judgeResult);
+            String input = handleInput(outputView,inputView);
+            List<Integer> judgeResult = service.runBaseballGame(answerBalls, input);
+            outputView.printJudgement(service.makeResultMessage(judgeResult));
+            runStatus =!Referee.isOut(judgeResult);
         }
-        if(restart()){
-            run();
+        if(restart(outputView, inputView)){
+            run(outputView,inputView);
         }
-
     }
-    private boolean restart(){
-        User user = new User();
-        String decision = InputView.askRestart();
+
+    private boolean restart(OutputView outputView, InputView inputView){
+        String decision = inputView.askRestart();
         try {
-            user.validateRestartInput(decision);
+            BaseballService.validateRestartInput(decision);
         }catch(RuntimeException e){
-            OutputView.printExceptionMessage(e.getMessage());
-            decision = InputView.askRestart();
+            outputView.printExceptionMessage(e.getMessage());
+            decision = inputView.askRestart();
         }
         if(decision.equals("1")){
             return true;

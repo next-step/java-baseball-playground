@@ -27,7 +27,6 @@ public class RandomNumberCreator {
         while(list.contains(randomNumber)){
             randomNumber = makeRandomNumber(MAX_RANGE);
         }
-        System.out.println(randomNumber);
         return randomNumber;
     }
 

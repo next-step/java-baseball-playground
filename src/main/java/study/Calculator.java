@@ -10,7 +10,8 @@ public class Calculator {
     private String[] operationTypes = {"+", "-", "*", "/"};
 
     public int StringCalculator(String input) throws Exception {
-        List<String> values = Arrays.asList(input.split(" "));
+
+        ArrayList<String> values = new ArrayList<>(Arrays.asList(input.split(" ")));
         ArrayList<String> operations = new ArrayList<>();
 
         int result = Integer.parseInt(values.remove(0));
@@ -35,24 +36,20 @@ public class Calculator {
 
     public int OperationCalculator(int num1, String operation, int num2) throws Exception{
 
-        try {
-            if(operation == "+"){
+            if(operation.equals("+")){
                 return num1 + num2;
             }
-            if(operation == "-"){
+            if(operation.equals("-")){
                 return num1 - num2;
             }
-            if(operation == "*"){
+            if(operation.equals("*")){
                 return num1 * num2;
             }
-            if(operation == "/"){
+            if(operation.equals("/")){
                 return num1 / num2;
             }
-        }catch (Exception e) {
-            throw new Exception("계산기가 지원하지 않는 연산자입니다.");
-        }
 
-        throw new Exception("계산기가 지원하지 않는 연산자입니다.");
+        throw new Exception("잘못 입력하셨습니다.");
 
     }
 

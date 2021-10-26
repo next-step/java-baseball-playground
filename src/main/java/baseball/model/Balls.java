@@ -1,5 +1,8 @@
 package baseball.model;
 
+import baseball.model.exceptions.BallsFormatException;
+import baseball.model.exceptions.InputFormatException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +14,7 @@ public class Balls {
     private static final int MIN_RANGE = 1;
     private List<Ball> balls = new ArrayList<>();
 
-    public Balls(String input) throws RuntimeException {
+    public Balls(String input) throws BallsFormatException,InputFormatException {
         List<Integer> numberList = changeToIntegers(input);
         numberList.forEach((s) -> balls.add(new Ball(numberList.indexOf(s), s)));
 
@@ -27,28 +30,23 @@ public class Balls {
         return list;
     }
 
-//
-//    public static void validateInputLength(String input) throws RuntimeException {
-//        if (input.length() != 3) {
-//            throw new RuntimeException("입력값이 올바르지 않습니다.");
-//        }
-//    }
 
-    public static boolean validateNumbers(String input) {
+    public static boolean validateNumbers(String input) throws BallsFormatException,InputFormatException {
 
         if (input.length() != 3) {
-            throw new RuntimeException("입력값이 올바르지 않습니다.");
+            throw new InputFormatException("3자리의 값을 입력해주세요.");
         }
+
         List<Integer> numberList = changeToIntegers(input);
 
         boolean overlapStatus = isOverlaped(numberList);
         boolean overRangeStatus = isOverrange(numberList);
 
         if (overlapStatus) {
-            throw new RuntimeException("중복값이 발생했습니다.");
+            throw new BallsFormatException("중복값이 발생했습니다.");
         }
         if (overRangeStatus) {
-            throw new RuntimeException("1~9 사이의 숫자가 아닙니다.");
+            throw new BallsFormatException("1~9 사이의 숫자가 아닙니다.");
         }
         return true;
     }

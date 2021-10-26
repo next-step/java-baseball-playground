@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.Balls;
+import baseball.model.Judgement;
 import baseball.model.Referee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ public class RefereeTest {
     void checkStrike() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("145");
-        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        Judgement judgeResult = Referee.judgement(answerBall, userBall);
         assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 
@@ -25,7 +26,7 @@ public class RefereeTest {
     void checkBall() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("245");
-        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        Judgement judgeResult = Referee.judgement(answerBall, userBall);
         assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 
@@ -34,7 +35,7 @@ public class RefereeTest {
     void checkNothing() {
         Balls answerBall = new Balls("123");
         Balls userBall = new Balls("456");
-        List<Integer> judgeResult = Referee.judgement(answerBall, userBall);
+        Judgement judgeResult = Referee.judgement(answerBall, userBall);
         assertThat(Referee.isOut(judgeResult)).isFalse();
     }
 }

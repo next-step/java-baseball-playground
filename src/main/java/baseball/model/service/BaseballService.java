@@ -1,22 +1,23 @@
 package baseball.model.service;
 
-
 import baseball.model.Balls;
+import baseball.model.Judgement;
 import baseball.model.Referee;
-
-import java.util.List;
+import baseball.model.exceptions.BallsFormatException;
+import baseball.model.exceptions.InputFormatException;
 
 public class BaseballService {
 
-    public List<Integer> runBaseballGame(Balls answer, String input) {
+    public Judgement runBaseballGame(Balls answer, String input) throws BallsFormatException, InputFormatException {
+        Balls.validateNumbers(input);
         Balls userBalls = new Balls(input);
-        List<Integer> judgeResult = Referee.judgement(answer, userBalls);
-        return judgeResult;
+        return Referee.judgement(answer, userBalls);
     }
 
-    public String makeResultMessage(List<Integer> judgeResult) {
-        int strike = judgeResult.get(0);
-        int ball = judgeResult.get(1);
+    public String makeResultMessage(Judgement judgeResult) {
+        int strike = judgeResult.getStrike();
+        int ball = judgeResult.getBall();
+
         if (strike != 0 && ball != 0) {
             return strike + "스트라이크 " + ball + "볼";
         }
@@ -31,10 +32,4 @@ public class BaseballService {
         }
         return "낫싱";
     }
-    public static void validateRestartInput(String input) throws RuntimeException {
-        if (input.length() != 1 || Integer.parseInt(input) > 2) {
-            throw new RuntimeException("1 혹은 2 를 입력해주세요");
-        }
-    }
-
 }

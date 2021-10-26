@@ -1,54 +1,39 @@
 package baseball.controller;
 
 import baseball.model.*;
+import baseball.model.exceptions.BallsFormatException;
+import baseball.model.exceptions.InputFormatException;
 import baseball.model.service.BaseballService;
 import baseball.model.view_interface.InputView;
 import baseball.model.view_interface.OutputView;
 
-import java.util.List;
 
 public class GameController {
+    private OutputView outputView;
+    private InputView inputView;
 
-    private String handleInput(OutputView outputView, InputView inputView){
-        String input = inputView.getInput();
-        try{
-            Balls.validateNumbers(input);
-        }catch(RuntimeException e){
-            outputView.printExceptionMessage(e.getMessage());
-            input = handleInput(outputView, inputView);
-        }
-        return input;
+
+    public GameController(OutputView o, InputView i) {
+        outputView = o;
+        inputView = i;
     }
 
-
-    public void run(OutputView outputView, InputView inputView){
+    public void run() {
         BaseballService service = new BaseballService();
         Balls answerBalls = new Balls(RandomNumberCreator.makeNumbers());
         boolean runStatus = true;
-        while(runStatus){
-            String input = handleInput(outputView,inputView);
-            List<Integer> judgeResult = service.runBaseballGame(answerBalls, input);
-            outputView.printJudgement(service.makeResultMessage(judgeResult));
-            runStatus =!Referee.isOut(judgeResult);
-        }
-        if(restart(outputView, inputView)){
-            run(outputView,inputView);
+
+        while (runStatus) {
+            String input = inputView.getInput();
+            try {
+                Judgement judgeResult = service.runBaseballGame(answerBalls, input);
+                outputView.printJudgement(service.makeResultMessage(judgeResult));
+                runStatus = !Referee.isOut(judgeResult);
+            } catch (InputFormatException ex) {
+                outputView.printExceptionMessage(ex.getMessage());
+            }catch(BallsFormatException e){
+                outputView.printExceptionMessage(e.getMessage());
+            }
         }
     }
-
-    private boolean restart(OutputView outputView, InputView inputView){
-        String decision = inputView.askRestart();
-        try {
-            BaseballService.validateRestartInput(decision);
-        }catch(RuntimeException e){
-            outputView.printExceptionMessage(e.getMessage());
-            decision = inputView.askRestart();
-        }
-        if(decision.equals("1")){
-            return true;
-        }
-        return false;
-
-    }
-
 }

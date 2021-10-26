@@ -7,7 +7,7 @@ import java.util.List;
 public class Referee {
     private static final int MAX_LENGTH = 3;
 
-    public static List<Integer> judgement(Balls answerBalls, Balls userBalls) {
+    public static Judgement judgement(Balls answerBalls, Balls userBalls) {
 
         List<BallStatus> statusList = new ArrayList<>();
 
@@ -18,11 +18,11 @@ public class Referee {
         int strike = (int) statusList.stream().filter(s -> s == BallStatus.STRIKE).count();
         int ball = (int) statusList.stream().filter(s -> s == BallStatus.BALL).count();
 
-        return Arrays.asList(strike,ball);
+        return new Judgement(Arrays.asList(strike,ball));
     }
 
-    public static boolean isOut(List<Integer> judgeResult){
-        int strike = judgeResult.get(0);
+    public static boolean isOut(Judgement judgeResult){
+        int strike = judgeResult.getStrike();
 
         if(strike==3){
             return true;

@@ -53,4 +53,21 @@ public class BallsTest {
         Balls balls = new Balls("123");
         assertThat(balls.play(new Ball(3, 8))).isEqualTo(BallStatus.NOTHING);
     }
+
+    @Test
+    void play() {
+        Balls balls = new Balls("123");
+        Balls input = new Balls("721");
+        GameResult result = balls.play(input);
+        assertThat(result.getStrike()).isEqualTo(1);
+        assertThat(result.getBall()).isEqualTo(1);
+    }
+
+    @Test
+    void end() {
+        Balls balls = new Balls("123");
+        Balls input = new Balls("123");
+        GameResult result = balls.play(input);
+        assertThat(result.isEnd()).isTrue();
+    }
 }

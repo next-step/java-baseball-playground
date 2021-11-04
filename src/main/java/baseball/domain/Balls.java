@@ -50,4 +50,13 @@ public class Balls {
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
     }
+
+    public GameResult play(Balls input) {
+        GameResult result = new GameResult();
+
+        for (Ball ball : input.ballList) {
+            result.addResult(play(ball));
+        }
+        return result;
+    }
 }

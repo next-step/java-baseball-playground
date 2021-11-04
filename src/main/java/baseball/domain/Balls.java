@@ -10,6 +10,8 @@ import java.util.Set;
 public class Balls {
     public static final int NUMBER_COUNT = 3;
 
+    private List<Ball> ballList;
+
     public Balls(String input) {
         if (input.length() != NUMBER_COUNT) {
             throw new BallNumberSizeException("3자리 숫자를 입력하세요.");
@@ -24,6 +26,11 @@ public class Balls {
         if (numberSet.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException("각 숫자가 중복되지 않게 입력하세요.");
         }
+
+        ballList = new ArrayList<>();
+        for (int i = 0; i < NUMBER_COUNT; i++) {
+            ballList.add(new Ball(i + 1, numbers.get(i)));
+        }
     }
 
     private List<Integer> mapList(String numberString) {
@@ -34,5 +41,13 @@ public class Balls {
         }
 
         return numbers;
+    }
+
+    public BallStatus play(Ball input) {
+        return ballList.stream()
+                .map(ball -> ball.play(input))
+                .filter(BallStatus::isNotNothing)
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
     }
 }

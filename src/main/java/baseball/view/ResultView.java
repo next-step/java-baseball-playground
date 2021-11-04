@@ -8,17 +8,19 @@ public class ResultView {
     }
 
     public static String result(GameResult result) {
-        String resultMessage = "";
-
-        if (result.getBall() != 0) {
-            resultMessage = result.getBall() + "볼";
+        if (result.getStrike() == 0 && result.getBall() == 0) {
+            return "낫씽";
         }
 
-        if (result.getStrike() != 0) {
-            resultMessage += " " + result.getStrike() + "스트라이크";
+        if (result.getBall() == 0) {
+            return result.strikeMessage();
         }
 
-        return resultMessage;
+        if (result.getStrike() == 0) {
+            return result.ballMessage();
+        }
+
+        return result.ballMessage() + " " + result.strikeMessage();
     }
 
     public static String endMessage() {

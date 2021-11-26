@@ -4,7 +4,7 @@ public class Player {
 
     private int num;
 
-    private void setNumber() {
+    protected void setNumber() {
 
         int playerNum;
 

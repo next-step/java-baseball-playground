@@ -1,16 +1,12 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StrikeBallTest {
 
-    List<Integer> playerBall = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
-    List<Integer> comBall = new ArrayList<Integer>(Arrays.asList(9, 2, 3));
+    int playerBall = 123;
+    int comBall = 456;
 
     Baseball baseball = new Baseball(playerBall, comBall);
 

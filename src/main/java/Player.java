@@ -18,7 +18,7 @@ public class Player {
             this.setNumber();
         }
 
-        if(ValidationUtils.isDuplicated(playerNum)){
+        if (ValidationUtils.isDuplicated(playerNum)) {
             System.out.println("숫자 중복이 있습니다. 다시 입력해주세요");
             this.setNumber();
         }

@@ -1,14 +1,22 @@
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Baseball {
-    private final List<Integer> playerBall;
-    private final List<Integer> comBall;
+    private final ArrayList<Integer> playerBall;
+    private final ArrayList<Integer> comBall;
     private int strike;
     private int ball;
 
-    protected Baseball(List<Integer> playerBall, List<Integer> comBall) {
-        this.playerBall = playerBall;
-        this.comBall = comBall;
+    protected Baseball(int playerBall, int comBall) {
+        String[] playerStrBall = Integer.toString(playerBall).split("");
+        int[] playerIntBall = Arrays.stream(playerStrBall).mapToInt(Integer::parseInt).toArray();
+        this.playerBall = (ArrayList<Integer>) Arrays.stream(playerIntBall).boxed().collect(Collectors.toList());
+
+        String[] comStrBall = Integer.toString(comBall).split("");
+        int[] comIntBall = Arrays.stream(comStrBall).mapToInt(Integer::parseInt).toArray();
+        this.comBall = (ArrayList<Integer>) Arrays.stream(comIntBall).boxed().collect(Collectors.toList());
+
         this.strike = 0;
         this.ball = 0;
     }

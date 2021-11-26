@@ -8,14 +8,14 @@ public class ValidationUtilsTest {
     @Test
     @DisplayName("세 자리 숫자 검증")
     void validationTest() {
-        boolean isThreeDigits = ValidationUtils.validNum(100);
+        boolean isThreeDigits = ValidationUtils.isValid(100);
         assertThat(isThreeDigits).isTrue();
     }
 
     @Test
     @DisplayName("세 자리 수중 중복이 있는지 검증")
     void duplicateTest(){
-        boolean isDuplicated = ValidationUtils.inspectDuplicate(999);
+        boolean isDuplicated = ValidationUtils.isDuplicated(999);
         assertThat(isDuplicated).isTrue();
     }
 

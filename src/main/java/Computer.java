@@ -9,7 +9,7 @@ public class Computer {
 
     private int getRandomNum() {
         int randomNum = (int)(Math.random() * 1000);
-        while(!ValidationUtils.validNum(randomNum) || ValidationUtils.inspectDuplicate(randomNum)) {
+        while(!ValidationUtils.isValid(randomNum) || ValidationUtils.isDuplicated(randomNum)) {
             randomNum = (int)(Math.random() * 1000);;
         }
         return randomNum;

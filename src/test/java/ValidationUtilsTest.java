@@ -8,7 +8,7 @@ public class ValidationUtilsTest {
     @Test
     @DisplayName("세 자리 숫자 검증")
     void validationTest() {
-        boolean isThreeDigits = ValidationUtils.isValid(100);
+        boolean isThreeDigits = ValidationUtils.isValid(123);
         assertThat(isThreeDigits).isTrue();
     }
 
@@ -18,6 +18,7 @@ public class ValidationUtilsTest {
         boolean isDuplicated = ValidationUtils.isDuplicated(999);
         assertThat(isDuplicated).isTrue();
     }
+
 
     @Test
     @DisplayName(" 컴퓨터가 만들어 내는 세자리 수 확인")

@@ -4,10 +4,10 @@ public class Computer {
     private final int number;
 
     Computer() {
-        this.number = getRandomNum();
+        this.number = setRandomNum();
     }
 
-    private int getRandomNum() {
+    private int setRandomNum() {
         int randomNum = (int)(Math.random() * 1000);
         while(!ValidationUtils.isValid(randomNum) || ValidationUtils.isDuplicated(randomNum)) {
             randomNum = (int)(Math.random() * 1000);;

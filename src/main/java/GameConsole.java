@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class GameConsole {
@@ -31,10 +32,14 @@ public class GameConsole {
 
     public void showResult() {
         if(this.strike != 0 || this.ball != 0){
-            System.out.println(this.ball + "BALL " + this.strike + "STRIKE");
+            System.out.println(this.ball + "볼 " + this.strike + "스타라이크");
             return;
         }
-        System.out.println("NOTHING");
+        System.out.println("낫띵");
+    }
+
+    public boolean isCorrect() {
+        return this.strike == 3;
     }
 
     protected boolean isThereNum() {

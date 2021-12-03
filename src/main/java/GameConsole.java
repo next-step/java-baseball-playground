@@ -65,8 +65,10 @@ public class GameConsole {
 
     protected int ballCount() {
         int ball = 0;
-        if (isThereNum() && strikeCount() == 0) {
-            ball++;
+        for (Integer integer : playerBall) {
+            if (strikeCount() == 0 && comBall.contains(integer)) {
+                ball++;
+            }
         }
         return ball;
     }

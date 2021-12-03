@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 
 public class ValidationUtils {
 
+    public static boolean isProper(int num) {
+        return isValid(num) && !isDuplicated(num);
+    }
+
     public static boolean isValid(int num) { // 세자리 수가 맞는지 판단
         return num > 99 && num < 1000;
     }

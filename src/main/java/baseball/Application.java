@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.NumberGenerator;
+import baseball.domain.Referee;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,6 +10,8 @@ public class Application {
     public static void main(String[] args) {
         NumberGenerator numberGenerator = new NumberGenerator();
         ArrayList<Integer> comNums = numberGenerator.makeThreeNumbersByCom();
+        Referee referee = new Referee();
+        }
     }
 
     public static ArrayList<Integer> receiveInputFromUser() {

@@ -11,7 +11,13 @@ public class Application {
         NumberGenerator numberGenerator = new NumberGenerator();
         ArrayList<Integer> comNums = numberGenerator.makeThreeNumbersByCom();
         Referee referee = new Referee();
+
+        String answer = "";
+        while (!answer.equals("3스트라이크")) {
+            answer = referee.compare(comNums, receiveInputFromUser());
+            System.out.println(answer);
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static ArrayList<Integer> receiveInputFromUser() {

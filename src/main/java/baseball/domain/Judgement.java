@@ -4,10 +4,22 @@ import java.util.ArrayList;
 
 public class Judgement {
     public int findSameNumbers(ArrayList<Integer> computer,ArrayList<Integer> player) {
-        return 1;
+        int sameCnt = 0;
+        for (Integer integer : player) {
+            if (computer.contains(integer)) {
+                sameCnt++;
+            }
+        }
+        return sameCnt;
     }
 
     public int getStrikeCnt(ArrayList<Integer> computer, ArrayList<Integer> player) {
-        return 1;
+        int strikeCnt = 0;
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i).equals(player.get(i))) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
     }
 }

@@ -1,5 +1,6 @@
 ## 숫자 야구 기능 구현 (class/method)
 1. 컴퓨터가 3개의 난수를 생성한다. NumberGenerator/makeThreeNumbersByCom
+   1. 겹치는 숫자를 뽑았다면 continue문 실행
 2. 사용자에게서 입력을 받는다. (static)/receiveInputFromUser
 3. 두 입력을 비교해 ?볼 ?스트라이크 여부를 판정한다. Referee/compare
    1. 두 입력간 같은 숫자가 총 몇 개인지 센다. Judgement/findSameNumbers

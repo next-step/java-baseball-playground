@@ -1,7 +1,6 @@
 package baseball;
 
-import baseball.domain.NumberGenerator;
-import baseball.domain.Referee;
+import baseball.domain.GamePlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +8,12 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        List<Integer> comNums = numberGenerator.makeThreeNumbersByCom();
-        Referee referee = new Referee();
+        GamePlayer player = new GamePlayer();
 
-        String answer = "";
-        while (!answer.equals("3스트라이크")) {
-            answer = referee.compare(comNums, receiveInputFromUser());
-            System.out.println(answer);
+        int startGame = 1;
+        while (!(startGame == 2)) {
+            startGame = player.playGame();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static List<Integer> receiveInputFromUser() {

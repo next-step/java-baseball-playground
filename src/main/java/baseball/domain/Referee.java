@@ -1,9 +1,10 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Referee {
-    public String compare(ArrayList<Integer> computer, ArrayList<Integer> player) {
+    public String compare(List<Integer> computer, List<Integer> player) {
         Judgement judgement = new Judgement();
         int findSameNumbers = judgement.findSameNumbers(computer, player);
         int strikeCnt = judgement.getStrikeCnt(computer, player);

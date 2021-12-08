@@ -1,9 +1,9 @@
 package baseball.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Judgement {
-    public int findSameNumbers(ArrayList<Integer> computer,ArrayList<Integer> player) {
+    public int findSameNumbers(List<Integer> computer, List<Integer> player) {
         int sameCnt = 0;
         for (int i = 0; i < player.size(); i++) {
             if (computer.contains(player.get(i))) {
@@ -13,7 +13,7 @@ public class Judgement {
         return sameCnt;
     }
 
-    public int getStrikeCnt(ArrayList<Integer> computer, ArrayList<Integer> player) {
+    public int getStrikeCnt(List<Integer> computer, List<Integer> player) {
         int strikeCnt = 0;
         for (int i = 0; i < player.size(); i++) {
             if (computer.get(i).equals(player.get(i))) {

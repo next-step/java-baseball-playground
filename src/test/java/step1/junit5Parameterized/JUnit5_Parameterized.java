@@ -1,4 +1,4 @@
-package study.junit5Parameterized;
+package step1.junit5Parameterized;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

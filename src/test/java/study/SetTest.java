@@ -40,7 +40,7 @@ public class SetTest {
     @ParameterizedTest
     //ValueSource 한가지의 자료형을 테스트 인자로 넣을 수 있다
     @ValueSource(ints = {1, 2, 3})
-    void numbersTest(int list){
+    void numbersTest(int list) {
         assertThat(numbers.contains(list)).isTrue();
     }
 
@@ -48,8 +48,8 @@ public class SetTest {
     @ParameterizedTest
     //CsvSource: Csv 파일, 해쉬태이블과 같이 1대1로 값을 대응시켜 저장할 수 있다
     //또한 ValueSource와 다르게 두가지 이상의 자료형을 테스트 인자로 넣어 사용할 수 있다
-    @CsvSource(value = {"1:true","2:true","3:true", "4:false", "5:false"}, delimiter = ':')
-    void numbersFalseTest(int input, boolean expected){
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void numbersFalseTest(int input, boolean expected) {
         //assertThat 내용이 isEqualTo의 내용과 같은가? -> 같다면 테스트 성공 아니면 실패
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }

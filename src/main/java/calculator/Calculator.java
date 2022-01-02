@@ -1,4 +1,4 @@
-package Calculator;
+package calculator;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ public class Calculator {
 
     static int index = 0;
 
-    static int operation(int result, int operator, int operand) {
+    static int calculating(int result, int operator, int operand) {
         if (operator == 1) {
             return (result + operand);
         }
@@ -23,7 +23,7 @@ public class Calculator {
         return (0);
     }
 
-    static int checkOperator(String str) {
+    public int checkOperator(String str) {
         if (str.equals("+")) {
             return (1);
         }
@@ -39,32 +39,23 @@ public class Calculator {
         return (0);
     }
 
-    static int parseString(String value) {
-        char result;
-        int operator;
-
-        operator = checkOperator(value);
-        return (operator);
-    }
-
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
         int result = 0;
         int operator = 0;
         int operand = 0;
-        String[] str = value.split(" ");
 
-        //첫번째 값 저장
+        Calculator calculator = new Calculator();
+        String[] str = value.split(" ");
         result = Integer.parseInt(str[index]);
         index++;
         while (index < str.length) {
-            operator = parseString(str[index]);
+            operator = calculator.checkOperator(str[index]);
             index++;
             operand = Integer.parseInt(str[index]);
             index++;
-            result = operation(result, operator, operand);
+            result = calculating(result, operator, operand);
         }
         System.out.printf("result: %d", result);
     }

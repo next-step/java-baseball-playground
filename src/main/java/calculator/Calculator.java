@@ -7,7 +7,7 @@ public class Calculator {
 
     static int index = 0;
 
-    static int calculating(int result, int operator, int operand) {
+    public int calculating(int result, int operator, int operand) {
         if (operator == 1) {
             return (result + operand);
         }
@@ -41,12 +41,12 @@ public class Calculator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
-        int result = 0;
-        int operator = 0;
-        int operand = 0;
-
         Calculator calculator = new Calculator();
+        String value = scanner.nextLine();
+        int result;
+        int operator;
+        int operand;
+
         String[] str = value.split(" ");
         result = Integer.parseInt(str[index]);
         index++;
@@ -55,7 +55,7 @@ public class Calculator {
             index++;
             operand = Integer.parseInt(str[index]);
             index++;
-            result = calculating(result, operator, operand);
+            result = calculator.calculating(result, operator, operand);
         }
         System.out.printf("result: %d", result);
     }

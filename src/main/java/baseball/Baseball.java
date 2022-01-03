@@ -1,11 +1,12 @@
 package baseball;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Baseball {
 
     RoundElement roundElement = new RoundElement();
+    ResultView resultView = new ResultView();
+    InputView inputView = new InputView();
 
     public boolean doubleCheck(int createNumber, int checkNumber) {
         return createNumber != checkNumber;
@@ -89,7 +90,7 @@ public class Baseball {
     public void printResult() {
         if (roundElement.strike == 3) {
             System.out.println("3 strike");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            resultView.printFinishMsg();
             return;
         }
         if (roundElement.ball > 0 && roundElement.strike > 0) {
@@ -111,20 +112,16 @@ public class Baseball {
     }
 
     public boolean gameStart(int[] answer) {
-        Scanner scanner = new Scanner(System.in);
         String inputString;
 
         roundElement.strike = 0;
         roundElement.ball = 0;
-        System.out.println("숫자야구 게임이 시작되었습니다.");
         while (!(roundElement.strike == 3)) {
-            System.out.println("1~9사이 중복되지 않는 3가지 숫자를 입력해주세요");
-            inputString = scanner.nextLine();
+            inputString = inputView.printAskNumberMsg();
             parseRound(answer, inputString);
             printResult();
         }
-        System.out.println("게임을 한번더 진행 하시겠습니까? yes or no");
-        inputString = scanner.nextLine();
+        inputString = inputView.printAskRestartMsg();
         if (inputString.equals("yes")) {
             return (false);
         }

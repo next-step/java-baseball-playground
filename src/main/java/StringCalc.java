@@ -12,7 +12,9 @@ public class StringCalc {
 //        System.out.println(numbers);
 
         Judgment judgment = new Judgment();
-        int count = judgment.correctCount(Arrays.asList(4, 5, 6), Arrays.asList(1, 2, 3));
-        System.out.println(count);
+//        int count = judgment.correctCount(Arrays.asLiwst(4, 5, 6), Arrays.asList(1, 2, 3));
+//        System.out.println(count);
+        boolean result = judgment.hasPlace(Arrays.asList(7, 8, 9), 0,2);
+        System.out.println(result);
     }
 }

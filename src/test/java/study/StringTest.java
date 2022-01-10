@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class StringTest {
 
@@ -21,11 +19,10 @@ public class StringTest {
     public void split_test1() {
         String[] actual = "1,2".split(",");
 
-        assertNotNull(actual);
-        assertEquals(2, actual.length);
+        assertThat(actual).contains("1");
+        assertThat(actual).contains("2");
 
-        assertEquals("1", actual[0]);
-        assertEquals("2", actual[1]);
+        assertThat(actual).containsExactly("1", "2");
     }
 
     @Test
@@ -33,9 +30,6 @@ public class StringTest {
     public void split_test2() {
         String[] actual = "1".split(",");
 
-        assertNotNull(actual);
-        assertEquals(1, actual.length);
-        assertEquals("1", actual[0]);
-
+        assertThat(actual).containsOnly("1");
     }
 }

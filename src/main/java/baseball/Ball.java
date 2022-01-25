@@ -10,10 +10,13 @@ public class Ball {
     }
 
     public BallUser play(Ball ball) {
-        if(ballNo == ball.ballNo){
+        if(ball.matchBallNo(ballNo)){
             return BallUser.BAll;
         }
         return BallUser.NOTHING;
     }
 
+    private boolean matchBallNo(int ballNo) {
+        return this.ballNo == ballNo;
+    }
 }

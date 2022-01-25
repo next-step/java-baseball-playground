@@ -1,6 +1,6 @@
 package baseball;
 
 public enum BallUser {
-    BAll, NOTHING
+    BAll, STRIKE, NOTHING
 }
 

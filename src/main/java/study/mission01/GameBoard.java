@@ -48,7 +48,7 @@ public class GameBoard {
         return hint;
     }
 
-    private Map<Integer, Integer> convertNumberToArray(int number) {
+    public static Map<Integer, Integer> convertNumberToArray(int number) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(100, number / 100);
         map.put(10, (number % 100) / 10);

@@ -5,12 +5,9 @@ import java.util.*;
 // 숫자 판별하는 핵심 로직
 public class GameBoard {
 
-    private int answer;
+    private final int answer;
     private final int theNumberOfDigits = 3;
-
-
-
-    private String hint;
+    private Map<String, String> hint;
 
     public GameBoard() {
         // 랜덤 정답 생성기
@@ -20,11 +17,11 @@ public class GameBoard {
     }
 
     // 힌트를 생성하는 메소드
-    public Map<String, Integer> getHint(int guessNumber) {
+    public Map<String, String> getHint(int guessNumber) {
         Map<Integer, Integer> answerMap = convertNumberToArray(answer);
         Map<Integer, Integer> guessNumberMap = convertNumberToArray(guessNumber);
 
-        Map<String, Integer> hint = new LinkedHashMap<>();
+        Map<String, String> hint = new LinkedHashMap<>();
         int strike = 0;
         int ball = 0;
 
@@ -36,17 +33,17 @@ public class GameBoard {
             if (containsValue) {
                 if (valueIsEquals) {
                     strike++;
-                    System.out.println("strike = " + strike);
-                    hint.put("strike", strike);
+                    hint.put("strike", String.valueOf(strike));
                     continue;
                 }
                 ball++;
-                System.out.println("ball = " + ball);
-                hint.put("ball", ball);
+                hint.put("ball", String.valueOf(ball));
             }
-        } // for
-        // 낫띵은..?
+        }
 
+        if (hint.size() == 0) {
+            hint.put("noting", "");
+        }
 
         return hint;
     }

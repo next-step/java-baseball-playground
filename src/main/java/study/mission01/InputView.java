@@ -25,9 +25,11 @@ public class InputView {
             System.out.print("숫자를 입력해 주세요 : ");
             input = scanner.nextInt();
 
-            Map<String, Integer> hint = gameBoard.getHint(input);
+            // hint 에는 nothing 하나만 들어있을 수 있고, 야구 결과가 들어있을 수 있다.
+            Map<String, String> hint = gameBoard.getHint(input);
+
             for (String key : hint.keySet()) {
-                System.out.println(hint.get(key) + key);
+                System.out.print(hint.get(key) + key + " ");
             }
 
             // input 이 정답인 경우

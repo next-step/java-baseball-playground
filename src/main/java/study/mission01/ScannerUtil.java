@@ -1,4 +1,4 @@
-package study;
+package study.mission01;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

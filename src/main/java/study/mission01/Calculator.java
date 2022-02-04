@@ -1,4 +1,4 @@
-package study;
+package study.mission01;
 
 public class Calculator {
 
@@ -22,6 +22,7 @@ public class Calculator {
 
     private void processNextString() {
         String pointer = "";
+        // 1. 다음 str 이 연산자일 때, 숫자일 때
         for (int i = 1; i < values.length; i++) {
             if (operator.contains(values[i])) { // 다음 문자가 연산자일 때
                 pointer = values[i];

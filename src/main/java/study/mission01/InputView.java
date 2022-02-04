@@ -1,5 +1,6 @@
 package study.mission01;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class InputView {
@@ -16,12 +17,18 @@ public class InputView {
         System.out.println("gameBoard.getAnswer() = " + gameBoard.getAnswer());
         int start = 1;
 
+        /**
+         * todo
+         * 게임 새로 시작하기 눌렀을 땐 새로운 정답이 제공 돼야 한다.
+         */
         while (start != 2) {
             System.out.print("숫자를 입력해 주세요 : ");
             input = scanner.nextInt();
 
-            String hint = gameBoard.getHint(input);
-            System.out.println(hint);
+            Map<String, Integer> hint = gameBoard.getHint(input);
+            for (String key : hint.keySet()) {
+                System.out.println(hint.get(key) + key);
+            }
 
             // input 이 정답인 경우
             if (input == gameBoard.getAnswer()) {

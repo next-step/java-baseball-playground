@@ -42,7 +42,7 @@ public class GameBoard {
         }
 
         if (hint.size() == 0) {
-            hint.put("noting", "");
+            hint.put("nothing", "");
         }
 
         return hint;

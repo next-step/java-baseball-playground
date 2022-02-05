@@ -49,8 +49,8 @@ class GameBoardTest {
      */
      // * answer 값이 고정 되어 있을 때 검증하는 테스트 (answer = 971)
     @TestFactory
-    @DisplayName("힌트 메소드가 스트라이크를 반환하는지 테스트한다.")
-    Stream<DynamicTest> 스트라이크를_반환하는_힌트_메소드() {
+    @DisplayName("힌트 메소드가 스트라이크만 반환하는지 테스트한다.")
+    Stream<DynamicTest> 스트라이크만_반환하는_힌트_메소드() {
         // answer = 971;
         StrikeTestCase oneStrike = new StrikeTestCase(576, "1strike");
         StrikeTestCase twoStrike = new StrikeTestCase(931, "2strike");
@@ -61,12 +61,80 @@ class GameBoardTest {
                         "테스트 할 정수는 " + strikeTestCase.testNumber + " 이고 예상하는 결과는 " + strikeTestCase.expectedHint + " 이다.",
                         () -> {
                             Map<String, String> hint = gameBoard.getHint(strikeTestCase.testNumber);
-                            for (String key : hint.keySet()) {
-                                assertEquals(strikeTestCase.expectedHint, hint.get(key) + key);
-                            }
-
+                            assertEquals(strikeTestCase.expectedHint, hint.get("strike") + "strike");
                         }
                 ));
+    }
+
+    @TestFactory
+    @DisplayName("힌트 메소드가 볼만 반환하는지 확인한다.")
+    Stream<DynamicTest> 볼만_반환하는_힌트_메소드() {
+        // answer = 971
+        StrikeTestCase oneBall = new StrikeTestCase(782, "1ball");
+        StrikeTestCase twoBall = new StrikeTestCase(193, "2ball");
+        StrikeTestCase threeBall = new StrikeTestCase(197, "3ball");
+
+        return Stream.of(oneBall, twoBall, threeBall)
+                .map((strikeTestCase) -> DynamicTest.dynamicTest(
+                            "테스트 할 정수는 " + strikeTestCase.testNumber + " 이고 예상하는 결과는 " + strikeTestCase.expectedHint + " 이다.",
+                            () -> {
+                                Map<String, String> hint = gameBoard.getHint(strikeTestCase.testNumber);
+                                assertEquals(strikeTestCase.expectedHint, hint.get("ball") + "ball");
+                            }
+                        )
+                );
+
+    }
+
+    @TestFactory
+    @DisplayName("힌트 메소드가 nothing 을 반환하는지 확인한다.")
+    Stream<DynamicTest> nothing을_반환하는_힌트_메소드() {
+        // answer = 971
+        StrikeTestCase nothing1 = new StrikeTestCase(486, "nothing");
+        StrikeTestCase nothing2 = new StrikeTestCase(283, "nothing");
+        StrikeTestCase nothing3 = new StrikeTestCase(624, "nothing");
+
+        return Stream.of(nothing1, nothing2, nothing3)
+                .map((strikeTestCase) -> DynamicTest.dynamicTest(
+                            "테스트 할 정수는 " + strikeTestCase.testNumber + " 이고 예상하는 결과는 " + strikeTestCase.expectedHint + " 이다.",
+                            () -> {
+                                Map<String, String> hint = gameBoard.getHint(strikeTestCase.testNumber);
+                                assertEquals(strikeTestCase.expectedHint, hint.get("nothing") + "nothing");
+                            }
+
+                        )
+                );
+
+    }
+
+    @TestFactory
+    @DisplayName("힌트 메소드가 스트라이크와 볼을 반환하는지 확인한다.")
+    Stream<DynamicTest> 스트라이크와_볼을_반환하는_힌트_메소드() {
+        // answer = 971
+        StrikeTestCase oneBallOneStrike = new StrikeTestCase(176, "1ball 1strike ");
+        StrikeTestCase oneStrikeOneBall = new StrikeTestCase(918, "1strike 1ball ");
+        StrikeTestCase oneStrikeTwoBall = new StrikeTestCase(917, "1strike 2ball ");
+        StrikeTestCase twoBallOneStrike = new StrikeTestCase(791, "2ball 1strike ");
+
+        return Stream.of(oneBallOneStrike, oneStrikeOneBall, oneStrikeTwoBall, twoBallOneStrike)
+                .map((strikeTestCase) -> DynamicTest.dynamicTest(
+                        "테스트 할 정수는 " + strikeTestCase.testNumber + " 이고 예상하는 결과는 " + strikeTestCase.expectedHint + " 이다.",
+                        () -> {
+                            /**
+                             * todo
+                             * 힌트를 맵으로 반환하지 말고 정답으로 전부 가공을 한 뒤 InputView 에서는 결과를 보여만 주게끔 리팩토링
+                             */
+                            Map<String, String> hint = gameBoard.getHint(strikeTestCase.testNumber);
+                            String answer = "";
+                            for (String key : hint.keySet()) {
+                                answer = answer + (hint.get(key) + key + " ");
+                            }
+                            System.out.println("answer = " + answer);
+                            assertEquals(strikeTestCase.expectedHint, answer);
+                        }
+
+                        )
+                );
 
     }
 

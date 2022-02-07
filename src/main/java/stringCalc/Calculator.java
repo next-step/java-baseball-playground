@@ -1,6 +1,6 @@
-package study.calculator;
+package stringCalc;
 
-public interface CalculatorInterface {
+public interface Calculator {
 
     public void calculate(int inputNum);
 

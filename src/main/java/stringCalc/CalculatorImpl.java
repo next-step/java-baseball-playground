@@ -1,6 +1,6 @@
-package study.calculator;
+package stringCalc;
 
-public class Calculator implements CalculatorInterface{
+public class CalculatorImpl implements Calculator {
     private String operator;
     private int answer;
 

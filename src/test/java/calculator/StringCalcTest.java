@@ -1,16 +1,17 @@
-package study.calculator;
+package calculator;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import stringCalc.CalculatorImpl;
+import stringCalc.Calculator;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class StringCalcTest {
 
     @Test
     void name() {
-        CalculatorInterface calculator = new Calculator();
+        Calculator calculator = new CalculatorImpl();
         String value = "2 + 3 * 4 / 2";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));

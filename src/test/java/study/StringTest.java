@@ -42,16 +42,16 @@ public class StringTest {
     @DisplayName("StringIndexOutOfBoundsException 테스트")
     public void charAt() {
         String value = "abc";
-        /*
+
         assertThatThrownBy(() -> {
             value.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-                        .hasMessageContaining("Index: 2, Size: 3");
-         */
+                        .hasMessageContaining("String index out of range: 3");
+
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     value.charAt(3);
-                }).withMessageMatching("Index: 2, Size: 3");
+                }).withMessageMatching("String index out of range: 3");
     }
 }

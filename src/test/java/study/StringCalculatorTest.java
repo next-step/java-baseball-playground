@@ -1,61 +1,33 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class StringCalculatorTest {
     private StringCalculator stringCalculator = new StringCalculator();
 
+    @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException 발생 하는지 테스트")
     @Test
-    void plusTest() {
-        assertEquals(5, stringCalculator.plus(2, "3"));
-        assertThat(stringCalculator.plus(2, "3")).isEqualTo(5);
-    }
-
-    @Test
-    void minusTest() {
-        assertEquals(7, stringCalculator.minus(10, "3"));
-        assertThat(stringCalculator.minus(10, "3")).isEqualTo(7);
-    }
-
-    @Test
-    void multiplyTest() {
-        assertEquals(10, stringCalculator.multiply(2, "5"));
-        assertThat(stringCalculator.multiply(2, "5")).isEqualTo(10);
-    }
-
-    @Test
-    void divisionTest() {
-        assertEquals(10, stringCalculator.division(20, "2"));
-        assertThat(stringCalculator.division(20, "2")).isEqualTo(10);
-    }
-
-    @Test
-    void calculateTest() {
-        assertEquals(10, stringCalculator.calculate("2 + 3 * 4 / 2"));
-        assertThat(stringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"#", "$", "&", "!", "@", "%", "^"})
-    void partCalculatePermittedOperatorTest(String input) {
+    void inputNullOrEmptyTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            assertEquals(10, stringCalculator.partCalculate(input, 5, "5"));
-            assertThat(stringCalculator.partCalculate(input, 5, "5")).isEqualTo(10);
+            String formula = "2 +  * 2 / 2";
+            stringCalculator.setFormula(formula);
+            stringCalculator.calculateFormula();
         });
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    void partCalculateNullInputTest(String input) {
+    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
+    @Test
+    void checkPermittedOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            assertEquals(10, stringCalculator.partCalculate("+", 5, input));
-            assertThat(stringCalculator.partCalculate("+", 5, input)).isEqualTo(10);
+            String formula = "2 $ 6 * 5 / 4";
+            stringCalculator.setFormula(formula);
+            stringCalculator.calculateFormula();
         });
     }
+
+
+
 }

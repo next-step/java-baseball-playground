@@ -1,52 +1,66 @@
 package study;
 
-import org.junit.jupiter.api.Test;
-import java.util.Scanner;
 
 public class StringCalculator {
-    private int sum;
-    private String operator;
-    @Test
-    void main() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("문자열 계산기");
-        System.out.println("공백으로 구분하여 원하시는 숫자와 연산자를 입력해주세요.");
-        String value = scanner.nextLine();//사용자로부터 공백을 기준으로 문자열을 구분하여 입력 받음
-        String[] values = value.split(" ");//사용자로부터 입력받은 문자열을 공백을 기준으로 분리함
+    private String[] operationType = {"+", "-", "*", "/"};
 
-        sum = Integer.parseInt(values[0]);
-        int i = 1;
-        while(i < values.length)
-        {
-            operator = values[i];
-            i++;
-            calculate(values[i]);
-            i++;
+    public int calculate(String formula) {
+        String[] input = formula.split(" ");
+        int result = Integer.parseInt(input[0]);
+        String operator = null;
+
+        for(int i = 1; i < input.length; i++) {
+            if(isPermittedOperator(input[i])) {
+                operator = input[i];
+            }
+            else {
+                result = partCalculate(operator, result, input[i]);
+            }
         }
-        System.out.println(sum);
+
+        return result;
     }
 
-    void calculate(String value)
-    {
-        if(operator.equals("+"))
-        {
-            sum += Integer.parseInt(value);
-            return;
+    private boolean isPermittedOperator(String input) {
+        for(String operator : operationType) {
+            if(input.equals(operator)) {
+                return true;
+            }
         }
-        if(operator.equals("-"))
-        {
-            sum -= Integer.parseInt(value);
-            return;
+        return false;
+    }
+
+    public int partCalculate(String operator, int result, String input) {
+        if(input == null || input.equals("")) {
+            throw new IllegalArgumentException();
         }
-        if(operator.equals("*"))
-        {
-            sum *= Integer.parseInt(value);
-            return;
+        switch (operator) {
+            case "+":
+                return plus(result, input);
+            case "-":
+                return minus(result, input);
+            case "*":
+                return multiply(result, input);
+            case "/":
+                return division(result, input);
+            default:
+                throw new IllegalArgumentException();
         }
-        if(operator.equals("/"))
-        {
-            sum /= Integer.parseInt(value);
-            return;
-        }
+    }
+
+    public int plus(int result, String input) {
+        return result + Integer.parseInt(input);
+    }
+
+    public int minus(int result, String input) {
+        return result - Integer.parseInt(input);
+    }
+
+    public int multiply(int result, String input) {
+        return result * Integer.parseInt(input);
+    }
+
+    public int division(int result, String input) {
+        return result / Integer.parseInt(input);
     }
 }

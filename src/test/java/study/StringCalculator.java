@@ -30,5 +30,4 @@ public class StringCalculator {
         currentOperator = Operator.findOperator(input);
 
    }
-
 }

@@ -18,6 +18,9 @@ public enum Operator {
         return first / second;
     });
 
+    private static final Map<String, Operator> operatorMap = Collections.
+            unmodifiableMap(Stream.of(values()).collect(Collectors
+                    .toMap(operator -> operator.getSymbol(), Function.identity())));
     private String symbol;
     private BiFunction<Integer, Integer, Integer> operation;
 
@@ -33,10 +36,6 @@ public enum Operator {
     public int operate(int first, int second) {
         return operation.apply(first, second);
     }
-
-    private static final Map<String, Operator> operatorMap = Collections.
-            unmodifiableMap(Stream.of(values()).collect(Collectors
-                    .toMap(operator -> operator.getSymbol(), Function.identity())));
 
     public static Operator findOperator(String symbol) {
         Operator operator = operatorMap.get(symbol);

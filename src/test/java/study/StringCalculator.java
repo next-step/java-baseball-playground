@@ -1,33 +1,24 @@
 package study;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-
-    private static final String regExp = "^[0-9]*$";
-    private int result;
-    private Operator currentOperator;
+    private static final Pattern regExp = Pattern.compile("^[0-9]*$");
 
    public int calculateFormula(String[] formulaArray) {
 
-       result = 0;
-       currentOperator = Operator.PLUS;
+       int result = 0;
+       Operator currentOperator = Operator.PLUS;
 
        for(String input : formulaArray) {
-           calculatePartial(input);
+           if(regExp.matcher(input).find()) {
+               result = currentOperator.operate(result, Integer.parseInt(input));
+               continue;
+           }
+           currentOperator = Operator.findOperator(input);
        }
 
        return result;
-   }
-
-   private void calculatePartial(String input) {
-
-        if(Pattern.matches(regExp, input)) {
-            result = currentOperator.operate(result, Integer.parseInt(input));
-            return;
-        }
-
-        currentOperator = Operator.findOperator(input);
-
    }
 }

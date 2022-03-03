@@ -11,8 +11,7 @@ public class StringCalculatorTest {
     @DisplayName("정상 입력시 의도대로 계산된 값이 나오는지 테스트")
     @Test
     void calculateTest() {
-        String[] formula = new Formula("5 + 5 * 5 / 25").splitFormula();
-        int result = stringCalculator.calculateFormula(formula);
+        int result = stringCalculator.calculateFormula(new Formula("5 + 5 * 5 / 25").getFormula());
         assertThat(2).isEqualTo(result);
     }
 
@@ -20,8 +19,7 @@ public class StringCalculatorTest {
     @Test
     void devideZeroTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            String[] formula = new Formula("2 + 2 * 10 / 0").splitFormula();
-            stringCalculator.calculateFormula(formula);
+            stringCalculator.calculateFormula(new Formula("2 + 2 * 10 / 0").getFormula());
         });
     }
 
@@ -29,8 +27,7 @@ public class StringCalculatorTest {
     @Test
     void inputNullOrEmptySet() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            String[] formula = new Formula("2 +   * 2 / 2").splitFormula();
-            stringCalculator.calculateFormula(formula);
+            stringCalculator.calculateFormula(new Formula("2 +   * 2 / 2").getFormula());
         });
     }
 
@@ -38,32 +35,9 @@ public class StringCalculatorTest {
     @Test
     void checkPermittedOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            String[] formula = new Formula("2 $ 6 * 5 / 4").splitFormula();
-            stringCalculator.calculateFormula(formula);
+            stringCalculator.calculateFormula(new Formula("2 $ 6 * 5 / 4").getFormula());
         });
     }
 
-    @DisplayName("Operaotr plus 연산 테스트")
-    @Test
-    void operatorPlusTest() {
-        assertThat(Operator.PLUS.operate(1, 5)).isEqualTo(6);
-    }
 
-    @DisplayName("Operator minus 연산 테스트")
-    @Test
-    void operatorMinusTest() {
-        assertThat(Operator.MINUS.operate(9, 3)).isEqualTo(6);
-    }
-
-    @DisplayName("Opertor multiply 연산 테스트")
-    @Test
-    void operatorMultiplyTest() {
-        assertThat(Operator.MULTIPLY.operate(2, 4)).isEqualTo(8);
-    }
-
-    @DisplayName("Operator divide 연산 테스트")
-    @Test
-    void operatorDevideTest() {
-        assertThat(Operator.DEVIDE.operate(16 , 2)).isEqualTo(8);
-    }
 }

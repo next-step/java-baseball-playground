@@ -27,6 +27,7 @@ public class StringCalculator {
             return;
         }
 
+        currentOperator = Operator.findOperator(input);
 
    }
 

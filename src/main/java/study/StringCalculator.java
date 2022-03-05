@@ -1,8 +1,16 @@
 package study;
 
-import java.util.Arrays;
+import study.enums.SignType;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
+
+    public static final String ADD = "+";
+    public static final String SUBTRACT = "-";
+    public static final String MULTIPLY = "*";
+    public static final String DIVIDE = "/";
 
     public String[] split(String value, String separator) {
         if (value == null) {
@@ -11,41 +19,65 @@ public class StringCalculator {
 
         return value.split(separator);
     }
-
-    public int[] findNumerics(String[] valuse) {
-        return Arrays.stream(valuse)
+    public Integer[] findNumerics(String[] values) {
+        return Arrays.stream(values)
                 .filter(value -> isNumerics(value))
                 .mapToInt(Integer::parseInt)
-                .toArray();
+                .boxed()
+                .toArray(Integer[]::new);
+    }
+
+    public String[] findSigns(String[] values) {
+        List<String> result = new ArrayList<>();
+        for (String value : values) {
+            if(SignType.findSignType(value)) {
+                result.add(value);
+            }
+        }
+        return (String[]) result.toArray();
     }
 
     //사칙연산 메소드  + - / *
-    public Integer add(String i, String j) {
-        if (isNumerics(i, j)) {
-            return Integer.parseInt(i) + Integer.parseInt(j);
-        }
-        return 0;
+    public Integer add(int i, int j) {
+        return i + j;
     }
 
     //사칙연산 메소드  -
-    public Integer subtract(String i, String j) {
-        if(isNumerics(i, j)) {
-            return Integer.parseInt(i) - Integer.parseInt(j);
-        }
-        return 0;
+    public Integer subtract(int i, int j) {
+        return i - j;
     }
-    public Integer multiply(String i, String j) {
-        if(isNumerics(i, j)) {
-            return Integer.parseInt(i) * Integer.parseInt(j);
-        }
-        return 0;
+    public Integer multiply(int i, int j) {
+        return i * j;
     }
 
-    public Integer divide(String i, String j) {
-        if(isNumerics(i, j)) {
-            return Integer.parseInt(i) / Integer.parseInt(j);
+    public Integer divide(int i, int j) {
+        return i / j;
+    }
+
+    public Integer calucate(Integer[] numbers, String[] signs) {
+        Deque<Integer> numberQueue = new LinkedList(Arrays.asList(numbers));
+        Queue<String> signsQueue = new LinkedList(Arrays.asList(signs));
+
+        while (signsQueue.size() > 0) {
+            numberQueue.addFirst(operate(numberQueue.poll(), numberQueue.poll(), signsQueue.poll()));
+
         }
-        return 0;
+        return numberQueue.getFirst();
+    }
+
+    private Integer operate(int i, int j, String sign) {
+        switch (sign) {
+            case ADD:
+                return add(i, j);
+            case SUBTRACT:
+                return subtract(i, j);
+            case MULTIPLY:
+                return multiply(i, j);
+            case DIVIDE:
+                return divide(i, j);
+            default:
+                return 0;
+        }
     }
 
     private boolean isNumerics(String ...values) {
@@ -58,8 +90,5 @@ public class StringCalculator {
         }
         return true;
     }
-
-
-
 
 }

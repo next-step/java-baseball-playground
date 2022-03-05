@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+import java.util.Locale;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,33 +32,70 @@ public class StringCalculatorTest {
 
     @Test
     void 전체값에서_숫자만_리턴_테스트() {
+        //given
         String[] testValue = new String[] {"2","+","3","*","4","/","2"};
-        assertArrayEquals(new int[]{2,3,4,2},calculator.findNumerics(testValue));
+        //when
+        Integer[] result = calculator.findNumerics(testValue);
+        //then
+        assertArrayEquals(new Integer[]{2,3,4,2},result);
     }
 
     @Test
     void 사칙연산_테스트_덧셈() {
-        assertThat(calculator.add("2", "4")).isEqualTo(6);
+        //given
+        int testValue1 = 2;
+        int testValue2 = 4;
+        //when
+        int result = calculator.add(testValue1, testValue2);
+        //then
+        assertThat(result).isEqualTo(6);
     }
 
     @Test
     void 사칙연산_테스트_뺄셈() {
-        assertThat(calculator.subtract("5", "4")).isEqualTo(1);
+        //given
+        int testValue1 = 5;
+        int testValue2 = 4;
+        //when
+        int result = calculator.subtract(testValue1, testValue2);
+        //then
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
     void 사칙연산_테스트_곱셈() {
-        assertThat(calculator.multiply("3", "4")).isEqualTo(12);
+        //given
+        int testValue1 = 3;
+        int testValue2 = 4;
+        //when
+        int result = calculator.multiply(testValue1, testValue2);
+        //then
+        assertThat(result).isEqualTo(12);
     }
 
     @Test
     void 사칙연산_테스트_나눗셈() {
-        assertThat(calculator.divide("20", "4")).isEqualTo(5);
+        //given
+        int testValue1 = 20;
+        int testValue2 = 4;
+        //when
+        int result = calculator.divide(testValue1, testValue2);
+        //then
+        assertThat(result).isEqualTo(5);
     }
 
+    @Test
+    void 문자열계산기_테스트() {
+        //given
+        String[] testValue = new String[] {"2","+","3","*","4","/","1","+","5"};
+        Integer[] numerics = calculator.findNumerics(testValue);
+        String[] signs = {"+", "*", "/","+"};
 
+        //when
+        int result = calculator.calucate(numerics, signs);
 
-
-
+        //then
+        assertThat(result).isEqualTo(25);
+    }
 
 }

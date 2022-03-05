@@ -28,5 +28,5 @@ public class NumberChecker {
 
     public int getStrikeCount() { return strikeCount; }
 
-    public int getBallCount() { return strikeCount; }
+    public int getBallCount() { return ballCount; }
 }

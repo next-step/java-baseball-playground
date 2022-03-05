@@ -11,7 +11,7 @@ public class ComputerNumber {
     public void makeNumbers() {
         Random random = new Random();
         Set<Integer> numberSet = new LinkedHashSet<>();
-        while(numberSet.size() <= 3) {
+        while(numberSet.size() < 3) {
             numberSet.add(random.nextInt(8) + 1);
         }
         computerNumbers = new ArrayList<>(numberSet);

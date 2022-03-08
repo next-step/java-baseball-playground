@@ -11,10 +11,13 @@ public class Ball {
     }
 
     public BallStatus play(Ball ball) {
-        if(ball != null && this.equals(ball)) {
+        if(ball == null) {
+            throw new IllegalArgumentException("볼이 들어 오지 않았습니다.");
+        }
+        if(this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if(ball != null && ball.getBallNo().equals(ballNo)) {
+        if(ball.getBallNo().equals(ballNo)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;

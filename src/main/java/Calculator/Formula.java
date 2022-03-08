@@ -1,4 +1,4 @@
-package study;
+package Calculator;
 
 public class Formula {
     private String[] formula;
@@ -8,6 +8,6 @@ public class Formula {
     }
 
     public String[] getFormula() {
-        return formula;
+        return this.formula;
     }
 }

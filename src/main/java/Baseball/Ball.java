@@ -2,11 +2,11 @@ package Baseball;
 
 public class Ball {
 
-    private final int position;
+    private final BallPosition ballPos;
     private final BallNumber ballNo;
 
-    public Ball(int position, int ballNo) {
-        this.position = position;
+    public Ball(int ballPos, int ballNo) {
+        this.ballPos = new BallPosition(ballPos);//3자리수 보장됨.
         this.ballNo = new BallNumber(ballNo);//1이상 9이하의 값이 보장됨.
     }
 
@@ -14,24 +14,25 @@ public class Ball {
         if(ball != null && this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if(ball != null && ball.matchBallNo(ballNo)) {
+        if(ball != null && ball.getBallNo().equals(ballNo)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
     }
 
-    private boolean matchPosition(int position) {
-        return this.position == position;
+    public BallNumber getBallNo() {
+        return ballNo;
     }
 
-    private boolean matchBallNo(int ballNo) {
-        return this.ballNo == ballNo;
+    public BallPosition getBallPos() {
+        return ballPos;
     }
 
     @Override
     public boolean equals(Object ball) {
         if(ball instanceof Ball &&
-            ((Ball) ball).matchPosition(position) && ((Ball) ball).matchBallNo(ballNo)) {
+            ((Ball) ball).getBallPos().equals(ballPos)
+                && ((Ball) ball).getBallNo().equals(ballNo)) {
             return true;
         }
         return false;

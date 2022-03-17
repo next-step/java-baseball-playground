@@ -1,28 +1,29 @@
 package Baseball;
 
 public class BallNumber {
-    public static final int MIN_NO = 1;
-    public static final int MAX_NO = 9;
+    private final int MIN_NO = 1;
+    private final int MAX_NO = 9;
 
-    private int number;
+    private int ballNumber;
 
-    public BallNumber(int number) {
-        if(number < MIN_NO || number > MAX_NO) {
-            throw new IllegalArgumentException("볼 숫자는 1부터 9의 값이어야 합니다.");
+    public BallNumber(int ballNumber) {
+        if(ballNumber < MIN_NO || ballNumber > MAX_NO) {
+            throw new IllegalArgumentException("볼 숫자는 1부터 9까지의 값이어야 합니다.");
         }
-        this.number = number;
+        this.ballNumber = ballNumber;
+    }
+
+    public int getBallNumber() {
+        return ballNumber;
     }
 
     @Override
-    public boolean equals(Object ballNumber) {
-        if(ballNumber instanceof BallNumber
-                && ((BallNumber) ballNumber).getNumber() == number){
+    public boolean equals(Object obj) {
+        if(obj instanceof BallNumber
+        && ((BallNumber)obj).getBallNumber() == this.getBallNumber()) {
             return true;
         }
-        return false;
-    }
 
-    public int getNumber() {
-        return number;
+        return false;
     }
 }

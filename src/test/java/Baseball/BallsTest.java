@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallsTest {
-    private Balls computerBalls;
+    Balls computerBalls;
 
     @BeforeEach
     void setUp() {
@@ -16,45 +16,39 @@ public class BallsTest {
     }
 
     @Test
-    void play_nothing() {
-        PlayResult result = computerBalls.play(Arrays.asList(4, 5, 6));
-        assertThat(result.getStrike()).isEqualTo(0);
-        assertThat(result.getBall()).isEqualTo(0);
-    }
-
-    @Test
-    void play_1strike_1ball() {
-        PlayResult result = computerBalls.play((Arrays.asList(1, 4, 2)));
-        assertThat(result.getStrike()).isEqualTo(1);
-        assertThat(result.getBall()).isEqualTo(1);
-    }
-
-    @Test
-    void play_3strikes() {
-        PlayResult result = computerBalls.play((Arrays.asList(1, 2, 3)));
-        assertThat(result.getStrike()).isEqualTo(3);
-        assertThat(result.getBall()).isEqualTo(0);
-        assertThat(result.isGameEnd()).isTrue();
-    }
-
-    @Test
-    void strike() {
-        Balls computerBalls = new Balls(Arrays.asList(1, 2, 3));
-        BallStatus ballStatus = computerBalls.play(new Ball(1, 1));
-        assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);
+    void nothing() {
+        assertThat(computerBalls.play(new Ball(1,4))).isEqualTo(BallStatus.NOTHING);
     }
 
     @Test
     void ball() {
-        Balls computerBalls = new Balls(Arrays.asList(1, 2, 3));
-        BallStatus ballStatus = computerBalls.play(new Ball(1, 3));
-        assertThat(ballStatus).isEqualTo(BallStatus.BALL);
+        assertThat(computerBalls.play(new Ball(1,3))).isEqualTo(BallStatus.BALL);
     }
 
     @Test
-    void nothing() {
-        Balls computerBalls = new Balls(Arrays.asList(1, 2, 3));
-        BallStatus ballStatus = computerBalls.play(new Ball(1, 4));
-        assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+    void strike() {
+        assertThat(computerBalls.play(new Ball(1, 1))).isEqualTo(BallStatus.STRIKE);
+    }
+
+    @Test
+    void playNothing() {
+        PlayResult playResult = computerBalls.play(Arrays.asList(4, 5, 6));
+        assertThat(playResult.getStrikeCount()).isEqualTo(0);
+        assertThat(playResult.getBallCount()).isEqualTo(0);
+    }
+
+    @Test
+    void play_1strike_1ball() {
+        PlayResult playResult = computerBalls.play(Arrays.asList(1, 3, 4));
+        assertThat(playResult.getStrikeCount()).isEqualTo(1);
+        assertThat(playResult.getBallCount()).isEqualTo(1);
+    }
+
+    @Test
+    void play_3strikes() {
+        PlayResult playResult = computerBalls.play(Arrays.asList(1, 2, 3));
+        assertThat(playResult.getStrikeCount()).isEqualTo(3);
+        assertThat(playResult.getBallCount()).isEqualTo(0);
+        assertThat(playResult.isGameEnd()).isTrue();
     }
 }

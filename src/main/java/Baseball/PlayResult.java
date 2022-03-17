@@ -1,30 +1,34 @@
 package Baseball;
 
 public class PlayResult {
+    private Count strikeCount;
+    private Count ballCount;
 
-    private int strikeCount = 0;
-    private int ballCount = 0;
-
-    public int getStrike() {
-        return strikeCount;
+    public PlayResult() {
+        strikeCount = new Count();
+        ballCount = new Count();
     }
 
-    public int getBall() {
-        return ballCount;
+    public int getStrikeCount() {
+        return strikeCount.getCount();
+    }
+
+    public int getBallCount() {
+        return ballCount.getCount();
     }
 
     public void report(BallStatus ballStatus) {
         if(ballStatus.isStrike()) {
-            strikeCount++;
+            strikeCount.count();
             return;
         }
+
         if(ballStatus.isBall()) {
-            ballCount++;
-            return;
+            ballCount.count();
         }
     }
 
     public boolean isGameEnd() {
-        return strikeCount == 3;
+        return strikeCount.getCount() == 3;
     }
 }

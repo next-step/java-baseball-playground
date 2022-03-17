@@ -6,25 +6,22 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BallTest {
-    private Ball computerBall;
-
+    private Ball ball;
     @BeforeEach
     void setUp() {
-        computerBall = new Ball(1, 4);
-    }
-
-    @Test
-    void strike() {
-        assertThat(computerBall.play(new Ball(1, 4))).isEqualTo(BallStatus.STRIKE);
-    }
-
-    @Test
-    void ball() {
-        assertThat(computerBall.play(new Ball(2, 4))).isEqualTo(BallStatus.BALL);
+        ball = new Ball(1, 4);
     }
 
     @Test
     void nothing() {
-        assertThat(computerBall.play(new Ball(2, 5))).isEqualTo(BallStatus.NOTHING);
+        assertThat(ball.play(new Ball(2, 5))).isEqualTo(BallStatus.NOTHING);
     }
+
+    @Test
+    void ball() {
+        assertThat(ball.play(new Ball(2, 4))).isEqualTo(BallStatus.BALL);
+    }
+
+    @Test
+    void strike() { assertThat((ball.play(new Ball(1, 4)))).isEqualTo(BallStatus.STRIKE); }
 }

@@ -40,4 +40,22 @@ public class ThreeNumbers {
         }
         return uniqueNumber;
     }
+
+    public void init() {
+        first = 0;
+        second = 0;
+        third = 0;
+    }
+
+    public int getFirst() {
+        return first;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
+    public int getThird() {
+        return third;
+    }
 }

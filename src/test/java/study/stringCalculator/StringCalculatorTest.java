@@ -1,4 +1,4 @@
-package study;
+package study.stringCalculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
-    StringCalculator calculator = new StringCalculator();
+    private final StringCalculator calculator = new StringCalculator();
 
     /**
      *
@@ -28,7 +28,9 @@ public class StringCalculatorTest {
             "1 + 2 + 3 - 4, 2",
             "2 + 3 * 2 - 3 / 7, 1"})
     void test(String inputString, int expectedResult) {
-        int actualResult = calculator.inputString(inputString)
+        int actualResult = calculator
+                .input(inputString)
+                .splitInput(" ")
                 .calculate();
 
         assertThat(actualResult).isEqualTo(expectedResult);

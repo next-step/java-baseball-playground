@@ -28,7 +28,7 @@ public class NumberBaseballGame {
     private void askGameContinue() {
         gameContinueMessage();
         int continueGameToken = insertContinueGame();
-        if (isGameContinueRequest(continueGameToken)) {
+        if (!isGameContinueRequest(continueGameToken)) {
             continueToken = false;
         }
     }

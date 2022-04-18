@@ -26,7 +26,7 @@ public class NumberBaseballGame {
 
     private boolean askAgainUntilWin() {
         do {
-            insertExpectedThreeNumbers(sc.nextLine());
+            insertExpectedThreeNumbers();
             printScore();
         } while (!isWinningStatus());
 
@@ -42,7 +42,7 @@ public class NumberBaseballGame {
 
     private void printScore() {
         System.out.printf("\n%d볼", score.getBall());
-        System.out.printf("%d스트라이크", score.getStrike());
+        System.out.printf(" %d스트라이크", score.getStrike());
         if (isWinningStatus()) System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 
@@ -50,9 +50,9 @@ public class NumberBaseballGame {
         return score.getStrike() == 3;
     }
 
-    public void insertExpectedThreeNumbers(String input) {
+    public void insertExpectedThreeNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
-        trial.insertExpectedThreeNumbers(input);
+        trial.insertExpectedThreeNumbers(sc.nextLine());
         score = matcher.calculateScore(trial, answer);
     }
 }

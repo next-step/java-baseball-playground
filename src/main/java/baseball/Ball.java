@@ -6,10 +6,18 @@ public class Ball {
     private int index;
     private int ballNo;
 
+    /**
+     * 문제를 한 번에 해결하려고 하기보다는 가장 작은 단위로 쪼개서 구현하자.
+     */
     public Ball(int index, int ballNo) {
         this.index = index;
         this.ballNo = ballNo;
     }
+
+    /**
+     * 객체 필드를 사용해서 상태 확인을 하지 말고,
+     * 객체지향스럽게 객체에게 메시지를 보내서 상태를 확인하자.
+     */
     public BallStatus play(Ball ball) {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;

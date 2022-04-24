@@ -7,11 +7,19 @@ public class Balls {
     private List<Ball> answers;
 
     public Balls(List<Integer> balls) {
+        this.answers = makeBalls(balls);
+    }
+
+    /**
+     * 메서드 추출을 통해 역할을 명확하게 해보자.
+     */
+    private List<Ball> makeBalls(List<Integer> balls) {
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             result.add(new Ball(i + 1, balls.get(i)));
         }
-        this.answers = result;
+
+        return result;
     }
 
     public PlayResult play(List<Integer> balls) {

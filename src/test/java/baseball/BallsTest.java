@@ -30,4 +30,11 @@ public class BallsTest {
         BallStatus ballStatus = balls.play(new Ball(3, 1));
         assertThat(ballStatus).isEqualTo(BallStatus.BALL);
     }
+
+    @Test
+    @DisplayName("컴퓨터가 선택한 3개의 숫자와 사용자가 입력한 하나의 공이 낫싱")
+    void nothing() {
+        BallStatus ballStatus = balls.play(new Ball(3, 4));
+        assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+    }
 }

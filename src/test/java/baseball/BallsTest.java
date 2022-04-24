@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BallsTest {
@@ -70,5 +71,19 @@ public class BallsTest {
     void nothing() {
         BallStatus ballStatus = balls.play(new Ball(3, new BallNumber(4)));
         assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+    }
+
+    @Test
+    @DisplayName("사용자가 세자리 숫자를 입력하지 않을 경우 예외처리")
+    void user_input_three_number() {
+        assertThatThrownBy(() -> {
+            balls.play(Arrays.asList(1, 2, 3, 4));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자는 세자리로 입력해야 합니다.");
+
+        assertThatThrownBy(() -> {
+            balls.play(Arrays.asList(1, 2));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자는 세자리로 입력해야 합니다.");
     }
 }

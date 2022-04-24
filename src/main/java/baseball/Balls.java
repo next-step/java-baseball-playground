@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
+    public static final int BALL_SIZE = 3;
+
     private List<Ball> answers;
 
     public Balls(List<Integer> balls) {
@@ -14,12 +16,20 @@ public class Balls {
      * 메서드 추출을 통해 역할을 명확하게 해보자.
      */
     private List<Ball> makeBalls(List<Integer> balls) {
+        checkBallSize(balls);
+
         List<Ball> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BALL_SIZE; i++) {
             result.add(new Ball(i + 1, new BallNumber(balls.get(i))));
         }
 
         return result;
+    }
+
+    private void checkBallSize(List<Integer> balls) {
+        if (balls.size() < BALL_SIZE || balls.size() > BALL_SIZE) {
+            throw new IllegalArgumentException("숫자는 세자리로 입력해야 합니다.");
+        }
     }
 
     public PlayResult play(List<Integer> balls) {

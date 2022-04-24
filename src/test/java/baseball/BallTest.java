@@ -22,4 +22,12 @@ public class BallTest {
         BallStatus ballStatus = com.play(new Ball(3, 1));
         assertThat(ballStatus).isEqualTo(BallStatus.BALL);
     }
+
+    @Test
+    @DisplayName("같은 수가 아니면 낫싱")
+    void nothing() {
+        Ball com = new Ball(1, 1);
+        BallStatus ballStatus = com.play(new Ball(3, 2));
+        assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+    }
 }

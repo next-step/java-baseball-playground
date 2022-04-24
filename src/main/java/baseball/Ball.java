@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Ball {
     private int index;
-    private int ballNo;
+    private BallNumber ballNo;
 
     /**
      * 문제를 한 번에 해결하려고 하기보다는 가장 작은 단위로 쪼개서 구현하자.
      */
-    public Ball(int index, int ballNo) {
+    public Ball(int index, BallNumber ballNo) {
         this.index = index;
         this.ballNo = ballNo;
     }
@@ -31,7 +31,7 @@ public class Ball {
     }
 
     private boolean matchBallNo(Ball ball) {
-        return this.ballNo == ball.ballNo;
+        return this.ballNo.matchBallNo(ball.ballNo);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return index == ball.index && ballNo == ball.ballNo;
+        return index == ball.index && Objects.equals(ballNo, ball.ballNo);
     }
 
     @Override

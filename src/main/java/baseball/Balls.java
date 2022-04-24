@@ -16,7 +16,7 @@ public class Balls {
     private List<Ball> makeBalls(List<Integer> balls) {
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            result.add(new Ball(i + 1, balls.get(i)));
+            result.add(new Ball(i + 1, new BallNumber(balls.get(i))));
         }
 
         return result;

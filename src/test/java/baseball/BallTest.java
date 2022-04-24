@@ -14,4 +14,12 @@ public class BallTest {
         BallStatus ballStatus = com.play(new Ball(1, 1));
         assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);
     }
+
+    @Test
+    @DisplayName("같은 숫자가 있지만 다른 자리에 있으면 볼")
+    void ball() {
+        Ball com = new Ball(1, 1);
+        BallStatus ballStatus = com.play(new Ball(3, 1));
+        assertThat(ballStatus).isEqualTo(BallStatus.BALL);
+    }
 }

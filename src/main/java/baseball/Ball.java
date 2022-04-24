@@ -15,7 +15,15 @@ public class Ball {
             return BallStatus.STRIKE;
         }
 
+        if (this.matchBallNo(ball)) {
+            return BallStatus.BALL;
+        }
+
         return BallStatus.NOTHING;
+    }
+
+    private boolean matchBallNo(Ball ball) {
+        return this.ballNo == ball.ballNo;
     }
 
     @Override

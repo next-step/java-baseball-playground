@@ -1,9 +1,9 @@
 package study;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +18,7 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);
     }
+
     //Test Case 구현
     @Test
     @DisplayName("Set 사이즈 확인")
@@ -27,11 +28,9 @@ public class SetTest {
 
     @Test
     void contains(){
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
-        @parameterizedTest
-
-    }
+        Assertions.assertThat(numbers.contains(1)).isTrue();
+        Assertions.assertThat(numbers.contains(2)).isTrue();
+        Assertions.assertThat(numbers.contains(3)).isTrue();
     }
 }
+

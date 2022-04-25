@@ -4,12 +4,22 @@ import java.util.List;
 
 public class Game {
 
+    private static NumberGenerator numberGenerator;
+    private static InputView inputView;
+    private static ResultView resultView;
     public static void main(String[] args) {
 
-        NumberGenerator numberGenerator = new NumberGenerator();
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+        numberGenerator = new NumberGenerator();
+        inputView = new InputView();
+        resultView = new ResultView();
 
+        boolean inGame = true;
+        while(inGame) {
+            inGame = startGame();
+        }
+    }
+
+    private static boolean startGame() {
         Balls com = numberGenerator.randomNumberGenerator();
         PlayResult result = new PlayResult();
         while (!result.isGameEnd()) {
@@ -18,6 +28,16 @@ public class Game {
             resultView.result(result);
         }
 
-        resultView.isGameEnd();
+        resultView.gameEndMessage();
+
+        return restartGame();
+    }
+
+    private static boolean restartGame() {
+        if (inputView.isGameEnd()) {
+            return false;
+        }
+
+        return true;
     }
 }

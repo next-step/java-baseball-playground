@@ -15,4 +15,8 @@ public class ResultView {
 
         System.out.println(sb.toString());
     }
+
+    public void isGameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

@@ -7,10 +7,17 @@ public class Game {
     public static void main(String[] args) {
 
         NumberGenerator numberGenerator = new NumberGenerator();
-        Balls com = numberGenerator.randomNumberGenerator();
-        List<Integer> user = InputView.userInput();
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
-        PlayResult result = com.play(user);
-        ResultView.result(result);
+        Balls com = numberGenerator.randomNumberGenerator();
+        PlayResult result = new PlayResult();
+        while (!result.isGameEnd()) {
+            List<Integer> user = inputView.userInput();
+            result = com.play(user);
+            resultView.result(result);
+        }
+
+        resultView.isGameEnd();
     }
 }

@@ -25,6 +25,6 @@ public class PlayResult {
     }
 
     public boolean isGameEnd() {
-        return strike == 3;
+        return strike == Balls.BALL_SIZE;
     }
 }

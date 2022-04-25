@@ -6,7 +6,7 @@ public class NumberGenerator {
 
     public Balls randomNumberGenerator() {
         List<Integer> result = new ArrayList<>();
-        while(result.size() < 3) {
+        while(result.size() < Balls.BALL_SIZE) {
             int num = new Random().nextInt(9) + 1;
             if (result.contains(num)) {
                 continue;

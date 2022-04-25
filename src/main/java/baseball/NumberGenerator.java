@@ -4,7 +4,7 @@ import java.util.*;
 
 public class NumberGenerator {
 
-    public List<Integer> randomNumberGenerator() {
+    public Balls randomNumberGenerator() {
         List<Integer> result = new ArrayList<>();
         while(result.size() < 3) {
             int num = new Random().nextInt(9) + 1;
@@ -14,6 +14,6 @@ public class NumberGenerator {
             result.add(num);
         }
 
-        return result;
+        return new Balls(result);
     }
 }

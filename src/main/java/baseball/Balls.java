@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Balls {
     public static final int BALL_SIZE = 3;
@@ -17,6 +19,7 @@ public class Balls {
      */
     private List<Ball> makeBalls(List<Integer> balls) {
         checkBallSize(balls);
+        checkBallDuplication(balls);
 
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < BALL_SIZE; i++) {
@@ -24,6 +27,17 @@ public class Balls {
         }
 
         return result;
+    }
+
+    private void checkBallDuplication(List<Integer> balls) {
+        Set<Integer> set = new HashSet<>();
+        for (Integer ball : balls) {
+            set.add(ball);
+        }
+
+        if (set.size() != BALL_SIZE) {
+            throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
+        }
     }
 
     private void checkBallSize(List<Integer> balls) {

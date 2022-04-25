@@ -86,4 +86,13 @@ public class BallsTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자는 세자리로 입력해야 합니다.");
     }
+
+    @Test
+    @DisplayName("사용자가 입력한 숫자에 중복값이 있을 경우 예외처리")
+    void user_input_duplication_number() {
+        assertThatThrownBy(() -> {
+            balls.play(Arrays.asList(1, 2, 2));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복되지 않는 숫자를 입력해야 합니다.");
+    }
 }

@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 
 group = 'camp.nextstep'
 version = '1.0.0'
-sourceCompatibility = '1.8'
+sourceCompatibility = "14"
 
 repositories {
 	mavenCentral()
@@ -12,8 +12,15 @@ repositories {
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
     testImplementation "org.assertj:assertj-core:3.19.0"
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
 test {
 	useJUnitPlatform()
 }
+targetCompatibility = JavaVersion.VERSION_14

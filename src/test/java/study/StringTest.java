@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -15,6 +16,7 @@ public class StringTest {
         String actual = "abc".replace("b", "d");
         assertThat(actual).isEqualTo("adc");
     }
+    //요구 사항1
     @Test
     void split(){
         String[] actual = "1".split(",");
@@ -26,6 +28,7 @@ public class StringTest {
         assertThat(actual1).containsExactly("1","2");
         System.out.println(Arrays.toString(actual1));
     }
+    //요구 사항2
     @Test
     void substring(){
         String actual = "(1,2)";
@@ -35,16 +38,17 @@ public class StringTest {
         assertThat(actual).isEqualTo("1,2");
     }
 
+    //요구 사항3
     @Test
+    @DisplayName("인덱스를 초과하면 예외 발생")
     void charAt(){
         assertThatThrownBy(() -> {
             String actual = "abc";
             System.out.println(actual.charAt(2));
-
             throw new IndexOutOfBoundsException("boom!");
 
         }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("인덱스 범위를 초과했습니다.");
+                .hasMessageContaining("not");
 
     }
 

@@ -30,8 +30,18 @@ public class StringCalculator {
         }
     }
 
-    //사칙연산기호가 아닌경우
-    public static void notCal(String l)throws IllegalArgumentException{
-        if(l != )
+    //사칙연산 부분을 각각의 메서드로 나누기
+    public int calculate(int firstvalue, char operator, int secondvalue){
+        if(operator == '+')
+            return add(firstvalue, secondvalue);
+        if(operator == '-')
+            return subtract(firstvalue, secondvalue);
+        if(operator == '*')
+            return multiply(firstvalue, secondvalue);
+        if(operator == '/')
+            return divide(firstvalue, secondvalue);
+        else
+            System.out.println("잘못된 값 입력");
+        throw new RuntimeException();
     }
 }

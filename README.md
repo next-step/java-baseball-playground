@@ -24,3 +24,9 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+---
+* 유효성 검사
+  * 1 ~ 9 까지의 숫자인가?
+  * 중복 되지 않는가?
+  * 3자리 인가?

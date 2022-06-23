@@ -3,10 +3,10 @@ package study.baseball;
 import java.util.Objects;
 
 public class Ball {
-    private final int position;
-    private final int number;
+    private final Integer position;
+    private final Integer number;
 
-    public Ball(int position, int number) {
+    public Ball(Integer position, Integer number) {
         this.position = position;
         this.number = number;
     }

@@ -3,26 +3,26 @@ package study.baseball;
 import java.util.Objects;
 
 public class Ball {
+    private final int position;
+    private final int number;
 
-    private final Integer number;
-    private final Integer position;
-
-
-    public Ball(Integer number, Integer position) {
-        this.number = number;
+    public Ball(int position, int number) {
         this.position = position;
+        this.number = number;
     }
 
-    public boolean isStrike(Ball ball) {
-        return this.equals(ball);
+    public BallStatus play(Ball ball) {
+        if (this.equals(ball)) {
+            return BallStatus.STRIKE;
+        }
+        if (isBall(ball)) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
     }
 
-    public boolean isBall(Ball ball) {
-        return this.number.equals(ball.number) && !this.position.equals(ball.position);
-    }
-
-    public boolean isFourBalls(Ball ball) {
-        return !this.number.equals(ball.number) && !this.position.equals(ball.position);
+    private boolean isBall(Ball ball) {
+        return ball.number == this.number;
     }
 
     @Override
@@ -30,16 +30,11 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return Objects.equals(number, ball.number) && Objects.equals(position, ball.position);
+        return position == ball.position && number == ball.number;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, position);
-    }
-
-    @Override
-    public String toString() {
-        return "number=" + number + ", position=" + position;
+        return Objects.hash(position, number);
     }
 }

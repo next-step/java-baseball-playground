@@ -19,6 +19,15 @@ public class Balls {
         return answerBalls;
     }
 
+    public Score play(List<Integer> userNumbers) {
+        Score score = new Score();
+        List<Ball> userBall = mapBalls(userNumbers);
+        for (Ball ball : userBall) {
+            score.add(this.play(ball));
+        }
+        return score;
+    }
+
     public BallStatus play(Ball ball) {
         return  answers.stream()
                        .map(answer -> answer.play(ball))

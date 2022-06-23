@@ -17,6 +17,31 @@ class BallsTest {
     }
 
     @Test
+    @DisplayName("3스트라이크")
+    void allStrike() {
+        Score score = computerBalls.play(Arrays.asList(1, 2, 3));
+        Assertions.assertThat(score.strike()).isEqualTo(3);
+        Assertions.assertThat(score.ball()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("2볼 1스트라이크")
+    void twoBall_oneStrike() {
+        Score score = computerBalls.play(Arrays.asList(1, 3, 2));
+        Assertions.assertThat(score.strike()).isEqualTo(1);
+        Assertions.assertThat(score.ball()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("1볼 1스트라이크")
+    void oneBall_oneStrike() {
+        Score score = computerBalls.play(Arrays.asList(1, 4, 2));
+        Assertions.assertThat(score.strike()).isEqualTo(1);
+        Assertions.assertThat(score.ball()).isEqualTo(1);
+
+    }
+
+    @Test
     @DisplayName("낫싱 테스트")
     void nothing() {
         Assertions.assertThat(computerBalls.play(new Ball(2 ,5))).isEqualTo(BallStatus.NOTHING);

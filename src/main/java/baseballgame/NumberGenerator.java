@@ -1,16 +1,17 @@
 package baseballgame;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class NumberGenerator {
 
-    public Set<Integer> createNumbers() {
-        Set<Integer> computer = new HashSet<>();
+    public List<Integer> createNumbers() {
+        List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
-            computer.add(new Random().nextInt(9) + 1);
+            int randomNumber = new Random().nextInt(9) + 1;
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
         }
         return computer;
     }

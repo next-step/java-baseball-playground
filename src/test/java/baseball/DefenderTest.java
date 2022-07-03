@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.extractProperty;
 
 import baseball.Defender.RandomUtil;
 import org.junit.jupiter.api.DisplayName;
@@ -47,5 +48,51 @@ public class DefenderTest {
         assertThat(defender.getGameDigitsAt(0)).isNotEqualTo(defender.getGameDigitsAt(1));
         assertThat(defender.getGameDigitsAt(0)).isNotEqualTo(defender.getGameDigitsAt(2));
         assertThat(defender.getGameDigitsAt(1)).isNotEqualTo(defender.getGameDigitsAt(2));
+    }
+
+    private Defender makeDefenderWithSampleGameDigits(String sample) {
+        Defender defender = makeDefenderWithFakeRandomUtil(sample);
+        defender.prepareGameDigits();
+
+        return defender;
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"145:1", "425:1", "453:1", "124:2", "143:2", "123:3"}, delimiter = ':')
+    @DisplayName("주어진 123과 평가해서 스트라이크 개수를 확인한다")
+    void evaluateStrikeCount(String input, int expected) {
+        Defender defender = makeDefenderWithSampleGameDigits("123");
+
+        defender.evaluate(input);
+
+        int actual = defender.getStrikeCount();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"415:1", "451:1", "245:1", "412:2", "312:3"}, delimiter = ':')
+    @DisplayName("주어진 123과 평가해서 볼 개수를 확인한다")
+    void evaluateBallCount(String input, int expected) {
+        Defender defender = makeDefenderWithSampleGameDigits("123");
+
+        defender.evaluate(input);
+
+        int actual = defender.getBallCount();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:true", "132:false", "213:false", "321:false"}, delimiter = ':')
+    @DisplayName("주어진 123과 평가해서 3스트라이크인지 확인한다")
+    void evaluateTripleStrike(String input, Boolean expected) {
+        Defender defender = makeDefenderWithSampleGameDigits("123");
+
+        defender.evaluate(input);
+
+        Boolean actual = defender.isTripleStrike();
+
+        assertThat(actual).isEqualTo(expected);
     }
 }

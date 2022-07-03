@@ -25,23 +25,37 @@ public class InputView {
         scannerUtil = new JavaScanner();
     }
 
-    public Boolean verifyUniqueTripleGameDigits(String userInput) {
-        if (userInput.charAt(0) == userInput.charAt(1)) {
+    public Boolean verifyUniqueTripleGameDigits(String input) {
+        if (input.charAt(0) == input.charAt(1)) {
             return false;
         }
 
-        if (userInput.charAt(0) == userInput.charAt(2)) {
+        if (input.charAt(0) == input.charAt(2)) {
             return false;
         }
 
-        return userInput.charAt(1) != userInput.charAt(2);
+        return input.charAt(1) != input.charAt(2);
     }
 
-    public Boolean verifyTripleGameDigits(String userInput) {
-        return Pattern.matches(TRIPLE_DIGIT_REGEX_PATTERN, userInput);
+    public Boolean verifyTripleGameDigits(String input) {
+        return Pattern.matches(TRIPLE_DIGIT_REGEX_PATTERN, input);
     }
 
     public void printInputTripleGameDigitsMessage() {
         System.out.print("숫자를 입력해 주세요 : ");
+    }
+
+    public String readTripleGameDigits() {
+        String userInput = scannerUtil.nextLine();
+
+        if (verifyTripleGameDigits(userInput) == false) {
+            throw new IllegalArgumentException(String.format("숫자3자리 규칙에 맞지 않음: %s", userInput));
+        }
+
+        if (verifyUniqueTripleGameDigits(userInput) == false) {
+            throw new IllegalArgumentException(String.format("숫자 중에 중복값이 있음: %s", userInput));
+        }
+
+        return userInput;
     }
 }

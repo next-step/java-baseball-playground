@@ -48,9 +48,8 @@ public class InputViewTest {
 
     InputView makeInputViewWithSampleInput(String input) {
         FakeScanner fakeScanner = new FakeScanner(input);
-        InputView inputView = new InputView(fakeScanner);
 
-        return inputView;
+        return new InputView(fakeScanner);
     }
 
     @ParameterizedTest
@@ -72,6 +71,28 @@ public class InputViewTest {
 
         assertThatThrownBy(() -> {
             String dummy = inputView.readTripleGameDigits();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:false", "a:false"}, delimiter = ':')
+    @DisplayName("메뉴 입력이 유효한지 확인한다")
+    void verifyMenuInput(String input, Boolean expected) {
+        InputView inputView = new InputView();
+
+        Boolean actual = inputView.verifyMenuInput(input);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3", "a"})
+    @DisplayName("잘못된 메뉴를 입력할 때 예회를 발생하는지 검사한다")
+    void checkThrowExceptionWhenWrongMenuInput(String input) {
+        InputView inputView = makeInputViewWithSampleInput(input);
+
+        assertThatThrownBy(() -> {
+           String dummy = inputView.readMenuInput();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

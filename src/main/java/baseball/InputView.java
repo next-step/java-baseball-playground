@@ -8,10 +8,6 @@ public class InputView {
     ScannerUtil scannerUtil;
     final String TRIPLE_DIGIT_REGEX_PATTERN = "^\\d{3}$";
 
-    public interface ScannerUtil {
-        String nextLine();
-    }
-
     static class JavaScanner implements ScannerUtil {
 
         @Override

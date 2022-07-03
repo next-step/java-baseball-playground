@@ -10,11 +10,6 @@ public class Defender {
     int ballCount;
     RandomUtil randomUtil;
 
-
-    public interface RandomUtil {
-
-        int generateRandomGameDigit();
-    }
     public static class MathRandomUtil implements RandomUtil {
 
         @Override
@@ -23,6 +18,7 @@ public class Defender {
         }
 
     }
+
     public Defender(RandomUtil customRandom) {
         gameDigits = new int[]{0,0,0};
         randomUtil = customRandom;

@@ -13,8 +13,8 @@ public class Defender {
     public static class MathRandomUtil implements RandomUtil {
 
         @Override
-        public int generateRandomGameDigit() {
-            return (int) (Math.random() * 10 % 10);
+        public int generateRandomGameDigit(int min, int max) {
+            return min + (int)(Math.random() * ((max-min)+1));
         }
 
     }
@@ -33,7 +33,7 @@ public class Defender {
         Set<Integer> randomSet = new HashSet<>();
 
         while (randomSet.size() < Constant.MAX_DIGITS_LENGTH) {
-            int digit = randomUtil.generateRandomGameDigit();
+            int digit = randomUtil.generateRandomGameDigit(1,9);
             randomSet.add(digit);
         }
 

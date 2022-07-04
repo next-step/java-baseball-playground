@@ -1,5 +1,8 @@
 package baseball;
 
+import static baseball.Constant.MENU_CLOSE;
+import static baseball.Constant.MENU_RETRY;
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -7,8 +10,6 @@ public class InputView {
 
     ScannerUtil scannerUtil;
     final String TRIPLE_DIGIT_REGEX_PATTERN = "^\\d{3}$";
-    final String MENU_RETRY = "1";
-    final String MENU_CLOSE = "2";
     final String MENU_REGEX_PATTERN = String.format("^[%s%s]$", MENU_RETRY, MENU_CLOSE);
 
     static class JavaScanner implements ScannerUtil {

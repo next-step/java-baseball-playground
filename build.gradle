@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 group = 'camp.nextstep'
 version = '1.0.0'
@@ -17,3 +18,18 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes "Main-Class": "baseball.Application"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+application {
+    mainClassName = 'baseball.Application'
+}
+

@@ -20,7 +20,7 @@ public class DefenderTest {
         }
 
         @Override
-        public int generateRandomGameDigit() {
+        public int generateRandomGameDigit(int min, int max) {
             int picked = Integer.parseInt(String.valueOf(numbers.charAt(currentIndex)));
             currentIndex = (currentIndex + 1) % numbers.length();
 

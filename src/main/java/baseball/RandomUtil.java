@@ -1,5 +1,5 @@
 package baseball;
 
 public interface RandomUtil {
-    int generateRandomGameDigit();
+    int generateRandomGameDigit(int min, int max);
 }

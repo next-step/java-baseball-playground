@@ -68,6 +68,6 @@ public class StringTest {
 //                .withMessageContaining("boom")
 //                .withNoCause();
     }
-    
+
 }
 

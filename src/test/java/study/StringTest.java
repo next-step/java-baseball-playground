@@ -33,7 +33,7 @@ public class StringTest {
 
     /**
      * hasNoCause() : thrown 여부 확인
-     * withMessageContaining : 에러 메세지에 특정 문자열이 포함되는지 확
+     * withMessageContaining : 에러 메세지에 특정 문자열이 포함되는지 확인
      */
     @Test
     @DisplayName("Get specific location of string test")

@@ -1,6 +1,12 @@
+package string_calculator;
+
 import java.security.InvalidParameterException;
 import java.util.Scanner;
 
+
+/**
+ * StringCalculator Version 1.
+ */
 public class StringCalculator {
 
     private String[] inputs;

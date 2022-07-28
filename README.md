@@ -1,8 +1,8 @@
 ##<문자열 계산기>
-###[1차 레거시 코드]()
+###[1차 레거시 코드](https://github.com/JIWEON-JEONG/java-baseball-playground/blob/main/src/main/java/string_calculator/StringCalculator.java)
 <br>
 
-###[2차 레거시 코드]()
+###[2차 레거시 코드](https://github.com/JIWEON-JEONG/java-baseball-playground/blob/main/src/main/java/string_calculator/StringCalculatorV2.java)
 
 ___
 
@@ -28,8 +28,37 @@ ___
 #To do list 는 언제나 바뀔 수 있다.
 
 ##기능 목록 - To do list
+- [ ] 1부터 9까지의 서로 다른 임의의 수 3개를 생성한다.
+- [ ] 컴퓨터의 수(3자리)와 플레이어의 수(3자리)를 비교할 수 있다.
+  - [ ] 몇개의 숫자가 같은지를 알 수 있다.
+  - [ ] 같은 수가 다른 자리에 있으면 볼이다.
+  - [ ] 같은 수가 같은 자리에 있으면 스트라이크이다.
+  - [ ] 같은 수가 전혀 없으면 낫싱이다.
+---
+##Gradle?
+- 빌드 자동화 도구.
+###나오게 된 계기
+- 예전에는 자바에서 어떤 라이브러리를 사용하기 위해서, 해당 라이브러리를 .JAR 또는 .WAR 파일로 다운받아 External Libraries 에 넣어줘야 했다.
+- 문제점은 버전이 바뀔때마다 삭제하고 설치하고 넣어주는 작업이 반복적으로 이루어져야했다는점.
+- 그래서 빌드 자동화 도구를 통해서 이를 해결 했는데 (파일로 관리하여 쉽게 버전 업데이트 가능.)
+- 대표적으로 Gradle 과 Maven 이 있다.
+###어디서 라이브러리들을 다운받아 올까?
+
+````
+repositories {
+mavenCentral()
+}
+
+dependencies {
+testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
+testImplementation "org.assertj:assertj-core:3.19.0"
+}
+````
+- 다운로드는 mavenCentral 이란 레포지토리 에서 해당 라이브러리 들을 다운받아 온다
+- 그 후에 External Libraries 에 gradle 이 자동으로 추가 해준다.
 
 ---
+
 #기능 요구 사항
 기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
 

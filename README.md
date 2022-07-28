@@ -1,9 +1,15 @@
 ##<문자열 계산기>
 ###[1차 레거시 코드]()
+<br>
+
 ###[2차 레거시 코드]()
+
 ___
+
 ##<야구 게임>
 ###[1차 레거시 코드](https://github.com/JIWEON-JEONG/Study/tree/master/src/com/company/code_squad/lv2)
+<br>
+
 ###[2차 레거시 코드]()
 
 ___

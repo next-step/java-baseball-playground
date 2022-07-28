@@ -1,26 +1,94 @@
-## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
+##<문자열 계산기>
+###[1차 레거시 코드](https://github.com/JIWEON-JEONG/java-baseball-playground/blob/main/src/main/java/string_calculator/StringCalculator.java)
+<br>
+
+###[2차 레거시 코드](https://github.com/JIWEON-JEONG/java-baseball-playground/blob/main/src/main/java/string_calculator/StringCalculatorV2.java)
+
+___
+
+##<야구 게임>
+###[1차 레거시 코드](https://github.com/JIWEON-JEONG/Study/tree/master/src/com/company/code_squad/lv2)
+<br>
+
+###[2차 레거시 코드]()
+
+___
+
+##배운점
+- 어떤 기능을 개발 할때 , 그 기능을 작은 부분으로 나누어서 생각하는게 좋을 수 있다.
+  작은 부분이라 하면 큰 기능을 작게 나누는 것도 포함되지만, 그 기능을 쉽게 만들어서 먼저 구현하고 거기서 업그레이드 하여 구현하는 방법도 있음을 배웠다.
+- 객체에 직접 접근 하기 보다는 메시지를 통해 접근 하는 것이 확장성 이나 유연성이 좋은 것을 개념적으로만 알고 있었는데, 실제 코드에 적용 하는 모습을 보니 더 와닿았다.
+- 메시지를 통해 상태 접근 또는 변경
+- TDD : 테스트 코드 작성 -> 테스트코드 실패 -> application 로직 작성 -> 테스트 코드 성공 -> 리팩토링 -> 테스트코드 작성 ...
+
+___
+
+##직접 느낀 TDD 의 장단점
+___
+#To do list 는 언제나 바뀔 수 있다.
+
+##기능 목록 - To do list
+- [ ] 1부터 9까지의 서로 다른 임의의 수 3개를 생성한다.
+- [ ] 컴퓨터의 수(3자리)와 플레이어의 수(3자리)를 비교할 수 있다.
+  - [ ] 몇개의 숫자가 같은지를 알 수 있다.
+  - [ ] 같은 수가 다른 자리에 있으면 볼이다.
+  - [ ] 같은 수가 같은 자리에 있으면 스트라이크이다.
+  - [ ] 같은 수가 전혀 없으면 낫싱이다.
+---
+##Gradle?
+- 빌드 자동화 도구.
+###나오게 된 계기
+- 예전에는 자바에서 어떤 라이브러리를 사용하기 위해서, 해당 라이브러리를 .JAR 또는 .WAR 파일로 다운받아 External Libraries 에 넣어줘야 했다.
+- 문제점은 버전이 바뀔때마다 삭제하고 설치하고 넣어주는 작업이 반복적으로 이루어져야했다는점.
+- 그래서 빌드 자동화 도구를 통해서 이를 해결 했는데 (파일로 관리하여 쉽게 버전 업데이트 가능.)
+- 대표적으로 Gradle 과 Maven 이 있다.
+###어디서 라이브러리들을 다운받아 올까?
+
+````
+repositories {
+mavenCentral()
+}
+
+dependencies {
+testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
+testImplementation "org.assertj:assertj-core:3.19.0"
+}
+````
+- 다운로드는 mavenCentral 이란 레포지토리 에서 해당 라이브러리 들을 다운받아 온다
+- 그 후에 External Libraries 에 gradle 이 자동으로 추가 해준다.
 
 ---
-## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
 
----
-1. 피드백 강의 전까지 미션 진행 
-> 피드백 강의 전까지 혼자 힘으로 미션 진행. 미션을 진행하면서 하나의 작업이 끝날 때 마다 add, commit
-> 예를 들어 다음 숫자 야구 게임의 경우 0, 1, 2단계까지 구현을 완료한 후 push
+#기능 요구 사항
+기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
 
-![mission baseball](https://raw.githubusercontent.com/next-step/nextstep-docs/master/playground/images/mission_baseball.png)
+같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 포볼 또는 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
 
----
-2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.
+e.g. 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우 : 1스트라이크, 456을 제시한 경우 : 1볼 1스트라이크, 789를 제시한 경우 : 낫싱
+위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게 임 플레이어는 컴퓨터가 생각하고 있는 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한 결과를 출력한다.
+이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
+게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 
----
-3. Git 브랜치를 master 또는 main으로 변경한 후 피드백을 반영하기 위한 새로운 브랜치를 생성한 후 처음부터 다시 미션 구현을 도전한다.
-
-```
-git branch -a // 모든 로컬 브랜치 확인
-git checkout master // 기본 브랜치가 master인 경우
-git checkout main // 기본 브랜치가 main인 경우
-
-git checkout -b 브랜치이름
-ex) git checkout -b apply-feedback
+___
+#프로그래밍 요구사항
+1. ##자바 코드 컨벤션을 지키면서 프로그래밍한다.
+기본적으로 Google Java Style Guide을 원칙으로 한다.
+단, 들여쓰기는 '2 spaces'가 아닌 '4 spaces'로 한다.
+___
+2. ##indent(인덴트, 들여쓰기) depth를 2가 넘지 않도록 구현한다. 1까지만 허용한다.
+예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
+___
+3. ##else 예약어를 쓰지 않는다.
+힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+___
+4. ##모든 로직에 단위 테스트를 구현한다.
+단, UI(System.out, System.in) 로직은 제외
+핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
+UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
+___
+5. ##3항 연산자를 쓰지 않는다.
+___
+6. ##함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 ```

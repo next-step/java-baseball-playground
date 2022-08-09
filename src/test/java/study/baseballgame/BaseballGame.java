@@ -1,15 +1,95 @@
 package study.baseballgame;
 
-public class BaseballGame {
+import java.io.IOException;
 
-    /*
-    1. 게임이 시작되면 서로다른 숫자로 이루어진 3자리 수 생성 start()메서드 안에 getNumber()메서드
-    2. 사용자 입력 가능한 scanner 필요
-    3. vaild() 메서드를 통해서 해당 숫자가 몇개가 맞는지 체크/ 두가지 valid가 필요할 것 같다.
-       사용자의 입력에 중복되는 숫자 또는 0이 입력되었는지 체크
-       각 자리를 배열의 인덱스로 받는게 더 편할 것 같다.
-    4. 스트라이크와 볼을 통해서 힌트제공, 같은 자리 같은 숫자이면 스트라이크 다른 자리에 같은 숫자 존재시
-     */
+public class BaseballGame  {
 
+    //상속 안됨
+    private final int[] randomNumber = new int[3];
+
+    private BaseballGame() throws IOException{
+            makeNanSu();
+    }
+
+    // 게임이 시작되고 나면 입력값을 받아야한다.
+    public static BaseballGame start() throws IOException {
+        return new BaseballGame();
+    }
+
+    private void makeNanSu(){
+        for ( int i = 0 ; i < randomNumber.length; i++){
+
+            randomNumber[i] = (int) Math.abs(Math.random() * 9 + 1);
+
+            if(i != 0 && randomNumber[i] == randomNumber[i-1] || i == 2 && randomNumber[0] == randomNumber[2]){
+                i--;
+            }
+        }
+    }
+
+    // 받은 입력값을 필터링
+    // 조건 1. 숫자의 조합이 맞는가? -- 정규식
+    // 조건 2. 0이 포함되어 있는가? -- 그냥 0 체크
+    public boolean valid(String num) throws IllegalArgumentException{
+
+        if(num.length() != 3){
+
+           throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
+        }
+        if(num.charAt(0) == num.charAt(1) || num.charAt(1) == num.charAt(2) || num.charAt(0) == num.charAt(2)){
+
+            throw new IllegalArgumentException("서로 다른 숫자들을 입력하세요.");
+        }
+
+        if(!num.matches("[1-9]+")){
+
+            //throw new IllegalArgumentException(NamingTest.ONETONINE.getName());
+        }
+
+        return true;
+    }
+
+
+
+    public int checkStrikeAndBall(String num){
+
+        char[] gettingNumber = new char[3];
+        for (int i = 0 ; i < 3; i++){
+            gettingNumber[i] = num.charAt(i);
+        }
+
+
+       int strike = 0 ;
+       int ball = 0;
+
+       for ( int i = 0 ; i < randomNumber.length; i++){
+            if (randomNumber[i] == Character.getNumericValue(gettingNumber[i])){
+              strike++;
+            }
+            ball += checkBall(i, gettingNumber);
+       }
+
+       if(strike ==3){
+           System.out.println("홈런입니다.");
+       }
+
+        System.out.println("ball = " + ball + " " + "strike = " + strike);
+
+       return strike;
+    }
+
+    private int checkBall(int j,char[] gettingNumber){
+        int ball = 0;
+        for( int i = 0; i < randomNumber.length; i++){
+            if(j == i){
+                continue;
+            }
+
+            if(randomNumber[j] == Character.getNumericValue(gettingNumber[i])){
+                ball++;
+            }
+        }
+        return ball;
+    }
 
 }

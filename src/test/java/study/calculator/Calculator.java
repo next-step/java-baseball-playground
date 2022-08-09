@@ -19,7 +19,7 @@ public final class Calculator {
    }
 
    //생성자 숨김을 위한 정적 팩터리 메서드 구현
-   public static Calculator valuOf(String target) throws Exception{
+   public static Calculator isCalculaor(String target) throws Exception{
        return  new Calculator(target) ;
    }
 
@@ -38,7 +38,7 @@ public final class Calculator {
         String[] targets = target.split(" ");
         vallidation(targets);
         result = Integer.parseInt(targets[0]);
-        int second =0;
+        int second = 0;
 
         for(int i = 1; i < targets.length; i++){
             if(targets[i].matches("[+\\-*/]")){

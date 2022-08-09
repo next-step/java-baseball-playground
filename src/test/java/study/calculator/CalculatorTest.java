@@ -1,6 +1,6 @@
 package study.calculator;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +30,8 @@ public class CalculatorTest {
     @Test
     @DisplayName("불변객체 변경 데이터 최소화")
     void test1() throws Exception{
-        Calculator result = Calculator.valuOf("2 + 3 + 4 * 5");
+        Calculator result = Calculator.isCalculaor("2 5 3 * 4");
+        Assertions.assertThat(result.getResult()).isEqualTo(60);
         System.out.println("result = " + result.getResult());
     }
 

@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -54,6 +55,7 @@ public class StringTest {
 
 
     @Test
+    @Nested
     @DisplayName("요구사항3")
     void request3(){
         /*

@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -73,12 +77,28 @@ public class StringTest {
         assertThat(indexChar+"").isEqualTo(abc.charAt(index)+"");
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> {
-
-                    char indChar = abc.charAt(4);
-                    assertThat(indChar+"").isEqualTo(abc.charAt(index)+"");
-
-                }).withMessageMatching("String index out of range: 4");
+                .isThrownBy(() -> abc.charAt(4))
+                .withMessageMatching("String index out of range: \\d+");
 
     }
+
+
+    //assertThatExceptionOfType 사용 예시
+    // \\d+ : 정규식 표현 / 숫자값
+    @Test
+    void charAt() {
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> "abc".charAt(4))
+                .withMessageMatching("String index out of range: \\d+")
+        ;
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> "abc".charAt(5))
+                .withMessageMatching("String index out of range: \\d+")
+        ;
+    }
+
+
+
+
 }

@@ -20,7 +20,7 @@ public class Calculator {
         DIVIDE("/", (num1, num2) -> num1 / num2);
 
         private String symbol;
-        //int인자 둘을 받아 결과값 int를 리턴하는 함수
+        //int인자 둘을 받아 결과값 int를 리턴하는 함수형 인터페이스
         private BiFunction<Integer, Integer, Integer> expression;
 
         Operator(String symbol, BiFunction<Integer, Integer, Integer> expression) {

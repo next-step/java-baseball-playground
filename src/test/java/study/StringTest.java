@@ -10,7 +10,7 @@ public class StringTest {
     }
     @Test
     void split(){
-        String splitVar = "12";
+        String[] splitVar = "1,2".split(",");
         assertThat(splitVar).contains("1", "2");
     }
 }

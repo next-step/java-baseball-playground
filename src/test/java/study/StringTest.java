@@ -12,5 +12,8 @@ public class StringTest {
     void split(){
         String[] splitVar = "1,2".split(",");
         assertThat(splitVar).contains("1", "2");
+
+        splitVar = "1".split(",");
+        assertThat(splitVar).containsExactly("1");
     }
 }

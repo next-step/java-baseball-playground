@@ -13,17 +13,21 @@ public class StringTest {
 
     @Test
     void replaceJUnit() {
-       String actualJUnit = "abc".replace("b", "d");
-       assertEquals(actualJUnit, "adc");
+        String actualJUnit = "abc".replace("b", "d");
+        assertEquals(actualJUnit, "adc");
     }
 
     @Test
-    void split(){
+    void split() {
         String[] splitVar = "1,2".split(",");
-        assertThat(splitVar).contains("1");
-        assertThat(splitVar).contains("2");
+        assertThat(splitVar).contains("1","2");
 
         splitVar = "1".split(",");
         assertThat(splitVar).containsExactly("1");
+    }
+    @Test
+    void substring(){
+        String substringVar = "(1,2)".substring(1,4);
+        assertThat(substringVar).isEqualTo("1,2");
     }
 }

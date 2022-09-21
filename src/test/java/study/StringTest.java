@@ -29,5 +29,6 @@ public class StringTest {
     void substring(){
         String substringVar = "(1,2)".substring(1,4);
         assertThat(substringVar).isEqualTo("1,2");
+
     }
 }

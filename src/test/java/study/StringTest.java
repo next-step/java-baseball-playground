@@ -25,6 +25,4 @@ public class StringTest {
         splitVar = "1".split(",");
         assertThat(splitVar).containsExactly("1");
     }
-
-
 }

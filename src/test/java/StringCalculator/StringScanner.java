@@ -16,7 +16,6 @@ public class StringScanner {
 
 
     public static void main(String[] args){
-
         //사용자에게서 값을 받아옴
         StringScanner ss = new StringScanner(System.in, System.out);
         ss.printStream.print("input: ");

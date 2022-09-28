@@ -25,4 +25,17 @@ public class SetTest {
     void CheckSizeOfSet(){
         assertThat(numbers).size().isEqualTo(3);
     }
+    @Test
+    @DisplayName("Set의 1,2,3 값 존재 여부 확인_첫번째 풀이")
+    void isContains_CheckIfAValueExists_FirstExplanation(){
+        for(int index = 1; index<=3; index++)
+            assertThat(numbers.contains(index)).isTrue();
+    }
+    @Test
+    @DisplayName("Set의 1,2,3 값 존재 여부 확인_두번째 풀이")
+    void isContains_CheckIfAValueExists_SecondExplanation(){
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
 }

@@ -4,12 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -45,5 +47,17 @@ public class SetTest {
     @ValueSource(ints = {1,2,3})
     void isContains_RemoveDuplicateAssertThatCode(int index){
         assertThat(numbers.contains(index)).isTrue();
+    }
+    @DisplayName("입력값과 기댓값 비교_입력값과 기댓값 구분 연산자로 ',(comma)'사용")
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void toCompare_InputValueToExpectedValue_UsingComma(int input, boolean expected){
+        assertEquals(expected,numbers.contains(input));
+    }
+    @DisplayName("입력값과 기댓값 비교_입력값과 기댓값 구분 연산자로 ':(colon)'사용")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter=':')
+    void toCompare_InputValueToExpectedValue_UsingColon(int input, boolean expected){
+        assertEquals(expected,numbers.contains(input));
     }
 }

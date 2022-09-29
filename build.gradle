@@ -6,12 +6,15 @@ version = '1.0.0'
 sourceCompatibility = '1.8'
 
 repositories {
+    maven { url 'https://jitpack.io' }
 	mavenCentral()
 }
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
     testImplementation "org.assertj:assertj-core:3.19.0"
+    implementation "com.github.woowacourse-projects:mission-utils:1.0.0"
+
 }
 
 test {

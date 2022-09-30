@@ -2,9 +2,9 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringTest {
     @Test
@@ -31,24 +31,32 @@ public class StringTest {
         assertThat(substringVar).isEqualTo("1,2");
     }
     @Test
-    @DisplayName("assertJ_Using the String.valueOf() Method")
+    @DisplayName("특정 위치 문자 가져오기: assertJ_Using the String.valueOf() Method")
     void getCharAsAStringValueOfAssertJ(){
         String charAtVar1 = String.valueOf("abc".charAt(1));
         assertThat(charAtVar1).isEqualTo("b");
     }
     @Test
-    @DisplayName("assertJ_Using the Character.toString() Method")
+    @DisplayName("특정 위치 문자 가져오기: assertJ_Using the Character.toString() Method")
     void getCharAsACharacterToStringAssertJ(){
         String charAtVar2 = Character.toString("abc".charAt(0));
         assertThat(charAtVar2).isEqualTo("a");
     }
     @Test
-    @DisplayName("JUnit_Using the String.valueOf()_and_Character.toString() Method")
+    @DisplayName("특정 위치 문자 가져오기: JUnit_Using the String.valueOf()_and_Character.toString() Method")
     void getCharAsAStringValueOfAndCharacterToStringJUnit(){
-        String sample = "abc";
-        assertEquals("b", String.valueOf(sample.charAt(1)));
-        assertEquals("a", Character.toString(sample.charAt(0)));
-        assertThrows(IndexOutOfBoundsException.class, () -> sample.charAt(-1));
-        assertThrows(IndexOutOfBoundsException.class, () -> sample.charAt(sample.length()));
+        String charAtVar3 = "abc";
+        assertEquals("b", String.valueOf(charAtVar3.charAt(1)));
+        assertEquals("a", Character.toString(charAtVar3.charAt(0)));
     }
+//    @Test
+//    @DisplayName("특정 위치 문자 가져오기 has")
+//    void charGetFromString1() {
+//        int index = 2;
+//        String charAtVar4 = String.valueOf("abc".charAt(index));
+//
+//        assertThatThrownBy(() -> throw new charAtVar(null)
+//        ).isInstanceOf(IndexOutOfBoundsException.class)
+//                .hasMessageContaining("%d", index);
+//    }
 }

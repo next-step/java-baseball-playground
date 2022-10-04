@@ -11,14 +11,23 @@ import java.util.List;
     public class BaseBallGameController {
     NumberGenerator numberGenerator = new NumberGenerator();
 
-    public void play() {
+        public void play() {
         Balls answer = new Balls(createAnswer());
-        PlayResult playResult = answer.play(getUserBalls());
-        while (playResult.isGameEnd()){
+        PlayResult playResult = new PlayResult();
+
+        while(!playResult.isGameEnd()){
+            playResult = answer.play(getUserBalls());
             OutPutView.printResult(playResult);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
+        OutPutView.printGameEnd();
+        try {
+            if(InputView.retryGame()==1){
+                play();
+            }
+        } catch (RuntimeException e){
+            System.out.println("[ERROR]" + e.getMessage() + "\n");
+            InputView.retryGame();
+        }
 
     }
 

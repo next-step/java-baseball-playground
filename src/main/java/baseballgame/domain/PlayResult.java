@@ -22,7 +22,7 @@ public class PlayResult {
     }
 
     public boolean isGameEnd() {
-        return this.strike == 3;
+        return strike == 3;
     }
 
 

@@ -13,6 +13,7 @@ public class NumberGenerator {
                 continue;
             }
             numbers.add(number);
+            System.out.println(number);
         }
         return numbers;
     }

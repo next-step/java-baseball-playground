@@ -8,8 +8,9 @@ public class Ball {
     private final int number;
 
     public Ball(int position, int number) {
-        this.position = position;
+        BallValidator.isValid(number);
         this.number = number;
+        this.position = position;
     }
 
     public BallStatus play(Ball ball) {

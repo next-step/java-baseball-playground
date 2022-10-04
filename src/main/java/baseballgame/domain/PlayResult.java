@@ -20,4 +20,11 @@ public class PlayResult {
             ball++;
         }
     }
+
+    public boolean isGameEnd() {
+        return this.strike == 3;
+    }
+
+
+
 }

@@ -14,6 +14,7 @@ public class BallsTest {
         Balls answers = new Balls(Arrays.asList(1,2,3));
         PlayResult result = answers.play(Arrays.asList(1,2,3));
         assertThat(result.getStrike()).isEqualTo(3);
+        assertThat(result.isGameEnd()).isTrue();
     }
 
     @Test

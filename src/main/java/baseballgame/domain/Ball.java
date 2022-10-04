@@ -17,10 +17,14 @@ public class Ball {
         if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
-        if (this.number == ball.number) {
+        if (ball.matches(number)) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
+    }
+
+    private boolean matches(int number) {
+        return this.number == number;
     }
 
     @Override
@@ -34,5 +38,13 @@ public class Ball {
     @Override
     public int hashCode() {
         return Objects.hash(position, number);
+    }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "position=" + position +
+                ", number=" + number +
+                '}';
     }
 }

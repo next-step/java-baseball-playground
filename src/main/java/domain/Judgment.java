@@ -2,7 +2,7 @@ package domain;
 
 import java.util.List;
 
-public class judgment {
+public class Judgment {
     public int correctCount(List<Integer> computer, List<Integer> player) {
         int result = 0;
         for (int i = 0; i < player.size(); i++) {

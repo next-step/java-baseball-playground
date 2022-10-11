@@ -3,7 +3,7 @@ HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
+!**/src/BaseballMain/**/build/
 !**/src/test/**/build/
 
 ### STS ###
@@ -15,7 +15,7 @@ build/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
+!**/src/BaseballMain/**/bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
@@ -24,7 +24,7 @@ bin/
 *.iml
 *.ipr
 out/
-!**/src/main/**/out/
+!**/src/BaseballMain/**/out/
 !**/src/test/**/out/
 
 ### NetBeans ###

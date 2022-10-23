@@ -1,7 +1,8 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class Balls {
     private static final int DIGIT_COUNT = 3;
@@ -12,13 +13,14 @@ public class Balls {
     }
 
     private List<Ball> mapToBall(List<Integer> numbers) {
-        List<Ball> mappedBalls = new ArrayList<>();
+        if (numbers == null)
+            return null;
 
-        for (int i = 0; i < DIGIT_COUNT; i++) {
-            mappedBalls.add(new Ball(numbers.get(i), i + 1));
-        }
+        AtomicInteger i = new AtomicInteger();
 
-        return mappedBalls;
+        return numbers.stream()
+                .map(e -> new Ball(e, i.getAndIncrement()))
+                .collect(Collectors.toList());
     }
 
     private BallStatus compare(Ball ball) {

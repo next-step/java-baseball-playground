@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.RandomGenerator;
 
 import java.util.List;
 

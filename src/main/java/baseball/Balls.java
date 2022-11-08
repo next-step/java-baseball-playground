@@ -1,16 +1,18 @@
 package baseball;
 
+import static baseball.BallStatus.BALL;
 import static baseball.BallStatus.NOTHING;
+import static baseball.BallStatus.STRIKE;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
 
-    private final List<Ball> balls;
+    private final List<Ball> answers;
 
     public Balls(List<Integer> answer) {
-        this.balls = getBallEntity(answer);
+        this.answers = getBallEntity(answer);
     }
 
     private static List<Ball> getBallEntity(List<Integer> answer) {
@@ -21,8 +23,19 @@ public class Balls {
         return balls;
     }
 
+    public PlayResult play(List<Integer> userBalls) {
+        Balls balls = new Balls(userBalls);
+
+        PlayResult playResult = new PlayResult();
+        for (Ball answer : answers) {
+            BallStatus ballStatus = balls.play(answer);
+            playResult.report(ballStatus);
+        }
+        return playResult;
+    }
+
     public BallStatus play(Ball ball) {
-        return balls.stream()
+        return answers.stream()
             .map(answer -> answer.play(ball))
             .filter(ballStatus -> ballStatus.isNotNothing())
             .findFirst()

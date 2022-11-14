@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
 
@@ -42,30 +43,26 @@ public class Main {
                     if (i == j) {
                         strike++;
                         break;
-                    } else {
-                        ball++;
                     }
+                    ball++;
                 }
             }
         }
+
         if (ball + strike == 0) {
             System.out.println("Four Ball or Nothing");
         }
+
         System.out.println(ball + " 볼 " + strike + "스트라이크");
     }
 
     private static String getAnswer() {
 
-        Random rand = new Random();
-
         String answer = "";
 
         while (true) {
-            final HashSet<Integer> three = new HashSet<>();
-            for (int i = 0; i < 3; i++) {
-                final int randomNumber = rand.nextInt(9) + 1;
-                three.add(randomNumber);
-            }
+            final Set<Integer> three = getRandomNumber();
+
             if (three.size() == 3) {
                 answer = makeAnswer(three);
                 break;
@@ -74,7 +71,20 @@ public class Main {
         return answer;
     }
 
-    private static String makeAnswer(final HashSet<Integer> three) {
+    private static Set<Integer> getRandomNumber() {
+        Random rand = new Random();
+        final Set<Integer> three = new HashSet<>();
+
+        for(int i = 0;i<3;i++){
+            final int randomNumber = rand.nextInt(9) + 1;
+            three.add(randomNumber);
+        }
+
+        return three;
+
+    }
+
+    private static String makeAnswer(final Set<Integer> three) {
         String answer = "";
 
         for (Integer num : three) {

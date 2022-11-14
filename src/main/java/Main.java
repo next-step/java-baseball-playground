@@ -7,25 +7,10 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Random rand = new Random();
 
         while(true){
-            String answer = "";
 
-            while(true){
-                final HashSet<Integer> three = new HashSet<>();
-                for(int i = 0;i<3;i++){
-                    final int randomNumber = rand.nextInt(9) + 1;
-                    three.add(randomNumber);
-                }
-                if(three.size() == 3){
-                    for(Integer num : three){
-                        answer += num;
-                    }
-                    break;
-                }
-            }
-
+            String answer = getAnswer();
 
             while (true){
                 Scanner in = new Scanner(System.in);
@@ -68,5 +53,35 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static String getAnswer() {
+
+        Random rand = new Random();
+
+        String answer = "";
+
+        while(true){
+            final HashSet<Integer> three = new HashSet<>();
+            for(int i = 0;i<3;i++){
+                final int randomNumber = rand.nextInt(9) + 1;
+                three.add(randomNumber);
+            }
+            if(three.size() == 3){
+                answer = makeAnswer(three);
+                break;
+            }
+        }
+        return answer;
+    }
+
+    private static String makeAnswer(final HashSet<Integer> three) {
+        String answer = "";
+
+        for(Integer num : three){
+            answer += num;
+        }
+
+        return answer;
     }
 }

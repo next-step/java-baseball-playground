@@ -11,7 +11,7 @@ public class InputView {
         final String s = scanner.nextLine();
         List<String> result = new ArrayList<>();
 
-        for(int i = 0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             result.add(String.valueOf(s.charAt(i)));
         }
         return result;

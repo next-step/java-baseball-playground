@@ -10,6 +10,7 @@ public class LottoNumber {
         return new Random()
             .ints(1,10)
             .boxed()
+            .distinct()
             .limit(3)
             .map(m -> Integer.toString(m))
             .collect(Collectors.toList());

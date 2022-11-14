@@ -26,16 +26,16 @@ public class Main {
                 getBallAndStrike(answer, number);
             }
 
-            if (continueGame()) {
+            if (endGame()) {
                 break;
             }
         }
     }
 
-    private static boolean continueGame() {
+    private static boolean endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
-        return scanner.nextInt() == 1;
+        return scanner.nextInt() == 2;
     }
 
     private static boolean correctAnswer(final List<String> answer, final List<String> number) {

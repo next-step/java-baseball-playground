@@ -75,7 +75,7 @@ public class Main {
         Random rand = new Random();
         final Set<Integer> three = new HashSet<>();
 
-        for(int i = 0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             final int randomNumber = rand.nextInt(9) + 1;
             three.add(randomNumber);
         }

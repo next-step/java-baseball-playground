@@ -23,9 +23,9 @@ public class Main {
                     int num = in.nextInt();
                     if (num == 1) {
                         break;
-                    } else {
-                        return;
                     }
+
+                    return;
                 }
 
                 int ball = 0;

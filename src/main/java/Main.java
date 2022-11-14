@@ -10,6 +10,8 @@ public class Main {
 
     private static Answer answer = new Answer();
 
+    private static ResultView resultView = new ResultView();
+
     public static void main(String[] args) {
 
         while (true) {
@@ -26,17 +28,13 @@ public class Main {
                 getBallAndStrike(randomNumber, number);
             }
 
-            if (endGame()) {
+            if (resultView.endGame()) {
                 break;
             }
         }
     }
 
-    private static boolean endGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
-        return scanner.nextInt() == 2;
-    }
 
 
 

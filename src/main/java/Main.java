@@ -17,7 +17,6 @@ public class Main {
         while (true) {
 
             List<String> answer = lottoNumber.makeLottoNumbers();
-            System.out.println("정답 : " + answer);
 
             while (true) {
                 final List<String> number = inputView.input();
@@ -74,34 +73,6 @@ public class Main {
         System.out.println(ball + " 볼 " + strike + "스트라이크");
     }
 
-    private static String getAnswer() {
-
-        String answer = "";
-
-        while (true) {
-            final Set<Integer> three = getRandomNumber();
-
-            if (three.size() == 3) {
-                answer = makeAnswer(three);
-                break;
-            }
-        }
-        return answer;
-    }
-
-    private static Set<Integer> getRandomNumber() {
-        Random rand = new Random();
-        final Set<Integer> three = new HashSet<>();
-
-        for (int i = 0; i < 3; i++) {
-            final int randomNumber = rand.nextInt(9) + 1;
-            three.add(randomNumber);
-        }
-
-        return three;
-
-    }
-
     private static String makeAnswer(final Set<Integer> three) {
         String answer = "";
 
@@ -117,7 +88,7 @@ public class Main {
         final String s = scanner.nextLine();
         List<String> result = new ArrayList<>();
 
-        for(int i = 0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             result.add(String.valueOf(s.charAt(i)));
         }
         return result;

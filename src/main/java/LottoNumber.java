@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class LottoNumber {
 
-    public List<String> makeLottoNumbers(){
+    public static List<String> makeLottoNumbers(){
         return new Random()
             .ints(1,10)
             .boxed()

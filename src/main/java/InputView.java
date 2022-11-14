@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    public List<String> input() {
+    public static List<String> input() {
         System.out.print("숫자를 입력해 주세요 : ");
         final String s = scanner.nextLine();
         List<String> result = new ArrayList<>();

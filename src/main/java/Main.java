@@ -28,26 +28,30 @@ public class Main {
                     return;
                 }
 
-                int ball = 0;
-                int strike = 0;
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if (answer.charAt(i) == number.charAt(j)) {
-                            if (i == j) {
-                                strike++;
-                                break;
-                            } else {
-                                ball++;
-                            }
-                        }
-                    }
-                }
-                if (ball + strike == 0) {
-                    System.out.println("Four Ball or Nothing");
-                }
-                System.out.println(ball + " 볼 " + strike + "스트라이크");
+                getBallAndStrike(answer, number);
             }
         }
+    }
+
+    private static void getBallAndStrike(final String answer, final String number) {
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (answer.charAt(i) == number.charAt(j)) {
+                    if (i == j) {
+                        strike++;
+                        break;
+                    } else {
+                        ball++;
+                    }
+                }
+            }
+        }
+        if (ball + strike == 0) {
+            System.out.println("Four Ball or Nothing");
+        }
+        System.out.println(ball + " 볼 " + strike + "스트라이크");
     }
 
     private static String getAnswer() {

@@ -8,20 +8,22 @@ public class Main {
 
     private static InputView inputView = new InputView();
 
+    private static Answer answer = new Answer();
+
     public static void main(String[] args) {
 
         while (true) {
 
-            List<String> answer = lottoNumber.makeLottoNumbers();
+            List<String> randomNumber = lottoNumber.makeLottoNumbers();
 
             while (true) {
                 final List<String> number = inputView.input();
 
-                if (correctAnswer(answer, number)) {
+                if (answer.correctAnswer(randomNumber, number)) {
                     break;
                 }
 
-                getBallAndStrike(answer, number);
+                getBallAndStrike(randomNumber, number);
             }
 
             if (endGame()) {
@@ -36,22 +38,14 @@ public class Main {
         return scanner.nextInt() == 2;
     }
 
-    private static boolean correctAnswer(final List<String> answer, final List<String> number) {
-        if (answer.equals(number)) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("정답은 : " + answer);
-            return true;
-        }
 
-        return false;
-    }
 
-    private static void getBallAndStrike(final List<String> answer, final List<String> number) {
+    private static void getBallAndStrike(final List<String> randomNumber, final List<String> number) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (answer.get(i).equals(number.get(j))) {
+                if (randomNumber.get(i).equals(number.get(j))) {
                     if (i == j) {
                         strike++;
                         break;

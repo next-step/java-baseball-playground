@@ -10,14 +10,17 @@ public class Main {
     private static LottoNumber lottoNumber = new LottoNumber();
     private static Scanner scanner = new Scanner(System.in);
 
+    private static InputView inputView = new InputView();
+
     public static void main(String[] args) {
 
         while (true) {
 
             List<String> answer = lottoNumber.makeLottoNumbers();
+            System.out.println("정답 : " + answer);
 
             while (true) {
-                final List<String> number = input();
+                final List<String> number = inputView.input();
 
                 if (correctAnswer(answer, number)) {
                     break;

@@ -5,33 +5,46 @@ import java.util.Set;
 
 public class Main {
 
+    private static LottoNumber lottoNumber = new LottoNumber();
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         while (true) {
 
-            String answer = getAnswer();
+            String answer = lottoNumber.makeLottoNumbers();
 
             while (true) {
-                String number = input();
+                final String number = input();
 
-                if (number.equals(answer)) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("정답은 : " + answer);
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-
-                    Scanner in = new Scanner(System.in);
-
-                    int num = in.nextInt();
-                    if (num == 1) {
-                        break;
-                    }
-
-                    return;
+                if (correctAnswer(answer, number)) {
+                    break;
                 }
 
                 getBallAndStrike(answer, number);
             }
+
+            if (continueGame()) {
+                break;
+            }
         }
+    }
+
+    private static boolean continueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        int num = scanner.nextInt();
+
+        return num == 1;
+    }
+
+    private static boolean correctAnswer(final String answer, final String number) {
+        if (answer.equals(number)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("정답은 : " + answer);
+            return true;
+        }
+
+        return false;
     }
 
     private static void getBallAndStrike(final String answer, final String number) {
@@ -51,6 +64,7 @@ public class Main {
 
         if (ball + strike == 0) {
             System.out.println("Four Ball or Nothing");
+            return;
         }
 
         System.out.println(ball + " 볼 " + strike + "스트라이크");
@@ -95,10 +109,8 @@ public class Main {
     }
 
     private static String input() {
-        Scanner in = new Scanner(System.in);
-
         System.out.print("숫자를 입력해 주세요 : ");
 
-        return in.nextLine();
+        return scanner.nextLine();
     }
 }

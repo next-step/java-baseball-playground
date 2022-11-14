@@ -1,9 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
 
@@ -73,24 +69,4 @@ public class Main {
         System.out.println(ball + " 볼 " + strike + "스트라이크");
     }
 
-    private static String makeAnswer(final Set<Integer> three) {
-        String answer = "";
-
-        for (Integer num : three) {
-            answer += num;
-        }
-
-        return answer;
-    }
-
-    private static List<String> input() {
-        System.out.print("숫자를 입력해 주세요 : ");
-        final String s = scanner.nextLine();
-        List<String> result = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            result.add(String.valueOf(s.charAt(i)));
-        }
-        return result;
-    }
 }

@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -12,10 +14,10 @@ public class Main {
 
         while (true) {
 
-            String answer = lottoNumber.makeLottoNumbers();
+            List<String> answer = lottoNumber.makeLottoNumbers();
 
             while (true) {
-                final String number = input();
+                final List<String> number = input();
 
                 if (correctAnswer(answer, number)) {
                     break;
@@ -32,12 +34,11 @@ public class Main {
 
     private static boolean continueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        int num = scanner.nextInt();
 
-        return num == 1;
+        return scanner.nextInt() == 1;
     }
 
-    private static boolean correctAnswer(final String answer, final String number) {
+    private static boolean correctAnswer(final List<String> answer, final List<String> number) {
         if (answer.equals(number)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("정답은 : " + answer);
@@ -47,12 +48,12 @@ public class Main {
         return false;
     }
 
-    private static void getBallAndStrike(final String answer, final String number) {
+    private static void getBallAndStrike(final List<String> answer, final List<String> number) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (answer.charAt(i) == number.charAt(j)) {
+                if (answer.get(i).equals(number.get(j))) {
                     if (i == j) {
                         strike++;
                         break;
@@ -108,9 +109,14 @@ public class Main {
         return answer;
     }
 
-    private static String input() {
+    private static List<String> input() {
         System.out.print("숫자를 입력해 주세요 : ");
+        final String s = scanner.nextLine();
+        List<String> result = new ArrayList<>();
 
-        return scanner.nextLine();
+        for(int i = 0;i<3;i++){
+            result.add(String.valueOf(s.charAt(i)));
+        }
+        return result;
     }
 }

@@ -15,8 +15,7 @@ public class Main {
                     break;
                 }
 
-
-                ResultView.showBallAndStrike(randomNumber,number);
+                ResultView.showBallAndStrike(randomNumber, number);
             }
 
             if (ResultView.endGame()) {

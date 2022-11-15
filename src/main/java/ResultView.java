@@ -20,12 +20,12 @@ public class ResultView {
         return scanner.nextInt() == 2;
     }
 
-    public static void showBallAndStrike(List<String> randomNumber, List<String> number){
+    public static void showBallAndStrike(List<String> randomNumber, List<String> number) {
 
         final int ball = Ball.getBall(randomNumber, number);
         final int strike = Strike.getStrike(randomNumber, number);
 
-        if(ball + strike == 0){
+        if (ball + strike == 0) {
             System.out.println("Four ball or Nothing");
             return;
         }

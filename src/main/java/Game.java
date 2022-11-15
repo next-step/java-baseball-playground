@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
     private LottoNumber lottoNumber;
 
@@ -18,6 +18,7 @@ public class Game {
         inputView = new InputView();
         answer = new Answer();
         resultView = new ResultView();
+        scanner = new Scanner(System.in);
     }
 
     public void start(){
@@ -35,13 +36,13 @@ public class Game {
                 resultView.showBallAndStrike(randomNumber, number);
             }
 
-            if (endGame()) {
+            if (end()) {
                 break;
             }
         }
     }
 
-    public boolean endGame() {
+    private boolean end() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
         return scanner.nextInt() == 2;

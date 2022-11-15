@@ -4,15 +4,14 @@ import java.util.Scanner;
 public class ResultView {
 
     private final Ball ball;
-
     private final Strike strike;
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     public ResultView(final Ball ball, final Strike strike) {
         this.ball = ball;
         this.strike = strike;
     }
-
-    private static Scanner scanner = new Scanner(System.in);
 
     public static boolean endGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");

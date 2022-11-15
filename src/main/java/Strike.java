@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Strike {
 
-    public static int getStrike(final List<String> randomNumber, final List<String> number) {
+    public int getStrike(final List<String> randomNumber, final List<String> number) {
 
         int strike = 0;
 

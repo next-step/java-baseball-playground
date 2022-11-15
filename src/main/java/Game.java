@@ -5,21 +5,29 @@ public class Game {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public Game() {}
+    private LottoNumber lottoNumber;
+
+    private InputView inputView;
+
+    private Answer answer;
+
+    private ResultView resultView;
+
+    public Game(){}
 
     public void start(){
         while (true) {
 
-            List<String> randomNumber = LottoNumber.makeLottoNumbers();
+            List<String> randomNumber = lottoNumber.makeLottoNumbers();
 
             while (true) {
-                final List<String> number = InputView.input();
+                final List<String> number = inputView.input();
 
-                if (Answer.correctAnswer(randomNumber, number)) {
+                if (answer.correctAnswer(randomNumber, number)) {
                     break;
                 }
 
-                ResultView.showBallAndStrike(randomNumber, number);
+                resultView.showBallAndStrike(randomNumber, number);
             }
 
             if (endGame()) {

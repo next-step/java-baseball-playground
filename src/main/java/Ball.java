@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Ball {
 
-    public static int getBall(final List<String> randomNumber, final List<String> number) {
+    public int getBall(final List<String> randomNumber, final List<String> number) {
 
         int ball = 0;
 

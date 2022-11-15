@@ -7,6 +7,8 @@ public class InputView {
     private Scanner scanner;
     private ResultView resultView;
 
+    private List<String> result = new ArrayList<>();
+
     public InputView() {
         scanner = new Scanner(System.in);
         resultView = new ResultView();
@@ -15,7 +17,6 @@ public class InputView {
 
     public List<String> input() {
         resultView.inputNumbers();
-        List<String> result = new ArrayList<>();
 
         while (true) {
             final String s = scanner.nextLine();
@@ -24,12 +25,16 @@ public class InputView {
                 continue;
             }
 
-            for (int i = 0; i < 3; i++) {
-                result.add(String.valueOf(s.charAt(i)));
-            }
+            getInputs(s);
             break;
         }
 
         return result;
+    }
+
+    private void getInputs(final String s) {
+        for (int i = 0; i < 3; i++) {
+            result.add(String.valueOf(s.charAt(i)));
+        }
     }
 }

@@ -8,12 +8,20 @@ public class InputView {
 
     public static List<String> input() {
         System.out.print("숫자를 입력해 주세요 : ");
-        final String s = scanner.nextLine();
         List<String> result = new ArrayList<>();
+        while(true){
+            final String s = scanner.nextLine();
+            if(s.length() != 3) {
+                System.out.println("3 자리수를 입력해주세요");
+                continue;
+            }
 
-        for (int i = 0; i < 3; i++) {
-            result.add(String.valueOf(s.charAt(i)));
+            for (int i = 0; i < 3; i++) {
+                result.add(String.valueOf(s.charAt(i)));
+            }
+            break;
         }
+
         return result;
     }
 }

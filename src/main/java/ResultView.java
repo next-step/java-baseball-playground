@@ -3,6 +3,15 @@ import java.util.Scanner;
 
 public class ResultView {
 
+    private final Ball ball;
+
+    private final Strike strike;
+
+    public ResultView(final Ball ball, final Strike strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static boolean endGame() {
@@ -11,7 +20,10 @@ public class ResultView {
         return scanner.nextInt() == 2;
     }
 
-    public static void showBallAndStrike(int ball, int strike){
+    public static void showBallAndStrike(List<String> randomNumber, List<String> number){
+
+        final int ball = Ball.getBall(randomNumber, number);
+        final int strike = Strike.getStrike(randomNumber, number);
 
         if(ball + strike == 0){
             System.out.println("Four ball or Nothing");

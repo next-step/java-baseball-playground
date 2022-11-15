@@ -7,7 +7,7 @@ public class Main {
         while (true) {
 
             List<String> randomNumber = LottoNumber.makeLottoNumbers();
-            System.out.println("정답 : " + randomNumber);
+
             while (true) {
                 final List<String> number = InputView.input();
 
@@ -15,10 +15,8 @@ public class Main {
                     break;
                 }
 
-                final int ball = Ball.getBall(randomNumber, number);
-                final int strike = Strike.getStrike(randomNumber, number);
 
-                ResultView.showBallAndStrike(ball,strike);
+                ResultView.showBallAndStrike(randomNumber,number);
             }
 
             if (ResultView.endGame()) {

@@ -92,16 +92,4 @@ public class StringTest {
         assertThat(number.contains(newInput)).isEqualTo(expect);
     }
 
-    @Test
-    @DisplayName("계산기")
-    void test8(){
-        Scanner in = new Scanner(System.in);
-        final String s = in.nextLine();
-        System.out.println(s);
-    }
-
-
-
-
-
 }

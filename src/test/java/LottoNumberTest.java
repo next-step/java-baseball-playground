@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoNumberTest {
 
-    private LottoNumber lottoNumber;
+    private LottoNumber lottoNumber = new LottoNumber();
     @Test
     void 숫자가3개나오는지확인(){
         final List<String> strings = lottoNumber.makeLottoNumbers();

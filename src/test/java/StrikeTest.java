@@ -1,3 +1,4 @@
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -5,22 +6,18 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
 
 class StrikeTest {
 
-    private Strike strike;
-    private static final List<String> RANDOM = new ArrayList<>(Arrays.asList("1","2","3"));
+    private Strike strike = new Strike();
+    private static final List<String> RANDOM = new ArrayList<>(Arrays.asList("1", "2", "3"));
 
     @ParameterizedTest
     @MethodSource("generateNumbers")
     void 스트라이크_갯수가_잘나오는지_확인(List<String> numbers,int strikeCount){
 
-        assertThat(strike.getStrike(RANDOM,numbers)).isEqualTo(strikeCount);
+        Assertions.assertThat(strike.getStrike(RANDOM, numbers)).isEqualTo(strikeCount);
     }
 
     static Stream<Arguments> generateNumbers() {

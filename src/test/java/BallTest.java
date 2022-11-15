@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class BallTest {
 
-    private Ball ball;
+    private Ball ball = new Ball();
     private static final List<String> RANDOM = new ArrayList<>(Arrays.asList("1", "2", "3"));
 
     @ParameterizedTest

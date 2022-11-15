@@ -4,17 +4,23 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+    private ResultView resultView;
+
+    public InputView() {
+        scanner = new Scanner(System.in);
+        resultView = new ResultView();
+    }
 
 
     public List<String> input() {
-        System.out.print("숫자를 입력해 주세요 : ");
+        resultView.inputNumbers();
         List<String> result = new ArrayList<>();
 
         while (true) {
             final String s = scanner.nextLine();
             if (ValidateUtil.isLengthNot3(s)) {
-                System.out.println("3 자리수를 입력해주세요");
+                resultView.threeNumbers();
                 continue;
             }
 

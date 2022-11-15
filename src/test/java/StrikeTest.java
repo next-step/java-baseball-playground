@@ -13,13 +13,14 @@ import static org.assertj.core.api.Assertions.*;
 
 class StrikeTest {
 
+    private Strike strike;
     private static final List<String> RANDOM = new ArrayList<>(Arrays.asList("1","2","3"));
 
     @ParameterizedTest
     @MethodSource("generateNumbers")
     void 스트라이크_갯수가_잘나오는지_확인(List<String> numbers,int strikeCount){
 
-        assertThat(Strike.getStrike(RANDOM,numbers)).isEqualTo(strikeCount);
+        assertThat(strike.getStrike(RANDOM,numbers)).isEqualTo(strikeCount);
     }
 
     static Stream<Arguments> generateNumbers() {

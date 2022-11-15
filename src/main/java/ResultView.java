@@ -2,17 +2,25 @@ import java.util.List;
 
 public class ResultView {
 
+    private Ball ball;
+    private Strike strike;
+
+    public ResultView() {
+        this.ball = new Ball();
+        this.strike = new Strike();
+    }
+
     public void showBallAndStrike(List<String> randomNumber, List<String> number) {
 
-        final int ball = Ball.getBall(randomNumber, number);
-        final int strike = Strike.getStrike(randomNumber, number);
+        final int ballCount = ball.getBall(randomNumber, number);
+        final int strikeCount = strike.getStrike(randomNumber, number);
 
-        if (ball + strike == 0) {
+        if (ballCount + strikeCount == 0) {
             System.out.println("Four ball or Nothing");
             return;
         }
 
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
 
     }
 }

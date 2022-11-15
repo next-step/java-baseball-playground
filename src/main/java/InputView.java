@@ -6,13 +6,14 @@ public class InputView {
 
     private Scanner scanner = new Scanner(System.in);
 
+
     public List<String> input() {
         System.out.print("숫자를 입력해 주세요 : ");
         List<String> result = new ArrayList<>();
 
         while (true) {
             final String s = scanner.nextLine();
-            if (s.length() != 3) {
+            if (ValidateUtil.isLengthNot3(s)) {
                 System.out.println("3 자리수를 입력해주세요");
                 continue;
             }

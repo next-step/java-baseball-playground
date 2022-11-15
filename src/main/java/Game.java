@@ -13,7 +13,12 @@ public class Game {
 
     private ResultView resultView;
 
-    public Game(){}
+    public Game(){
+        lottoNumber = new LottoNumber();
+        inputView = new InputView();
+        answer = new Answer();
+        resultView = new ResultView();
+    }
 
     public void start(){
         while (true) {

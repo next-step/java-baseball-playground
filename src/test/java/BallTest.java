@@ -14,14 +14,15 @@ import static org.assertj.core.api.Assertions.*;
 
 class BallTest {
 
+    private Ball ball;
     private static final List<String> RANDOM = new ArrayList<>(Arrays.asList("1", "2", "3"));
 
     @ParameterizedTest
     @MethodSource("generateData")
     void 볼_갯수가_잘나오는지_확인(List<String> numbers, int ballCount) {
-        final int ball = Ball.getBall(RANDOM, numbers);
+        final int ballResult = ball.getBall(RANDOM, numbers);
 
-        assertThat(ball).isEqualTo(ballCount);
+        assertThat(ballResult).isEqualTo(ballCount);
     }
 
     private static Stream<Arguments> generateData() {

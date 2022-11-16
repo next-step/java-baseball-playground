@@ -26,7 +26,7 @@ public class SetTest {
 
     @Test
     void size() {
-        assertThat(numbers.size());
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @Test

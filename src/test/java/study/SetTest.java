@@ -36,8 +36,7 @@ public class SetTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void deDuplication(int param) {
+    void deDuplicationContainsTest(int param) {
         assertThat(numbers.contains(param)).isTrue();
     }
 }
-

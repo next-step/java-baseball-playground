@@ -21,4 +21,11 @@ public class StringTest {
 
         assertThat(actual).containsExactly("1", "2");
     }
+
+    @Test
+    void subString() {
+        String actual = "(1,2)".substring(1, 4);
+
+        assertThat(actual).isEqualTo("1,2");
+    }
 }

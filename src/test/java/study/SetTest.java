@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -18,6 +20,9 @@ public class SetTest {
         numbers.add(3);
     }
 
-    
+    @Test
+    void size() {
+        assertThat(numbers.size());
+    }
 }
 

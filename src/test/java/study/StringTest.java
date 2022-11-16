@@ -37,4 +37,13 @@ public class StringTest {
 
         assertThat(actual).isEqualTo("b");
     }
+
+    @Test
+    @DisplayName("특정 위치의 문자를 가져올 때 발생하는 예외 테스트")
+    void charAtException() {
+        String actual = "abc";
+
+        assertThatThrownBy(() -> actual.charAt(actual.length()))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
 }

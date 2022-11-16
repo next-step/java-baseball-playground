@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -37,6 +38,6 @@ public class SetTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void deDuplicationContainsTest(int param) {
-        assertThat(numbers.contains(param)).isTrue();
+        assertTrue(numbers.contains(param));
     }
 }

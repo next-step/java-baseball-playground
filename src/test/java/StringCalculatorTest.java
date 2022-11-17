@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -33,5 +34,23 @@ class StringCalculatorTest {
         int res = cal.toInt("1");
 
         assertThat(res).isEqualTo(1);
+    }
+
+    @Test
+    public void calculateTest() {
+
+        int res1 = cal.calculate(1, '+', 2);
+        assertThat(res1).isEqualTo(3);
+
+        int res2 = cal.calculate(3, '*', 2);
+        assertThat(res2).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("잘못된 문자를 입력했을때 발생하는 예외 테스트")
+    void sequnceAtException() {
+
+        assertThatThrownBy(() -> cal.calculate(3, '&', 4))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

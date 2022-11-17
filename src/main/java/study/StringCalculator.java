@@ -1,3 +1,5 @@
+package study;
+
 public class StringCalculator {
     public String[] split(String s) {
         return s.split(" ");

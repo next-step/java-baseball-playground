@@ -28,5 +28,10 @@ class StringCalculatorTest {
         assertThat(res).containsExactly("2", "+", "3", "*", "4", "/", "2");
     }
 
+    @Test
+    public void toIntTest() {
+        int res = cal.toInt("1");
 
+        assertThat(res).isEqualTo(1);
+    }
 }

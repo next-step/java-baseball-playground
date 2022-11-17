@@ -16,4 +16,45 @@ public class StringCalculator {
     public int toInt(String s) {
         return Integer.parseInt(s);
     }
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int sub(int a, int b) {
+        return a - b;
+    }
+
+    public int mul(int a, int b) {
+        return a * b;
+    }
+
+    public int divide(int a, int b) {
+        try {
+            return a / b;
+        }
+        catch (ArithmeticException e) {
+            System.out.println("0으로 나눌수 없슴미다");
+        }
+
+        return 0;
+    }
+
+    public int calculate(int a, char c, int b) {
+
+        if(c == '+')
+            return add(a , b);
+
+        else if(c == '-')
+            return sub(a, b);
+
+        else if(c == '*')
+            return  mul(a, b);
+
+        else if(c == '/')
+            return divide(a, b);
+
+        else
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+    }
 }

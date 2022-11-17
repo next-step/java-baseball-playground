@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * 기능 정리 :
  *  1. nextLine()을 사용해 공백을 포함하여 입력받는다.
@@ -13,5 +11,9 @@ import java.util.Scanner;
 public class StringCalculator {
     public String[] split(String s) {
         return s.split(" ");
+    }
+
+    public int toInt(String s) {
+        return Integer.parseInt(s);
     }
 }

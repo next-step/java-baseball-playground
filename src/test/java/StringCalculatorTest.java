@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -52,5 +54,14 @@ class StringCalculatorTest {
 
         assertThatThrownBy(() -> cal.calculate(3, '&', 4))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("문자열을 계산")
+    public void calculateStringTest() {
+        String[] strs = {"2", "+", "3",  "*", "4", "/", "2"};
+        int result = cal.calculateString(strs);
+
+        assertThat(result).isEqualTo(10);
     }
 }

@@ -45,6 +45,8 @@ class StringCalculatorTest {
 
         int res2 = cal.calculate(3, '*', 2);
         assertThat(res2).isEqualTo(6);
+
+        int res3 = cal.calculate(100, '/', 0);
     }
 
     @Test
@@ -53,6 +55,14 @@ class StringCalculatorTest {
 
         assertThatThrownBy(() -> cal.calculate(3, '&', 4))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("0으로 나눴을때 발생하는 예외 테스트")
+    void dividedByzeroException() {
+
+        assertThatThrownBy(() -> cal.calculate(3, '/', 0))
+                .isInstanceOf(ArithmeticException.class);
     }
 
     @Test

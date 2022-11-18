@@ -22,13 +22,10 @@ public class StringCalculator {
     }
 
     private int divide(int a, int b) {
-        try {
-            return a / b;
-        } catch (ArithmeticException e) {
-            System.out.println("0으로 나눌수 없슴미다");
-        }
+        if(b == 0)
+            throw new ArithmeticException("divide By zero");
 
-        return 0;
+        return a / b;
     }
 
     public int calculate(int a, char c, int b) {

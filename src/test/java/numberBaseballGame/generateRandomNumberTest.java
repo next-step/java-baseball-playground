@@ -4,13 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class generateRamdomNumberTest {
+class generateRandomNumberTest {
 
-    generateRamdomNumber ramdomNumber;
+    generateRandomNumber randomNumber;
 
     @BeforeEach
     public void setRamdomNumber() {
-        ramdomNumber = new generateRamdomNumber();
+        randomNumber = new generateRandomNumber();
     }
 
     @Test

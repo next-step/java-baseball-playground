@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class generateRandomNumberTest {
 
     generateRandomNumber randomNumber;
@@ -19,9 +21,10 @@ class generateRandomNumberTest {
     }
 
     @Test
-    @DisplayName("1부터 10까지 난수가 생성되는지 테스트")
+    @DisplayName("3자리 난수가 생성되는지 테스트")
     public void randomNumberTest() {
+        list = randomNumber.createRandomNumber();
 
-        randomNumber.createRandomNumber();
+        assertThat(list.size()).isEqualTo(3);
     }
 }

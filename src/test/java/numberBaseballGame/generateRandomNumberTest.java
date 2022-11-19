@@ -21,6 +21,5 @@ class generateRandomNumberTest {
         String random = String.valueOf(randomNumber.createRandomNumber());
 
         assertThat(random.length()).isEqualTo(3);
-
     }
 }

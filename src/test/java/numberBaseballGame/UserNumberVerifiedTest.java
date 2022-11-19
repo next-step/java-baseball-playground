@@ -13,7 +13,7 @@ class UserNumberVerifiedTest {
 
     UserNumberVerified numberVerified;
     List<Integer> inputList;
-    
+
     @ParameterizedTest
     @DisplayName("입력받은 숫자가 유효한지 검증하는 메서드 테스트")
     @ValueSource(strings = {"1234", " ", "1m", "112"})

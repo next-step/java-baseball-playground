@@ -1,22 +1,25 @@
 package numberBaseballGame;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class generateRandomNumber {
 
-    public List<Integer> createRandomNumber() {
-        Set<Integer> randomSet = new HashSet();
+    public StringBuilder createRandomNumber() {
+        Set<String> randomSet = new HashSet<>();
+        String r = "";
 
         while(randomSet.size() < 3) {
-            Double d = Math.random() * 10 + 1;
-            randomSet.add(d.intValue());
+            int d = (int) (Math.random() * 9 + 1);
+
+            randomSet.add(String.valueOf(d));
+        }
+        StringBuilder sb = new StringBuilder();
+
+        for(String idx : randomSet) {
+            sb.append(idx);
         }
 
-        List<Integer> randomNumList = new ArrayList<>(randomSet);
-
-        return randomNumList;
+        return sb;
     }
 }

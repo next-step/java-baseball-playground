@@ -12,6 +12,10 @@ public class UserNumberVerified {
         }
     }
 
+    public String getUserNumber() {
+        return userNumber;
+    }
+
     private boolean overlapCheck(String userNumber) {
         Set<String> stringSet = new HashSet<>();
 

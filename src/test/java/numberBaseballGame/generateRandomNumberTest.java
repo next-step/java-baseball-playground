@@ -4,22 +4,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class generateRandomNumberTest {
-
-    generateRandomNumber randomNumber;
-
+    GenerateRandomNumber randomNumber;
     @BeforeEach
     public void setRamdomNumber() {
-        randomNumber = new generateRandomNumber();
+        randomNumber = new GenerateRandomNumber();
     }
 
     @Test
     @DisplayName("3자리 난수가 생성되는지 테스트")
     public void randomNumberTest() {
-        String random = String.valueOf(randomNumber.createRandomNumber());
+        int numberSize = 3;
+        List<Integer> numberList = randomNumber.createRandomNumber();
 
-        assertThat(random.length()).isEqualTo(3);
+        assertThat(numberSize).isEqualTo(numberList.size());
     }
 }

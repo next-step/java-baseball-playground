@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RefereeTest {
 
@@ -19,7 +19,7 @@ class RefereeTest {
     @BeforeEach
     public void setList() {
         computerNumber = Arrays.asList(4, 2, 5);
-        userNumber = Arrays.asList(4, 2, 3);
+        userNumber = Arrays.asList(4, 1, 3);
     }
 
     @Test
@@ -32,5 +32,13 @@ class RefereeTest {
         assertThat(answer).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("볼 카운트가 정상적으로 올라가는지 테스트")
+    public void ballCount() {
+        referee = new Referee(computerNumber, userNumber);
 
+        int answer = referee.strikeBall();
+
+        assertThat(answer).isEqualTo(1);
+    }
 }

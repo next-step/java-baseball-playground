@@ -1,20 +1,19 @@
 package numberBaseballGame;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserNumberVerified {
-    private String userNumber;
+    private List<Integer> userNumber;
 
     public UserNumberVerified(String userNumber) {
         if(digitCheck(userNumber) && charCheck(userNumber) && overlapCheck(userNumber)) {
-            this.userNumber = userNumber;
+            this.userNumber = Arrays.asList(Integer.parseInt(userNumber));
         }
     }
 
-    public String getUserNumber() {
-        return userNumber;
-    }
 
     private boolean overlapCheck(String userNumber) {
         Set<String> stringSet = new HashSet<>();

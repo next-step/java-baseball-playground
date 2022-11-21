@@ -26,7 +26,7 @@ public class Referee {
         int ball = 0;
 
         for(Integer i : computerNumberList) {
-            if(userNumberList.contains(i)) {
+            if(userNumberList.contains(i) && isSameDigit(i) ) {
                 ball += 1;
             }
         }

@@ -4,16 +4,22 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserNumberVerified {
-    private List<Integer> userNumber;
+    private List<Integer> userNumberList;
 
     public UserNumberVerified(String userNumber) {
         if(digitCheck(userNumber) && charCheck(userNumber) && overlapCheck(userNumber)) {
-            this.userNumber = Arrays.asList(Integer.parseInt(userNumber));
+            int[] digits = Stream.of(userNumber.split("")).mapToInt(Integer::parseInt).toArray();
+            userNumberList = Arrays.stream(digits).boxed().collect(Collectors.toList());
         }
     }
 
+    public List<Integer> getUserNumberList() {
+        return userNumberList;
+    }
 
     private boolean overlapCheck(String userNumber) {
         Set<String> stringSet = new HashSet<>();
@@ -42,9 +48,12 @@ public class UserNumberVerified {
     }
 
     public boolean digitCheck(String input) {
-        if(input.length() != 3)
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        if(input.contains(" "))
+            throw new IllegalArgumentException("띄어쓰기 없이 입력해주세요.");
 
+        if(input.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        }
         return true;
     }
 }

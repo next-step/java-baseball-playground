@@ -37,7 +37,7 @@ class RefereeTest {
     public void ballCount() {
         referee = new Referee(computerNumber, userNumber);
 
-        int answer = referee.strikeBall();
+        int answer = referee.ballCount();
 
         assertThat(answer).isEqualTo(1);
     }

@@ -32,4 +32,30 @@ public class Referee {
         }
         return ball;
     }
+
+    private boolean isSameDigit(Integer i) {
+        return userNumberList.indexOf(i) != computerNumberList.indexOf(i);
+    }
+
+
+    public String makeHint() {
+        String resultHint = "";
+
+        int strike = strikeCount();
+        int ball = ballCount();
+
+        if(strike != 0 && ball != 0) {
+            return resultHint = ball + "볼 " + strike + "스트라이크";
+        }
+
+        if(strikeCount() != 0) {
+            return resultHint = strike + "스트라이크";
+        }
+
+        if(ballCount() != 0) {
+            return resultHint = ball + "볼";
+        }
+
+        return "낫싱";
+    }
 }

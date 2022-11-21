@@ -28,7 +28,7 @@ class RefereeTest {
     public void strikeCount() {
         int answer = referee.strikeCount();
 
-        assertThat(answer).isEqualTo(3);
+        assertThat(answer).isEqualTo(1);
     }
 
     @Test

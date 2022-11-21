@@ -21,4 +21,15 @@ public class Referee {
         }
         return strike;
     }
+
+    public int strikeBall() {
+        int ball = 0;
+
+        for(Integer i : computerNumberList) {
+            if(userNumberList.contains(i)) {
+                ball += 1;
+            }
+        }
+        return ball;
+    }
 }

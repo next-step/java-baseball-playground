@@ -22,7 +22,7 @@ public class Referee {
         return strike;
     }
 
-    public int strikeBall() {
+    public int ballCount() {
         int ball = 0;
 
         for(Integer i : computerNumberList) {

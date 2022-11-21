@@ -18,8 +18,9 @@ class RefereeTest {
 
     @BeforeEach
     public void setList() {
-        computerNumber = Arrays.asList(4, 2, 5);
-        userNumber = Arrays.asList(4, 1, 3);
+        computerNumber = Arrays.asList(7, 1, 3);
+        userNumber = Arrays.asList(1, 2, 3);
+        referee = new Referee(computerNumber, userNumber);
     }
 
     @Test

@@ -14,8 +14,8 @@ public class Referee {
     public int strikeCount() {
         int strike = 0;
 
-        for(Integer i : computerNumberList) {
-            if(computerNumberList.indexOf(i) == userNumberList.indexOf(i)) {
+        for (Integer i : computerNumberList) {
+            if (computerNumberList.indexOf(i) == userNumberList.indexOf(i)) {
                 strike += 1;
             }
         }
@@ -25,8 +25,8 @@ public class Referee {
     public int ballCount() {
         int ball = 0;
 
-        for(Integer i : computerNumberList) {
-            if(userNumberList.contains(i) && isSameDigit(i) ) {
+        for (Integer i : computerNumberList) {
+            if (userNumberList.contains(i) && isSameDigit(i)) {
                 ball += 1;
             }
         }
@@ -44,15 +44,15 @@ public class Referee {
         int strike = strikeCount();
         int ball = ballCount();
 
-        if(strike != 0 && ball != 0) {
+        if (strike != 0 && ball != 0) {
             return resultHint = ball + "볼 " + strike + "스트라이크";
         }
 
-        if(strikeCount() != 0) {
+        if (strikeCount() != 0) {
             return resultHint = strike + "스트라이크";
         }
 
-        if(ballCount() != 0) {
+        if (ballCount() != 0) {
             return resultHint = ball + "볼";
         }
 

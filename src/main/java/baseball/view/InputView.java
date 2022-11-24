@@ -10,10 +10,10 @@ public class InputView {
         sc = new Scanner(System.in);
     }
 
-    public int readNumber() {
+    public String readNumber() {
         String number = sc.next();
         validateNumber(number);
-        return Integer.parseInt(number);
+        return number;
     }
 
     private static void validateNumber(String number) {

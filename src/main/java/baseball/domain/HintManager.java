@@ -23,6 +23,14 @@ public class HintManager {
         hintData.put(Hint.BALL, before + 1);
     }
 
+    public int getStrikeCount() {
+        return hintData.get(Hint.STRIKE);
+    }
+
+    public int getBallCount() {
+        return hintData.get(Hint.BALL);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

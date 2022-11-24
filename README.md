@@ -30,13 +30,19 @@
     - RandomListGeneratorImpl (구현체)
         - [x] 1 부터 9 까지 생성
         - [x] 3 개 생성
+
 - 정답 숫자를 관리하는 자
     - ComputerNumbers
         - [x] 생성은 RandomListGenerator를 통해 생성자 주입을 받는다.
         - [x] 해당 리스트와 비교하여 HintManger를 발행한다.
--
-- Hint를 관리하는 HintManager
--
+
+- Hint를 담고있는 자 (DTO)
+    - HintManager
+        - [x] 스트라이크 증가
+        - [x] 볼 증가
+        - [x] 스트라이크 갯수
+        - [x] 볼 갯수
+
 - 입출력 View
     - 유저 숫자 읽기
         - [x] 숫자인가

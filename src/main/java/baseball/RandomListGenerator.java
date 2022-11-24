@@ -3,6 +3,6 @@ package baseball;
 import java.util.List;
 
 @FunctionalInterface
-public interface RandomNumberGenerator {
+public interface RandomListGenerator {
     public List<Integer> generate();
 }

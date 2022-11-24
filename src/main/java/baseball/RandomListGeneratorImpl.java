@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomNumberGeneratorImpl implements RandomNumberGenerator {
+public class RandomListGeneratorImpl implements RandomListGenerator {
 
     @Override
     public List<Integer> generate() {

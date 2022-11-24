@@ -18,7 +18,8 @@ public class InputView {
 
     private static void validateNumber(String number) {
         Validator.checkIsNumber(number);
-        Validator.checkBoundary(number);
         Validator.checkSize(number);
+        Validator.checkBoundary(number);
+        Validator.checkDuplicate(number);
     }
 }

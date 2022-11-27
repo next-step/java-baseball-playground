@@ -11,7 +11,7 @@
 ![mission baseball](https://raw.githubusercontent.com/next-step/nextstep-docs/master/playground/images/mission_baseball.png)
 
 ---
-2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.
+2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.ㅐ
 
 ---
 3. Git 브랜치를 master 또는 main으로 변경한 후 피드백을 반영하기 위한 새로운 브랜치를 생성한 후 처음부터 다시 미션 구현을 도전한다.

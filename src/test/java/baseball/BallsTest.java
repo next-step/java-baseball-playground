@@ -12,7 +12,6 @@ public class BallsTest {
 
     @Test
     void play_nothing() {
-
         Balls answers = new Balls(Arrays.asList(1, 2, 3));
         PlayResult result = answers.play(Arrays.asList(4, 5, 6));
         assertThat(result.getStrike()).isEqualTo(0);

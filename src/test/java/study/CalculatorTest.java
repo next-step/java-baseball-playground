@@ -49,7 +49,7 @@ public class CalculatorTest {
 		assertThat(result).isEqualTo(cal.seperate(str));
 	}
 	
-	@DisplayName("문자열 계산")
+	@DisplayName("문자열 계산기")
 	@Test
 	void calString() {
 		String str = "5 + 5 - 3 + 2 * 2 / 3";

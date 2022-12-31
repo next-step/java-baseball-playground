@@ -24,3 +24,10 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+---
+4. 구현할 기능 목록
+> 입출력 
+> 111~999 범위의 임의 숫자 생성
+> 스트라이크 체크 
+> 볼 체크
+> 스트라이크, 볼 아닐 경우 포볼 또는 낫싱 출력

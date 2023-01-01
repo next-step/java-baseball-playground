@@ -16,4 +16,11 @@ public class StringTest {
         String[] str = "1,2".split(",");
         assertThat(str).contains("1","2");
     }
+
+    @Test
+    void substring_테스트() {
+        String str = "(1,2)";
+        String sub_str = str.substring(1, str.length()-1);
+        assertThat(sub_str).isEqualTo("1,2");
+    }
 }

@@ -7,15 +7,23 @@ public class BaseballGame {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		int randomNumber = generateRandomNumber();
 		
-		System.out.print("숫자를 입력해 주세요");
+		CheckBaseballNumbers cbn = new CheckBaseballNumbers();
+		String randomNumber = cbn.converseIntToString(cbn.generateRandomNumber());
+		
+		int maxStrike = 0;
+		
 		String numbers = sc.next();
+		System.out.print("숫자를 입력해 주세요 : ");
+		
+		/*
+		 * while (maxStrike != 3) {
+		 * 
+		 * 
+		 * Baseball result = cbn.checkBallAndStrike(numbers, randomNumber);
+		 * System.out.println(cbn.tellBallAndStrike(result));
+		 * 
+		 * maxStrike = result.getStrike(); }
+		 */
 	}
-	
-	public static int generateRandomNumber() {
-		int randomNumber = (int) (Math.random()*889 + 111);
-		return randomNumber;
-	}
-
 }

@@ -1,4 +1,4 @@
-package CalculatorTest;
+package calculatorTest;
 
 import calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;

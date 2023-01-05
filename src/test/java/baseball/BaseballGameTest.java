@@ -3,14 +3,15 @@ package baseball;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class BaseballGameTest {
 
@@ -70,6 +71,30 @@ class BaseballGameTest {
 
         // then
         assertThat(inputNumber).isEqualTo(number);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"713, 0", "123, 1", "671, 2", "137, 3"})
+    @DisplayName("볼 개수 확인")
+    void checkBall(final String inputNumber, final int expected) {
+        // given
+        // when
+        final int ball = game.checkBall(number, inputNumber);
+
+        // then
+        assertThat(ball).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"137, 0", "789, 1", "213, 2", "713, 3"})
+    @DisplayName("스트라이크 개수 확인")
+    void checkStrike(final String inputNumber, final int expected) {
+        // given
+        // when
+        final int strike = game.checkStrike(number, inputNumber);
+
+        // then
+        assertThat(strike).isEqualTo(expected);
     }
 
     private void setInputStream(String number) {

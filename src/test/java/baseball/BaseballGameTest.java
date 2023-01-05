@@ -109,6 +109,20 @@ class BaseballGameTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource({"1, true", "3, false"})
+    @DisplayName("종료 여부 선택")
+    void isEnd(int inputNumber, boolean expected) {
+        // given
+        setInputStream(String.valueOf(inputNumber));
+
+        // when
+        final boolean isEnd = game.isEnd();
+
+        // then
+        assertThat(isEnd).isEqualTo(expected);
+    }
+
     private void setInputStream(String number) {
         InputStream in = new ByteArrayInputStream(number.getBytes());
         System.setIn(in);

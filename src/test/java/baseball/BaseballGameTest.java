@@ -97,6 +97,18 @@ class BaseballGameTest {
         assertThat(strike).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource({"0, 0, 낫싱", "1, 0, 1볼", "1, 2, 1볼 2스트라이크", "0, 3, 3스트라이크"})
+    @DisplayName("비교 결과 생성")
+    void createCompareResult(final int ball, final int strike, final String expected) {
+        // given
+        // when
+        final String result = game.createCompareResult(ball, strike);
+
+        // then
+        assertThat(result).isEqualTo(expected);
+    }
+
     private void setInputStream(String number) {
         InputStream in = new ByteArrayInputStream(number.getBytes());
         System.setIn(in);

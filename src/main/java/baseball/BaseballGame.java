@@ -99,4 +99,21 @@ public class BaseballGame {
 
         return sb.toString().trim();
     }
+
+    // 5. 게임을 종료할지 선택한다.
+    public boolean isEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        final Scanner kb = new Scanner(System.in);
+        final int inputContinueNumber = kb.nextInt();
+
+        if (inputContinueNumber == 1) {
+            return true;
+        } else if (inputContinueNumber == 2) {
+            System.exit(0);
+        }
+
+        return false;
+    }
 }

@@ -7,6 +7,28 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BaseballGame {
+    public void start() {
+        String number;
+
+        do{
+            number = createNumber();
+        } while (play(number));
+    }
+
+    public boolean play(String number) {
+        int strike = 0;
+
+        while (strike < 3) {
+            String inputNumber = getInputNumber();
+
+            int ball = checkBall(number, inputNumber);
+            strike = checkStrike(number, inputNumber);
+
+            System.out.println(createCompareResult(ball, strike));
+        }
+
+        return isEnd();
+    }
 
     // 1. 서로 다른 수로 이루어진 3자리의 수를 생성한다.
     public String createNumber() {

@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Baseball {
@@ -8,5 +9,12 @@ public class Baseball {
         return scanner.nextLine();
     }
 
-    public
+    public String random() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        do {
+
+        } while (sb.length() != 3);
+    }
+
 }

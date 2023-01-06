@@ -144,6 +144,7 @@ public class BaseballGame {
         do{
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             inputContinueNumber = kb.nextInt();
+            kb.nextLine();
         } while (inputContinueNumber != 1 && inputContinueNumber != 2);
 
         return inputContinueNumber == 1;

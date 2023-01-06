@@ -102,7 +102,7 @@ class BaseballGameTest {
     @DisplayName("종료 여부 선택")
     void isEnd(int inputNumber, boolean expected) {
         // given
-        setInputStream(String.valueOf(inputNumber));
+        setInputStream(inputNumber + "\n");
 
         // when
         final boolean isEnd = game.isEnd(new Scanner(System.in));

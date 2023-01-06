@@ -5,7 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -28,5 +30,21 @@ public class BaseballTest {
         assertThatThrownBy(() -> baseball.zeroCheck(zeroO))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("0은 입력할 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("ball 테스트")
+    void ball() {
+        List<String> computer = List.of(new String[]{"1", "2", "3"});
+        List<String> user = List.of(new String[] {"2", "3", "1"});
+        assertThat(baseball.ball(computer, user)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("strike 테스트")
+    void strike() {
+        List<String> computer = List.of(new String[]{"1", "2", "3"});
+        List<String> user = List.of(new String[] {"2", "1", "3"});
+        assertThat(baseball.strike(computer, user)).isEqualTo(1);
     }
 }

@@ -1,9 +1,22 @@
 package baseball;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class Baseball {
     private static final int len = 3;
+
+    public void play() {
+        List<String> user = input();
+        List<String> computer = random();
+        int strikeCount, ballCount;
+
+        while(true) {
+            strikeCount = strike(computer, user);
+            ballCount = ball(computer, user);
+        }
+    }
+
     public List<String> input() {
         Scanner scanner = new Scanner(System.in);
         List<String> input = List.of(scanner.nextLine().split(""));
@@ -19,20 +32,15 @@ public class Baseball {
 
         while(set.size()!=3) {
             int num = random.nextInt(9);
-            if(num == 0) {
-                continue;
-            }
             set.add(Integer.toString(num));
+            set.remove("0");
         }
 
         return new ArrayList<>(set);
     }
 
     public void duplicateCheck(List<String> numbers) {
-        Set<String> set = new HashSet<>();
-        for (String number : numbers) {
-            set.add(number);
-        }
+        Set<String> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException("서로 다른 숫자만 입력해주세요.");
         }
@@ -48,5 +56,17 @@ public class Baseball {
         if(list.contains("0")) {
             throw new IllegalArgumentException("0은 입력할 수 없습니다.");
         }
+    }
+
+    public int strike(List<String> computer, List<String> user) {
+        return (int) IntStream.range(0, len)
+                .filter(i -> computer.get(i).equals(user.get(i)))
+                .count();
+    }
+
+    public int ball(List<String> computer, List<String> user) {
+        return (int) IntStream.range(0, len)
+                .filter(i -> computer.contains(user.get(i)) && !computer.get(i).equals(user.get(i)))
+                .count();
     }
 }

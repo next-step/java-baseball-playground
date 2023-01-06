@@ -53,3 +53,26 @@ else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 
 - 게임 종료 후 -> 완전히 종료하거나 새로운 게임 시작
 
 ### 🚀 commit 로그 요구사항
+**commit message convention** 
+```
+// head
+<type> : [<step information>] <short description>
+
+//body
+description (option)
+```
+
+**type**
+```
+feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain)
+```
+
+**요구사항**
+- 하나의 메소드(기능)가 완성될 때마다 커밋한다
+- 커밋은 꼭 컨벤션에 맞춰서 작성한다

@@ -9,12 +9,23 @@ public class Baseball {
         List<String> input = List.of(scanner.nextLine().split(""));
         lengthCheck(input);
         duplicateCheck(input);
+        zeroCheck(input);
         return input;
     }
 
     public List<String> random() {
         Random random = new Random();
-        return null;
+        Set<String> set = new HashSet<>();
+
+        while(set.size()!=3) {
+            int num = random.nextInt(9);
+            if(num == 0) {
+                continue;
+            }
+            set.add(Integer.toString(num));
+        }
+
+        return new ArrayList<>(set);
     }
 
     public void duplicateCheck(List<String> numbers) {
@@ -30,6 +41,12 @@ public class Baseball {
     public void lengthCheck(List<String> list) {
         if(list.size() != len) {
             throw new IllegalArgumentException(len+"자리 숫자를 입력해주세요.");
+        }
+    }
+
+    public void zeroCheck(List<String> list) {
+        if(list.contains("0")) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
         }
     }
 }

@@ -98,7 +98,7 @@ class BaseballGameTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1, true", "3, false"})
+    @CsvSource({"1, true", "2, false"})
     @DisplayName("종료 여부 선택")
     void isEnd(int inputNumber, boolean expected) {
         // given

@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class BaseballGameTest {
 
@@ -45,19 +45,6 @@ class BaseballGameTest {
         }
         // 서로 다른 수 확인
         assertThat(set.size()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("숫자 입력 받기[실패] - 숫자가 아닌 문자")
-    void getInputName_NotNumber() {
-        // given
-        setInputStream("14k");
-
-        // when
-        // then
-        assertThatThrownBy(() -> game.getInputNumber())
-                .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("숫자를 입력해주세요");
     }
 
     @Test

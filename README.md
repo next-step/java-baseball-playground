@@ -54,7 +54,7 @@ else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 
 
 ### 🚀 commit 로그 요구사항
 **commit message convention** 
-```
+```성
 // head
 <type> : [<step information>] <short description>
 

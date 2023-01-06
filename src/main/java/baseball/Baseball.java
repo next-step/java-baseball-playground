@@ -1,20 +1,35 @@
 package baseball;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Baseball {
-    public String input() {
+    private static final int len = 3;
+    public List<String> input() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        List<String> input = List.of(scanner.nextLine().split(""));
+        lengthCheck(input);
+        duplicateCheck(input);
+        return input;
     }
 
-    public String random() {
+    public List<String> random() {
         Random random = new Random();
-        StringBuilder sb = new StringBuilder();
-        do {
-
-        } while (sb.length() != 3);
+        return null;
     }
 
+    public void duplicateCheck(List<String> numbers) {
+        Set<String> set = new HashSet<>();
+        for (String number : numbers) {
+            set.add(number);
+        }
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException("서로 다른 숫자만 입력해주세요.");
+        }
+    }
+
+    public void lengthCheck(List<String> list) {
+        if(list.size() != len) {
+            throw new IllegalArgumentException(len+"자리 숫자를 입력해주세요.");
+        }
+    }
 }

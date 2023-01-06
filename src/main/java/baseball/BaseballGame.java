@@ -49,18 +49,26 @@ public class BaseballGame {
         final Scanner kb = new Scanner(System.in);
         final String inputString = kb.nextLine();
 
-        // 2-2. 숫자인지 검증한다.
-        isNumber(inputString);
+        // 2-2. 3자리의 숫자인지 검증한다.
+        if (isInputNumberValid(inputString)) {
+            System.out.println("3자리의 숫자를 입력해주세요");
+        }
 
         return inputString.trim();
     }
 
-    private void isNumber(final String inputString) {
+    private boolean isInputNumberValid(final String inputString) {
+        return isNumber(inputString) && inputString.length() == 3;
+    }
+
+    private boolean isNumber(final String inputString) {
         try {
             Integer.parseInt(inputString);
         } catch (NumberFormatException e) {
-            throw new IllegalStateException("숫자를 입력해주세요");
+            return false;
         }
+
+        return true;
     }
 
     // 3. 정답과 입력한 수를 비교한다.

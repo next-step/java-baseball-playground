@@ -105,17 +105,20 @@ public class BaseballGame {
                            final String inputNumber) {
         int strike = 0;
 
-        if (number.charAt(0) == inputNumber.charAt(0)) {
-            strike++;
-        }
-        if (number.charAt(1) == inputNumber.charAt(1)) {
-            strike++;
-        }
-        if (number.charAt(2) == inputNumber.charAt(2)) {
-            strike++;
+        for (int i = 0; i < 3; i++) {
+            strike += isContainNumber(number.charAt(i), inputNumber.charAt(i));
         }
 
         return strike;
+    }
+
+    private int isContainNumber(final char number,
+                                final char inputNumber) {
+        if (number == inputNumber) {
+            return 1;
+        }
+
+        return 0;
     }
 
     // 4. 비교한 결과를 생성한다.

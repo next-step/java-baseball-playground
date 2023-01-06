@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class BaseballGame {
     public void start() {
-        Scanner kb = new Scanner(System.in);
+        final Scanner kb = new Scanner(System.in);
         String number;
 
         do {
@@ -16,7 +16,8 @@ public class BaseballGame {
         } while (play(number, kb));
     }
 
-    public boolean play(String number, Scanner kb) {
+    public boolean play(final String number,
+                        final Scanner kb) {
         int strike = 0;
 
         while (strike < 3) {
@@ -43,7 +44,7 @@ public class BaseballGame {
     }
 
     // 2. 숫자를 입력 받는다.
-    public String getInputNumber(Scanner kb) {
+    public String getInputNumber(final Scanner kb) {
 
         String inputString;
 
@@ -136,7 +137,7 @@ public class BaseballGame {
     }
 
     // 5. 게임을 종료할지 선택한다.
-    public boolean isEnd(Scanner kb) {
+    public boolean isEnd(final Scanner kb) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         int inputContinueNumber;

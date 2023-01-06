@@ -8,18 +8,19 @@ import java.util.stream.Collectors;
 
 public class BaseballGame {
     public void start() {
+        Scanner kb = new Scanner(System.in);
         String number;
 
         do{
             number = createNumber();
-        } while (play(number));
+        } while (play(number, kb));
     }
 
-    public boolean play(String number) {
+    public boolean play(String number, Scanner kb) {
         int strike = 0;
 
         while (strike < 3) {
-            String inputNumber = getInputNumber();
+            String inputNumber = getInputNumber(kb);
 
             int ball = checkBall(number, inputNumber);
             strike = checkStrike(number, inputNumber);
@@ -27,7 +28,7 @@ public class BaseballGame {
             System.out.println(createCompareResult(ball, strike));
         }
 
-        return isEnd();
+        return isEnd(kb);
     }
 
     // 1. 서로 다른 수로 이루어진 3자리의 수를 생성한다.
@@ -42,11 +43,10 @@ public class BaseballGame {
     }
 
     // 2. 숫자를 입력 받는다.
-    public String getInputNumber() {
+    public String getInputNumber(Scanner kb) {
         System.out.print("숫자를 입력해 주세요 : ");
 
         // 2-1. 문자열을 입력 받는다.
-        final Scanner kb = new Scanner(System.in);
         final String inputString = kb.nextLine();
 
         // 2-2. 3자리의 숫자인지 검증한다.
@@ -131,11 +131,10 @@ public class BaseballGame {
     }
 
     // 5. 게임을 종료할지 선택한다.
-    public boolean isEnd() {
+    public boolean isEnd(Scanner kb) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        final Scanner kb = new Scanner(System.in);
         final int inputContinueNumber = kb.nextInt();
 
         if (inputContinueNumber == 1) {

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,7 +55,7 @@ class BaseballGameTest {
         setInputStream(number);
 
         // when
-        final String inputNumber = game.getInputNumber();
+        final String inputNumber = game.getInputNumber(new Scanner(System.in));
 
         // then
         assertThat(inputNumber).isEqualTo(number);
@@ -104,7 +105,7 @@ class BaseballGameTest {
         setInputStream(String.valueOf(inputNumber));
 
         // when
-        final boolean isEnd = game.isEnd();
+        final boolean isEnd = game.isEnd(new Scanner(System.in));
 
         // then
         assertThat(isEnd).isEqualTo(expected);

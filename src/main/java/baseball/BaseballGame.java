@@ -11,7 +11,7 @@ public class BaseballGame {
         Scanner kb = new Scanner(System.in);
         String number;
 
-        do{
+        do {
             number = createNumber();
         } while (play(number, kb));
     }
@@ -44,21 +44,26 @@ public class BaseballGame {
 
     // 2. 숫자를 입력 받는다.
     public String getInputNumber(Scanner kb) {
-        System.out.print("숫자를 입력해 주세요 : ");
 
-        // 2-1. 문자열을 입력 받는다.
-        final String inputString = kb.nextLine();
+        String inputString;
 
-        // 2-2. 3자리의 숫자인지 검증한다.
-        if (isInputNumberValid(inputString)) {
-            System.out.println("3자리의 숫자를 입력해주세요");
-        }
+        do {
+            System.out.print("숫자를 입력해 주세요 : ");
+
+            // 2-1. 문자열을 입력 받는다.
+            inputString = kb.nextLine();
+        } while (!isInputNumberValid(inputString));  // 2-2. 3자리의 숫자인지 검증한다.
 
         return inputString.trim();
     }
 
     private boolean isInputNumberValid(final String inputString) {
-        return isNumber(inputString) && inputString.length() == 3;
+        if (isNumber(inputString) && inputString.length() == 3) {
+            return true;
+        }
+
+        System.out.println("3자리의 숫자를 입력해주세요");
+        return false;
     }
 
     private boolean isNumber(final String inputString) {
@@ -114,7 +119,7 @@ public class BaseballGame {
 
     // 4. 비교한 결과를 생성한다.
     public String createCompareResult(final int ball,
-                                   final int strike) {
+                                      final int strike) {
         if (ball == 0 && strike == 0) {
             return "낫싱";
         }
@@ -134,15 +139,13 @@ public class BaseballGame {
     public boolean isEnd(Scanner kb) {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        final int inputContinueNumber = kb.nextInt();
+        int inputContinueNumber;
 
-        if (inputContinueNumber == 1) {
-            return true;
-        } else if (inputContinueNumber == 2) {
-            System.exit(0);
-        }
+        do{
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            inputContinueNumber = kb.nextInt();
+        } while (inputContinueNumber != 1 && inputContinueNumber != 2);
 
-        return false;
+        return inputContinueNumber == 1;
     }
 }

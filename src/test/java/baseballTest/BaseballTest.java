@@ -33,6 +33,18 @@ public class BaseballTest {
     }
 
     @Test
+    @DisplayName("길이가 3이 아닌 경우, 에러메세지 발생")
+    void lengthCheckTest() {
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("1");
+
+        assertThatThrownBy(() -> baseball.lengthCheck(list))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자리 숫자를 입력해주세요.");
+    }
+
+    @Test
     @DisplayName("ball 테스트")
     void ball() {
         List<String> computer = List.of(new String[]{"1", "2", "3"});
@@ -47,4 +59,5 @@ public class BaseballTest {
         List<String> user = List.of(new String[] {"2", "1", "3"});
         assertThat(baseball.strike(computer, user)).isEqualTo(1);
     }
+
 }

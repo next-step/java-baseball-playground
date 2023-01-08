@@ -1,0 +1,63 @@
+package baseballTest;
+
+import baseball.Baseball;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
+public class BaseballTest {
+    private Baseball baseball = new Baseball();
+    @Test
+    @DisplayName("난수 발생 테스트")
+    void randomTest() {
+        List<String> list = baseball.random();
+        System.out.println(list.size());
+    }
+
+    @Test
+    @DisplayName("리스트에 0이 포함되는 경우, 에러메세지 발생")
+    void zeroCheckTest() {
+        List<String> zeroO = new ArrayList<>();
+        zeroO.add("0");
+
+        assertThatThrownBy(() -> baseball.zeroCheck(zeroO))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0은 입력할 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("길이가 3이 아닌 경우, 에러메세지 발생")
+    void lengthCheckTest() {
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("1");
+
+        assertThatThrownBy(() -> baseball.lengthCheck(list))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자리 숫자를 입력해주세요.");
+    }
+
+    @Test
+    @DisplayName("ball 테스트")
+    void ball() {
+        List<String> computer = List.of(new String[]{"1", "2", "3"});
+        List<String> user = List.of(new String[] {"2", "3", "1"});
+        assertThat(baseball.ball(computer, user)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("strike 테스트")
+    void strike() {
+        List<String> computer = List.of(new String[]{"1", "2", "3"});
+        List<String> user = List.of(new String[] {"2", "1", "3"});
+        assertThat(baseball.strike(computer, user)).isEqualTo(1);
+    }
+
+}

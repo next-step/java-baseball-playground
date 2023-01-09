@@ -1,22 +1,20 @@
 package study;
 
 public class CheckBaseballNumbers {
-
-	private String randomNumbers;
 	
 	public CheckBaseballNumbers() {
 		
 	}
 	
 	public int generateRandomNumber() {
-		int randomNumber = (int) (Math.random()*889 + 111);
-		return randomNumber;
+		int randomNumbers = (int) (Math.random()*889 + 111);
+		return randomNumbers;
 	}
 	
 	public String converseIntToString(int randomNumbers) {
 		StringBuffer sb = new StringBuffer();
 		
-		while (randomNumbers != 0) {
+		while (randomNumbers > 0) {
 			int temp = 0;
 			temp = randomNumbers%10;
 			sb.insert(0, temp);

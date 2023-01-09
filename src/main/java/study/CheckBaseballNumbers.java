@@ -64,7 +64,7 @@ public class CheckBaseballNumbers {
 	public int checkBall(String numbers, String randomNumbers, int idx) {
 		int count = 0;
 		
-		if (randomNumbers.contains(String.valueOf(numbers.charAt(idx))) 
+		if (numbers.contains(String.valueOf(randomNumbers.charAt(idx))) 
 				  && randomNumbers.charAt(idx) != numbers.charAt(idx)) {
 			count++;
 		}

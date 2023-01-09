@@ -6,6 +6,5 @@ public class BaseballGame {
 		
 		BaseballUi bbUi = new BaseballUi();
 		bbUi.run();
-		
 	}
 }

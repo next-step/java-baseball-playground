@@ -6,6 +6,7 @@ public class BaseballUi {
 	
 	Scanner sc = new Scanner(System.in);
 	CheckBaseballNumbers cbn = new CheckBaseballNumbers();
+	String numbers = " ";
 
 	public void run() {
 
@@ -17,7 +18,9 @@ public class BaseballUi {
 		while (maxStrike != 3) {
 			
 			System.out.print("숫자를 입력해 주세요 : ");
-			String numbers = sc.next();
+			numbers = sc.next();
+			checkNumbersRange(numbers);
+			
 			Baseball result = cbn.checkBallAndStrike(numbers, randomNumber);
 			System.out.println(cbn.tellBallAndStrike(result));
 			
@@ -44,5 +47,20 @@ public class BaseballUi {
 			System.exit(0); 
 		}
 		 
+	}
+	
+	public void checkNumbersRange(String numbers) {
+		
+		if (numbers.length() !=3 || Integer.parseInt(numbers) > 999 || Integer.parseInt(numbers) < 111) {
+			System.out.println("숫자의 범위가 잘못됐습니다. 다시입력해주세요.");
+			this.numbers = sc.next();
+			checkNumbersRange(this.numbers);
+			return;
+		}
+		return;
+	}
+	
+	public void checkNumberConversIntger(String numbers) {
+		
 	}
 }

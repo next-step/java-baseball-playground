@@ -11,9 +11,8 @@ public class BaseballUi {
 		System.out.print("숫자를 입력해 주세요 : ");
 		String numbers = sc.next();
 		System.out.println(numbers);
-		
-		int temp = cbn.generateRandomNumber();
-		String randomNumber = cbn.converseIntToString(temp);
+
+		String randomNumber = cbn.converseIntToString(cbn.generateRandomNumber());
 		System.out.println(randomNumber);
 		
 		

@@ -17,6 +17,7 @@ public class CheckBaseballNumbers {
 		while (randomNumbers > 0) {
 			int temp = 0;
 			temp = randomNumbers%10;
+			randomNumbers /= 10;
 			sb.insert(0, temp);
 		}
 		

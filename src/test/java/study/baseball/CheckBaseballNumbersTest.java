@@ -34,4 +34,13 @@ public class CheckBaseballNumbersTest {
 		assertThat(baseball.getBall()).isEqualTo(cbn.checkBallAndStrike("312", "321").getBall());
 	}
 	
+	@DisplayName("볼 확인")
+	@Test
+	public void ballTest() {
+		int[] list = {1, 0, 0};
+		for (int i=0; i<3; i++) {
+			assertThat(list[i]).isEqualTo(cbn.checkBall("136", "392", i));			
+		}
+	}
+	
 }

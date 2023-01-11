@@ -1,4 +1,4 @@
-package study;
+package study.baseball;
 
 import java.util.Scanner;
 
@@ -7,21 +7,21 @@ public class BaseballUi {
 	Scanner sc = new Scanner(System.in);
 	CheckBaseballNumbers cbn = new CheckBaseballNumbers();
 	String numbers = " ";
+	Baseball result;
 
 	public void run() {
 
 		String randomNumber = cbn.converseIntToString(cbn.generateRandomNumber());
 		
 		int maxStrike = 0;
-		System.out.println(randomNumber);
 		
 		while (maxStrike != 3) {
 			
 			System.out.print("숫자를 입력해 주세요 : ");
 			numbers = sc.next();
 			checkNumbersRange(numbers);
+			result = cbn.checkBallAndStrike(numbers, randomNumber);
 			
-			Baseball result = cbn.checkBallAndStrike(numbers, randomNumber);
 			System.out.println(cbn.tellBallAndStrike(result));
 			
 			maxStrike = result.getStrike(); 
@@ -59,8 +59,4 @@ public class BaseballUi {
 		}
 		return;
 	}
-	
-	public void checkNumberConversIntger(String numbers) {
-		
-	}
-}
+}	

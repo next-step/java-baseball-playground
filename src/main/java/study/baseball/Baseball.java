@@ -1,4 +1,4 @@
-package study;
+package study.baseball;
 
 public class Baseball {
 

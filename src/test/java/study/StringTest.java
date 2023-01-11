@@ -31,7 +31,7 @@ public class StringTest {
     }
     @Nested
     @DisplayName("charAt 테스트")
-    class charAtTest {
+    class CharAtTest {
         String actual = "abc";
         @Test
         void 무난() {

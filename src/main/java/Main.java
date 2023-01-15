@@ -1,6 +1,8 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        calculator.inputData();
+    public static void main(String[] args) throws IOException {
+        InputService is = new InputService();
+        is.start();
     }
 }

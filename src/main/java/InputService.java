@@ -1,26 +1,30 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 
 public class InputService {
-    private LinkedHashSet<Integer> inputNumbers = new LinkedHashSet<>();
+    private LinkedHashSet<Integer> tmpInputNumbers = new LinkedHashSet<>();
+    private ArrayList<Integer> finalInputNumbers;
     private boolean isValid = false;
     InputView view = new InputView();
 
-    void start() throws IOException {
+    ArrayList<Integer> startConsole() throws IOException {
         while(!isValid){
-            inputNumbers.clear();
+            tmpInputNumbers.clear();
             String[] input = view.printRequestMessage();
             System.out.println(Arrays.toString(input));
             isValid = validateInput(input);
         }
-        System.out.println("while 끝?!");
+        System.out.println("inputNumbers = " + tmpInputNumbers.toString());
+        finalInputNumbers = new ArrayList<>(tmpInputNumbers);
+        return finalInputNumbers;
     }
     boolean validateInput(String[] input) {
         try{
             validateSize(input);
             validateType(input);
-            validateSize(inputNumbers);
+            validateSize(tmpInputNumbers);
         }catch(NumberCountException | NumberFormatException e) {
             System.out.println(e.getMessage());
             return false;
@@ -40,7 +44,7 @@ public class InputService {
 
     private void validateType(String[] before) throws NumberFormatException{
         Arrays.asList(before).stream()
-                .forEach(num -> inputNumbers.add(Integer.parseInt(num)));
+                .forEach(num -> tmpInputNumbers.add(Integer.parseInt(num)));
     }
 
 }

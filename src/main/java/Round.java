@@ -9,6 +9,11 @@ public class Round {
     public Round() { //테스트용
 
     }
+    public Round(int ball, int str, boolean isOut) { //테스트용
+        this.ball = ball;
+        this.strike = str;
+        this.isOut = isOut;
+    }
 
     public Round(ArrayList<Integer> correctAnswer, ArrayList<Integer> inputs) {
         ball = checkBall(correctAnswer, inputs);

@@ -13,12 +13,23 @@ public class InputService {
         while(!isValid){
             tmpInputNumbers.clear();
             String[] input = view.printRequestMessage();
-            System.out.println(Arrays.toString(input));
             isValid = validateInput(input);
         }
-        System.out.println("inputNumbers = " + tmpInputNumbers.toString());
         finalInputNumbers = new ArrayList<>(tmpInputNumbers);
         return finalInputNumbers;
+    }
+
+    int checkRestart() throws IOException{
+        int restartNum = 0;
+        try{
+            restartNum = Integer.parseInt(view.restartMessage());
+        }catch (Exception e){
+            System.out.println("입력을 확인하세요.. ");
+            restartNum = checkRestart();
+        }
+        if(restartNum!=1&&restartNum!=2)
+            restartNum = checkRestart();
+        return restartNum;
     }
     boolean validateInput(String[] input) {
         try{

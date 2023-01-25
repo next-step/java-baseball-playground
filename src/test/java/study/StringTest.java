@@ -1,9 +1,9 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.as;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -41,9 +41,23 @@ public class StringTest {
     // 요구사항 3
     @Test
     void charAt() {
-        char oneChar = "123".charAt(0);
+        char oneChar = "123".charAt(5);
         System.out.println(oneChar);
     }
+
+    @Test
+    @DisplayName("입력값 범위 밖일 경우 StringIndexOutOfBoundsException 확인")
+    public void StringIndexOutOfBoundsException() {
+        String str = "abc";
+
+        assertThatThrownBy(() -> str.charAt(str.length()))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String 범위를 넘어섰습니다.")
+                .hasMessageContaining(String.valueOf(str.length()));
+    }
+
+    // 내일의 미션 : throw에서 나올수있는 상황들에 대해서 몇가지더 짜보기.
+
 
 
 

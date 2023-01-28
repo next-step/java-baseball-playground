@@ -56,8 +56,6 @@ public class StringTest {
                 .hasMessageContaining(String.valueOf(str.length()));
     }
 
-    // 내일의 미션 : throw에서 나올수있는 상황들에 대해서 몇가지더 짜보기.
-
 
 
 

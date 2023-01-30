@@ -12,6 +12,15 @@ public class StringTest {
         assertThat(actual).isEqualTo("adc");
     }
 
+    @Test
+    void test() {
+        String[] actual = {"2"};
+        String s = "123";
+
+        System.out.println(s.indexOf(actual[0]));
+        System.out.println(s.contains(actual[0]));
+    }
+
     // 요구사항 1
     @Test
     void split() {

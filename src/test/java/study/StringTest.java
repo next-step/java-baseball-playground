@@ -8,6 +8,7 @@ public class StringTest {
     @Test
     void replace() {
         String actual = "abc".replace("b", "d");
-        assertThat(actual).isEqualTo("adc");
+        assertThat(actual).isEqualTo("adcd");
+
     }
 }

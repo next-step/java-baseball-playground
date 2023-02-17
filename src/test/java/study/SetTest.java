@@ -1,5 +1,6 @@
 package study;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,16 +34,16 @@ public class SetTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    @DisplayName("Set에 해당요소 있는지 확인")
+    @DisplayName("1,2,3이 존재하는지")
     void isContain(int number){
         assertTrue(numbers.contains(number));
         //assertThat(numbers).contains(1,2,3);
     }
 
     @ParameterizedTest
-    @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
-    void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
-        String actualValue = input.toUpperCase();
-        assertEquals(expected, actualValue);
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    @DisplayName("해당요소가 있는지 여부 확인")
+    void contains_ShouldReturnTrueForContains(int input, boolean expected) {
+        assertEquals(expected, numbers.contains(input));
     }
 }

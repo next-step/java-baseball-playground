@@ -14,13 +14,25 @@ public class ResultView {
 
     }
 
+    public void BallMessage(int ball){
+
+        System.out.print(ball + "볼 ");
+
+    }
+
+    public void StrikeMessage(int strike){
+
+        System.out.println(strike + "스트라이크 ");
+
+    }
+
     public Boolean resumeMessage() {
 
         InputView inputView = new InputView();
 
         inputView.message();
 
-        return false;
+        return true;
 
     }
 
@@ -28,7 +40,7 @@ public class ResultView {
 
         System.out.println("종료되었습니다.");
 
-        return true;
+        return false;
 
     }
 }

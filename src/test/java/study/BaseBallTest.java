@@ -30,24 +30,76 @@ public class BaseBallTest {
 
     private void gameStart(String numberByComputer) {
 
-        InputView inputView= new InputView();
+        boolean gameStart =true;
 
-        inputView.message();
+        while(gameStart){
 
-         String numberByHuman =  scanner.nextLine();
+            InputView inputView= new InputView();
 
-        while(true){
+            inputView.message();
 
-            if(numberByHuman.equals(numberByComputer)){
+            String numberByHuman =  scanner.nextLine();
 
-                if(aaa()) break;
-
-            }
+            gameStart = checkEqual(numberByComputer, numberByHuman);
 
         }
     }
 
-    private Boolean aaa(){
+    private boolean checkEqual(String numberByComputer, String numberByHuman) {
+        if(numberByHuman.equals(numberByComputer)){
+
+            if(checkMode()) return true;
+
+        }
+        else{
+
+            ResultView resultView = new ResultView();
+
+            resultView.BallMessage(countBall(numberByComputer, numberByHuman));
+
+            resultView.BallMessage(countStrike(numberByComputer, numberByHuman));
+
+
+        }
+
+        return false;
+    }
+
+    private int countBall(String numberByComputer, String numberByHuman) {
+
+        int result = 0;
+
+        for(int i = 0; i< numberByComputer.length(); i++){
+            for(int j = 0; j< numberByHuman.length(); j++){
+                if(numberByComputer.charAt(i)== numberByHuman.charAt(j)){
+
+                    if(i!=j)
+                        result++;
+
+                }
+            }
+        }
+        return result;
+    }
+
+    private int countStrike(String numberByComputer, String numberByHuman) {
+
+        int result = 0;
+
+        for(int i = 0; i< numberByComputer.length(); i++){
+            for(int j = 0; j< numberByHuman.length(); j++){
+                if(numberByComputer.charAt(i)== numberByHuman.charAt(j)){
+
+                    if(i==j)
+                        result++;
+
+                }
+            }
+        }
+        return result;
+    }
+
+    private Boolean checkMode(){
 
         ResultView resultView = new ResultView();
 
@@ -59,7 +111,7 @@ public class BaseBallTest {
 
         if (mode.equals("2")) return resultView.exitMessage();
 
-        return false;
+        return true;
     }
 
     private static String generateNumberByComputer() {

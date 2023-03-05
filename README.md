@@ -1,5 +1,4 @@
 ## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
-
 ---
 ## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
 
@@ -24,3 +23,8 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+## 강의 중 참고자료 
+[AssertJ](https://www.baeldung.com/introduction-to-assertj)  
+[AssertJ Exception](https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion)  
+[ParameterizedTest](https://www.baeldung.com/parameterized-tests-junit-5)

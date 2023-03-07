@@ -5,16 +5,18 @@ import java.util.List;
 
 public class Balls {
 
-    private final List<Ball> results = new ArrayList<>();
+    private final List<Ball> results;
     public Balls(List<Integer> numbers) {
-        mapBall(numbers);
+        this.results = mapBall(numbers);
     }
 
-    private void mapBall(List<Integer> numbers){
+    private List<Ball> mapBall(List<Integer> numbers){
+        List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             Ball ball = new Ball(i+1, numbers.get(i));
-            results.add(ball);
+            balls.add(ball);
         }
+        return balls;
     }
 
     public BallStatus compare(Ball ball) {
@@ -23,5 +25,14 @@ public class Balls {
                 .filter(status -> status != BallStatus.NOTHING)
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
+    }
+
+    public BaseBallResult play(Balls userBalls) {
+        BaseBallResult result = new BaseBallResult();
+        for (int i = 0; i < 3; i++) {
+            BallStatus status = userBalls.compare(this.results.get(i));
+            result.add(status);
+        }
+        return result;
     }
 }

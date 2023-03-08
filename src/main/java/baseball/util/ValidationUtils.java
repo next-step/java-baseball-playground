@@ -11,14 +11,11 @@ public class ValidationUtils {
         return Pattern.matches(NUMBER_REGEX, text);
     }
 
-    public static boolean macthLength(String text, int length) {
-        return text.length() == length;
-    }
-
     public static boolean isDuplicationNumber(List<Integer> numberList) {
         long distinctCount = numberList.stream()
                 .distinct()
                 .count();
-        return numberList.size() == distinctCount;
+
+        return numberList.size() != distinctCount;
     }
 }

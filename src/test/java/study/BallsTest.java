@@ -1,9 +1,6 @@
 package study;
 
-import baseball.Ball;
-import baseball.BallStatus;
-import baseball.Balls;
-import baseball.BaseBallResult;
+import baseball.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,12 +9,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class BallsTest {
 
+
     @Test
-    void play_gameOver(){
+    void play_success(){
         Balls computerBalls = new Balls(Arrays.asList(1,2,3));
         Balls userBalls = new Balls(Arrays.asList(1,2,3));
         BaseBallResult result = computerBalls.play(userBalls);
-        assertThat(result.isGameOver()).isTrue();
+        assertThat(result.isSuccess()).isTrue();
     }
     @Test
     void play_nothing(){
@@ -31,15 +29,15 @@ public class BallsTest {
         Balls computerBalls = new Balls(Arrays.asList(1,2,3));
         Balls userBalls = new Balls(Arrays.asList(1,3,6));
         BaseBallResult result = computerBalls.play(userBalls);
-        assertThat(result.getStrikeCount()).isEqualTo(1);
-        assertThat(result.getBallCount()).isEqualTo(1);
+        assertThat(result.toStringResult()).isEqualTo("1볼 1스트라이크");
+
     }
     @Test
     void play_one_strike(){
         Balls computerBalls = new Balls(Arrays.asList(1,2,3));
         Balls userBalls = new Balls(Arrays.asList(1,5,6));
         BaseBallResult result = computerBalls.play(userBalls);
-        assertThat(result.getStrikeCount()).isEqualTo(1);
+        assertThat(result.toStringResult()).isEqualTo("1스트라이크");
     }
 
     @Test

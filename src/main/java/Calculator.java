@@ -47,12 +47,13 @@ public class Calculator {
 
                 operand = Integer.parseInt(parsingExpression[i]);
                 switch (operator) {
-                    case "+" -> calculationResult += operand;
-                    case "-" -> calculationResult -= operand;
-                    case "*" -> calculationResult *= operand;
-                    case "/" -> {
+                    case "+" : calculationResult += operand; break;
+                    case "-" : calculationResult -= operand; break;
+                    case "*" : calculationResult *= operand; break;
+                    case "/" : {
                         if (operand != 0) calculationResult /= operand;
                         else throw new ArithmeticException("0을 나눌 수 없습니다.");
+                        break;
                     }
                 }
 

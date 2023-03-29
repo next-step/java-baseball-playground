@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 
 group = 'camp.nextstep'
 version = '1.0.0'
-sourceCompatibility = '1.8'
+sourceCompatibility = "14"
 
 repositories {
 	mavenCentral()
@@ -17,3 +17,20 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+//// annotation processing 추가
+//tasks.withType(JavaCompile) {
+//    options.annotationProcessorPath = configurations.apt
+//}
+//
+//configurations {
+//    apt
+//}
+//
+//dependencies {
+//    apt 'org.projectlombok:lombok:1.18.20'
+//    compileOnly 'org.projectlombok:lombok:1.18.20'
+//}
+
+sourceCompatibility = 11
+targetCompatibility = 11

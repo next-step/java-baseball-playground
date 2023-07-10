@@ -22,7 +22,7 @@ public class StringTest {
         String actual = "(1,2)".substring(1,4);
         assertThat(actual).isEqualTo("1,2");
     }
-    @DisplayName("범위테스트")
+    @DisplayName("charAt범위테스트")
     @Test
     public void testException() {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(()->{

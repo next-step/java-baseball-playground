@@ -28,7 +28,8 @@ public class StringTest {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(()->{
             int i = 3;
             char actual = "abc".charAt(i);
-        });
+        }).withMessage("String index 범위를 벗어났습니다.");
 
     }
+
 }

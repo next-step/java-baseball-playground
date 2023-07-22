@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class CreateNumber {
 
-    public int makeRandomNumber(List<Integer> numberList) {
+    public int createRandomNumber(List<Integer> numberList) {
         Random random = new Random();
         if(numberList.contains((random.nextInt(9)+1))){
-            return makeRandomNumber(numberList);
+            createRandomNumber(numberList);
         }
         return random.nextInt(9)+1;
     }
@@ -17,8 +17,9 @@ public class CreateNumber {
     public List<Integer> makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            numberList.add(makeRandomNumber(numberList));
+            numberList.add(createRandomNumber(numberList));
         }
+        System.out.println(numberList);
         return numberList;
     }
 }

@@ -12,7 +12,6 @@ class CreateNumberTest {
     void createNumber() {
         CreateNumber createNumber = new CreateNumber();
         List<Integer> numberList = createNumber.makeRandomNumbers();
-        System.out.println(numberList);
         assertEquals(3, numberList.size());
     }
 

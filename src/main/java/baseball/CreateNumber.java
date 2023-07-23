@@ -8,18 +8,19 @@ public class CreateNumber {
 
     public int createRandomNumber(List<Integer> numberList) {
         Random random = new Random();
-        if(numberList.contains((random.nextInt(9)+1))){
-            createRandomNumber(numberList);
+        int randomNumber = random.nextInt(9)+1;
+        if(numberList.contains(randomNumber)){
+            return createRandomNumber(numberList);
         }
-        return random.nextInt(9)+1;
+        return randomNumber;
     }
 
     public List<Integer> makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            numberList.add(createRandomNumber(numberList));
+            int a = createRandomNumber(numberList);
+            numberList.add(a);
         }
-        System.out.println(numberList);
         return numberList;
     }
 }

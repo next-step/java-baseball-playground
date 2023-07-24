@@ -1,10 +1,8 @@
-package baseball;
+package baseballgameTest;
 
 import baseballgame.InputNumber;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

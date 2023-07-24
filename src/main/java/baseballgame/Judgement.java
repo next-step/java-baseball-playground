@@ -1,4 +1,4 @@
-﻿package baseballgame;
+package baseballgame;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

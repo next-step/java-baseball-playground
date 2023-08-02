@@ -24,3 +24,7 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+이런 식으로
+변경한 사항들이
+File changed에 표시가 됩니다

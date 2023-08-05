@@ -7,10 +7,9 @@ class OperatorTest {
 
     @Test
     @DisplayName("연산자는 연산을 할 수 있습니다.")
-    void operate() {
+    void function() {
         // given // when
         String expression = "1 + 3";
-
         // then
         assertThat(Operator.PLUS.function(1.0, 3.0)).isEqualTo(4);
     }

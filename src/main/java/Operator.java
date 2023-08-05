@@ -28,5 +28,9 @@ public enum Operator {
             .collect(Collectors.toList());
     }
 
+    public Double function(Double a, Double b) {
+        return this.function.apply(a, b);
+    }
+
 
 }

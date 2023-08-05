@@ -1,11 +1,15 @@
 public class Calculator {
 
-    public Double calculate(String expression) {
+    private final ExpressionValidator validator;
+    private final ExpressionInformer informer;
 
-
-
-        return null;
+    public Calculator(ExpressionValidator validator, ExpressionInformer informer) {
+        this.validator = validator;
+        this.informer = informer;
     }
 
-
+    public Double calculate(String expression) {
+        validator.valid(expression);
+        return informer.InformOperator(expression);
+    }
 }

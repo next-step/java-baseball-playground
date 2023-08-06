@@ -26,6 +26,4 @@ class CalculatorTest {
         Double expected = 2.0 + 3.0 * 5.1 / 3.2;
         assertThat(answer).isEqualTo((2.0 + 3.0) * 5.1 / 3.2);
     }
-
-
 }

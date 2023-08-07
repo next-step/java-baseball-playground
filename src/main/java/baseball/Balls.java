@@ -1,7 +1,7 @@
 package baseball;
 
 public class Balls {
-    private Ball[] balls;
+    private final Ball[] balls;
 
     private final static int MAX_LENGTH = 3;
 

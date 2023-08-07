@@ -3,8 +3,8 @@ package baseball;
 public class BallCalculator {
     public BallStatus calculate(Ball ball, Balls ansBalls) {
         for (Ball ansBall : ansBalls.getBalls()) {
-            if (ansBall.getNumber() == ball.getNumber()) {
-                if (ansBall.getIdx() == ball.getIdx()) {
+            if (ansBall.getNumber().equals(ball.getNumber())) {
+                if (ansBall.getIdx().equals(ball.getIdx())) {
                     return BallStatus.STRIKE;
                 }
                 return BallStatus.BALL;

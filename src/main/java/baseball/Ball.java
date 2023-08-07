@@ -1,8 +1,8 @@
 package baseball;
 
 public class Ball {
-    private Integer idx;
-    private Integer number;
+    private final Integer idx;
+    private final Integer number;
 
     public Ball(int idx, String number) {
         this.idx = idx;

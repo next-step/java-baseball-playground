@@ -15,5 +15,6 @@ public class Application {
         List<GameNumber> userNumbers = numberGenerator.createGameNumbers(Arrays.asList(2, 1, 7));
 
         System.out.println(judgement.correctCount(comNumbers, userNumbers));
+        System.out.println(judgement.hasPlace(comNumbers, 2, 4));
     }
 }

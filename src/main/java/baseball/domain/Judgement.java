@@ -13,8 +13,8 @@ public class Judgement {
         return result;
     }
 
-    public boolean hasPlace(int place, int number) {
-        return false;
+    public boolean hasPlace(List<GameNumber> computer, int index, int number) {
+        return computer.get(index).equals(new GameNumber(number));
     }
 
 }

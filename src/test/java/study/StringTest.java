@@ -63,6 +63,14 @@ public class StringTest {
             assertThat(target.charAt(index)).isEqualTo('c');
         }).withMessageContaining("%d", index);
     }
+
+    @Test
+    @DisplayName("parseInt 처리 테스트")
+    public void parseInt() {
+        int number = 123;
+        int result = Integer.parseInt("123");
+        assertThat(result).isEqualTo(number);
+    }
 }
 
 

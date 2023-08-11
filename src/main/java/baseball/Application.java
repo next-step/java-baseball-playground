@@ -1,20 +1,11 @@
 package baseball;
 
-import baseball.domain.GameNumber;
-import baseball.domain.Judgement;
-import baseball.domain.NumberGenerator;
-
-import java.util.Arrays;
-import java.util.List;
+import baseball.controller.BaseballGameController;
 
 public class Application {
     public static void main(String[] args) {
-        Judgement judgement = new Judgement();
-        NumberGenerator numberGenerator = new NumberGenerator();
-        List<GameNumber> comNumbers = numberGenerator.createGameNumbers(Arrays.asList(1, 2, 3));
-        List<GameNumber> userNumbers = numberGenerator.createGameNumbers(Arrays.asList(2, 1, 7));
+        BaseballGameController baseballGameController = new BaseballGameController();
 
-        System.out.println(judgement.correctCount(comNumbers, userNumbers));
-        System.out.println(judgement.hasPlace(comNumbers, 2, 4));
+        baseballGameController.playGame();
     }
 }

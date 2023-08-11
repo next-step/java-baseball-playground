@@ -17,6 +17,15 @@ public class NumberGenerator {
         return numbers;
     }
 
+    public List<GameNumber> createUserNumbers(String numbers) {
+        List<GameNumber> userNumbers = new ArrayList<>();
+        String[] tmp = numbers.split("");
+        for(String str : tmp) {
+            userNumbers.add(new GameNumber(Integer.parseInt(str)));
+        }
+        return userNumbers;
+    }
+
     public List<GameNumber> createGameNumbers(List<Integer> numbers) {
         List<GameNumber> gameNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

@@ -1,9 +1,19 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class NumberGenerator {
     public List<Integer> createRandomNumbers() {
-        return null;
+        List<Integer> numbers = new ArrayList<>();
+        while(numbers.size() < 3) {
+            int randomNumber = new Random().nextInt(9) + 1;
+            if(numbers.contains(randomNumber)) {
+                continue;
+            }
+            numbers.add(randomNumber);
+        }
+        return numbers;
     }
 }

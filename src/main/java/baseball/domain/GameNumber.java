@@ -19,7 +19,7 @@ public class GameNumber {
         if (this == o) return true;
         if (!(o instanceof GameNumber)) return false;
         GameNumber that = (GameNumber) o;
-        return number == that.number;
+        return number == that.getNumber();
     }
 
     public int getNumber() {

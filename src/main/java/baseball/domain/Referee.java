@@ -8,14 +8,14 @@ public class Referee {
         int correctCount = judgement.correctCount(computer, user);
 
         int strike = 0;
-        for (int i = 0 ; i < computer.size(); i++) {
+        for (int i = 0 ; i < user.size(); i++) {
             if(judgement.hasPlace(computer, i, user.get(i).getNumber())) {
                 strike++;
             }
         }
         int ball = correctCount-strike;
 
-        return new GameStatus(strike, ball);
+        return new GameStatus(ball, strike);
     }
 
 }

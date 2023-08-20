@@ -1,21 +1,21 @@
-package utils;
+package utils.baseball;
 
 public class RunGame {
     public static void main(String[] args){
         boolean run = true;
-        BullsAndCows.gameStart();
-        game.printResult();
+        BullsAndCows game = BullsAndCows.makeNewGame();
+        game.resetComputerNumbers();
 
-        while(game.run) {
+        while(run) {
+            String inputValue = PlayerInput.getInputNumber();
             game.progressGameRound(inputValue);
-        }
-
-        String inputOption = scanner.nextLine();
-        validateGameProgressOptions(inputOption);
-        int option = Integer.parseInt(inputOption);
-        if(option == 1) {
-            game.run = true;
-            gameStart();
+            ResultView.printGameResult(game);
+            if (game.isAllStrike()) {
+                String selectedOption = PlayerInput.getInputGameOption();
+                game.handleReplayGame(selectedOption);
+                run = game.shouldReplayGame(selectedOption);
+            }
         }
     }
+
 }

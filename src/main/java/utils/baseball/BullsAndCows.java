@@ -1,146 +1,116 @@
-package utils;
+package utils.baseball;
 
 
 import java.util.Arrays;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class BullsAndCows {
-    private static Scanner scanner = new Scanner(System.in);
-
     private int numberLength = 3;
-
     private int[] computerNumbers = new int[numberLength];
-    private int[] playerNumbers = new int[numberLength];
-    private Boolean[] areStrike = new Boolean[numberLength];
 
-    private BullsAndCows(String inputValue) {
-        setNumbers();
-        setPlayerNumbers(inputValue);
-        setAreStrike();
+    private int strikeCount = 0;
+    private int ballCount = 0;
+
+    public static BullsAndCows makeNewGame() {
+        return new BullsAndCows();
     }
 
-    public static void gameStart(String inputValue) {
-        BullsAndCows game = new BullsAndCows(inputValue);
+    private BullsAndCows() {}
 
+    public int getNumberLength() {
+        return numberLength;
+    }
+    public int[] getComputerNumbers() {
+        return computerNumbers;
+    }
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+    public int getBallCount() {
+        return ballCount;
     }
 
-    public static String getInputValue() {
-        System.out.print("숫자를 입력해 주세요:");
-        return scanner.nextLine();
+    public void setComputerNumbers(int[] computerNumbers) {
+        this.computerNumbers = computerNumbers;
+    }
+    private void setStrikeCount(int strikeCount) {
+        this.strikeCount = strikeCount;
+    }
+    private void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
     }
 
-
-    private static String getInputOption() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return scanner.nextLine();
+    public void progressGameRound(String inputValue) {
+        int[] playerNumbers = convertToPlayerNumbers(inputValue);
+        int strikeCount = countStrike(playerNumbers);
+        int ballCount = countBall(playerNumbers);
+        setStrikeCount(strikeCount);
+        setBallCount(ballCount);
     }
 
-    public void progressGameRound(String input) {
-        setGameRound(input);
-        printResult();
-        stopRun();
+    public void resetComputerNumbers() {
+        int[] computerNumbers = generateComputerNumbers();
+        setComputerNumbers(computerNumbers);
     }
 
-    private void stopRun() {
-        if( isAllStrike(getStrikeCount()) ) {
-            run = false;
-            getInputOption();
-        }
+    private int[] generateComputerNumbers() {
+         return IntStream.range(0, numberLength)
+                .map(i -> (int) (Math.random() * 10))
+                .toArray();
     }
 
-    private void setGameRound(String inputValues) {
-        setPlayerNumbers(inputValues);
-        setAreStrike();
-    }
-
-    private void setNumbers() {
-        for (int i=0; i<computerNumbers.length ; i++) {
-            computerNumbers[i] = (int)(Math.random()*10);
-        }
-    }
-
-    private void setPlayerNumbers(String inputValue) {
-        validateInputValue(inputValue);
+    private int[] convertToPlayerNumbers(String inputValue) {
         String[] inputValues = inputValue.split("");
-        this.playerNumbers = Stream.of(inputValues)
+        return Stream.of(inputValues)
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
 
-    private void validateInputValue(String inputValue) {
-        Pattern pattern = Pattern.compile("\\b([0-9][0-9][0-9])\\b");
-        Matcher matcher = pattern.matcher(inputValue);
-        if(!matcher.find()) {
-            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
-        }
+    public int countBall(int[] playerNumbers) {
+        int sameNumberCount = countSameNumber(playerNumbers);
+        int strikeCount = countStrike(playerNumbers);
+        return sameNumberCount - strikeCount;
     }
 
-    private void setAreStrike() {
-        for(int i=0; i<numbers.length; i++) {
-            areStrike[i] = numbers[i] == playerNumbers[i];
-        }
-    }
-
-    private static void validateGameProgressOptions(String inputOption) {
-        Pattern pattern = Pattern.compile("\\b([0-1])\\b");
-        Matcher matcher = pattern.matcher(inputOption);
-        if(!matcher.find()) {
-            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
-        }
-    }
-
-    public void printResult() {
-        int strikeCount = getStrikeCount();
-        int ballCount = getBallCount();
-        String result = getResult(strikeCount, ballCount);
-
-        if(isAllStrike(strikeCount)) {
-            result += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
-        }
-        System.out.print(result);
-    }
-
-
-    public String getResult(int strikeCount, int ballCount) {
-        String result = strikeCount + ballCount == 0 ?  "낫싱" : "";
-        if(strikeCount > 0) {
-           result +=  strikeCount + "스트라이크";
-        }
-        if(ballCount > 0) {
-            result += ballCount + "볼";
-        }
-        else if(isAllStrike(strikeCount)) {
-            result = numberLength + "스트라이크";
-        }
-        return result;
-    }
-
-    public int getStrikeCount() {
-        long count = Arrays.stream(this.areStrike)
-                .filter(isStrike -> isStrike)
+    private int countSameNumber(int[] playerNumbers) {
+        long count = Arrays.stream(computerNumbers)
+                .filter(num -> Arrays
+                        .stream(playerNumbers)
+                        .anyMatch(playerNum -> playerNum == num))
                 .count();
         return (int) count;
     }
 
-    public int getBallCount() {
-        int ballCount = 0;
-        for (int i=0; i<numbers.length; i++) {
-            if(!areStrike[i] && isBall(numbers[i])) {
-              ballCount++;
-            }
+    private int countStrike(int[] playerNumbers) {
+        long strikeCount = IntStream.range(0, computerNumbers.length)
+                .filter(i -> computerNumbers[i] == playerNumbers[i])
+                .count();
+        return (int) strikeCount;
+    }
+
+    public boolean isAllStrike() {
+        if(strikeCount == numberLength) {
+            return true;
         }
-        return ballCount;
+        return false;
     }
 
-    private boolean isBall(int expected) {
-        return Arrays.stream(playerNumbers)
-                .anyMatch(number -> number == expected);
+    public boolean isNothing() {
+        if(strikeCount + ballCount == 0) {
+            return true;
+        }
+        return false;
     }
 
-    private boolean isAllStrike(int strikeCount) {
-        return strikeCount == numberLength ? true : false;
+    public void handleReplayGame(String inputOption) {
+       if(shouldReplayGame(inputOption)) {
+           resetComputerNumbers();
+       }
+    }
+
+    public boolean shouldReplayGame(String inputOption) {
+        int option = Integer.parseInt(inputOption);
+        return option == 1;
     }
 }

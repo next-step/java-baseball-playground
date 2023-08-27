@@ -1,13 +1,13 @@
-package baseboll;
+package baseboll.myTrial.allInOne;
 
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-public class BaseballGame {
+public class BadCaseGame {
     private final BufferedReader br;
-    public BaseballGame(BufferedReader br) {
+    public BadCaseGame(BufferedReader br) {
         this.br = br;
     }
     public void game() throws IOException {
@@ -24,6 +24,11 @@ public class BaseballGame {
         countTotal(input, answer);
         progressGame(answer);
     }
+
+    private boolean isPossible(String input) {
+        return false;
+    }
+
     private void countTotal(String input, String answer){
         int strikeCount = strikeCountChecker(input, answer);
         int ballCount = ballCountChecker(input, answer);
@@ -66,20 +71,6 @@ public class BaseballGame {
             return;
         }
         System.out.println("잘못된 입력입니다.");
-    }
-
-    private boolean isPossible(String s){
-        if (s.length() != 3){
-            System.out.println("3자리 숫자를 입력해주세요");
-            return false;
-        }
-        try {
-            Integer.parseInt(s);
-        } catch (NumberFormatException e){
-            System.out.println("숫자만 입력해주세요");
-            return false;
-        }
-        return true;
     }
 
     private int strikeCountChecker(String input, String answer){

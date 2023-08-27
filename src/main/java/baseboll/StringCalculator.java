@@ -1,3 +1,5 @@
+package baseboll;
+
 public class StringCalculator {
     public String[] toStringArray(String s){
         return s.split(" ");

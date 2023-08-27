@@ -23,10 +23,6 @@ public class BaseballGame {
         if (restartFlag.equals("1")) init();
     }
 
-    /**
-     * 난수 생성
-     * @return
-     */
     public LinkedHashSet<Integer> makeRandomNumbers() {
         LinkedHashSet<Integer> randomNums = new LinkedHashSet<>();
         Random rd = new Random();
@@ -46,20 +42,10 @@ public class BaseballGame {
             Integer num = Integer.parseInt(numString.substring(i,i+1));
             _countBallOrStrike(count, randomNums, num, i);
         }
-        
-        if(count.get("ball") > 0) {
-            System.out.print(count.get("ball")+"볼 ");
-        }
-        
-        if(count.get("strike") > 0) {
-            System.out.print(count.get("strike")+"스트라이크");
-        }
-        System.out.println();
 
-        if (count.get("strike") == SIZE) {
-            return true;
-        }
-        return false;
+        _printResult(count);
+
+        return count.get("strike") == SIZE;
     }
 
     private String _getInputNumString() {
@@ -78,6 +64,17 @@ public class BaseballGame {
         if (randomNums.contains(num)) {
             count.put("ball", count.get("ball")+1);
         }
+    }
+
+    private void _printResult(HashMap<String, Integer> count) {
+        if(count.get("ball") > 0) {
+            System.out.print(count.get("ball")+"볼 ");
+        }
+
+        if(count.get("strike") > 0) {
+            System.out.print(count.get("strike")+"스트라이크");
+        }
+        System.out.println();
     }
 
 

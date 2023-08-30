@@ -29,4 +29,10 @@ public class StringTest {
         assertThat(actual).isEqualTo("1,2");
     }
 
+    @Test
+    void substring2(){
+        char actual = "abc".charAt(2);
+        assertThat(actual).isEqualTo('c');
+    }
+
 }

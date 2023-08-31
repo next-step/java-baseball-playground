@@ -25,7 +25,6 @@ git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
 
-
 ---
 
 [기능 목록]

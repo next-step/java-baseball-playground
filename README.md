@@ -24,10 +24,12 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+---
 
-```
 [기능 목록]
+```
 1. 난수 생성
 2. 사용자 숫자 입력
 3. 정답 확인
 4. 재시작 입력
+```

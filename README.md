@@ -32,9 +32,9 @@ ex) git checkout -b apply-feedback
 1. 서로 중복되지않는 난수 3개 생성 - RandomGenerator#createRandomNums
 2. 사용자 숫자 입력 받기 - InputView#getNumberInput
 3. 정답과 비교 - ResultChecker#compareNums
-    3-1. 위치 O, 숫자포함 O -> 스트라이크 - ResultClassifier#isStrike
-    3-2. 위치 X, 숫자포함 O -> 볼 - ResultClassifier#isBall
-    3-3. 위치 X, 숫자포함 X -> 낫싱 - ResultClassifier#isNothing
+    3-1. 위치 O, 숫자포함 O -> 스트라이크 - BallClassifier#isStrike
+    3-2. 위치 X, 숫자포함 O -> 볼 - BallClassifier#isBall
+    3-3. 위치 X, 숫자포함 X -> 낫싱 - BallClassifier#isNothing
 4. 결과 출력 - ResultPrinter#printResult
 5. 3 strike인지 확인 -> 종료 or 2번부터 다시 loop - ResultChecker#isGameEnd
 6. 재시작 판단 

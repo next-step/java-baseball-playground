@@ -1,11 +1,11 @@
 package study;
 
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringTest {
     @Test
@@ -38,8 +38,8 @@ public class StringTest {
     @Test
     @DisplayName("StringIndexOutOfBoundsException 발생")
     void StringIndexOutOfBoundsException() {
-        String value = "abc";
-        char result = value.charAt(10);
-        assertThat(result).isEqualTo('c');
+        String input = "abc";
+        assertThatThrownBy(() -> input.charAt(10))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }

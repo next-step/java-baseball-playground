@@ -29,7 +29,7 @@ ex) git checkout -b apply-feedback
 
 [기능 목록]
 ```
-1. 서로 중복되지않는 Balls 생성 - Balls#makeRanodmBalls
+1. 서로 중복되지않는 Balls 생성 - BallsGenerator#makeRanodmBalls
 2. 사용자 숫자 입력 받기 - InputView#getNumberInput
 3. 정답과 비교 - ResultChecker#compareNums
     3-1. 위치 O, 숫자포함 O -> 스트라이크 - BallClassifier#isStrike

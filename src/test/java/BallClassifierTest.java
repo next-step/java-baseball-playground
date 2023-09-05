@@ -44,4 +44,18 @@ public class BallClassifierTest {
         Ball ball = new Ball(1,3);
         assertFalse(ballClassifier.isStrike(testBalls, ball));
     }
+
+    @Test
+    void ballCheckTrue() {
+        Balls testBalls = _makeTestBalls();
+        Ball ball = new Ball(2,2);
+        assertTrue(ballClassifier.isBall(testBalls, ball));
+    }
+
+    @Test
+    void ballCheckFalse() {
+        Balls testBalls = _makeTestBalls();
+        Ball ball = new Ball(2,2);
+        assertFalse(ballClassifier.isBall(testBalls, ball));
+    }
 }

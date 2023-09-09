@@ -1,26 +1,11 @@
-## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
+# 1단계 : 문자열 계산기
 
----
-## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
+## calculate 메서드
+1. 문자열을 입력받아, 주어진 조건에 맞추어 배열로 만듭니다.
+2. 연산자만 선택하기 위해, 인덱스 1번부터, 2칸 간격으로 이동한 뒤, 연산자의 바로 오른쪽의 값을 선택합니다. 
+3. 이때, 문자열의 정수 변환은 stringToInt 메서드를 별도로 정의한 뒤 이용합니다.
+4. 결과값의 초기화는 첫 번째 숫자로 지정한 뒤, 이 결과값과 연산자, 그리고 오른쪽 값을 operate 메서드에 넣어 결과값을 업데이트 합니다.
 
----
-1. 피드백 강의 전까지 미션 진행 
-> 피드백 강의 전까지 혼자 힘으로 미션 진행. 미션을 진행하면서 하나의 작업이 끝날 때 마다 add, commit
-> 예를 들어 다음 숫자 야구 게임의 경우 0, 1, 2단계까지 구현을 완료한 후 push
-
-![mission baseball](https://raw.githubusercontent.com/next-step/nextstep-docs/master/playground/images/mission_baseball.png)
-
----
-2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.
-
----
-3. Git 브랜치를 master 또는 main으로 변경한 후 피드백을 반영하기 위한 새로운 브랜치를 생성한 후 처음부터 다시 미션 구현을 도전한다.
-
-```
-git branch -a // 모든 로컬 브랜치 확인
-git checkout master // 기본 브랜치가 master인 경우
-git checkout main // 기본 브랜치가 main인 경우
-
-git checkout -b 브랜치이름
-ex) git checkout -b apply-feedback
-```
+## operate 메서드
+1. 사칙연산자를 받아, 해당되는 연산을 합니다.
+2. 입력된 연산자가 사칙연산에 해당되지 않는 경우 예외를 던집니다.

@@ -2,8 +2,11 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
     @Test
@@ -38,5 +41,34 @@ public class StringTest {
 
         // Then
         assertThat(actual).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("특정 위치의 문자를 잘 가져오는지 확인")
+    void charAt(){
+        // Given
+        String input = "abc";
+
+        // When
+        char first = input.charAt(0);
+        char second = input.charAt(1);
+        char third = input.charAt(2);
+
+        // Then
+        assertThat(new char[]{first,second,third})
+                .containsExactly('a','b','c');
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1,3})
+    @DisplayName("위치값을 벗어났을 때의 예외를 테스트")
+    void charAtException(int input) {
+        // Given
+        String str = "abc";
+
+        assertThatThrownBy(() -> {
+            char c = str.charAt(input);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: %d",input);
     }
 }

@@ -1,9 +1,10 @@
 public class Baseball {
     static final int TOTAL_NUMBERS = 3;
+    static final int ON = 1;
     private final InputView inputView;
     private final OutputView outputView;
     private final BallStrikeStatus ballStrikeStatus;
-    private int gameStatus = 1;
+    private int gameStatus = ON;
     private String solution;
 
 
@@ -16,7 +17,7 @@ public class Baseball {
     // gameStatus 필드값이 1일때만 계속 게임을 진행.
     // 숫자를 맞춘 뒤 2를 입력하면 게임이 종료됨
     private boolean isGameRunning() {
-        return gameStatus == 1;
+        return gameStatus == ON;
     }
 
     // while문으로 본격적인 게임을 진행하기 전에, setSolution을 이용하여

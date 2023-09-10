@@ -1,3 +1,5 @@
+package study;
+
 public class StringCalculator {
     public int calculate(String value) {
         String[] values = value.split(" ");

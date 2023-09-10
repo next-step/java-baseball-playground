@@ -1,3 +1,5 @@
+package baseball;
+
 public class Baseball {
     static final int TOTAL_NUMBERS = 3;
     static final int ON = 1;
@@ -40,7 +42,7 @@ public class Baseball {
         }
     }
 
-    //구현된 RandomNumber 클래스를 이용하여, 문자열로 된 정답을 설정한다.
+    //구현된 baseball.RandomNumber 클래스를 이용하여, 문자열로 된 정답을 설정한다.
     private void setSolution() {
         final RandomNumber randomNumber = new RandomNumber();
         this.solution = randomNumber.getRandomNumber();

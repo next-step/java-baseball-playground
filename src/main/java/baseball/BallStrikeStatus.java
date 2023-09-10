@@ -1,3 +1,5 @@
+package baseball;
+
 public class BallStrikeStatus {
     private int ballCount;
     private int strikeCount;

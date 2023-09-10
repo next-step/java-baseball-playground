@@ -1,3 +1,6 @@
+package study;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +20,7 @@ class StringCalculatorTest {
         int expected = 50;
 
         // Then
-        assertThat(sc.calculate(input)).isEqualTo(expected);
+        Assertions.assertThat(sc.calculate(input)).isEqualTo(expected);
     }
 
     @Test

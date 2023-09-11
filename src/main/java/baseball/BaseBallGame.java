@@ -6,38 +6,51 @@ public class BaseBallGame {
     private static final int TOTAL_BALLS = 3;
     private static final int ON = 1;
     private final View view;
+    private List<Ball> answer;
     private int status;
 
     public BaseBallGame(View view) {
         this.view = view;
+        resetAnswer();
     }
 
     public void game() {
-        Balls computer = new Balls(new RandomNumberSupplier(TOTAL_BALLS));
-        List<Ball> computerBalls = computer.getBallList();
-        status = ON;
+        changeGameStatus(ON);
 
         while (status == ON) {
-            view.printNumberInputMessage();
-            String userInput = view.getInputNumber();
-            List<Ball> userBalls = new Balls(new InputNumberSupplier(userInput)).getBallList();
-            PitchResult result = new Pitch(computerBalls, userBalls).getPitchResult();
-            view.printMessage(result.report());
-
-            if (result.isStrikeOut(TOTAL_BALLS)) {
-                processWhenStrikeOut(TOTAL_BALLS);
-                computerBalls = computer.getBallList();
-            }
+            List<Ball> submit = getSubmit();
+            playGame(answer, submit);
         }
     }
 
-    public void processWhenStrikeOut(int totalBalls) {
-        view.printStrikeOutMessage(totalBalls);
-        view.printCheckToRestartMessage();
-        changeGameOnOFF(view.getOrderNumber());
+    private void playGame(List<Ball> answer, List<Ball> submit) {
+        PitchResult result = new Pitch(answer, submit).getPitchResult();
+        view.printMessage(result.report());
+
+        if (result.isStrikeOut(TOTAL_BALLS)) {
+            processWhenStrikeOut(result);
+        }
     }
 
-    public void changeGameOnOFF(int order) {
-        this.status = order;
+    private void processWhenStrikeOut(PitchResult pitchResult) {
+        view.printStrikeOutMessage(TOTAL_BALLS);
+        view.printCheckToRestartMessage();
+        changeGameStatus(view.getOrderNumber());
+        resetAnswer();
+    }
+
+    private List<Ball> getSubmit() {
+        view.printNumberInputMessage();
+        String userInput = view.getInputNumber();
+        return new Balls(new InputNumberSupplier(userInput)).getBallList();
+    }
+
+    private void resetAnswer() {
+        Balls computer = new Balls(new RandomNumberSupplier(TOTAL_BALLS));
+        this.answer = computer.getBallList();
+    }
+
+    private void changeGameStatus(int status) {
+        this.status = status;
     }
 }

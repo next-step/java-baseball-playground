@@ -1,4 +1,4 @@
-package newBaseball;
+package baseball;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

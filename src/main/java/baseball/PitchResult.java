@@ -1,4 +1,4 @@
-package newBaseball;
+package baseball;
 
 public class PitchResult {
     private int strikeCount;

@@ -1,4 +1,4 @@
-package newBaseball;
+package baseball;
 
 import java.util.List;
 import java.util.Random;

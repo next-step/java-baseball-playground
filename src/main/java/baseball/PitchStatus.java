@@ -1,4 +1,4 @@
-package newBaseball;
+package baseball;
 
 public enum PitchStatus {
     BALL("볼"),

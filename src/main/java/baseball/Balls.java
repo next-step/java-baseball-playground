@@ -1,4 +1,4 @@
-package newBaseball;
+package baseball;
 
 import java.util.ArrayList;
 import java.util.List;

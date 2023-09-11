@@ -14,7 +14,7 @@ public class BaseBallGame {
         resetAnswer();
     }
 
-    public void game() {
+    public void startGame() {
         changeGameStatus(ON);
 
         while (isRunning()) {

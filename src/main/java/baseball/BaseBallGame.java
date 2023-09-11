@@ -17,10 +17,14 @@ public class BaseBallGame {
     public void game() {
         changeGameStatus(ON);
 
-        while (status == ON) {
+        while (isRunning()) {
             List<Ball> submit = getSubmit();
             playGame(answer, submit);
         }
+    }
+
+    private boolean isRunning() {
+        return status == ON;
     }
 
     private void playGame(List<Ball> answer, List<Ball> submit) {
@@ -53,4 +57,6 @@ public class BaseBallGame {
     private void changeGameStatus(int status) {
         this.status = status;
     }
+
+
 }

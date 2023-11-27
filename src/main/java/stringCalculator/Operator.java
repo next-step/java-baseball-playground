@@ -1,9 +1,9 @@
 package stringCalculator;
 
 public class Operator {
-    Calculator cal = new Calculator();
-    // 기호별로 계산하기
-    public int operate(int firstNum, String operator, int secondNum) {
+    static Calculator cal = new Calculator();
+
+    public static int operate(int firstNum, String operator, int secondNum) {
 
         if (operator.equals("+")) {
             return cal.add(firstNum, secondNum);
@@ -19,5 +19,9 @@ public class Operator {
         }
         else System.out.println("잘못된 값 입력");
         return 0;
+    }
+
+    static boolean isOperator(String str) {
+        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
     }
 }

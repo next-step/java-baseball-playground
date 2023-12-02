@@ -1,4 +1,4 @@
-package stringCalculator;
+package stringcalculator;
 
 public class Operator {
     static Calculator cal = new Calculator();
@@ -17,11 +17,6 @@ public class Operator {
         if (operator.equals("/")) {
             return cal.div(firstNum, secondNum);
         }
-        else System.out.println("잘못된 값 입력");
         return 0;
-    }
-
-    static boolean isOperator(String str) {
-        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
     }
 }

@@ -14,10 +14,10 @@ public class Main {
         int result = Integer.parseInt(splitedValue[0]);
         String operator = "";
 
-        for (int i = 1; i < splitedValue.length; i++ ) {
+        for (int i = 1; i < splitedValue.length; i++) {
             if (isOperator(splitedValue[i])) {
-                operator = splitedValue[i]; //연산자를 저장
-            } else { //숫자
+                operator = splitedValue[i];
+            } else {
                 int number = Integer.parseInt(splitedValue[i]);
                 result = Operator.operate(result, operator, number);
             }

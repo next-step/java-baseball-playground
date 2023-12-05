@@ -11,14 +11,14 @@ public class Main {
         Expression expression = new Expression(value);
         String[] splitedValue = expression.getExpression();
 
-        int result = 0;
+        int result = Integer.parseInt(splitedValue[0]);
         String operator = "";
 
-        for (String data : splitedValue) {
-            if (isOperator(data)) {
-                operator = data; //연산자를 저장
+        for (int i = 1; i < splitedValue.length; i++ ) {
+            if (isOperator(splitedValue[i])) {
+                operator = splitedValue[i]; //연산자를 저장
             } else { //숫자
-                int number = Integer.parseInt(data);
+                int number = Integer.parseInt(splitedValue[i]);
                 result = Operator.operate(result, operator, number);
             }
         }

@@ -19,4 +19,8 @@ public class Operator {
         }
         return 0;
     }
+
+    static boolean isOperator(String str) {
+        return str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/");
+    }
 }

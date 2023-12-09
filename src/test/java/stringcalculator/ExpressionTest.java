@@ -8,7 +8,7 @@ public class ExpressionTest {
 
     @Test
     void testExpression() {
-        Expression expression = new Expression("5 + 3 * 2");
+        Expression expression = new Expression("5+3*2");
 
         String[] result = expression.getExpression();
         String[] expected = {"5", "+", "3", "*", "2"};

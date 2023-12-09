@@ -2,13 +2,13 @@ package stringcalculator;
 
 public class Expression {
 
-    private String[] expression;
+    private static String[] expression;
 
     public Expression(String expression) {
-        this.expression = expression.split(" ");
+        this.expression = expression.split("");
     }
 
-   public String[] getExpression() {
+    public String[] getExpression() {
         return expression;
-   }
+    }
 }

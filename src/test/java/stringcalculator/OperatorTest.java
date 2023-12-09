@@ -26,4 +26,9 @@ public class OperatorTest {
         assertEquals(2, Operator.operate(6, "/", 3));
     }
 
+    @Test
+    public void isOperator() {
+        assertFalse(Operator.isOperator("#"));
+    }
+
 }

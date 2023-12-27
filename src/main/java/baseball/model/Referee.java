@@ -30,7 +30,6 @@ public class Referee {
         return ball;
     }
 
-
     private int countStrike(BaseballNumbers computer, BaseballNumbers user) {
         for (int i = 0; i < 3; i++) {
             if (computer.getNumbers().get(i).getNumber() == user.getNumbers().get(i).getNumber()) {
@@ -40,11 +39,7 @@ public class Referee {
         return strike;
     }
 
-    public static int isGameEnd() {
-        return 3;
-    }
-
-    public void deleteBallStrikeCount() {
+    public void resetBallStrikeCount() {
         ball = 0;
         strike = 0;
     }

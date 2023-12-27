@@ -23,7 +23,6 @@ public class BaseballController {
         while (number != 2) {
             BaseballNumbers baseballNumbers = new BaseballNumbers(randomNumbers.create());
             inputView.printInputNumbersMessage();
-            //System.out.println(baseballNumbers.toString());
             Referee referee = new Referee(baseballNumbers, userNumbers.inputUserNumbers());
             outputView.printRefereeMessage(referee.getBall(), referee.getStrike());
             if (referee.getStrike() == 3) {
@@ -32,7 +31,7 @@ public class BaseballController {
                 randomNumbers.deleteComputerNumbers();
             }
             userNumbers.deleteUserInputNumbers();
-            referee.deleteBallStrikeCount();
+            referee.resetBallStrikeCount();
         }
     }
 }

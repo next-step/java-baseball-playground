@@ -16,9 +16,9 @@
 ---
 
 ### 구현할 기능 목록 정리(특정 메서드 단위)
-- [ ] : 문자열을 입력받는다. - UserInputReader#getInput()
-- [ ] : 입력받은 문자열을 공백을 기준으로 분리한다. - UserInputReader#splitInput()
-- [ ] : 분리한 문자열을 숫자와 사칙연산 기호로 구분한다. - UserInputReader#classifyInput()
+- [X] : 문자열을 입력받는다. - UserInputReader#getInput()
+- [X] : 입력받은 문자열을 공백을 기준으로 분리한다. - UserInputReader#splitInput()
+- [X] : 분리한 문자열을 숫자와 사칙연산 기호로 구분한다. - UserInputReader#classifyInput()
 - [ ] : 사칙연산을 수행한다. - Calculator#calculate()
    - [ ] : 첫번째 숫자를 initial 값으로 설정한다. - setInitialValue()
    - [ ] : 숫자와 사칙연산 기호를 순서대로 반복한다. - 

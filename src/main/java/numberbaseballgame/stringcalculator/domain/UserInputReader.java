@@ -8,6 +8,9 @@ public class UserInputReader {
 
     private static final Pattern intPattern = Pattern.compile("^-?\\d+$");
 
+    ArrayList<Integer> numbers = new ArrayList<>();
+    ArrayList<Character> operators = new ArrayList<>();
+
     // 문자열을 입력받는다
     public String getInput() {
         Scanner scanner = new Scanner(System.in);
@@ -21,9 +24,6 @@ public class UserInputReader {
 
     // 나눈 문자열을 숫자와 연산자로 구분한다
     public void separateNumberAndOperator(String[] components) {
-
-        ArrayList<Integer> numbers = new ArrayList<>();
-        ArrayList<Character> operators = new ArrayList<>();
 
         for (String component : components) {
             if (isNumberic(component)) {

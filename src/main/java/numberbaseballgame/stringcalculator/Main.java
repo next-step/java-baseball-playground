@@ -1,6 +1,5 @@
 package numberbaseballgame.stringcalculator;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -16,8 +15,18 @@ public class Main {
                     case "+" -> sum += Integer.parseInt(values[i + 1]);
                     case "-" -> sum -= Integer.parseInt(values[i + 1]);
                     case "*" -> sum *= Integer.parseInt(values[i + 1]);
-                    case "/" -> sum /= Integer.parseInt(values[i + 1]);
-                    default -> System.out.println("잘못된 연산자입니다.");
+                    case "/" -> {
+                        try {
+                            sum /= Integer.parseInt(values[i + 1]);
+                        } catch (ArithmeticException e) {
+                            System.out.println("0으로 나눌 수 없습니다.");
+                            System.exit(1);
+                        }
+                    }
+                    default -> {
+                        System.out.println("잘못된 연산자입니다.");
+                        System.exit(1);
+                    }
                 }
             }
         }

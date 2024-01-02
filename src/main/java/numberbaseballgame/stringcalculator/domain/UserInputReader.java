@@ -11,6 +11,11 @@ public class UserInputReader {
     ArrayList<Integer> numbers = new ArrayList<>();
     ArrayList<Character> operators = new ArrayList<>();
 
+    // 입력값을 읽어들인다
+    public void read() {
+        separateNumberAndOperator(splitInput(getInput()));
+    }
+
     // 문자열을 입력받는다
     public String getInput() {
         Scanner scanner = new Scanner(System.in);

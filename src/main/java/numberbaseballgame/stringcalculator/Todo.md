@@ -13,7 +13,7 @@
 ---
 
 ### 객체 설계
-- 사용자에게 계산기를 제공하는 객체 - CalculatorService 
+- 사용자에게 계산기를 제공하는 객체 - CalculatorMain 
 - 사용자에게 제공받은 문자열을 적절하게 처리하는 객체 - UserInputReader
 - 문자들을 계산하는 객체 - Calculator
 - 연산기호 객체 - CalculateType

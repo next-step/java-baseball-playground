@@ -4,30 +4,23 @@ public class Calculator {
 
     UserInputReader userInputReader = new UserInputReader();
 
-    int result = 0;
+    private int result;
 
-    // 사칙연산을 수행한다.
-    public int perform() {
-        setInitial();
-
-        return result;
-    }
-
-    // 첫번째 숫자를 initial값으로 설정한다.
-    public void setInitial() {
-        userInputReader.read();
-        this.result = userInputReader.numbers.get(0);
-    }
-
-    // 숫자와 연산기호를 순서대로 반복한다.
-    public int repeatCalculate() {
-
+    // 계산을 차례대로 진행한다
+    int performCalculate(){
+        // 초기값을 설정한다
+        // 계산을 반복해서 진행한다
+        // 계산한 총 값을 반환한다
         return 0;
     }
 
-    public static void main(String[] args) {
-        Calculator c = new Calculator();
-        System.out.println(c.perform());
+    // 초기값을 설정한다
+    void setInitial() {
+        this.result = Integer.parseInt(userInputReader.getUserInput().get(0));
     }
+
+    // 계산을 반복해서 수행한다
+
+    // 계산을 한다
 
 }

@@ -8,6 +8,7 @@ public class UserInputReader {
 
     private static final Pattern intPattern = Pattern.compile("^-?\\d+$");
 
+    // 이렇게 변수를 두개를 나누니 복잡도가 올라감. Calculate에서 한번에 처리하고 싶은데 나눠서 처리할 수 밖에 없게 됨
     ArrayList<Integer> numbers = new ArrayList<>();
     ArrayList<Character> operators = new ArrayList<>();
 
@@ -29,7 +30,6 @@ public class UserInputReader {
 
     // 나눈 문자열을 숫자와 연산자로 구분한다
     public void separateNumberAndOperator(String[] components) {
-
         for (String component : components) {
             if (isNumberic(component)) {
                 numbers.add(Integer.parseInt(component));
@@ -39,7 +39,6 @@ public class UserInputReader {
                 operators.add(component.charAt(0));
             }
         }
-
     }
 
     // 숫자인지 확인한다

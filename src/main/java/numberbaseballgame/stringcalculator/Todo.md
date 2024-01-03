@@ -20,6 +20,6 @@
 - 사용자에게 상태를 알려주는 객체 - StatusNotifier 
 
 ### 구현할 기능 목록 정리(특정 메서드 단위)
-- [ ] : 사용자에게 제공받은 문자열을 어떠한 기준으로 분리한다 - splitBy()#UserInputReader
-- [ ] : 계산을 수행한다 - CalculateBy()#Calculator
+- [X] : 사용자에게 제공받은 문자열을 어떠한 기준으로 분리한다 - splitBy()#UserInputReader
+- [X] : 계산을 수행한다 - CalculateBy()#Calculator
 

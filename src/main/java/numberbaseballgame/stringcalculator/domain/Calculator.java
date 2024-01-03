@@ -20,7 +20,16 @@ public class Calculator {
     }
 
     // 계산을 반복해서 수행한다
+    private void IterateCalculate() {
+        for (int i = 1; i < userInputReader.getUserInput().size(); i+=2) {
+            // 계산을 한다
+            calculateTo(userInputReader.getUserInput().get(i), Integer.parseInt(userInputReader.getUserInput().get(i + 1)));
+        }
+    }
 
     // 계산을 한다
+    private void calculateTo(String calculateType, int operand) {
+        this.result = CalculateType.fromSymbol(calculateType).calculate(this.result, operand);
+    }
 
 }

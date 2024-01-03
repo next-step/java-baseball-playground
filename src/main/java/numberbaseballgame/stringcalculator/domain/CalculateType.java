@@ -1,5 +1,6 @@
 package numberbaseballgame.stringcalculator.domain;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum CalculateType {
@@ -18,6 +19,13 @@ public enum CalculateType {
 
     public int calculate(int x, int y) {
         return expression.apply(x, y);
+    }
+
+    public static CalculateType fromSymbol(String operationSymbol) {
+        return Arrays.stream(values())
+                .filter(calculateType -> calculateType.operationSymbol.equals(operationSymbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid operation symbol: " + operationSymbol));
     }
 
     public static void main(String[] args) {

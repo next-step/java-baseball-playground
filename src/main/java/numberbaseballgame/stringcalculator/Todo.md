@@ -5,6 +5,7 @@
 ---
 
 ### 프로세스
+
 1. 사용자에게 문자열을 입력받는다.
 2. 문자열을 " "기준으로 나눈다.
 3. 나눈 문자들을 토대로 계산을 차례대로 수행한다.
@@ -13,13 +14,15 @@
 ---
 
 ### 객체 설계
-- 사용자에게 계산기를 제공하는 객체 - CalculatorMain 
+
+- 사용자에게 계산기를 제공하는 객체 - CalculatorMain
 - 사용자에게 제공받은 문자열을 적절하게 처리하는 객체 - UserInputReader
 - 문자들을 계산하는 객체 - Calculator
 - 연산기호 객체 - CalculateType
-- 사용자에게 상태를 알려주는 객체 - StatusNotifier 
+- 사용자에게 상태를 알려주는 객체 - StatusNotifier
 
 ### 구현할 기능 목록 정리(특정 메서드 단위)
+
 - [X] : 사용자에게 제공받은 문자열을 어떠한 기준으로 분리한다 - splitBy()#UserInputReader
 - [X] : 계산을 수행한다 - CalculateBy()#Calculator
 

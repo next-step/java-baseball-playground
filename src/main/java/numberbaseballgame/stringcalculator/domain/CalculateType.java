@@ -28,11 +28,4 @@ public enum CalculateType {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid operation symbol: " + operationSymbol));
     }
 
-    public static void main(String[] args) {
-        System.out.println(CalculateType.PLUS.calculate(1, 2));
-        System.out.println(CalculateType.MINUS.calculate(1, 2));
-        System.out.println(CalculateType.TIMES.calculate(1, 2));
-        System.out.println(CalculateType.DIVIED_BY.calculate(1, 2));
-    }
-
 }

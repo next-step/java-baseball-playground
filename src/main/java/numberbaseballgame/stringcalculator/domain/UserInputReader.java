@@ -34,8 +34,4 @@ public class UserInputReader {
         return userInput;
     }
 
-    public static void main(String[] args) {
-        UserInputReader u = new UserInputReader();
-        System.out.println(u.splitBy("1 + 2 * 3", " "));
-    }
 }

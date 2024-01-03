@@ -1,2 +1,4 @@
-package numberbaseballgame.stringcalculator.view;public class StatusNotifier {
+package numberbaseballgame.stringcalculator.view;
+
+public class StatusNotifier {
 }

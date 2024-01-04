@@ -15,4 +15,20 @@ class UserInputReaderTest {
         assertThat(userInputReader.splitBy("1 + 2 * 3", " "))
                 .contains("1", "+", "2", "*", "3");
     }
+
+    @DisplayName("숫자인지 검증한다")
+    @Test
+    void validateIntTest() {
+        assertThat(userInputReader.isNumberic("3"))
+                .isTrue();
+    }
+
+    @DisplayName("사칙연산인지 검증한다")
+    @Test
+    void validateOperatorTest() {
+        assertThat(userInputReader.isOperator("+")).isTrue();
+        assertThat(userInputReader.isOperator("-")).isTrue();
+        assertThat(userInputReader.isOperator("*")).isTrue();
+        assertThat(userInputReader.isOperator("/")).isTrue();
+    }
 }

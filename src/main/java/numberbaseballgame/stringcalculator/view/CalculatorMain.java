@@ -14,7 +14,7 @@ public class CalculatorMain {
             String inputString = scanner.nextLine();
 
             UserInputReader userInputReader = new UserInputReader();
-            userInputReader.splitBy(inputString, SPACE_SEPARATOR);
+            userInputReader.convert(inputString, SPACE_SEPARATOR);
 
             Calculator calculator = new Calculator(userInputReader);
             int result = calculator.performCalculate();

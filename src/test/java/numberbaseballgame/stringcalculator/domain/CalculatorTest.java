@@ -10,7 +10,7 @@ class CalculatorTest {
     @Test
     void performCalculate() {
         UserInputReader userInputReader = new UserInputReader();
-        userInputReader.splitBy("1 + 3 * 2", " ");
+        userInputReader.convert("1 + 3 * 2", " ");
 
         Calculator calculator = new Calculator(userInputReader);
         Assertions.assertThat(calculator.performCalculate()).isEqualTo(8);

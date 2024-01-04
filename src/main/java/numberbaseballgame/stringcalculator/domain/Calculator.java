@@ -1,5 +1,7 @@
 package numberbaseballgame.stringcalculator.domain;
 
+import java.util.List;
+
 public class Calculator {
 
     private final UserInputReader userInputReader;
@@ -27,9 +29,12 @@ public class Calculator {
 
     // 계산을 반복해서 수행한다
     private void IterateCalculate() {
-        for (int i = 1; i < userInputReader.getUserInput().size(); i += 2) {
+        List<String> inputs = userInputReader.getUserInput();
+        for (int i = 1; i < inputs.size(); i += 2) {
             // 계산을 한다
-            calculateTo(userInputReader.getUserInput().get(i), Integer.parseInt(userInputReader.getUserInput().get(i + 1)));
+            String caculatorType = inputs.get(i);
+            int operand = Integer.parseInt(inputs.get(i + 1));
+            calculateTo(caculatorType, operand);
         }
     }
 

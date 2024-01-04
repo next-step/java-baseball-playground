@@ -26,3 +26,11 @@
 - [X] : 사용자에게 제공받은 문자열을 어떠한 기준으로 분리한다 - splitBy()#UserInputReader
 - [X] : 계산을 수행한다 - CalculateBy()#Calculator
 
+### Edge case
+- [ ] : 0으로 나눴을 때 ArithmeticException
+- [ ] : 각각 숫자인지 사칙연산 기호인지 판별해야한다 - 정규식
+- [ ] : 연산자가 먼저 오면 안된다 ex) + 1 + 2
+- [ ] : 연산자를 연속해서 입력하면 안된다 ex) 1 ++ 2 
+- [ ] : 피연산자가 10자리여야 한다
+- [ ] : 첫번째는 무조건 숫자가 와야된다 NumberFormatException
+

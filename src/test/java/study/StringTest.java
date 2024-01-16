@@ -13,9 +13,16 @@ public class StringTest {
     }
 
     @Test
-    void replace2() {
+    void replace1() {
         String[] split = "1,2".split(",");
         assertThat(split).isEqualTo(new String[]{"1", "2"});
+    }
+
+    @Test
+    void replace2() {
+        String actual = "(1,2)";
+        String result = actual.substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
     }
 
     @Test

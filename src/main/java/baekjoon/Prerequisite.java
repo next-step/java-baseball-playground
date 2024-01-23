@@ -1,5 +1,6 @@
 package baekjoon;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 /*
@@ -91,10 +92,6 @@ public class Prerequisite {
 
                     nextSubject.prev.add(list.get(prev - 1));
                     list.set(next - 1, nextSubject);
-                }
-
-                if(!condCheck[i] && conditions[i][0] == next) {
-                    que.offer(conditions[i]);
                 }
             }
         }

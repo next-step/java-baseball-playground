@@ -2,109 +2,65 @@ package baekjoon;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 /*
-
-당신에게 3x3 크기의 보드가 주어진다. 각각의 칸은 처음에 흰색 혹은 검은색이다.
-만약 당신이 어떤 칸을 클릭한다면 당신이 클릭한 칸과 그 칸에 인접한 동서남북 네 칸이 (존재한다면) 검은색에서 흰색으로, 혹은 흰색에서 검은색으로 변할 것이다.
-당신은 모든 칸이 흰색인 3x3 보드를 입력으로 주어지는 보드의 형태로 바꾸려고 한다. 보드를 회전시킬수는 없다.
-첫 줄에는 테스트 케이스의 숫자 P(0 < P ≤ 50)이 주어진다.
-각각의 테스트 케이스에 대해서 세 줄에 걸쳐 한 줄에 세 글자씩이 입력으로 들어온다. "*"은 검은색을 뜻하며 "."은 흰색을 뜻한다.
-각각의 테스트 케이스에 대해서 흰 보드를 입력에 주어진 보드로 바꾸는 데 필요한 최소 클릭의 횟수를 구하여라.
--> 1
-3
-
+@Title: 십자 뒤집기
+@Link: https://www.acmicpc.net/problem/10472
  */
+
 public class CrossReverse {
 
-    static int[] dx = new int[]{1,-1,0,0};
-    static int[] dy = new int[]{0,0,-1,1};
+    static String changeToBinary(String[] boards) {
+        String bit = "";
 
-    static boolean check(int[] node, String[] boards) {
-        int nx = node[0];
-        int ny = node[1];
-
-        if(ny > 0) {
-            if(boards[ny+1].charAt(nx) != '.') return false;
+        for(int i=0; i< boards.length; i++) {
+            for(int j=0; j < boards[i].length(); j++) {
+                bit += boards[i].charAt(j) == '*' ? 0 : 1;
+            }
         }
 
-        if(ny < 3) {
-            if(boards[ny-1].charAt(nx) != '.') return false;
-        }
+        return bit;
+    }
 
-        if(nx > 0) {
-            if(boards[ny].charAt(nx-1) != '.') return false;
-        }
+    static char changed(char point) {
+        return point == '0' ? '1' : '0';
+    }
 
-        if(nx < 3) {
-            if(boards[ny].charAt(nx+1) != '.') return false;
-        }
+    static String click(String bit, int idx) {
+        StringBuffer sb = new StringBuffer(bit);
+        sb.setCharAt(idx, changed(bit.charAt(idx)));
+        if(idx+1  < bit.length() && ((idx % 3) != 2)) sb.setCharAt(idx+1, changed(bit.charAt(idx+1)));
+        if(idx-1 >= 0 && ((idx % 3) != 0)) sb.setCharAt(idx-1, changed(bit.charAt(idx-1)));
+        if(idx+3 < bit.length()) sb.setCharAt(idx+3, changed(bit.charAt(idx+3)));
+        if(idx-3 >= 0) sb.setCharAt(idx-3, changed(bit.charAt(idx-3)));
 
-        return true;
+        return sb.toString();
     }
 
     public int solution(String[] boards) {
         int answer = Integer.MAX_VALUE;
+        Boolean[] isDup = new Boolean[Integer.parseInt("111111111",2)+1];
+        Arrays.fill(isDup, false);
 
-        boolean[][] visited = new boolean[][]{};
-        List<List<String>> list = new ArrayList<>();
-        Queue<int[]> que = new LinkedList<>();
-
-//        for(String board : boards) {
-//            List<String> str = Arrays.stream(board.split("")).collect(Collectors.toList());
-//            list.add(str);
-//        }
-
-        que.add(new int[]{0,0});
-        String[] changedBoard = boards.clone();
-        int cnt = 0;
+        Queue<String[]> que = new LinkedList<>();
+        que.offer(new String[]{changeToBinary(boards),"0"});
 
         while(!que.isEmpty()) {
-            int[] cur = que.poll();
-            int cx = cur[0];
-            int cy = cur[1];
+            String[] item = que.poll();
+            String cur = item[0];
+            Integer cnt = Integer.parseInt(item[1]);
 
-            if(!check(new int[]{cx, cy}, changedBoard)) {
-                if (cy > 0) {
-                    StringBuilder changedLine =  new StringBuilder(changedBoard[cy + 1]);
-                    changedLine.setCharAt(cx, '.');
-                    changedBoard[cy + 1] = changedLine.toString();
-                }
-                if(cy < 3) {
-                    StringBuilder changedLine =  new StringBuilder(changedBoard[cy - 1]);
-                    changedLine.setCharAt(cx, '.');
-                    changedBoard[cy - 1] = changedLine.toString();
-                }
+            isDup[Integer.parseInt(cur, 2)] = true;
 
-                if(cx > 0) {
-                    StringBuilder changedLine =  new StringBuilder(changedBoard[cy]);
-                    changedLine.setCharAt(cx-1, '.');
-                    changedBoard[cy] = changedLine.toString();
-                }
+            for(int i=0; i < cur.length(); i++) {
+                String next = click(cur, i);
+                if(next.equals("111111111")) return answer > cnt+1 ? cnt+1 : answer;
 
-                if(cx < 3) {
-                    StringBuilder changedLine =  new StringBuilder(changedBoard[cy]);
-                    changedLine.setCharAt(cx+1, '.');
-                    changedBoard[cy] = changedLine.toString();
-                }
-                cnt++;
-            }
-
-            for(int i=0; i <dx.length; i++) {
-                int nx = cx + dx[i];
-                int ny = cy + dy[i];
-
-                if(nx >= 0 && nx < 3 && ny >= 0 && ny < 3 && !visited[ny][nx]) {
-                    if(!check(new int[]{nx, ny}, changedBoard)) {
-
-                    }
+                if(!isDup[Integer.parseInt(next,2)]) {
+                    que.offer(new String[]{next, String.valueOf(cnt+1)});
                 }
             }
+
         }
-
-
-
-
 
         return answer;
     }
@@ -113,6 +69,7 @@ public class CrossReverse {
         CrossReverse crossReverse = new CrossReverse();
 
         System.out.println(crossReverse.solution(new String[]{"*..", "**.", "*.."})); // 1
+        System.out.println("*********");
         System.out.println(crossReverse.solution(new String[]{"***", "*..","..*"})); // 3
     }
 }

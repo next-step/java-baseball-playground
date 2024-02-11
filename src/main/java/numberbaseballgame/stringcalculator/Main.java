@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("계산식을 입력하세요.(예 ) 3 + 4 * 2 / 2)");
+            System.out.println("계산식을 입력하세요.(예) 3 + 4 * 2 / 2)");
             String value = scanner.nextLine();
             String[] values = value.split(" ");
 

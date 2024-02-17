@@ -1,0 +1,31 @@
+package numberbaseballgame.stringcalculator.domain;
+
+import java.util.Arrays;
+import java.util.function.BiFunction;
+
+public enum CalculateType {
+    PLUS("+", (x, y) -> x + y),
+    MINUS("-", (x, y) -> x - y),
+    TIMES("*", (x, y) -> x * y),
+    DIVIED_BY("/", (x, y) -> x / y);
+
+    private final String operationSymbol;
+    private final BiFunction<Integer, Integer, Integer> expression;
+
+    CalculateType(String operationSymbol, BiFunction<Integer, Integer, Integer> expression) {
+        this.operationSymbol = operationSymbol;
+        this.expression = expression;
+    }
+
+    public int calculate(int x, int y) {
+        return expression.apply(x, y);
+    }
+
+    public static CalculateType fromSymbol(String operationSymbol) {
+        return Arrays.stream(values())
+                .filter(calculateType -> calculateType.operationSymbol.equals(operationSymbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid operation symbol: " + operationSymbol));
+    }
+
+}

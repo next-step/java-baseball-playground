@@ -9,5 +9,6 @@ public class StringTest {
     void replace() {
         String actual = "abc".replace("b", "d");
         assertThat(actual).isEqualTo("adc");
+
     }
 }

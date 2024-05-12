@@ -11,7 +11,8 @@ repositories {
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
-    testImplementation "org.assertj:assertj-core:3.19.0"
+    // testImplementation "org.assertj:assertj-core:3.19.0"
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.4.1'
 }
 
 test {

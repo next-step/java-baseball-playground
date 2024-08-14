@@ -24,3 +24,30 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+---
+4. 기능 목록 - TDD 구현
+- 1~9의 숫자 중 랜덤으로 3개의 숫자를 구한다
+- 사용자로부터 입력 받는 3개 숫자 예외처리
+  - 1~9의 숫자인가?
+  - 중복 값이 있는가?
+  - 3자리인가?
+- 위치와 숫자 값이 같은 경우 -> 스트라이크
+- 위치는 다른데 숫자 값이 같은 경우 -> 볼
+- 숫자 값이 다른 경우 -> 낫싱
+- 사용자가 입력한 값에 대한 실행 결과를 구한다
+
+```jsx
+com / user
+123 / 123 -> 3 strike
+123 / 142 -> 1 strike, 1 ball
+
+# step 1
+1 2 / 1 2 -> strike
+3 2 / 1 2 -> ball
+1 3 / 1 2 -> nothing
+
+# step 2
+123 / 1 1 -> strike 
+123 / 1 2 -> ball
+123 / 1 5 -> nothing
+```

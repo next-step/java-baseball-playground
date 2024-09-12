@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringTest {
     @Test
     void replace() {
-        String actual = "abc".replace("b", "d");
-        assertThat(actual).isEqualTo("adc");
+        String actual = "abc".replace("abc", "betterplace");
+        assertThat(actual).isEqualTo("betterplace");
     }
 }
